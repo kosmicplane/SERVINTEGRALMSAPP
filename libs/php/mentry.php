@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 class entryPoint{
     private $params;
-    
+
     function __construct($info)
     {
         if (isset($_POST["info"])) {
@@ -16,27 +16,39 @@ class entryPoint{
 
     function start()
     {
+        session_start();
         require_once "dataBase.php";
+        require_once "authorization.php";
         require_once $this->params["class"].".php";
 
         $class = $this->params["class"];
-        $instance = new $class(); 
+        $instance = new $class();
         $method = $this->params["method"];
-        
-        // Inicializar $exec antes de usarla
+
+        $publicEndpoints = array(
+            'users' => array('login'),
+            'lang' => array('langGet'),
+        );
+
         $exec = null;
 
         try
         {
+            if (!(isset($publicEndpoints[$class]) && in_array($method, $publicEndpoints[$class], true))) {
+                $auth = new Authorization();
+                $user = $auth->resolveUser($this->params);
+                $auth->assertUserConsistency($user, $this->params["data"] ?? []);
+                $auth->authorize($class, $method, $user);
+            }
+
             $exec = $instance->$method($this->params["data"]);
             $resp = array("data" => $exec, "exception" => "");
-            return json_encode($resp);    
+            return json_encode($resp);
         }
         catch (Exception $e)
         {
-            // Si ocurre una excepción, devolvemos el error
             $resp = array("data" => $exec, "exception" => $e->getMessage());
-            return json_encode($resp);    
+            return json_encode($resp);
         }
     }
 }

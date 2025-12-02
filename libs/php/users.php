@@ -28,11 +28,17 @@ class users{
 			}
 			$resp["message"] = $query[0];
 			$resp["status"] = true;
-                        
-			$info["autor"] = $resp["message"]["RESPNAME"];
-			
-			// SAVELOG
-			$this->chlog($info);
+				$_SESSION['user'] = array(
+						'code' => $resp["message"]["CODE"],
+						'role' => $resp["message"]["TYPE"],
+						'email' => $resp["message"]["MAIL"],
+						'name' => $resp["message"]["RESPNAME"],
+				);
+
+				$info["autor"] = $resp["message"]["RESPNAME"];
+
+				// SAVELOG
+				$this->chlog($info);
 		}
 		else
 		{
