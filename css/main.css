@@ -1209,3 +1209,50 @@ ul.topnav li.icon
 }
 /*---------------------------------------------*/
 
+
+/* Estilos para panel de RQ */
+.rqPanel {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.rqPanel h3 {
+    margin-top: 0;
+}
+
+.rqPanel label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.rqPanel input,
+.rqPanel textarea,
+.rqPanel select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+}
+
+.rqPanel button {
+    margin-top: 10px;
+}
+
+.rqList .rqCard {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+}
+
+.rqActions button {
+    margin-right: 5px;
+}
+
+.rqItems,
+.rqHistory {
+    margin-top: 8px;
+    font-size: 12px;
+}
