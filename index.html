@@ -2229,11 +2229,184 @@
 						</div>
 							
 							
-					</div>
-					</div>
-			</div>
-			
-			<div id="contactDiv" class="abuseReportDiv">
+                                        </div>
+                                        </div>
+                        </div>
+
+                        <div id = "ifMasterP">
+                                <div class = "ifBox">
+                                        <div class="col-md-12 col-lg-6" >
+                                                <div class="ifTitle" id="purchaseSuppliers"></div>
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseSupplierName"></span>
+                                                                <input id="p-supplier-name" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseSupplierNit"></span>
+                                                                <input id="p-supplier-nit" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-5 col-lg-5 ">
+                                                                <span id="purchaseSupplierContact"></span>
+                                                                <input id="p-supplier-contact" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseSupplierEmail"></span>
+                                                                <input id="p-supplier-email" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseSupplierPhone"></span>
+                                                                <input id="p-supplier-phone" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseSupplierAddress"></span>
+                                                                <input id="p-supplier-address" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseSupplierCity"></span>
+                                                                <input id="p-supplier-city" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseSupplierSave" value="Guardar" onclick="saveSupplier()"></button>
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseSupplierClear" value="Limpiar" onclick="clearSupplierForm()"></button>
+                                                        </div>
+                                                </div>
+                                                <div id="purchaseSuppliersTable" class="table">
+                                                        <div class="table-head">
+                                                                <div class="column" data-label="Proveedor">Proveedor</div>
+                                                                <div class="column" data-label="Contacto">Contacto</div>
+                                                                <div class="column" data-label="Correo">Correo</div>
+                                                                <div class="column" data-label="Teléfono">Teléfono</div>
+                                                                <div class="column" data-label="Ciudad">Ciudad</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6" >
+                                                <div class="ifTitle" id="purchaseOrderTitle"></div>
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseOrderRq"></span>
+                                                                <input id="p-order-rq" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseOrderSupplier"></span>
+                                                                <select id="p-order-supplier"></select>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseOrderCurrency"></span>
+                                                                <select id="p-order-currency">
+                                                                        <option value="COP">COP</option>
+                                                                        <option value="USD">USD</option>
+                                                                </select>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                                <span id="purchaseOrderNotes"></span>
+                                                                <textarea id="p-order-notes"></textarea>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseOrderDescription"></span>
+                                                                <input id="p-order-item-desc" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseOrderQty"></span>
+                                                                <input id="p-order-item-qty" type="number" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseOrderCost"></span>
+                                                                <input id="p-order-item-cost" type="number" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseOrderAddItem" value="Agregar" onclick="addPoItem()"></button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseOrderCreate" value="Crear" onclick="createPoFromRq()"></button>
+                                                        </div>
+                                                </div>
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseOrderCode"></span>
+                                                                <input id="p-order-code" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseOrderUpdate" value="Actualizar" onclick="updateNegotiatedCosts()"></button>
+                                                        </div>
+                                                </div>
+                                                <div class="ifTitle" id="purchaseOrderReceiveTitle"></div>
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseReceiptSku"></span>
+                                                                <input id="p-receipt-sku" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+                                                                <span id="purchaseReceiptDesc"></span>
+                                                                <input id="p-receipt-desc" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseReceiptQty"></span>
+                                                                <input id="p-receipt-qty" type="number" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
+                                                                <span id="purchaseReceiptCost"></span>
+                                                                <input id="p-receipt-cost" type="number" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseReceiptOt"></span>
+                                                                <input id="p-receipt-ot" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseReceiptRq"></span>
+                                                                <input id="p-receipt-rq" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span id="purchaseOrderCode"></span>
+                                                                <input id="p-receipt-po" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                                                                <span>Código Item OC</span>
+                                                                <input id="p-receipt-item" type="text" />
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseReceiptAdd" value="Agregar" onclick="addReceiptItem()"></button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+                                                                <br class="hidden-xs">
+                                                                <button id="purchaseReceiptSubmit" value="Registrar" onclick="registerReceipt()"></button>
+                                                        </div>
+                                                </div>
+                                                <div id="purchaseDraftItems" class="table">
+                                                        <div class="table-head">
+                                                                <div class="column" data-label="Código">Código</div>
+                                                                <div class="column" data-label="Descripción">Descripción</div>
+                                                                <div class="column" data-label="Cantidad">Cantidad</div>
+                                                                <div class="column" data-label="Costo">Costo</div>
+                                                                <div class="column" data-label="Pactado">Pactado</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div class="ifTitle" id="purchaseOrdersList"></div>
+                                                <div id="purchaseOrdersTable" class="table">
+                                                        <div class="table-head">
+                                                                <div class="column" data-label="OC">OC</div>
+                                                                <div class="column" data-label="Proveedor">Proveedor</div>
+                                                                <div class="column" data-label="Estado">Estado</div>
+                                                                <div class="column" data-label="RQ">RQ</div>
+                                                                <div class="column" data-label="Notas">Notas</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div id="contactDiv" class="abuseReportDiv">
 				
 				<div class="contactBox">
 					<img id="contactIcon" src='irsc/mainLogo2.png' class="contactIcon"/>
