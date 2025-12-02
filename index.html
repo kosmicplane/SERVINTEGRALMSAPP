@@ -24,7 +24,8 @@
 		<script src = "bs/js/bootstrap.js"></script>
 		<link href="libs/modal/modal.css" rel="stylesheet"/>
 		<script src = "libs/modal/modal.js"></script>
-		<script src="js/typeahead.js"></script>
+                <script src="js/typeahead.js"></script>
+                <script src="js/inventory.js"></script>
 		
 		<!-- <script src="js/main.js"></script> -->
 		<!-- <script src="js/live.js"></script> -->
@@ -80,10 +81,14 @@
 							</div>
 						</div>
 						<ul id="mymenu" class="topnav"></ul>
-						<div id="workArea" class="mainArea">
-                                                        
-							<div id="wa" class="workarea"></div>
-						</div>
+                                                <div id="workArea" class="mainArea">
+
+                                                        <div id="wa" class="workarea"></div>
+                                                </div>
+
+                                                <div class="inventory-toolbar">
+                                                        <button id="inventoryToggle" class="singleButton">Movimientos de inventario</button>
+                                                </div>
 						
 					</div>
 				</div>
@@ -158,7 +163,7 @@
 			
 			<div id = "asignTechBox"></div>
 			
-			<div id = "preFactBox">
+                        <div id = "preFactBox">
                                 
 				<div id="factResumeTable" class="table popTableShort">
 					<div class="table-head">
@@ -199,11 +204,68 @@
 										
 				</div>
                         
-			</div>
-							
-			<a href id="downframe" download></a>
-                        
-			<div id = "maquiStoryBox">
+                        </div>
+
+                        <a href id="downframe" download></a>
+
+                        <div id="inventoryPanel" class="inventory-panel">
+                                <h3>Movimientos de inventario</h3>
+                                <form id="inventoryMovementForm" class="inventory-form">
+                                        <div class="form-row">
+                                                <input type="text" id="invItemCode" placeholder="Código de ítem" required />
+                                                <input type="text" id="invItemDesc" placeholder="Descripción" required />
+                                                <select id="invMovementType" required>
+                                                        <option value="">Tipo de movimiento</option>
+                                                        <option value="ING_STOCK">Entrada a stock</option>
+                                                        <option value="ING_RECUP">Entrada recuperados</option>
+                                                        <option value="ING_OC">Entrada OC</option>
+                                                        <option value="SAL_RQ">Salida RQ almacén</option>
+                                                        <option value="AJUSTE">Ajuste</option>
+                                                </select>
+                                                <input type="number" step="0.01" id="invQuantity" placeholder="Cantidad" required />
+                                                <input type="number" step="0.01" id="invUnitCost" placeholder="Costo unitario" />
+                                        </div>
+                                        <div class="form-row">
+                                                <input type="text" id="invNotes" placeholder="Notas" />
+                                                <button type="submit" class="singleButton">Registrar movimiento</button>
+                                                <span id="inventoryStatus" class="inventory-status"></span>
+                                        </div>
+                                </form>
+
+                                <div class="inventory-filters">
+                                        <input type="text" id="filterItemCode" placeholder="Filtrar por código" />
+                                        <select id="filterMovementType">
+                                                <option value="">Todos los tipos</option>
+                                                <option value="ING_STOCK">Entrada a stock</option>
+                                                <option value="ING_RECUP">Entrada recuperados</option>
+                                                <option value="ING_OC">Entrada OC</option>
+                                                <option value="SAL_RQ">Salida RQ almacén</option>
+                                                <option value="AJUSTE">Ajuste</option>
+                                        </select>
+                                        <input type="date" id="filterFrom" />
+                                        <input type="date" id="filterTo" />
+                                        <button type="button" class="singleButton" onclick="loadMovementList()">Filtrar</button>
+                                        <button type="button" id="exportMovementsBtn" class="singleButton">Exportar CSV</button>
+                                </div>
+
+                                <table class="table inventory-table">
+                                        <thead>
+                                                <tr>
+                                                        <th>ID</th>
+                                                        <th>Ítem</th>
+                                                        <th>Movimiento</th>
+                                                        <th>Dirección</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Fecha</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody id="inventoryMovementsBody">
+                                                <tr><td colspan="6">Sin datos</td></tr>
+                                        </tbody>
+                                </table>
+                        </div>
+
+                        <div id = "maquiStoryBox">
 				<div id="maquiStoryTable" class="table popTable">
 					<div class="table-head">
 						<div class="column" data-label="Fecha">Fecha</div>
