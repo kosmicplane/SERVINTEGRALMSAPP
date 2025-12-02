@@ -47,5 +47,12 @@ return [
             'refreshLegCodes' => 'internalSheets.manage',
             'restoreLeg' => 'internalSheets.manage',
         ],
+        'inventory' => [
+            'listItems' => 'inventory.view',
+            'saveItem' => 'inventory.manage',
+            'registerEntry' => 'inventory.manage',
+            'registerExit' => 'inventory.manage',
+            'listMovements' => 'inventory.view',
+        ],
     ],
 ];

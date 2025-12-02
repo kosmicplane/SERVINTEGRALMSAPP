@@ -819,21 +819,101 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-						<div id="inveTable" class="table">
-							<div class="table-head">
-								<div class="column" data-label="Código">Código</div>
-								<div class="column" data-label="Descripción">Descripción</div>
-								<div class="column" data-label="Costo compra">Costo compra</div>
-								<div class="column" data-label="Margen %">Margen %</div>
-								<div class="column" data-label="Valor venta">Valor</div>
-								<div class="column" data-label="Existencia">Existencia</div>
-								<div class="column" data-label="Acciones">Acciones</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div id="inveTable" class="table">
+                                                        <div class="table-head">
+                                                                <div class="column" data-label="Código">Código</div>
+                                                                <div class="column" data-label="Descripción">Descripción</div>
+                                                                <div class="column" data-label="Costo compra">Costo compra</div>
+                                                                <div class="column" data-label="Margen %">Margen %</div>
+                                                                <div class="column" data-label="Valor venta">Valor</div>
+                                                                <div class="column" data-label="Existencia">Existencia</div>
+                                                                <div class="column" data-label="Acciones">Acciones</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                                <h4>Entrada de inventario</h4>
+                                                                <span>Ítem</span>
+                                                                <select id="inv-entry-item"></select>
+                                                                <span>Tipo</span>
+                                                                <select id="inv-entry-type">
+                                                                        <option value="STOCK">Stock</option>
+                                                                        <option value="RECUPERADO">Recuperado</option>
+                                                                        <option value="OC">Orden de compra</option>
+                                                                </select>
+                                                                <span>Cantidad</span>
+                                                                <input id="inv-entry-qty" type="text"/>
+                                                                <span>Costo unitario</span>
+                                                                <input id="inv-entry-cost" type="text"/>
+                                                                <span>OC / OT (opcional)</span>
+                                                                <input id="inv-entry-oc" type="text" placeholder="OC"/>
+                                                                <input id="inv-entry-ot" type="text" placeholder="OT"/>
+                                                                <span>Observaciones</span>
+                                                                <textarea id="inv-entry-obs"></textarea>
+                                                                <button id="inventoryEntryBtn" onclick="inventoryRegisterEntry()">Registrar entrada</button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                                <h4>Salida de inventario</h4>
+                                                                <span>Ítem</span>
+                                                                <select id="inv-exit-item"></select>
+                                                                <span>Tipo</span>
+                                                                <select id="inv-exit-type">
+                                                                        <option value="RQ_ALMACEN">RQ Almacén</option>
+                                                                        <option value="AJUSTE">Ajuste</option>
+                                                                </select>
+                                                                <span>Cantidad</span>
+                                                                <input id="inv-exit-qty" type="text"/>
+                                                                <span>OT asociada (para RQ)</span>
+                                                                <input id="inv-exit-ot" type="text"/>
+                                                                <span>Observaciones</span>
+                                                                <textarea id="inv-exit-obs"></textarea>
+                                                                <button id="inventoryExitBtn" onclick="inventoryRegisterExit()">Registrar salida</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                                <h4>Movimientos de inventario</h4>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <span>Ítem</span>
+                                                                <select id="inv-mov-item"></select>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <span>Tipo</span>
+                                                                <select id="inv-mov-type">
+                                                                        <option value="">Todos</option>
+                                                                        <option value="ENTRADA">Entrada</option>
+                                                                        <option value="SALIDA">Salida</option>
+                                                                </select>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <span>Desde</span>
+                                                                <input id="inv-mov-from" type="text"/>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <span>Hasta</span>
+                                                                <input id="inv-mov-to" type="text"/>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <span>OT</span>
+                                                                <input id="inv-mov-ot" type="text"/>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                                <br class="hidden-xs">
+                                                                <button onclick="inventoryMovementsGet()">Buscar</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div id="inventoryMovementsTable" class="table"></div>
+                                        </div>
+                                </div>
+                        </div>
                         
 			<div id = "ifMasterL">
 				<div class = "ifBox">
