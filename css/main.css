@@ -1209,3 +1209,39 @@ ul.topnav li.icon
 }
 /*---------------------------------------------*/
 
+
+.inventory-toolbar {
+    margin: 10px 0;
+}
+
+.inventory-panel {
+    border: 1px solid #e3e3e3;
+    padding: 15px;
+    margin-top: 10px;
+    background: #fafafa;
+}
+
+.inventory-form .form-row,
+.inventory-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.inventory-form input,
+.inventory-form select,
+.inventory-filters input,
+.inventory-filters select {
+    padding: 5px;
+    min-width: 140px;
+}
+
+.inventory-status {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.inventory-table {
+    width: 100%;
+}
