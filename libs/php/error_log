@@ -1,0 +1,952 @@
+[13-Jun-2019 09:18:15 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[13-Jun-2019 09:18:15 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[13-Jun-2019 09:18:30 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[13-Jun-2019 09:18:30 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[13-Jun-2019 09:18:49 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[13-Jun-2019 09:18:49 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[13-Jun-2019 09:18:51 America/Bogota] PHP Fatal error:  Call to a member function query() on a non-object in /home/leoncitobravo/public_html/servintegral/libs/php/dataBase.php on line 42
+[13-Jun-2019 09:18:56 America/Bogota] PHP Fatal error:  Call to a member function query() on a non-object in /home/leoncitobravo/public_html/servintegral/libs/php/dataBase.php on line 42
+[13-Jun-2019 09:25:21 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[13-Jun-2019 09:25:21 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:35:28 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[12-Sep-2019 10:35:28 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:35:35 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[12-Sep-2019 10:35:35 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:35:38 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[12-Sep-2019 10:35:38 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:41:22 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[12-Sep-2019 10:41:22 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:41:29 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[12-Sep-2019 10:41:29 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-Sep-2019 10:41:39 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[12-Sep-2019 10:41:39 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:47:54 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[07-May-2020 13:47:54 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:48:10 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[07-May-2020 13:48:10 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:48:23 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[07-May-2020 13:48:23 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:48:36 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[07-May-2020 13:48:36 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:54:04 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[07-May-2020 13:54:04 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:54:06 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[07-May-2020 13:54:06 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:54:11 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[07-May-2020 13:54:11 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[07-May-2020 13:54:43 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[07-May-2020 13:54:43 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[12-May-2020 19:02:24 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2087
+[12-May-2020 19:02:24 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[14-May-2020 19:40:23 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2094
+[14-May-2020 19:40:23 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[14-May-2020 19:40:59 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2094
+[14-May-2020 19:40:59 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[14-May-2020 19:41:07 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2448
+[14-May-2020 19:41:07 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[30-May-2020 19:38:26 America/Bogota] PHP Notice:  Undefined index: f-orderAuthor in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 388
+[30-May-2020 19:38:26 America/Bogota] PHP Notice:  Undefined index: f-orderLocation in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 389
+[30-May-2020 19:38:26 America/Bogota] PHP Notice:  Undefined variable: where in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 449
+[30-May-2020 19:38:26 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[30-May-2020 19:38:35 America/Bogota] PHP Notice:  Undefined index: f-orderAuthor in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 388
+[30-May-2020 19:38:35 America/Bogota] PHP Notice:  Undefined index: f-orderLocation in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 389
+[30-May-2020 19:38:35 America/Bogota] PHP Notice:  Undefined variable: where in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 449
+[30-May-2020 19:38:35 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[30-May-2020 19:38:36 America/Bogota] PHP Notice:  Undefined index: f-orderAuthor in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 388
+[30-May-2020 19:38:36 America/Bogota] PHP Notice:  Undefined index: f-orderLocation in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 389
+[30-May-2020 19:38:36 America/Bogota] PHP Notice:  Undefined variable: where in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 449
+[30-May-2020 19:38:36 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined index: f-orderAuthor in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 388
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined index: f-orderLocation in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 389
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined variable: where in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 449
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined index: f-orderAuthor in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 388
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined index: f-orderLocation in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 389
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined variable: where in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 449
+[30-May-2020 19:38:38 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[05-Jun-2020 17:29:14 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[05-Jun-2020 17:29:14 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[05-Jun-2020 17:29:38 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[05-Jun-2020 17:29:38 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[05-Jun-2020 17:29:47 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[05-Jun-2020 17:29:47 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[25-Jun-2020 19:28:06 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[25-Jun-2020 19:28:06 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[01-Jul-2020 18:59:03 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[01-Jul-2020 18:59:03 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 18:59:03 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:25:32 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[01-Jul-2020 19:25:32 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[01-Jul-2020 19:25:44 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[01-Jul-2020 19:25:44 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[01-Jul-2020 19:25:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:25:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:25:57 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[01-Jul-2020 19:25:57 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[01-Jul-2020 19:40:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:40:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:42:26 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:42:26 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[01-Jul-2020 19:47:06 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 14:00:51 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[02-Jul-2020 14:00:51 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 14:00:51 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 14:12:41 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 14:12:45 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 14:33:18 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[02-Jul-2020 14:33:18 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 14:33:18 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[02-Jul-2020 18:36:34 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:34 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:46 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:50 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:36:57 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:13 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:14 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:37:18 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:14 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:19 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:21 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:24 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:38:58 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:24 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:25 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:28 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:31 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:37 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:48 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:39:58 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:05 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:17 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:21 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 18:40:53 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 21:05:40 America/Bogota] PHP Notice:  A non well formed numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 21:26:41 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 21:27:26 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 21:27:35 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[02-Jul-2020 21:28:10 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 3916
+[06-Jul-2020 12:07:57 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[06-Jul-2020 12:07:57 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[06-Jul-2020 12:07:57 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[06-Jul-2020 13:37:10 America/Bogota] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2294
+[06-Jul-2020 13:37:10 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2296
+[06-Jul-2020 13:37:10 America/Bogota] PHP Warning:  A non-numeric value encountered in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2301
+[03-Aug-2020 19:00:18 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[03-Aug-2020 19:00:18 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[03-Aug-2020 19:00:30 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[03-Aug-2020 19:00:30 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[03-Aug-2020 19:00:37 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[03-Aug-2020 19:00:37 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[03-Aug-2020 19:02:01 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[03-Aug-2020 19:02:01 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[03-Aug-2020 19:02:25 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2080
+[03-Aug-2020 19:02:25 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[03-Aug-2020 19:02:28 America/Bogota] PHP Notice:  Undefined offset: 0 in /home/leoncitobravo/public_html/servintegral/libs/php/users.php on line 2434
+[03-Aug-2020 19:02:28 America/Bogota] PHP Notice:  Undefined variable: exec in /home/leoncitobravo/public_html/servintegral/libs/php/mentry.php on line 35
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 529
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 530
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 536
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 536
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 537
+[02-Nov-2022 20:47:52 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 537
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 529
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 530
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 536
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 536
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 537
+[12-Apr-2024 09:51:54 America/Bogota] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Shared/String.php on line 537
+[12-Apr-2024 09:57:49 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 325
+[12-Apr-2024 09:57:49 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1549
+[12-Apr-2024 09:58:15 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 325
+[12-Apr-2024 09:58:15 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1549
+[12-Apr-2024 09:58:20 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 325
+[12-Apr-2024 09:58:20 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1549
+[12-Apr-2024 10:00:13 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 325
+[12-Apr-2024 10:00:13 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1549
+[12-Apr-2024 10:16:17 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 325
+[12-Apr-2024 10:16:17 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1549
+[12-Apr-2024 10:27:44 America/Bogota] PHP Notice:  Trying to access array offset on value of type null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1558
+[12-Apr-2024 10:29:10 America/Bogota] PHP Warning:  Illegal string offset 'value' in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1559
+[12-Apr-2024 10:29:10 America/Bogota] PHP Notice:  Uninitialized string offset: 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1559
+[21-Dec-2024 21:24:45 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:48 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:49 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:51 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:51 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:51 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:54 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:54 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:55 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:57 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:24:58 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:03 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:04 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:06 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:07 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:08 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:08 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:10 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:12 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:15 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:15 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:18 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:19 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:19 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:20 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:20 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:24 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:24 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:25 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:26 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:26 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:28 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:28 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:53 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:25:55 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:34:04 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:34:14 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[21-Dec-2024 21:34:15 America/Bogota] PHP Deprecated:  Creation of dynamic property users::$db is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 11
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[27-Dec-2024 14:11:51 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[27-Dec-2024 14:11:51 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[27-Dec-2024 14:13:32 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[27-Dec-2024 14:13:32 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:15:44 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[27-Dec-2024 14:15:44 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[27-Dec-2024 14:15:44 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[27-Dec-2024 14:15:44 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[27-Dec-2024 14:15:44 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:21:21 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[27-Dec-2024 14:21:21 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[27-Dec-2024 14:21:21 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[27-Dec-2024 14:21:21 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[27-Dec-2024 14:21:21 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:21:34 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[27-Dec-2024 14:21:34 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[27-Dec-2024 14:21:34 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[27-Dec-2024 14:21:34 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[27-Dec-2024 14:21:34 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:21:39 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[27-Dec-2024 14:21:39 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[27-Dec-2024 14:21:39 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[27-Dec-2024 14:21:39 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[27-Dec-2024 14:21:39 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[27-Dec-2024 14:22:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[27-Dec-2024 14:22:16 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[28-Dec-2024 14:54:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[28-Dec-2024 14:54:02 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[28-Dec-2024 14:54:09 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[28-Dec-2024 14:54:09 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:55:14 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 14:55:14 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 14:55:14 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 14:55:14 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 14:55:14 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:56:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 14:56:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 14:56:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 14:56:02 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 14:56:02 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:56:07 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 14:56:07 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 14:56:07 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 14:56:07 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 14:56:07 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 14:56:53 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 14:56:53 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 14:56:53 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 14:56:53 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 14:56:53 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[28-Dec-2024 15:00:25 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[28-Dec-2024 15:00:25 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:00:47 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 15:00:47 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 15:00:47 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 15:00:47 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 15:00:47 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:00:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 15:00:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 15:00:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 15:00:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 15:00:57 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:05:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 15:05:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 15:05:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 15:05:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 15:05:57 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[28-Dec-2024 15:08:16 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[28-Dec-2024 15:08:16 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 15:08:20 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 15:08:20 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 15:08:20 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 15:08:20 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 15:08:20 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 16:00:06 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2175
+[28-Dec-2024 16:00:06 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2176
+[28-Dec-2024 16:00:06 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2177
+[28-Dec-2024 16:00:06 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2178
+[28-Dec-2024 16:00:06 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2181): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreateTotalized()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1842
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1843
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1844
+[28-Dec-2024 19:18:57 America/Bogota] PHP Deprecated:  Function utf8_decode() is deprecated in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1845
+[28-Dec-2024 19:18:57 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_runtime() in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php:1043
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php(77): FPDF->_dochecks()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(1849): FPDF->__construct()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1043
+[28-Dec-2024 19:34:11 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:1828
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(1828): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#3 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[29-Dec-2024 00:44:25 UTC] PHP Parse error:  syntax error, unexpected identifier "P", expecting ")" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1851
+[29-Dec-2024 00:44:25 UTC] PHP Parse error:  syntax error, unexpected identifier "P", expecting ")" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1851
+[29-Dec-2024 00:44:28 UTC] PHP Parse error:  syntax error, unexpected identifier "P", expecting ")" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1851
+[29-Dec-2024 00:44:28 UTC] PHP Parse error:  syntax error, unexpected identifier "P", expecting ")" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1851
+[28-Dec-2024 19:45:47 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:1828
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(1828): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#3 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1828
+[28-Dec-2024 19:46:30 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:1837
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(1837): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#3 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1837
+[28-Dec-2024 19:49:12 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:1927
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(1927): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(29): users->reportCreate()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(41): entryPoint->start()
+#3 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1927
+[28-Dec-2024 19:54:27 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Dec-2024 19:54:27 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[28-Dec-2024 20:15:03 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Dec-2024 20:15:03 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[28-Dec-2024 20:28:18 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Dec-2024 20:28:18 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[28-Dec-2024 21:03:30 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Dec-2024 21:03:30 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[28-Dec-2024 21:21:44 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Dec-2024 21:21:44 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[29-Dec-2024 12:13:18 America/Bogota] PHP Warning:  Undefined variable $exec in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 35
+[29-Dec-2024 12:46:46 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:3142
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(3142): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2919): users->addFormatedPage()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(31): users->generateRecepit()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 3142
+[29-Dec-2024 12:46:47 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: mb_convert_encoding() expects at least 2 arguments, 1 given in /home/izorlnspatmm/public_html/app/libs/php/users.php:3142
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(3142): mb_convert_encoding()
+#1 /home/izorlnspatmm/public_html/app/libs/php/users.php(2919): users->addFormatedPage()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(31): users->generateRecepit()
+#3 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#4 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 3142
+[29-Dec-2024 18:45:08 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[07-Jan-2025 11:08:10 America/Bogota] PHP Warning:  Undefined array key "ocode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1478
+[07-Jan-2025 16:08:35 UTC] PHP Warning:  Trying to access array offset on null in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 20
+[07-Jan-2025 16:08:35 UTC] PHP Warning:  require_once(.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 20
+[07-Jan-2025 16:08:35 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:20
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 20
+[16-Jan-2025 12:58:03 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:07 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:11 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:16 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:32 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:33 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:34 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:34 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:34 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:50 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[16-Jan-2025 12:58:52 America/Bogota] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/izorlnspatmm/public_html/app/libs/phpExcel/Classes/PHPExcel/Calculation.php on line 2186
+[28-Apr-2025 15:38:17 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 15:38:17 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 15:38:17 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 15:45:02 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 15:45:02 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 15:45:02 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 15:46:40 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 15:46:40 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 15:49:14 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 15:49:14 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 15:49:14 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 16:00:10 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 16:00:10 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 16:00:10 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 16:00:46 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 16:00:46 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 16:00:46 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 16:05:41 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 16:05:41 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 16:05:41 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 16:06:49 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/ini/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1621
+[28-Apr-2025 16:06:49 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/end/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1642
+[28-Apr-2025 16:06:49 America/Bogota] PHP Warning:  opendir(../../irsc/pics/b43b74549a70446e6e85df4dec689022/order/): Failed to open directory: No such file or directory in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1663
+[28-Apr-2025 16:09:55 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2067
+[28-Apr-2025 16:34:41 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:34:49 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:35:00 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:35:28 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:35:42 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 16:35:42 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 16:36:03 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:36:40 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:38:02 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:38:53 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:51:17 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:58:54 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 16:59:13 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 17:00:00 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 17:00:55 America/Bogota] PHP Warning:  Undefined array key "utype" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1287
+[28-Apr-2025 17:01:14 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 17:01:14 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 17:01:42 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 17:01:42 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 17:01:43 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 17:01:43 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 17:01:43 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1261
+[28-Apr-2025 17:01:43 America/Bogota] PHP Warning:  Undefined array key "actiCode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1262
+[28-Apr-2025 17:40:34 America/Bogota] PHP Warning:  Undefined variable $aud in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 17:40:34 America/Bogota] PHP Warning:  Trying to access array offset on null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 17:40:49 America/Bogota] PHP Warning:  Undefined variable $aud in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 17:40:49 America/Bogota] PHP Warning:  Trying to access array offset on null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 17:41:29 America/Bogota] PHP Warning:  Undefined variable $aud in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 17:41:29 America/Bogota] PHP Warning:  Trying to access array offset on null in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 1260
+[28-Apr-2025 19:43:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:43:40 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:43:46 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:43:54 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:31 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:34 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:34 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:34 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:36 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:37 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:44:38 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:47:47 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:01 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:03 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:03 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:03 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:39 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:43 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:43 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:44 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:44 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:48:44 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:52:39 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:57:18 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:44 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:45 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:46 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:46 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:46 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:46 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 19:58:48 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 20:04:05 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined method users::saveoAct() in /home/izorlnspatmm/public_html/app/libs/php/mentry.php:31
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/mentry.php on line 31
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "acode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 81
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "acode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 83
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "adesc" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 84
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "aduration" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 85
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "maquiname" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 87
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "maquicode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 88
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "techname" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 89
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "univalue" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 92
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "uniprice" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 93
+[28-Apr-2025 20:06:08 America/Bogota] PHP Warning:  Undefined array key "acost" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 94
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "acode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 81
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "acode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 83
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "adesc" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 84
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "aduration" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 85
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "maquiname" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 87
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "maquicode" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 88
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "techname" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 89
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "univalue" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 92
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "uniprice" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 93
+[28-Apr-2025 20:06:18 America/Bogota] PHP Warning:  Undefined array key "acost" in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 94
+[28-Apr-2025 20:48:59 America/Bogota] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1375731744 bytes) in /home/izorlnspatmm/public_html/app/libs/fpdf/fpdf.php on line 1395
+[28-Apr-2025 21:20:52 America/Bogota] PHP Fatal error:  Uncaught TypeError: number_format(): Argument #1 ($num) must be of type int|float, string given in /home/izorlnspatmm/public_html/app/libs/php/users.php:2290
+Stack trace:
+#0 /home/izorlnspatmm/public_html/app/libs/php/users.php(2290): number_format()
+#1 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(31): users->reportCreateTotalized()
+#2 /home/izorlnspatmm/public_html/app/libs/php/mentry.php(45): entryPoint->start()
+#3 {main}
+  thrown in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2290
+[30-Jul-2025 12:27:31 America/Bogota] PHP Warning:  Undefined array key 0 in /home/izorlnspatmm/public_html/app/libs/php/users.php on line 2063

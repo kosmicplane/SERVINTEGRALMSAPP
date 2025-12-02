@@ -1,0 +1,1 @@
+let userType = "T"; // Este valor debe ser dinámico, basado en el usuario logueado.
