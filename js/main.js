@@ -137,13 +137,19 @@ function loadCheck()
 
 	f_rep_targets = ["f-repParent", "f-repSucu", "f-repNumber", "f-repInidate", "f-repEndate"];
 	
-	f_rec_targets = ["f-recNumber", "f-recParent", "f-repOnum", "f-recInidate", "f-recEndate"];
-	
-	a_rec_targets = ["a-resoNumber", "a-resoDate", "a-resoIninum", "a-resoEndnum", "a-resoActualnum"];
-	
-	f_orde_targetsT = ["f-orderParentT", "f-orderSucuT", "f-orderNumT"];
-	
-	legTargets = ["legCode", "legItemParent", "legItemOrder", "legItemDate", "legItemNumber", "legItemConcept", "legItemDetail", "legItemCname", "legItemId",  "legItemBase", "legItemBase", "legItemTax" , "legItemTotal", "legItemRetFont", "legItemRetFont", "legItemRetICA", "legItemPayment" ];
+        f_rec_targets = ["f-recNumber", "f-recParent", "f-repOnum", "f-recInidate", "f-recEndate"];
+
+        a_rec_targets = ["a-resoNumber", "a-resoDate", "a-resoIninum", "a-resoEndnum", "a-resoActualnum"];
+
+        f_orde_targetsT = ["f-orderParentT", "f-orderSucuT", "f-orderNumT"];
+
+        purchaseSupplierTargets = ["p-supplier-name", "p-supplier-nit", "p-supplier-contact", "p-supplier-email", "p-supplier-phone", "p-supplier-address", "p-supplier-city"];
+        poDraftItems = [];
+        receiptDraftItems = [];
+        purchaseSuppliers = [];
+        purchaseOrders = [];
+
+        legTargets = ["legCode", "legItemParent", "legItemOrder", "legItemDate", "legItemNumber", "legItemConcept", "legItemDetail", "legItemCname", "legItemId",  "legItemBase", "legItemBase", "legItemTax" , "legItemTotal", "legItemRetFont", "legItemRetFont", "legItemRetICA", "legItemPayment" ];
 	
 	liveRefresh();
 	
@@ -455,14 +461,15 @@ function setMenuItems(value)
 		mainMenu.appendChild(menuCreator("menuMasterR"));
 		mainMenu.appendChild(menuCreator("menuMasterC"));
 		mainMenu.appendChild(menuCreator("menuMasterS"));
-		mainMenu.appendChild(menuCreator("menuMasterM"));
-		mainMenu.appendChild(menuCreator("menuMasterT"));
-		mainMenu.appendChild(menuCreator("menuMasterA"));
-		mainMenu.appendChild(menuCreator("menuMasterREP"));
-		mainMenu.appendChild(menuCreator("menuMasterI"));
-		mainMenu.appendChild(menuCreator("menuMasterF"));
-		mainMenu.appendChild(menuCreator("menuMasterLeg"));
-		mainMenu.appendChild(menuCreator("menuMasterL"));
+                mainMenu.appendChild(menuCreator("menuMasterM"));
+                mainMenu.appendChild(menuCreator("menuMasterT"));
+                mainMenu.appendChild(menuCreator("menuMasterA"));
+                mainMenu.appendChild(menuCreator("menuMasterREP"));
+                mainMenu.appendChild(menuCreator("menuMasterI"));
+                mainMenu.appendChild(menuCreator("menuMasterF"));
+                mainMenu.appendChild(menuCreator("menuMasterP"));
+                mainMenu.appendChild(menuCreator("menuMasterLeg"));
+                mainMenu.appendChild(menuCreator("menuMasterL"));
 		
 		
 		
@@ -482,14 +489,15 @@ function setMenuItems(value)
 		mainMenu.appendChild(menuCreator("menuMasterR"));
 		mainMenu.appendChild(menuCreator("menuMasterC"));
 		mainMenu.appendChild(menuCreator("menuMasterS"));
-		mainMenu.appendChild(menuCreator("menuMasterM"));
-		mainMenu.appendChild(menuCreator("menuMasterT"));
-		mainMenu.appendChild(menuCreator("menuMasterA"));
-		// mainMenu.appendChild(menuCreator("menuMasterREP"));
-		mainMenu.appendChild(menuCreator("menuMasterI"));
-		mainMenu.appendChild(menuCreator("menuMasterF"));
-		// mainMenu.appendChild(menuCreator("menuMasterL"));
-		mainMenu.appendChild(menuCreator("menuMasterLeg"));
+                mainMenu.appendChild(menuCreator("menuMasterM"));
+                mainMenu.appendChild(menuCreator("menuMasterT"));
+                mainMenu.appendChild(menuCreator("menuMasterA"));
+                // mainMenu.appendChild(menuCreator("menuMasterREP"));
+                mainMenu.appendChild(menuCreator("menuMasterI"));
+                mainMenu.appendChild(menuCreator("menuMasterF"));
+                mainMenu.appendChild(menuCreator("menuMasterP"));
+                // mainMenu.appendChild(menuCreator("menuMasterL"));
+                mainMenu.appendChild(menuCreator("menuMasterLeg"));
 		
 		var icon = document.getElementById("respIcon");
 		mainMenu.appendChild(icon);
@@ -506,14 +514,15 @@ function setMenuItems(value)
 		mainMenu.appendChild(menuCreator("menuMasterR"));
 		mainMenu.appendChild(menuCreator("menuMasterC"));
 		mainMenu.appendChild(menuCreator("menuMasterS"));
-		mainMenu.appendChild(menuCreator("menuMasterM"));
-		mainMenu.appendChild(menuCreator("menuMasterT"));
-		mainMenu.appendChild(menuCreator("menuMasterA"));
-		// mainMenu.appendChild(menuCreator("menuMasterREP"));
-		mainMenu.appendChild(menuCreator("menuMasterI"));
-		mainMenu.appendChild(menuCreator("menuMasterF"));
-		// mainMenu.appendChild(menuCreator("menuMasterL"));
-		mainMenu.appendChild(menuCreator("menuMasterLeg"));
+                mainMenu.appendChild(menuCreator("menuMasterM"));
+                mainMenu.appendChild(menuCreator("menuMasterT"));
+                mainMenu.appendChild(menuCreator("menuMasterA"));
+                // mainMenu.appendChild(menuCreator("menuMasterREP"));
+                mainMenu.appendChild(menuCreator("menuMasterI"));
+                mainMenu.appendChild(menuCreator("menuMasterF"));
+                mainMenu.appendChild(menuCreator("menuMasterP"));
+                // mainMenu.appendChild(menuCreator("menuMasterL"));
+                mainMenu.appendChild(menuCreator("menuMasterLeg"));
 		
 		var icon = document.getElementById("respIcon");
 		mainMenu.appendChild(icon);
@@ -892,24 +901,33 @@ function ifLoad(code)
 	   refreshReportsParents();
 	   repGet();
 	}
-	if(code == "ifMasterLeg")
-	{
-		// leg_targets = ["legCode", "legItemDate"];
+        if(code == "ifMasterLeg")
+        {
+                // leg_targets = ["legCode", "legItemDate"];
 
-		document.getElementById("f-clearerLeg").onclick = function()
-		{
-			clearFields(legTargets);
-		}
-		console.log("lala")
-		
-		refreshLegCodes()
-		
-		// getLeg();
+                document.getElementById("f-clearerLeg").onclick = function()
+                {
+                        clearFields(legTargets);
+                }
+                console.log("lala")
 
-	}
-	if(code == "ifMasterF")
-	{
-                
+                refreshLegCodes()
+
+                // getLeg();
+
+        }
+        if(code == "ifMasterP")
+        {
+                clearSupplierForm();
+                loadSuppliers();
+                loadPurchaseOrders();
+                poDraftItems = [];
+                receiptDraftItems = [];
+                renderPoDraftItems();
+        }
+        if(code == "ifMasterF")
+        {
+
                 clearFields(a_rec_targets);
                 resoGet();
                 document.getElementById("a-setReso").onclick = function()
@@ -8734,15 +8752,307 @@ function pssChange(mail, type)
 	container.appendChild(icon);
 	container.appendChild(changePassBox);
 	container.appendChild(recMailSend);
-	container.appendChild(recMailCancel);
+        container.appendChild(recMailCancel);
 
-	formBox("pssChangeBox",language["changePass"]+" para "+mail,300);
+        formBox("pssChangeBox",language["changePass"]+" para "+mail,300);
+}
+function clearSupplierForm()
+{
+        clearFields(purchaseSupplierTargets);
+}
+function saveSupplier()
+{
+        var info = {};
+        info.NAME = document.getElementById("p-supplier-name").value;
+        info.NIT = document.getElementById("p-supplier-nit").value;
+        info.CONTACT = document.getElementById("p-supplier-contact").value;
+        info.EMAIL = document.getElementById("p-supplier-email").value;
+        info.PHONE = document.getElementById("p-supplier-phone").value;
+        info.ADDRESS = document.getElementById("p-supplier-address").value;
+        info.CITY = document.getElementById("p-supplier-city").value;
+
+        sendAjax("purchases","createSupplier",info,function(response)
+        {
+                clearSupplierForm();
+                loadSuppliers();
+        });
+}
+function loadSuppliers()
+{
+        sendAjax("purchases","listSuppliers",{},function(response)
+        {
+                purchaseSuppliers = response.message;
+                renderSuppliers();
+                renderSupplierPicker();
+        }, true);
+}
+function renderSuppliers()
+{
+        var table = document.getElementById("purchaseSuppliersTable");
+        tableClear("purchaseSuppliersTable");
+
+        if(purchaseSuppliers.length == 0)
+        {
+                var blank = document.createElement("div");
+                blank.className = "blankProducts";
+                blank.innerHTML = language["noResults"];
+                table.appendChild(blank);
+                return;
+        }
+
+        for(var i=0; i<purchaseSuppliers.length; i++)
+        {
+                var row = document.createElement("div");
+                row.className = "rowT";
+
+                var a = cellCreator('Proveedor', purchaseSuppliers[i].NAME);
+                var b = cellCreator('Contacto', purchaseSuppliers[i].CONTACT);
+                var c = cellCreator('Correo', purchaseSuppliers[i].EMAIL);
+                var d = cellCreator('Teléfono', purchaseSuppliers[i].PHONE);
+                var e = cellCreator('Ciudad', purchaseSuppliers[i].CITY);
+
+                var cells = [a,b,c,d,e];
+                for(var j=0; j<cells.length; j++)
+                {
+                        row.appendChild(cells[j]);
+                }
+                table.appendChild(row);
+        }
+}
+function renderSupplierPicker()
+{
+        var picker = document.getElementById("p-order-supplier");
+        picker.innerHTML = "";
+        var option = document.createElement("option");
+        option.value = "";
+        option.innerHTML = language["purchaseSupplierName"];
+        picker.appendChild(option);
+
+        for(var i=0; i<purchaseSuppliers.length; i++)
+        {
+                var option = document.createElement("option");
+                option.value = purchaseSuppliers[i].CODE;
+                option.innerHTML = purchaseSuppliers[i].NAME;
+                picker.appendChild(option);
+        }
+}
+function addPoItem()
+{
+        var desc = document.getElementById("p-order-item-desc").value;
+        var qty = document.getElementById("p-order-item-qty").value;
+        var cost = document.getElementById("p-order-item-cost").value;
+
+        if(desc == "" || qty == "" || cost == "")
+        {
+                alertBox(language["alert"], language["sys001"], 300);
+                return;
+        }
+
+        var item = {description: desc, qty: parseFloat(qty), unit_cost: parseFloat(cost), negotiated_cost: parseFloat(cost)};
+        poDraftItems.push(item);
+        document.getElementById("p-order-item-desc").value = "";
+        document.getElementById("p-order-item-qty").value = "";
+        document.getElementById("p-order-item-cost").value = "";
+        renderPoDraftItems();
+}
+function renderPoDraftItems()
+{
+        var table = document.getElementById("purchaseDraftItems");
+        tableClear("purchaseDraftItems");
+
+        if(poDraftItems.length == 0)
+        {
+                var blank = document.createElement("div");
+                blank.className = "blankProducts";
+                blank.innerHTML = language["noResults"];
+                table.appendChild(blank);
+                return;
+        }
+
+        for(var i=0; i<poDraftItems.length; i++)
+        {
+                var row = document.createElement("div");
+                row.className = "rowT";
+                var a = cellCreator('Código', poDraftItems[i].code || "");
+                var b = cellCreator('Descripción', poDraftItems[i].description);
+                var c = cellCreator('Cantidad', poDraftItems[i].qty);
+                var d = cellCreator('Costo', poDraftItems[i].unit_cost);
+                var e = cellCreator('Pactado', poDraftItems[i].negotiated_cost || poDraftItems[i].unit_cost);
+                row.appendChild(a);
+                row.appendChild(b);
+                row.appendChild(c);
+                row.appendChild(d);
+                row.appendChild(e);
+                table.appendChild(row);
+        }
+        for(var i=0; i<receiptDraftItems.length; i++)
+        {
+                var row = document.createElement("div");
+                row.className = "rowT";
+                var a = cellCreator('Código', receiptDraftItems[i].item_code);
+                var b = cellCreator('Descripción', receiptDraftItems[i].description);
+                var c = cellCreator('Cantidad', receiptDraftItems[i].qty);
+                var d = cellCreator('Costo', receiptDraftItems[i].unit_cost);
+                var e = cellCreator('Pactado', receiptDraftItems[i].po_code);
+                row.appendChild(a);
+                row.appendChild(b);
+                row.appendChild(c);
+                row.appendChild(d);
+                row.appendChild(e);
+                table.appendChild(row);
+        }
+}
+function createPoFromRq()
+{
+        var info = {};
+        info.rq_code = document.getElementById("p-order-rq").value;
+        info.supplier_code = document.getElementById("p-order-supplier").value;
+        info.currency = document.getElementById("p-order-currency").value;
+        info.notes = document.getElementById("p-order-notes").value;
+        info.items = poDraftItems;
+        info.created_by = aud ? aud.RESPNAME : "";
+
+        if(info.supplier_code == "" || info.items.length == 0)
+        {
+                alertBox(language["alert"], language["sys001"], 300);
+                return;
+        }
+
+        sendAjax("purchases","createPoFromRq",info,function(response)
+        {
+                alertBox(language["confirm"], "OC " + response.message.POCODE + " creada", 300);
+                poDraftItems = [];
+                renderPoDraftItems();
+                loadPurchaseOrders();
+        });
+}
+function updateNegotiatedCosts()
+{
+        var code = document.getElementById("p-order-code").value;
+        if(code == "")
+        {
+                alertBox(language["alert"], language["sys001"], 300);
+                return;
+        }
+
+        var items = [];
+        for(var i=0; i<poDraftItems.length; i++)
+        {
+                if(poDraftItems[i].code)
+                {
+                        items.push({code: poDraftItems[i].code, negotiated_cost: poDraftItems[i].negotiated_cost || poDraftItems[i].unit_cost, unit_cost: poDraftItems[i].unit_cost});
+                }
+        }
+
+        var info = {po_code: code, items: items};
+
+        sendAjax("purchases","updateNegotiatedCosts",info,function(response)
+        {
+                alertBox(language["confirm"], language["sys004"], 300);
+                loadPurchaseOrders();
+        });
+}
+function addReceiptItem()
+{
+        var rec = {};
+        rec.sku = document.getElementById("p-receipt-sku").value;
+        rec.description = document.getElementById("p-receipt-desc").value;
+        rec.qty = parseFloat(document.getElementById("p-receipt-qty").value);
+        rec.unit_cost = parseFloat(document.getElementById("p-receipt-cost").value);
+        rec.ot_code = document.getElementById("p-receipt-ot").value;
+        rec.rq_code = document.getElementById("p-receipt-rq").value;
+        rec.po_code = document.getElementById("p-receipt-po").value;
+        rec.item_code = document.getElementById("p-receipt-item").value;
+
+        if(rec.po_code == "" || rec.item_code == "")
+        {
+                alertBox(language["alert"], language["sys001"], 300);
+                return;
+        }
+
+        receiptDraftItems.push(rec);
+        document.getElementById("p-receipt-sku").value = "";
+        document.getElementById("p-receipt-desc").value = "";
+        document.getElementById("p-receipt-qty").value = "";
+        document.getElementById("p-receipt-cost").value = "";
+        document.getElementById("p-receipt-ot").value = "";
+        document.getElementById("p-receipt-rq").value = "";
+        document.getElementById("p-receipt-item").value = "";
+        renderPoDraftItems();
+}
+function registerReceipt()
+{
+        var po = document.getElementById("p-receipt-po").value;
+        if(po == "" || receiptDraftItems.length == 0)
+        {
+                alertBox(language["alert"], language["sys001"], 300);
+                return;
+        }
+
+        var info = {};
+        info.po_code = po;
+        info.receipts = receiptDraftItems;
+        info.created_by = aud ? aud.RESPNAME : "";
+
+        sendAjax("purchases","receivePurchase",info,function(response)
+        {
+                alertBox(language["confirm"], language["sys003"], 300);
+                receiptDraftItems = [];
+                renderPoDraftItems();
+                loadPurchaseOrders();
+        });
+}
+function loadPurchaseOrders()
+{
+        sendAjax("purchases","listPurchaseOrders",{},function(response)
+        {
+                purchaseOrders = response.message;
+                renderPurchaseOrders();
+        }, true);
+}
+function renderPurchaseOrders()
+{
+        var table = document.getElementById("purchaseOrdersTable");
+        tableClear("purchaseOrdersTable");
+
+        if(purchaseOrders.length == 0)
+        {
+                var blank = document.createElement("div");
+                blank.className = "blankProducts";
+                blank.innerHTML = language["noResults"];
+                table.appendChild(blank);
+                return;
+        }
+
+        for(var i=0; i<purchaseOrders.length; i++)
+        {
+                var row = document.createElement("div");
+                row.className = "rowT";
+                var a = cellCreator('OC', purchaseOrders[i].CODE);
+                var b = cellCreator('Proveedor', purchaseOrders[i].SUPPLIERNAME);
+                var c = cellCreator('Estado', purchaseOrders[i].STATUS);
+                var d = cellCreator('RQ', purchaseOrders[i].RQCODE);
+                var e = cellCreator('Notas', purchaseOrders[i].NOTES);
+                var cells = [a,b,c,d,e];
+                for(var j=0; j<cells.length; j++)
+                {
+                        row.appendChild(cells[j]);
+                }
+                row.reg = purchaseOrders[i];
+                row.onclick = function()
+                {
+                        document.getElementById("p-order-code").value = this.reg.CODE;
+                        poDraftItems = this.reg.ITEMS || [];
+                        renderPoDraftItems();
+                }
+                table.appendChild(row);
+        }
 }
 function pssRec()
 {
-	var container = document.getElementById("pssRecBox");
-	container.innerHTML = "";
-	container.style.textAlign = "center";
+        var container = document.getElementById("pssRecBox");
+        container.innerHTML = "";
+        container.style.textAlign = "center";
 	
 	var icon = document.createElement("img");
 	icon.src = "irsc/infoGeneral.png";
