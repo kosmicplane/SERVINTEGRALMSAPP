@@ -45,13 +45,22 @@ const METHOD_PERMISSION_MAP = {
         getUserLegs: 'internalSheets.view',
         refreshLegCodes: 'internalSheets.manage',
         restoreLeg: 'internalSheets.manage'
+    },
+    inventory: {
+        listItems: 'inventory.view',
+        saveItem: 'inventory.manage',
+        registerEntry: 'inventory.manage',
+        registerExit: 'inventory.manage',
+        listMovements: 'inventory.view'
     }
 };
 
 const ACTION_PERMISSION_MAP = {
     'inventory.manage': [
         '#inveSaveButton',
-        '#addInvQty'
+        '#addInvQty',
+        '#inventoryEntryBtn',
+        '#inventoryExitBtn'
     ],
     'costs.manage': [
         '#orderSaveButton',

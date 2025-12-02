@@ -120,11 +120,14 @@ function loadCheck()
 	a_techi_targets = ["a-techiId", "a-techiName", "a-techiCat", "a-techiMastery", "a-techiEmail", "a-techiCity", "a-techiAddress", "a-techiPhone", "a-techiDetails"];
 	f_techi_targets = ["f-techiId", "f-techiCat", "f-techiName", "f-techiLocation"];
 	
-	a_acti_targets = ["a-actiType", "a-actiDesc", "a-actiTime", "a-actiValue"];
-	f_acti_targets = ["f-actiType", "f-actiCode", "f-actiDesc"];
-	
-	a_inve_targets = ["a-inveCode", "a-inveDesc", "a-inveCost", "a-inveMargin", "a-inveAmount"];
-	f_inve_targets = ["f-inveCode", "f-inveDesc"];
+        a_acti_targets = ["a-actiType", "a-actiDesc", "a-actiTime", "a-actiValue"];
+        f_acti_targets = ["f-actiType", "f-actiCode", "f-actiDesc"];
+
+        a_inve_targets = ["a-inveCode", "a-inveDesc", "a-inveCost", "a-inveMargin", "a-inveAmount"];
+        f_inve_targets = ["f-inveCode", "f-inveDesc"];
+        inve_entry_targets = ["inv-entry-item", "inv-entry-type", "inv-entry-qty", "inv-entry-cost", "inv-entry-ot", "inv-entry-oc", "inv-entry-obs"];
+        inve_exit_targets = ["inv-exit-item", "inv-exit-type", "inv-exit-qty", "inv-exit-ot", "inv-exit-obs"];
+        inve_mov_targets = ["inv-mov-item", "inv-mov-type", "inv-mov-from", "inv-mov-to", "inv-mov-ot"];
 	
 	a_orde_targets = ["a-orderParent", "a-orderSucu", "a-orderMaquis", "a-orderPriority", "a-orderPriority2", "a-orderDesc", "a-orderContact", "a-orderOrderClient"];
 	f_orde_targets = ["f-orderParent", "f-orderSucu", "f-orderNum", "f-orderAuthor", "f-orderState", "f-orderLocation"];
@@ -192,11 +195,13 @@ function loadCheck()
 	jQuery('#f-logEndate').datetimepicker();
 	jQuery('#f-repInidate').datetimepicker();
 	jQuery('#f-repEndate').datetimepicker();
-	jQuery('#f-recInidate').datetimepicker();
-	jQuery('#f-recEndate').datetimepicker();
-	jQuery('#a-orderPriority').datetimepicker();
-	jQuery('#a-orderPriority2').datetimepicker();
-	jQuery('#a-resoDate').datetimepicker({ dateFormat: 'yy-mm-dd' });
+        jQuery('#f-recInidate').datetimepicker();
+        jQuery('#f-recEndate').datetimepicker();
+        jQuery('#a-orderPriority').datetimepicker();
+        jQuery('#a-orderPriority2').datetimepicker();
+        jQuery('#a-resoDate').datetimepicker({ dateFormat: 'yy-mm-dd' });
+        jQuery('#inv-mov-from').datetimepicker();
+        jQuery('#inv-mov-to').datetimepicker();
 	
 	jQuery('#legItemDate').datetimepicker({timepicker:false,format:'Y-m-d',}).on('change', function(){$('.xdsoft_datetimepicker').hide(); var str = $(this).val(); str = str.split(".");});
 
@@ -1642,6 +1647,108 @@ function facturedLock(set)
                 document.getElementById("oCloseButton").disabled = false;
                 document.getElementById("oAprobeButton").disabled = false;
         }
+}
+function inventoryFillSelects(items)
+{
+        var selects = ["inv-entry-item", "inv-exit-item", "inv-mov-item"];
+        selects.forEach(function(sel){
+                var select = document.getElementById(sel);
+                if(!select){return;}
+                select.innerHTML = "";
+                var opt = document.createElement("option");
+                opt.value = "";
+                opt.innerHTML = "Seleccione";
+                select.appendChild(opt);
+
+                for(var i=0;i<items.length;i++)
+                {
+                        var option = document.createElement("option");
+                        option.value = items[i].CODE;
+                        option.innerHTML = items[i].CODE+" - "+items[i].DESCRIPTION;
+                        select.appendChild(option);
+                }
+        });
+}
+function inventoryRegisterEntry()
+{
+        var info = {};
+        info.item_code = $("#inv-entry-item").val();
+        info.sub_type = $("#inv-entry-type").val();
+        info.quantity = parseFloat($("#inv-entry-qty").val());
+        info.unit_cost = parseFloat($("#inv-entry-cost").val());
+        info.id_ot = $("#inv-entry-ot").val();
+        info.id_oc = $("#inv-entry-oc").val();
+        info.observaciones = $("#inv-entry-obs").val();
+
+        if(!info.item_code || !info.quantity || info.quantity <= 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes seleccionar un ítem y cantidad",300); return;}
+        if(info.unit_cost < 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes ingresar un costo válido",300); return;}
+
+        sendAjax("inventory","registerEntry",info,function(response){
+                alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Entrada registrada",300);
+                clearFields(inve_entry_targets);
+                inveGet();
+                inventoryMovementsGet();
+        });
+}
+function inventoryRegisterExit()
+{
+        var info = {};
+        info.item_code = $("#inv-exit-item").val();
+        info.sub_type = $("#inv-exit-type").val();
+        info.quantity = parseFloat($("#inv-exit-qty").val());
+        info.id_ot = $("#inv-exit-ot").val();
+        info.observaciones = $("#inv-exit-obs").val();
+
+        if(!info.item_code || !info.quantity || info.quantity <= 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes seleccionar un ítem y cantidad",300); return;}
+        if(info.sub_type === "RQ_ALMACEN" && (info.id_ot === undefined || info.id_ot === "")){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes asociar una OT",300); return;}
+
+        sendAjax("inventory","registerExit",info,function(response){
+                alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Salida registrada",300);
+                clearFields(inve_exit_targets);
+                inveGet();
+                inventoryMovementsGet();
+        });
+}
+function inventoryMovementsGet()
+{
+        var info = {};
+        info.item_code = $("#inv-mov-item").val();
+        info.type = $("#inv-mov-type").val();
+        info.from = $("#inv-mov-from").val();
+        info.to = $("#inv-mov-to").val();
+        info.id_ot = $("#inv-mov-ot").val();
+
+        sendAjax("inventory","listMovements",info,function(response){
+                var data = response.message;
+                var table = document.getElementById("inventoryMovementsTable");
+                table.innerHTML = "";
+
+                var head = document.createElement("div");
+                head.className = "table-head";
+                var labels = ["Fecha", "Item", "Tipo", "Subtipo", "Cantidad", "Costo unitario", "Costo total", "OT", "OC", "Usuario", "Observaciones"];
+                var keys = ["FECHA_HORA", "ITEM_CODE", "TIPO_MOVIMIENTO", "SUB_TIPO", "CANTIDAD", "COSTO_UNITARIO", "COSTO_TOTAL", "ID_OT", "ID_OC", "ID_USUARIO", "OBSERVACIONES"];
+                for(var i=0;i<labels.length;i++){
+                        var col = document.createElement("div");
+                        col.className = "column";
+                        col.setAttribute("data-label", labels[i]);
+                        col.innerHTML = labels[i];
+                        head.appendChild(col);
+                }
+                table.appendChild(head);
+
+                for(var j=0;j<data.length;j++){
+                        var row = document.createElement("div");
+                        row.className = "table-row";
+                        for(var k=0;k<keys.length;k++){
+                                var colr = document.createElement("div");
+                                colr.className = "column";
+                                colr.setAttribute("data-label", labels[k]);
+                                colr.innerHTML = data[j][keys[k]];
+                                row.appendChild(colr);
+                        }
+                        table.appendChild(row);
+                }
+        });
 }
 function setStarttime(value)
 {
@@ -3720,11 +3827,32 @@ function addInvQty(code, name)
 	icon.style.marginBottom = "10px";
 	icon.style.marginTop = "4px";
 	
-	var inputBox = document.createElement("input");
-	inputBox.id = "qtyBox";
-	inputBox.type = "text";
-	inputBox.className = "recMailBox";
-	inputBox.placeholder = "Cantidad";
+        var inputBox = document.createElement("input");
+        inputBox.id = "qtyBox";
+        inputBox.type = "text";
+        inputBox.className = "recMailBox";
+        inputBox.placeholder = "Cantidad";
+
+        var costBox = document.createElement("input");
+        costBox.id = "costBox";
+        costBox.type = "text";
+        costBox.className = "recMailBox";
+        costBox.placeholder = "Costo unitario";
+
+        var typeBox = document.createElement("select");
+        typeBox.id = "typeBox";
+        typeBox.className = "recMailBox";
+        ["STOCK","RECUPERADO","OC"].forEach(function(type){
+                var opt = document.createElement("option");
+                opt.value = type;
+                opt.innerHTML = type;
+                typeBox.appendChild(opt);
+        });
+
+        var obsBox = document.createElement("textarea");
+        obsBox.id = "obsBox";
+        obsBox.className = "recMailBox";
+        obsBox.placeholder = "Observaciones";
 	
 	var send = document.createElement("div");
 	send.className = "dualButtonPop";
@@ -3733,26 +3861,30 @@ function addInvQty(code, name)
 	send.onclick = function()
 		{
 			var info = {};
-			info.qty = $("#qtyBox").val();
-                        info.code = this.code;
+                        info.quantity = parseFloat($("#qtyBox").val());
+                        info.item_code = this.code;
+                        info.unit_cost = parseFloat($("#costBox").val());
+                        info.sub_type = $("#typeBox").val();
+                        info.observaciones = $("#obsBox").val();
 
-			if(info.qty== "")
-			{
-				hide_pop_form();
-				alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una cantidad",300);
-				return;
-			}
-			
-			sendAjax("users","addInvQty",info,function(response)
-			{
+                        if(!info.quantity || info.quantity <= 0)
+                        {
+                                hide_pop_form();
+                                alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una cantidad",300);
+                                return;
+                        }
+
+                        sendAjax("inventory","registerEntry",info,function(response)
+                        {
                                 if(response.status)
-				{
-					hide_pop_form();
-					alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Adición exitosa",300);
+                                {
+                                        hide_pop_form();
+                                        alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Entrada registrada",300);
                                         inveGet();
-				}
-			});
-		}
+                                        inventoryMovementsGet();
+                                }
+                        });
+                }
 	
 	var cancel = document.createElement("div");
 	cancel.className = "dualButtonPop";
@@ -3760,11 +3892,14 @@ function addInvQty(code, name)
 	cancel.onclick = function(){hide_pop_form()};
 	
 	container.appendChild(icon);
-	container.appendChild(inputBox);
-	container.appendChild(send);
-	container.appendChild(cancel);
+        container.appendChild(inputBox);
+        container.appendChild(costBox);
+        container.appendChild(typeBox);
+        container.appendChild(obsBox);
+        container.appendChild(send);
+        container.appendChild(cancel);
 
-	formBox("addInvQty","Agregar cantidad a "+name,300);
+        formBox("addInvQty","Agregar cantidad a "+name,300);
 }
 function delActType(info)
 {
@@ -3897,12 +4032,14 @@ function inveGet()
 {
         var info = {};
         var  info = infoHarvest(f_inve_targets);
-        sendAjax("users","getInveList",info,function(response)
-	{
-		var ans = response.message;
+        sendAjax("inventory","listItems",info,function(response)
+        {
+                var ans = response.message;
 
                 tableCreator("inveTable", ans);
-	});
+                inventoryFillSelects(ans);
+                inventoryMovementsGet();
+        });
 }
 function inveSave(item)
 {
@@ -3926,7 +4063,7 @@ function inveSave(item)
         {
                 info.optype = ltt1;
 
-                sendAjax("users","inveSave",info,function(response)
+                sendAjax("inventory","saveItem",info,function(response)
                 {
                         var ans = response.message;
          
@@ -3945,8 +4082,8 @@ function inveSave(item)
         else
         {
                 info.optype = ltt2;
-                
-                sendAjax("users","inveSave",info,function(response)
+
+                sendAjax("inventory","saveItem",info,function(response)
                 {
                         var ans = response.message;
 
