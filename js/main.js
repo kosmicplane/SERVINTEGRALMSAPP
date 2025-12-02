@@ -298,12 +298,13 @@ function checkLogin()
 		aud = JSON.parse(window.localStorage.getItem("aud"));
 		actualUtype = window.localStorage.getItem("userLoged");
 
-		var utype = getUtype(aud.TYPE);
-		var name = aud.RESPNAME;
-		document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
+var utype = getUtype(aud.TYPE);
+var name = aud.RESPNAME;
+document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
 
-		setMenuItems(actualUtype);1
-	}
+setMenuItems(actualUtype);1
+applyPermissionGuards(actualUtype);
+}
 	else
 	{
 		var workArea = document.getElementById("workArea");
@@ -431,9 +432,10 @@ function login()
                         console.log("miau");
 			actualUtype = aud.TYPE;
                         console.log(actualUtype);
-			localStorage.setItem("userLoged",actualUtype);
-			setMenuItems(actualUtype);
-                        document.body.classList.toggle('hide-prices', actualUtype === 'T' || actualUtype === 'Técnico'); 
+                        localStorage.setItem("userLoged",actualUtype);
+                        setMenuItems(actualUtype);
+                        applyPermissionGuards(actualUtype);
+                        document.body.classList.toggle('hide-prices', actualUtype === 'T' || actualUtype === 'Técnico');
 		}
 		else
 		{
@@ -9272,55 +9274,94 @@ function addCommas(nStr)
 	});
 
 }
+function guardRequestPermissions(obj, method)
+{
+		if (typeof canCallProtectedMethod !== 'function')
+		{
+				return true;
+		}
+
+		return canCallProtectedMethod(obj, method, actualUtype);
+}
+function getUserContextForRequest()
+{
+		if (typeof getStoredUserContext === 'function')
+		{
+				var stored = getStoredUserContext();
+				if (stored)
+				{
+						return stored;
+				}
+		}
+
+		if (aud)
+		{
+				return {
+						code: aud.CODE,
+						role: aud.TYPE,
+						email: aud.MAIL || aud.mail,
+						name: aud.RESPNAME
+				};
+		}
+
+		return null;
+}
 function sendAjax(obj, method, data, responseFunction, noLoader, asValue)
 {
+		if (!guardRequestPermissions(obj, method))
+		{
+				alertBox(language["alert"], language["missAuth"], 300);
+				return;
+		}
+
 		showLoader = 1;
 
-		 if(!noLoader)
-		 {
-			setTimeout(function()
-			{
-				if(showLoader == 1)
+		if(!noLoader)
+		{
+				setTimeout(function()
 				{
-					$("#loaderDiv").fadeIn();
-				}	
-			},1000);
-		 }
-		 var info = {};
-		 info.class = obj;
-		 info.method = method;
-		 info.data = data;
+						if(showLoader == 1)
+						{
+								$("#loaderDiv").fadeIn();
+						}
+				},1000);
+		}
+		var info = {};
+		info.class = obj;
+		info.method = method;
+		info.data = data;
+		info.user = getUserContextForRequest();
 
 		$.ajax({
-			type: 'POST',
-			url: 'libs/php/mentry.php',
-			contentType: 'application/json',
-			data: JSON.stringify(info),
-			cache: false,
-			async: true,
-			success: function(data){
+				type: 'POST',
+				url: 'libs/php/mentry.php',
+				contentType: 'application/json',
+				data: JSON.stringify(info),
+				cache: false,
+				async: true,
+				success: function(data){
 
-				 try
-				 {
-					var tmpJson = $.parseJSON(data);
-					responseFunction(tmpJson.data);
-					$("#loaderDiv").fadeOut();
-					showLoader = 0;
-				 }
-				 catch(e)
-				 {
-					 console.log(data);
-					 $("#loaderDiv").fadeOut();
-					 showLoader = 0;
-				 }
-			},
-			error: function( jqXhr, textStatus, errorThrown )
-			{ 
-				$("#loaderDiv").fadeOut();
-				console.log( errorThrown );
-			}
+						 try
+						 {
+								var tmpJson = $.parseJSON(data);
+								responseFunction(tmpJson.data);
+								$("#loaderDiv").fadeOut();
+								showLoader = 0;
+						 }
+						 catch(e)
+						 {
+								 console.log(data);
+								 $("#loaderDiv").fadeOut();
+								 showLoader = 0;
+						 }
+				},
+				error: function( jqXhr, textStatus, errorThrown )
+				{
+						$("#loaderDiv").fadeOut();
+						console.log( errorThrown );
+				}
 		});
-	 
+
 
 }
 function doesConnectionExist()
