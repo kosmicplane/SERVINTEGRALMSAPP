@@ -1,3 +1,6 @@
+// js/permissions.js
+
+// Qué puede hacer cada rol (A = admin, CO = coordinador, JZ = jefe zona, T = técnico, C = cliente)
 const ROLE_PERMISSIONS = {
     A: ['*'],
     CO: [
@@ -28,12 +31,14 @@ const ROLE_PERMISSIONS = {
     ]
 };
 
+// Mapea métodos del backend -> permisos lógicos
 const METHOD_PERMISSION_MAP = {
     users: {
         getInveList: 'inventory.view',
         inveSave: ['inventory.create', 'inventory.edit', 'inventory.manage'],
         addInvQty: ['inventory.movement', 'inventory.manage'],
         discountInv: ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
+
         saveoPart: 'costSheets.manage',
         saveoOther: 'costSheets.manage',
         saveoOtherLeg: 'costSheets.manage',
@@ -44,26 +49,35 @@ const METHOD_PERMISSION_MAP = {
         orderSave: 'costSheets.manage',
         reportCreate: 'costSheets.manage',
         reportCreateTotalized: 'costSheets.manage',
+
         generateRecepit: 'purchases.orders',
         nullifyReceipt: 'purchases.orders',
         redateReceipt: 'purchases.orders',
         setResolution: 'purchases.orders',
+
         getLeg: 'internalSheets.view',
         getUserLegs: 'internalSheets.view',
         refreshLegCodes: 'internalSheets.manage',
         restoreLeg: 'internalSheets.manage',
+
         exportCVS: 'reports.export'
     },
-        inventory: {
+
+    inventory: {
         listItems: 'inventory.view',
+        // crear / editar ítem
         saveItem: ['inventory.create', 'inventory.edit', 'inventory.manage'],
+        // movimientos de entrada / salida
         registerEntry: ['inventory.movement', 'inventory.manage'],
         registerExit: ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
+        // conteo físico
         recordPhysicalCount: 'inventory.manage',
         applyPhysicalAdjustment: 'inventory.manage',
+        // consultas / export
         listMovements: 'inventory.view',
         exportInventory: 'inventory.view'
     },
+
     purchases: {
         createSupplier: 'purchases.orders',
         listSuppliers: 'purchases.orders',
@@ -74,6 +88,7 @@ const METHOD_PERMISSION_MAP = {
     }
 };
 
+// Qué controles del DOM se protegen con cada permiso
 const ACTION_PERMISSION_MAP = {
     'inventory.create': [
         '#inveSaveButton'
@@ -124,19 +139,20 @@ const ACTION_PERMISSION_MAP = {
     ]
 };
 
-
 function hasPermission(role, permission) {
     const allowed = ROLE_PERMISSIONS[role] || [];
     return allowed.includes('*') || allowed.includes(permission);
 }
 
 function canCallProtectedMethod(targetClass, method, role) {
+    // login siempre permitido
     if (method === 'login') {
         return true;
     }
 
     const permission = (METHOD_PERMISSION_MAP[targetClass] || {})[method];
 
+    // Si el método no está en el mapa, lo dejamos pasar (comportamiento legacy)
     if (!permission) {
         return true;
     }
@@ -172,6 +188,7 @@ function applyPermissionGuards(role) {
         });
     });
 
+    // hook opcional para ocultar precios a técnicos
     if (typeof hidePricesForTechnicians === 'function' && role === 'T') {
         hidePricesForTechnicians();
     }
@@ -199,7 +216,9 @@ function getStoredUserContext() {
     }
 }
 
+// Exponer en window para que main.js los use
 window.hasPermission = hasPermission;
 window.canCallProtectedMethod = canCallProtectedMethod;
 window.applyPermissionGuards = applyPermissionGuards;
 window.getStoredUserContext = getStoredUserContext;
+
