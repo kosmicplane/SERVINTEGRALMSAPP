@@ -1751,25 +1751,34 @@ class users{
 		$resp["status"] = true;
 				
 		return $resp;
-	}
-	function getTechiListO($info)
-	{
-		$str = "SELECT CODE, RESPNAME, CATEGORY, TYPE, LOCATION, MASTERY, DETAILS  FROM users WHERE TYPE = 'T' OR TYPE = 'JZ' OR TYPE = 'CO' AND STATUS = '1' ORDER BY TYPE ASC";
-		$query = $this->db->query($str);
-	
-		if(count($query) > 0)
-		{
-			$resp["message"] = $query;
-			$resp["status"] = true;
-		}
-		else
-		{
-			$resp["message"] = array();
-			$resp["status"] = true;
-		}
+        }
+        function getTechiListO($info)
+        {
+                try {
+                        $this->requirePermission('costSheets.manage', $info);
+                } catch (Exception $e) {
+                        return [
+                                "message" => $e->getMessage(),
+                                "status" => false,
+                        ];
+                }
 
-		return $resp;
-	}
+                $str = "SELECT CODE, RESPNAME, CATEGORY, TYPE, LOCATION, MASTERY, DETAILS FROM users WHERE STATUS = '1' AND TYPE IN ('T','JZ','CO') ORDER BY TYPE ASC";
+                $query = $this->db->query($str);
+
+                if(count($query) > 0)
+                {
+                        $resp["message"] = $query;
+                        $resp["status"] = true;
+                }
+                else
+                {
+                        $resp["message"] = array();
+                        $resp["status"] = true;
+                }
+
+                return $resp;
+        }
 	function setTechO($info)
 	{
 		$ocode = $info["ocode"];
