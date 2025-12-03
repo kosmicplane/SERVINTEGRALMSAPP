@@ -1,4 +1,4 @@
-"<?php
+<?php
 // No mostrar notices ni warnings en la salida (que rompen el JSON)
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 ini_set('display_errors', 0);
@@ -66,4 +66,4 @@ class entryPoint{
 
 $entry = new entryPoint($_POST);
 echo $entry->start();
-?>"
+?>
