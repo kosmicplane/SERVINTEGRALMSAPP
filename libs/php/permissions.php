@@ -8,6 +8,7 @@ return [
             'inventory.edit',
             'inventory.movement',
             'inventory.adjustment',
+            'inventory.manage',
             'purchases.orders',
             'costSheets.manage',
             'internalSheets.view',
@@ -16,6 +17,7 @@ return [
         ],
         'JZ' => [
             'inventory.view',
+            'inventory.manage',
             'costSheets.manage',
             'internalSheets.view',
             'reports.export',
@@ -30,9 +32,9 @@ return [
     'method_permissions' => [
         'users' => [
             'getInveList' => 'inventory.view',
-            'inveSave' => ['inventory.create', 'inventory.edit'],
-            'addInvQty' => 'inventory.movement',
-            'discountInv' => ['inventory.movement', 'inventory.adjustment'],
+            'inveSave' => ['inventory.create', 'inventory.edit', 'inventory.manage'],
+            'addInvQty' => ['inventory.movement', 'inventory.manage'],
+            'discountInv' => ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
             'saveoPart' => 'costSheets.manage',
             'saveoOther' => 'costSheets.manage',
             'saveoOtherLeg' => 'costSheets.manage',
@@ -55,9 +57,9 @@ return [
         ],
         'inventory' => [
             'listItems' => 'inventory.view',
-            'saveItem' => ['inventory.create', 'inventory.edit'],
-            'registerEntry' => 'inventory.movement',
-            'registerExit' => ['inventory.movement', 'inventory.adjustment'],
+            'saveItem' => ['inventory.create', 'inventory.edit', 'inventory.manage'],
+            'registerEntry' => ['inventory.movement', 'inventory.manage'],
+            'registerExit' => ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
             'listMovements' => 'inventory.view',
         ],
         'purchases' => [
