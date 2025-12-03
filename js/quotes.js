@@ -1,9 +1,58 @@
+let quoteInitialized = false;
+
 document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('quoteToggle');
+    const wrapper = document.getElementById('quoteWrapper');
+
+    if (!toggle || !wrapper) {
+        return;
+    }
+
+    toggle.addEventListener('change', function () {
+        if (this.checked) {
+            wrapper.style.display = 'block';
+            activateQuotes();
+        } else {
+            deactivateQuotes();
+        }
+    });
+});
+
+function activateQuotes() {
     const container = document.getElementById('quoteModule');
     if (!container) {
         return;
     }
 
+    if (!quoteInitialized) {
+        renderQuoteUI(container);
+        quoteInitialized = true;
+    }
+
+    container.style.display = 'block';
+}
+
+function deactivateQuotes() {
+    const container = document.getElementById('quoteModule');
+    if (container) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+    }
+
+    const wrapper = document.getElementById('quoteWrapper');
+    if (wrapper) {
+        wrapper.style.display = 'none';
+    }
+
+    const catalog = document.getElementById('catalogCodes');
+    if (catalog && catalog.parentNode) {
+        catalog.parentNode.removeChild(catalog);
+    }
+
+    quoteInitialized = false;
+}
+
+function renderQuoteUI(container) {
     container.innerHTML = [
         '<h3>Gestión de Cotizaciones</h3>',
         '<div class="row">',
@@ -96,10 +145,13 @@ document.addEventListener('DOMContentLoaded', function () {
     addItemRow();
     addCostRow();
     loadCatalog();
-});
+}
 
 function addItemRow(prefill) {
     const tbody = document.querySelector('#quoteItems tbody');
+    if (!tbody) {
+        return;
+    }
     const row = document.createElement('tr');
     row.innerHTML = [
         `<td><input class="form-control code" value="${prefill ? prefill.code : ''}" list="catalogCodes" /></td>`,
@@ -118,6 +170,9 @@ function addItemRow(prefill) {
 
 function addCostRow(prefill) {
     const tbody = document.querySelector('#internalCosts tbody');
+    if (!tbody) {
+        return;
+    }
     const row = document.createElement('tr');
     row.innerHTML = [
         `<td><input class="form-control costType" value="${prefill ? prefill.type : ''}" placeholder="Ej: Mano de obra" /></td>`,
