@@ -23,23 +23,23 @@ class entryPoint {
             session_start();
         }
 
-        require_once "dataBase.php";
-        require_once "authorization.php";
-        require_once $this->params["class"] . ".php";
-
-        $class    = $this->params["class"];
-        $instance = new $class();
-        $method   = $this->params["method"];
-
-        // Endpoints públicos (no requieren sesión / autorización previa)
-        $publicEndpoints = array(
-            'users' => array('login'),
-            'lang'  => array('langGet'),
-        );
-
-        $exec = null;
+        $resp = array("data" => null, "exception" => "");
 
         try {
+            require_once "dataBase.php";
+            require_once "authorization.php";
+            require_once $this->params["class"] . ".php";
+
+            $class    = $this->params["class"];
+            $instance = new $class();
+            $method   = $this->params["method"];
+
+            // Endpoints públicos (no requieren sesión / autorización previa)
+            $publicEndpoints = array(
+                'users' => array('login'),
+                'lang'  => array('langGet'),
+            );
+
             // Si NO es un endpoint público, se valida usuario/permiso
             if (!(isset($publicEndpoints[$class]) && in_array($method, $publicEndpoints[$class], true))) {
                 $auth = new Authorization();
@@ -48,13 +48,14 @@ class entryPoint {
                 $auth->authorize($class, $method, $user);
             }
 
-            $exec = $instance->$method($this->params["data"]);
-            $resp = array("data" => $exec, "exception" => "");
-            echo json_encode($resp);
+            $resp["data"] = $instance->$method($this->params["data"]);
         } catch (Exception $e) {
-            $resp = array("data" => $exec, "exception" => $e->getMessage());
-            echo json_encode($resp);
+            $resp["exception"] = "Error al procesar la solicitud";
+            error_log('Entrada fallida en mentry: ' . $e->getMessage());
         }
+
+        header('Content-Type: application/json');
+        return json_encode($resp);
     }
 }
 
