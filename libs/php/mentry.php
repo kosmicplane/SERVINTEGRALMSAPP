@@ -4,21 +4,17 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
-class entryPoint {
+class entryPoint{
     private $params;
-
-    function __construct($info = null)
+    function __construct($info=null)
     {
-        // Cargar el JSON que envía el frontend
-        if (isset($_POST["info"])) {
+        if(isset($_POST["info"]))
+        {
             $this->params = json_decode($_POST["info"], true);
-        } else {
-            $raw = file_get_contents("php://input");
-            $this->params = $raw ? json_decode($raw, true) : [];
         }
-
-        if (!is_array($this->params)) {
-            $this->params = [];
+        else
+        {
+            $this->params = json_decode(file_get_contents("php://input"), true);
         }
     }
 
@@ -31,12 +27,13 @@ class entryPoint {
 
         require_once "dataBase.php";
         require_once "authorization.php";
+        require_once $this->params["class"].".php";
 
-        $class  = $this->params["class"]  ?? null;
-        $method = $this->params["method"] ?? null;
-        $data   = $this->params["data"]   ?? [];
+        $class = $this->params["class"];
+        $instance = new $class();
+        $method = $this->params["method"];
 
-        // endpoints públicos (sin sesión)
+        // Endpoints públicos (no requieren sesión / autorización previa)
         $publicEndpoints = array(
             'users' => array('login'),
             'lang'  => array('langGet'),
@@ -44,40 +41,28 @@ class entryPoint {
 
         $exec = null;
 
-        try {
-            if (!is_string($class) || !is_string($method)) {
-                throw new Exception("Parámetros 'class' o 'method' inválidos");
-            }
-
-            require_once $class . ".php";
-
-            $instance = new $class();
-
-            // Si NO es endpoint público => validar sesión y permisos
-            if (!(isset($publicEndpoints[$class]) && in_array($method, $publicEndpoints[$class], true))) {
+        try
+        {
+            // Si NO es un endpoint público, se valida usuario/permiso
+            if(!(isset($publicEndpoints[$class]) && in_array($method, $publicEndpoints[$class], true)))
+            {
                 $auth = new Authorization();
-                $user = $auth->resolveUser(['data' => $data]);
-                $auth->assertUserConsistency($user, $data);
+                $user = $auth->resolveUser($this->params);
+                $auth->assertUserConsistency($user, $this->params["data"] ?? []);
                 $auth->authorize($class, $method, $user);
             }
 
-            if (!method_exists($instance, $method)) {
-                throw new Exception("Método {$class}::{$method} no existe");
-            }
-
-            $exec = $instance->$method($data);
+            $exec = $instance->$method($this->params["data"]);
             $resp = array("data" => $exec, "exception" => "");
-        } catch (Throwable $e) { // <-- CLAVE: atrapa Exception, Error, TypeError, etc
-            // Log a error_log para ver exactamente qué está fallando
-            error_log("MENTRY ERROR: " . $e->getMessage() . " @ " . $e->getFile() . ":" . $e->getLine());
-            $resp = array("data" => $exec, "exception" => $e->getMessage());
+            echo json_encode($resp);
         }
-
-        header('Content-Type: application/json; charset=UTF-8');
-        echo json_encode($resp);
+        catch(Exception $e)
+        {
+            $resp = array("data" => $exec, "exception" => $e->getMessage());
+            echo json_encode($resp);
+        }
     }
 }
 
-// ya no hacemos echo al return de start (no devuelve nada)
 $entry = new entryPoint($_POST);
-$entry->start();
+echo $entry->start();
