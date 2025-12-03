@@ -43,6 +43,8 @@ return [
             'updateOtherCost' => 'costSheets.manage',
             'getOtotals' => 'costSheets.manage',
             'orderSave' => 'costSheets.manage',
+            'getTechiListO' => 'costSheets.manage',
+            'setTechO' => 'costSheets.manage',
             'reportCreate' => 'costSheets.manage',
             'reportCreateTotalized' => 'costSheets.manage',
             'generateRecepit' => 'purchases.orders',

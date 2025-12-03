@@ -13,13 +13,39 @@ class users{
         $this->db = new sql_query();
         $this->auth = new Authorization();
     }
-	private function requirePermission(string $permission, array $context = [])
-	{
-			$user = $this->auth->resolveUser(['data' => $context]);
-			$this->auth->authorizePermission($permission, $user);
+        private function requirePermission(string $permission, array $context = [])
+        {
+                        $user = $this->auth->resolveUser(['data' => $context]);
+                        $this->auth->authorizePermission($permission, $user);
         }
-	function login($info)
-	{
+
+        private function registerOrderLog($ocode, $optype)
+        {
+                        if (!method_exists($this, 'chlog'))
+                        {
+                                        return;
+                        }
+
+                        try
+                        {
+                                        $user = $this->auth->resolveUser(['data' => []]);
+                                        $logInfo = array(
+                                                        'date' => date('Y-m-d H:i:s'),
+                                                        'autor' => $user['name'] ?? ($user['code'] ?? 'Sistema'),
+                                                        'type' => 'OT',
+                                                        'target' => $ocode,
+                                                        'optype' => $optype,
+                                        );
+
+                                        $this->chlog($logInfo);
+                        }
+                        catch (Exception $e)
+                        {
+                                        error_log('No se pudo registrar en la bitácora: ' . $e->getMessage());
+                        }
+        }
+        function login($info)
+        {
 	
 		$str = "SELECT * FROM users WHERE users.MAIL = '".$info["autor"]."' AND users.PASSWD = '".md5($info["pssw"])."' AND users.TYPE = '".$info["type"]."'";
 		$query = $this->db->query($str);	
@@ -1801,10 +1827,101 @@ class users{
 		
 		
 		$query = $this->db->query($str);
+	}
+        function getTechiListO($info)
+        {
+                $str = "SELECT CODE, RESPNAME, CATEGORY, TYPE, LOCATION, MASTERY, DETAILS  FROM users WHERE (TYPE = 'T' OR TYPE = 'JZ' OR TYPE = 'CO') AND STATUS = '1' ORDER BY TYPE ASC";
+                $query = $this->db->executePrepared($str);
 
-		$resp["message"] = "done";
-		$resp["status"] = true;
+                if(count($query) > 0)
+                {
+                        $resp["message"] = $query;
+                        $resp["status"] = true;
+		}
+		else
+		{
+			$resp["message"] = array();
+			$resp["status"] = true;
+		}
+
 		return $resp;
+        }
+        function setTechO($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
+
+                $ocode = $info["ocode"] ?? "";
+                $name = $info["name"] ?? "";
+                $code = $info["code"] ?? "";
+                $resptype = $info["resptype"] ?? "";
+
+                $resp = array("status" => false, "message" => "");
+
+                if($ocode === "" || $name === "" || $code === "" || $resptype === "")
+                {
+                        $resp["message"] = "Información incompleta para asignar responsable";
+                        return $resp;
+                }
+
+                try
+                {
+                        $orderQuery = "SELECT STATE, STATUS FROM orders WHERE CODE = ?";
+                        $orderData = $this->db->executePrepared($orderQuery, array($ocode));
+
+                        if(count($orderData) === 0)
+                        {
+                                $resp["message"] = "No se encontró la orden indicada";
+                                return $resp;
+                        }
+
+                        if($orderData[0]["STATUS"] !== "1")
+                        {
+                                $resp["message"] = "La orden no está activa";
+                                return $resp;
+                        }
+
+                        $allowedStates = array("1", "2", "6", "7");
+                        if(!in_array($orderData[0]["STATE"], $allowedStates, true))
+                        {
+                                $resp["message"] = "No es posible asignar responsable en el estado actual de la orden";
+                                return $resp;
+                        }
+
+                        if($resptype == "T")
+                        {
+                                $str = "UPDATE orders SET TECHCODE = ?, TECHNAME = ?, STATE = ?, RESPTYPE = ?  WHERE CODE =?";
+                                $params = array($code, $name, "2", $resptype, $ocode);
+                        }
+                        else if($resptype == "JZ")
+                        {
+                                $str = "UPDATE orders SET JZCODE = ?,  TECHNAME = ?, STATE = ?, RESPTYPE = ?  WHERE CODE =?";
+                                $params = array($code, $name, "6", $resptype, $ocode);
+                        }
+                        else if($resptype == "CO")
+                        {
+                                $str = "UPDATE orders SET AUTORCODE = ?,  TECHNAME = ?, STATE = ?, RESPTYPE = ?  WHERE CODE =?";
+                                $params = array($code, $name, "1", $resptype, $ocode);
+                        }
+                        else
+                        {
+                                $resp["message"] = "Tipo de responsable no soportado";
+                                return $resp;
+                        }
+
+                        $this->db->executePrepared($str, $params, false);
+
+                        $resp["message"] = "Responsable asignado correctamente";
+                        $resp["status"] = true;
+
+                        $this->registerOrderLog($ocode, "Asignación de responsable (".$resptype.") a la orden");
+                        return $resp;
+                }
+                catch(Exception $e)
+                {
+                        error_log('No se pudo asignar responsable a la orden '.$ocode.': '.$e->getMessage());
+                        $resp["message"] = "Error al asignar responsable";
+                        return $resp;
+                }
         }
 	function updateStarTime($info)
 	{

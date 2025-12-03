@@ -8621,30 +8621,37 @@ function asignTechBox(ocode, num)
 	else{picker.value = ""}
 	
 	var send = document.createElement("div");
-	send.className = "dualButtonPop";
-	send.innerHTML = language["send"];
-	send.ocode = ocode;
-	send.onclick = function()
-	{
-		var info = {};
-		var tmpVal = document.getElementById("techBox").value;
-		if(tmpVal == "")
-		{
-			alertBox("Información","<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes seleccionar un responsable de orden", 300);
-			return;
-		}
-		
-		info.code = tmpVal.split(">")[0];
-		info.name = tmpVal.split(">")[1];
-		info.resptype = tmpVal.split(">")[2];
-		info.ocode = this.ocode;
-		
-		sendAjax("users","setTechO",info,function(response)
-		{
-			ordeGet();
-			hide_pop_form();
-		});
-	}
+        send.className = "dualButtonPop";
+        send.innerHTML = language["send"];
+        send.ocode = ocode;
+        send.onclick = function()
+        {
+                var info = {};
+                var tmpVal = document.getElementById("techBox").value;
+                if(tmpVal == "")
+                {
+                        alertBox("Información","<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes seleccionar un responsable de orden", 300);
+                        return;
+                }
+
+                // Payload esperado por setTechO: código, nombre, tipo de responsable y código de orden
+                info.code = tmpVal.split(">")[0];
+                info.name = tmpVal.split(">")[1];
+                info.resptype = tmpVal.split(">")[2];
+                info.ocode = this.ocode;
+
+                sendAjax("users","setTechO",info,function(response)
+                {
+                        if(!response.status)
+                        {
+                                alertBox(language["alert"], response.message || "No se pudo asignar el responsable", 320);
+                                return;
+                        }
+
+                        ordeGet();
+                        hide_pop_form();
+                });
+        }
 	
 	var cancel = document.createElement("div");
 	cancel.className = "dualButtonPop";
@@ -9561,28 +9568,53 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorF
                                 contentType: 'application/json',
                                 data: JSON.stringify(info),
 				cache: false,
-				async: true,
-				success: function(data){
+                                async: true,
+                                success: function(data){
 
-						 try
-						 {
-								var tmpJson = $.parseJSON(data);
-								responseFunction(tmpJson.data);
-								$("#loaderDiv").fadeOut();
-								showLoader = 0;
-						 }
-						 catch(e)
-						 {
-								 console.log(data);
-								 $("#loaderDiv").fadeOut();
-								 showLoader = 0;
-						 }
+                                                 try
+                                                 {
+                                                                var tmpJson = typeof data === 'object' ? data : $.parseJSON(data);
+                                                                $("#loaderDiv").fadeOut();
+                                                                showLoader = 0;
+
+                                                                if(tmpJson.exception)
+                                                                {
+                                                                                alertBox(language["alert"] || "Información", tmpJson.exception, 350);
+
+                                                                                if (typeof errorFunction === 'function')
+                                                                                {
+                                                                                                errorFunction(null, 'exception', tmpJson.exception);
+                                                                                }
+
+                                                                                return;
+                                                                }
+
+                                                                if(typeof responseFunction === 'function')
+                                                                {
+                                                                                responseFunction(tmpJson.data);
+                                                                }
+                                                 }
+                                                 catch(e)
+                                                 {
+                                                                 $("#loaderDiv").fadeOut();
+                                                                 showLoader = 0;
+                                                                 console.log(data);
+                                                                 alertBox(language["alert"] || "Información", "No se pudo interpretar la respuesta del servidor", 350);
+
+                                                                 if (typeof errorFunction === 'function')
+                                                                 {
+                                                                                errorFunction(null, 'parseerror', e);
+                                                                 }
+                                                 }
                                 },
                                 error: function( jqXhr, textStatus, errorThrown )
                                 {
                                                 $("#loaderDiv").fadeOut();
                                                 showLoader = 0;
                                                 console.log( errorThrown );
+
+                                                var errMsg = errorThrown || textStatus || "No se pudo completar la solicitud";
+                                                alertBox(language["alert"] || "Información", errMsg, 350);
 
                                                 if (typeof errorFunction === 'function')
                                                 {
