@@ -52,6 +52,9 @@ class entryPoint {
         } catch (Exception $e) {
             $resp["exception"] = "Error al procesar la solicitud";
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
+        } catch (Throwable $e) {
+            $resp["exception"] = "Error al procesar la solicitud";
+            error_log('Entrada fallida en mentry: ' . $e->getMessage());
         }
 
         header('Content-Type: application/json');
