@@ -16,6 +16,6 @@ class entryPoint{
         }
     }
 }
-$entry = new entryPoint($_POST);
+//$entry = new entryPoint($_POST);
 //echo $entry->start();
 ?>
