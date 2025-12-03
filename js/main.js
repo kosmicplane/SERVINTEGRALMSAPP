@@ -191,18 +191,18 @@ function loadCheck()
 	document.querySelector('#userPassBox').addEventListener('keypress', function (e){var key = e.which || e.keyCode; if (key === 13){login();}});
         
 	jQuery.datetimepicker.setLocale("es");
-	// jQuery('#a-ostartTime').datetimepicker();
-	jQuery('#f-logInidate').datetimepicker();
-	jQuery('#f-logEndate').datetimepicker();
-	jQuery('#f-repInidate').datetimepicker();
-	jQuery('#f-repEndate').datetimepicker();
-        jQuery('#f-recInidate').datetimepicker();
-        jQuery('#f-recEndate').datetimepicker();
-        jQuery('#a-orderPriority').datetimepicker();
-        jQuery('#a-orderPriority2').datetimepicker();
+	// jQuery('#a-ostartTime').datetimepicker({});
+	jQuery('#f-logInidate').datetimepicker({});
+	jQuery('#f-logEndate').datetimepicker({});
+	jQuery('#f-repInidate').datetimepicker({});
+	jQuery('#f-repEndate').datetimepicker({});
+        jQuery('#f-recInidate').datetimepicker({});
+        jQuery('#f-recEndate').datetimepicker({});
+        jQuery('#a-orderPriority').datetimepicker({});
+        jQuery('#a-orderPriority2').datetimepicker({});
         jQuery('#a-resoDate').datetimepicker({ dateFormat: 'yy-mm-dd' });
-        jQuery('#inv-mov-from').datetimepicker();
-        jQuery('#inv-mov-to').datetimepicker();
+        jQuery('#inv-mov-from').datetimepicker({});
+        jQuery('#inv-mov-to').datetimepicker({});
 	
 	jQuery('#legItemDate').datetimepicker({timepicker:false,format:'Y-m-d',}).on('change', function(){$('.xdsoft_datetimepicker').hide(); var str = $(this).val(); str = str.split(".");});
 
@@ -5191,8 +5191,8 @@ function filterBuilder(id, type)
                 refreshActiParents();
         }
         
-        jQuery('#repoIniDate').datetimepicker();
-        jQuery('#repoEndDate').datetimepicker();
+        jQuery('#repoIniDate').datetimepicker({});
+        jQuery('#repoEndDate').datetimepicker({});
 }
 function refreshStateParents()
 {
