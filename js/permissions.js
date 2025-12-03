@@ -2,16 +2,21 @@ const ROLE_PERMISSIONS = {
     A: ['*'],
     CO: [
         'inventory.view',
-        'inventory.manage',
-        'purchases.manage',
-        'costs.manage',
+        'inventory.create',
+        'inventory.edit',
+        'inventory.movement',
+        'inventory.adjustment',
+        'purchases.orders',
+        'costSheets.manage',
         'internalSheets.view',
-        'internalSheets.manage'
+        'internalSheets.manage',
+        'reports.export'
     ],
     JZ: [
         'inventory.view',
-        'costs.manage',
-        'internalSheets.view'
+        'costSheets.manage',
+        'internalSheets.view',
+        'reports.export'
     ],
     T: [
         'internalSheets.view'
@@ -24,55 +29,78 @@ const ROLE_PERMISSIONS = {
 const METHOD_PERMISSION_MAP = {
     users: {
         getInveList: 'inventory.view',
-        inveSave: 'inventory.manage',
-        addInvQty: 'inventory.manage',
-        discountInv: 'inventory.manage',
-        saveoPart: 'costs.manage',
-        saveoOther: 'costs.manage',
-        saveoOtherLeg: 'costs.manage',
-        updateActCost: 'costs.manage',
-        updatePartCost: 'costs.manage',
-        updateOtherCost: 'costs.manage',
-        getOtotals: 'costs.manage',
-        orderSave: 'costs.manage',
-        reportCreate: 'costs.manage',
-        reportCreateTotalized: 'costs.manage',
-        generateRecepit: 'purchases.manage',
-        nullifyReceipt: 'purchases.manage',
-        redateReceipt: 'purchases.manage',
-        setResolution: 'purchases.manage',
+        inveSave: ['inventory.create', 'inventory.edit'],
+        addInvQty: 'inventory.movement',
+        discountInv: ['inventory.movement', 'inventory.adjustment'],
+        saveoPart: 'costSheets.manage',
+        saveoOther: 'costSheets.manage',
+        saveoOtherLeg: 'costSheets.manage',
+        updateActCost: 'costSheets.manage',
+        updatePartCost: 'costSheets.manage',
+        updateOtherCost: 'costSheets.manage',
+        getOtotals: 'costSheets.manage',
+        orderSave: 'costSheets.manage',
+        reportCreate: 'costSheets.manage',
+        reportCreateTotalized: 'costSheets.manage',
+        generateRecepit: 'purchases.orders',
+        nullifyReceipt: 'purchases.orders',
+        redateReceipt: 'purchases.orders',
+        setResolution: 'purchases.orders',
         getLeg: 'internalSheets.view',
         getUserLegs: 'internalSheets.view',
         refreshLegCodes: 'internalSheets.manage',
-        restoreLeg: 'internalSheets.manage'
+        restoreLeg: 'internalSheets.manage',
+        exportCVS: 'reports.export'
     },
     inventory: {
         listItems: 'inventory.view',
-        saveItem: 'inventory.manage',
-        registerEntry: 'inventory.manage',
-        registerExit: 'inventory.manage',
+        saveItem: ['inventory.create', 'inventory.edit'],
+        registerEntry: 'inventory.movement',
+        registerExit: ['inventory.movement', 'inventory.adjustment'],
         listMovements: 'inventory.view'
+    },
+    purchases: {
+        createSupplier: 'purchases.orders',
+        listSuppliers: 'purchases.orders',
+        createPoFromRq: 'purchases.orders',
+        updateNegotiatedCosts: 'purchases.orders',
+        listPurchaseOrders: 'purchases.orders',
+        receivePurchase: 'purchases.orders'
     }
 };
 
 const ACTION_PERMISSION_MAP = {
-    'inventory.manage': [
+    'inventory.create': [
+        '#inveSaveButton'
+    ],
+    'inventory.edit': [
         '#inveSaveButton',
+        '#inventoryEntryBtn',
+        '#inventoryExitBtn'
+    ],
+    'inventory.movement': [
         '#addInvQty',
         '#inventoryEntryBtn',
         '#inventoryExitBtn'
     ],
-    'costs.manage': [
+    'inventory.adjustment': [
+        '#inventoryExitBtn'
+    ],
+    'costSheets.manage': [
         '#orderSaveButton',
         '#orderSaveButtonCL',
         '#addActButton',
         '#addPartButton',
         '#addOtherButton'
     ],
-    'purchases.manage': [
+    'purchases.orders': [
         '#upButtonBudget',
         '#a-resoNumber',
         '#a-resoDate'
+    ],
+    'reports.export': [
+        '#exportCsvButton',
+        '#exportReportButton'
     ],
     'internalSheets.manage': [
         '#legSaveButton',
@@ -94,6 +122,10 @@ function canCallProtectedMethod(targetClass, method, role) {
 
     if (!permission) {
         return true;
+    }
+
+    if (Array.isArray(permission)) {
+        return permission.some(candidate => hasPermission(role, candidate));
     }
 
     return hasPermission(role, permission);

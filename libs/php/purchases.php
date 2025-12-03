@@ -1,12 +1,24 @@
 <?php
+require_once __DIR__ . '/authorization.php';
 
 class purchases
 {
     private $db;
+    private $auth;
 
     public function __construct()
     {
         $this->db = new sql_query();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $this->auth = new Authorization();
+    }
+
+    private function requirePermission(string $permission, array $context = [])
+    {
+        $user = $this->auth->resolveUser(['data' => $context]);
+        $this->auth->authorizePermission($permission, $user);
     }
 
     private function ensureTables()
@@ -97,6 +109,7 @@ class purchases
 
     public function createSupplier($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $code = md5($info['NAME'] . $info['NIT'] . date('c'));
         $now = date('Y-m-d H:i:s');
@@ -112,6 +125,7 @@ class purchases
 
     public function listSuppliers()
     {
+        $this->requirePermission('purchases.orders');
         $this->ensureTables();
         $query = $this->db->query("SELECT * FROM suppliers ORDER BY NAME ASC");
         return ['message' => $query, 'status' => true];
@@ -119,6 +133,7 @@ class purchases
 
     public function createPoFromRq($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = 'OC-' . date('YmdHis');
         $now = date('Y-m-d H:i:s');
@@ -152,6 +167,7 @@ class purchases
 
     public function updateNegotiatedCosts($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = $info['po_code'];
         $items = isset($info['items']) ? $info['items'] : [];
@@ -174,6 +190,7 @@ class purchases
 
     public function listPurchaseOrders()
     {
+        $this->requirePermission('purchases.orders');
         $this->ensureTables();
         $query = $this->db->query("SELECT purchase_orders.*, suppliers.NAME AS SUPPLIERNAME FROM purchase_orders LEFT JOIN suppliers ON suppliers.CODE = purchase_orders.SUPPLIERCODE ORDER BY purchase_orders.CREATED_AT DESC LIMIT 50");
 
@@ -186,6 +203,7 @@ class purchases
 
     public function receivePurchase($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = $info['po_code'];
         $receipts = isset($info['receipts']) ? $info['receipts'] : [];
