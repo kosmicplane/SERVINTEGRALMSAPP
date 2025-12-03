@@ -276,9 +276,13 @@ select
 }
 .hiddenT
 {
-	overflow: hidden !important;
-	height: 0;
-	width: 0;
+        overflow: hidden !important;
+        height: 0;
+        width: 0;
+}
+.hiddenTab
+{
+        display: none;
 }
 .loaderDiv
 {
@@ -472,21 +476,23 @@ select
 }
 .ifBox
 {
-	overflow: hidden;
-	width: 100%;
-	padding-top: 15px;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 15px;
         max-width: 1300px;
-         margin: auto;
-         background: #ffffff;
+        margin: auto;
+        background: #ffffff;
+        box-sizing: border-box;
 }
 .ifBoxShort
 {
-	overflow: hidden;
-	width: 100%;
+        overflow: hidden;
+        width: 100%;
         max-width: 1300px;
         margin: auto;
-	padding-top: 15px;
+        padding-top: 15px;
         background: #ffffff;
+        box-sizing: border-box;
 }
 .mainBottom
 {
@@ -806,10 +812,12 @@ ul.topnav li.icon
 
 .workarea
 {
-	width: 98%;
-	margin: auto;
-	max-width: 98%;
-        
+        width: 100%;
+        margin: auto;
+        max-width: 100%;
+        padding: 0 1%;
+        box-sizing: border-box;
+
 }
 /*---------------------------------------------*/
 
