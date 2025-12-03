@@ -51,6 +51,8 @@ const METHOD_PERMISSION_MAP = {
         saveItem: 'inventory.manage',
         registerEntry: 'inventory.manage',
         registerExit: 'inventory.manage',
+        recordPhysicalCount: 'inventory.manage',
+        applyPhysicalAdjustment: 'inventory.manage',
         listMovements: 'inventory.view'
     }
 };
@@ -60,7 +62,9 @@ const ACTION_PERMISSION_MAP = {
         '#inveSaveButton',
         '#addInvQty',
         '#inventoryEntryBtn',
-        '#inventoryExitBtn'
+        '#inventoryExitBtn',
+        '#inventoryCountBtn',
+        '#inventoryAdjustBtn'
     ],
     'costs.manage': [
         '#orderSaveButton',
