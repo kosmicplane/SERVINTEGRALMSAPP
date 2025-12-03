@@ -8,16 +8,21 @@ require_once __DIR__ . '/authorization.php';
 class users{
     private $db;
     private $auth;
-        function __construct()
-        {
-                $this->db = new sql_query();
-                session_start();
-                $this->auth = new Authorization();
+    function __construct()
+    {
+        $this->db = new sql_query();
+
+        // Solo iniciar sesión si aún no hay una activa
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-        private function requirePermission(string $permission, array $context = [])
-        {
-                $user = $this->auth->resolveUser(['data' => $context]);
-                $this->auth->authorizePermission($permission, $user);
+
+        $this->auth = new Authorization();
+    }
+	private function requirePermission(string $permission, array $context = [])
+	{
+			$user = $this->auth->resolveUser(['data' => $context]);
+			$this->auth->authorizePermission($permission, $user);
         }
 	function login($info)
 	{
