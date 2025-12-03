@@ -33,6 +33,18 @@ class inventory
             INDEX idx_oc (ID_OC)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
+        $this->db->query("CREATE TABLE IF NOT EXISTS po_receipts (
+            ID INT AUTO_INCREMENT PRIMARY KEY,
+            PO_CODE VARCHAR(64) NOT NULL,
+            ITEM_CODE VARCHAR(64) NOT NULL,
+            RECEIVED_QTY DECIMAL(18,4) NOT NULL,
+            UNIT_COST DECIMAL(18,2) NOT NULL,
+            OT_CODE VARCHAR(64) DEFAULT NULL,
+            RQCODE VARCHAR(64) DEFAULT NULL,
+            CREATED_BY VARCHAR(128) DEFAULT NULL,
+            CREATED_AT DATETIME NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS UTILITY_PCT DECIMAL(10,2) NOT NULL DEFAULT 0 AFTER MARGIN");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS REAL_AMOUNT DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER AMOUNT");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS PHYSICAL_COUNT DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER REAL_AMOUNT");
@@ -132,6 +144,64 @@ class inventory
         return $totalCost / $totalQty;
     }
 
+    private function validatePurchaseOrderReception($itemCode, $qty, $unitCost, $poCode, $poItemCode, $rqCode)
+    {
+        if ($poCode === null) {
+            return;
+        }
+
+        $order = $this->db->query("SELECT * FROM purchase_orders WHERE CODE = '{$poCode}' LIMIT 1");
+        if (count($order) === 0) {
+            throw new Exception('No se encontró la OC para la entrada');
+        }
+
+        $poItem = $this->db->query("SELECT * FROM purchase_order_items WHERE CODE = '{$poItemCode}' AND PO_CODE = '{$poCode}' LIMIT 1");
+        if (count($poItem) === 0) {
+            throw new Exception('El ítem no pertenece a la OC indicada');
+        }
+
+        $item = $poItem[0];
+        $expectedCost = floatval($item['NEGOTIATED_COST'] > 0 ? $item['NEGOTIATED_COST'] : $item['UNIT_COST']);
+        if (round(floatval($unitCost), 2) !== round($expectedCost, 2)) {
+            throw new Exception('El costo recibido no coincide con la OC');
+        }
+
+        $received = $this->db->query("SELECT COALESCE(SUM(RECEIVED_QTY),0) AS TOTAL FROM po_receipts WHERE ITEM_CODE = '{$poItemCode}'");
+        $already = isset($received[0]['TOTAL']) ? floatval($received[0]['TOTAL']) : 0;
+        $remaining = floatval($item['QTY']) - $already;
+        if ($qty <= 0 || $qty > $remaining) {
+            throw new Exception('Cantidad recibida supera lo autorizado en la OC');
+        }
+
+        $rqNote = $rqCode ? $rqCode : null;
+        $user = $this->sanitize($_SESSION['user']['code'] ?? '');
+        $this->db->query("INSERT INTO po_receipts (PO_CODE, ITEM_CODE, RECEIVED_QTY, UNIT_COST, OT_CODE, RQCODE, CREATED_BY, CREATED_AT)
+            VALUES ('{$poCode}', '{$poItemCode}', '{$qty}', '{$unitCost}', NULL, '{$rqNote}', '{$user}', NOW())");
+    }
+
+    private function updatePurchaseOrderStatus($poCode, $rqCode)
+    {
+        if ($poCode === null) {
+            return;
+        }
+
+        $totalOrdered = $this->db->query("SELECT COALESCE(SUM(QTY),0) AS QTY FROM purchase_order_items WHERE PO_CODE = '{$poCode}'");
+        $totalReceived = $this->db->query("SELECT COALESCE(SUM(RECEIVED_QTY),0) AS QTY FROM po_receipts WHERE PO_CODE = '{$poCode}'");
+
+        $ordered = isset($totalOrdered[0]['QTY']) ? floatval($totalOrdered[0]['QTY']) : 0;
+        $received = isset($totalReceived[0]['QTY']) ? floatval($totalReceived[0]['QTY']) : 0;
+
+        $status = ($ordered > 0 && $received >= $ordered) ? 'RECEIVED' : 'RECEIVED_PARTIAL';
+        $now = date('Y-m-d H:i:s');
+
+        $this->db->query("UPDATE purchase_orders SET STATUS = '{$status}', UPDATED_AT = '{$now}' WHERE CODE = '{$poCode}'");
+        $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', '{$status}', 'Recepción de mercancía desde inventario', '{$now}')");
+
+        if (!empty($rqCode)) {
+            $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', 'RQ_ATTENDED', 'Requisición atendida desde inventario', '{$now}')");
+        }
+    }
+
     public function registerEntry($info)
     {
         $this->requireRole(['A', 'CO']);
@@ -141,8 +211,10 @@ class inventory
         $qty = isset($info['quantity']) ? floatval($info['quantity']) : 0;
         $unitCost = isset($info['unit_cost']) ? floatval($info['unit_cost']) : 0;
         $idOc = isset($info['id_oc']) ? $this->sanitize($info['id_oc']) : null;
+        $poItemCode = isset($info['po_item_code']) ? $this->sanitize($info['po_item_code']) : $itemCode;
         $idOt = isset($info['id_ot']) ? $this->sanitize($info['id_ot']) : null;
         $obs = isset($info['observaciones']) ? $this->sanitize($info['observaciones']) : '';
+        $rqCode = isset($info['rq_code']) ? $this->sanitize($info['rq_code']) : null;
         $userCode = $this->sanitize($_SESSION['user']['code'] ?? '');
 
         if ($itemCode === '' || $qty <= 0) {
@@ -152,6 +224,10 @@ class inventory
         $item = $this->fetchItem($itemCode);
         $currentQty = floatval($item['AMOUNT']);
         $currentCost = floatval($item['COST']);
+
+        if ($subType === 'OC') {
+            $this->validatePurchaseOrderReception($itemCode, $qty, $unitCost, $idOc, $poItemCode, $rqCode);
+        }
 
         $newAvg = $this->calculateAverageCost($currentQty, $currentCost, $qty, $unitCost);
         $newQty = $currentQty + $qty;
@@ -170,6 +246,14 @@ class inventory
         } catch (Exception $e) {
             $this->db->rollBack();
             throw $e;
+        }
+
+        if ($subType === 'OC') {
+            $this->updatePurchaseOrderStatus($idOc, $rqCode);
+        }
+
+        if (!empty($idOt)) {
+            $this->db->query("UPDATE orders SET TOTALCOST = IFNULL(TOTALCOST,0) + {$costTotal} WHERE CODE = '{$idOt}'");
         }
 
         return ['message' => 'entry', 'status' => true, 'new_qty' => $newQty, 'avg_cost' => $newAvg];

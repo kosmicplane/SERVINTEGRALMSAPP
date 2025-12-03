@@ -191,34 +191,119 @@ class purchases
         $receipts = isset($info['receipts']) ? $info['receipts'] : [];
         $now = date('Y-m-d H:i:s');
 
-        foreach ($receipts as $rec) {
-            $itemCode = $rec['item_code'];
-            $qty = $rec['qty'];
-            $cost = $rec['unit_cost'];
-            $sku = $rec['sku'];
-            $desc = isset($rec['description']) ? $rec['description'] : '';
-            $ot = isset($rec['ot_code']) ? $rec['ot_code'] : null;
-            $rq = isset($rec['rq_code']) ? $rec['rq_code'] : null;
-
-            $this->db->query("INSERT INTO po_receipts (PO_CODE, ITEM_CODE, RECEIVED_QTY, UNIT_COST, OT_CODE, RQCODE, CREATED_BY, CREATED_AT) VALUES ('{$poCode}', '{$itemCode}', '{$qty}', '{$cost}', '{$ot}', '{$rq}', '{$info['created_by']}', '{$now}')");
-
-            $existing = $this->db->query("SELECT * FROM inventory_items WHERE SKU = '{$sku}'");
-            if (count($existing) > 0) {
-                $current = $existing[0];
-                $newQty = $current['ON_HAND'] + $qty;
-                $newAvg = $newQty > 0 ? ((($current['AVG_COST'] * $current['ON_HAND']) + ($cost * $qty)) / $newQty) : $cost;
-                $this->db->query("UPDATE inventory_items SET AVG_COST = '{$newAvg}', ON_HAND = '{$newQty}', DESCRIPTION = '{$desc}', UPDATED_AT = '{$now}' WHERE SKU = '{$sku}'");
-            } else {
-                $this->db->query("INSERT INTO inventory_items (SKU, DESCRIPTION, AVG_COST, ON_HAND, UPDATED_AT) VALUES ('{$sku}', '{$desc}', '{$cost}', '{$qty}', '{$now}')");
-            }
-
-            $this->db->query("INSERT INTO inventory_movements (SKU, QTY, UNIT_COST, MOV_TYPE, PO_CODE, OT_CODE, RQCODE, CREATED_AT) VALUES ('{$sku}', '{$qty}', '{$cost}', 'RECEIPT', '{$poCode}', '{$ot}', '{$rq}', '{$now}')");
+        $poQuery = $this->db->query("SELECT * FROM purchase_orders WHERE CODE = '{$poCode}' LIMIT 1");
+        if (count($poQuery) === 0) {
+            throw new Exception('Orden de compra no encontrada');
         }
 
-        $this->db->query("UPDATE purchase_orders SET STATUS = 'RECEIVED', UPDATED_AT = '{$now}' WHERE CODE = '{$poCode}'");
-        $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', 'RECEIVED', 'Recepción de mercancía', '{$now}')");
+        $items = $this->db->query("SELECT * FROM purchase_order_items WHERE PO_CODE = '{$poCode}'");
+        $itemsByCode = [];
+        foreach ($items as $item) {
+            $receivedSum = $this->db->query("SELECT COALESCE(SUM(RECEIVED_QTY),0) AS TOTAL FROM po_receipts WHERE ITEM_CODE = '{$item['CODE']}'");
+            $itemsByCode[$item['CODE']] = [
+                'data' => $item,
+                'received' => isset($receivedSum[0]['TOTAL']) ? floatval($receivedSum[0]['TOTAL']) : 0,
+            ];
+        }
+
+        $this->db->beginTransaction();
+        try {
+            foreach ($receipts as $rec) {
+                $itemCode = $rec['item_code'];
+                $qty = floatval($rec['qty']);
+                $cost = floatval($rec['unit_cost']);
+                $sku = $rec['sku'];
+                $desc = isset($rec['description']) ? $rec['description'] : '';
+                $ot = isset($rec['ot_code']) ? $rec['ot_code'] : null;
+                $rq = isset($rec['rq_code']) ? $rec['rq_code'] : null;
+
+                if (!isset($itemsByCode[$itemCode])) {
+                    throw new Exception('El ítem recibido no pertenece a la OC');
+                }
+
+                $item = $itemsByCode[$itemCode]['data'];
+                $already = $itemsByCode[$itemCode]['received'];
+                $remaining = floatval($item['QTY']) - $already;
+                if ($qty <= 0 || $qty > $remaining) {
+                    throw new Exception('Cantidad inválida o superior a lo solicitado en la OC');
+                }
+
+                $expectedCost = floatval($item['NEGOTIATED_COST'] > 0 ? $item['NEGOTIATED_COST'] : $item['UNIT_COST']);
+                if (round($cost, 2) !== round($expectedCost, 2)) {
+                    throw new Exception('El costo recibido no coincide con la OC');
+                }
+
+                $this->db->query("INSERT INTO po_receipts (PO_CODE, ITEM_CODE, RECEIVED_QTY, UNIT_COST, OT_CODE, RQCODE, CREATED_BY, CREATED_AT) VALUES ('{$poCode}', '{$itemCode}', '{$qty}', '{$cost}', '{$ot}', '{$rq}', '{$info['created_by']}', '{$now}')");
+                $itemsByCode[$itemCode]['received'] += $qty;
+
+                $existing = $this->db->query("SELECT * FROM inventory_items WHERE SKU = '{$sku}'");
+                if (count($existing) > 0) {
+                    $current = $existing[0];
+                    $newQty = floatval($current['ON_HAND']) + $qty;
+                    $newAvg = $newQty > 0 ? ((($current['AVG_COST'] * $current['ON_HAND']) + ($cost * $qty)) / $newQty) : $cost;
+                    $this->db->query("UPDATE inventory_items SET AVG_COST = '{$newAvg}', ON_HAND = '{$newQty}', DESCRIPTION = '{$desc}', UPDATED_AT = '{$now}' WHERE SKU = '{$sku}'");
+                } else {
+                    $this->db->query("INSERT INTO inventory_items (SKU, DESCRIPTION, AVG_COST, ON_HAND, UPDATED_AT) VALUES ('{$sku}', '{$desc}', '{$cost}', '{$qty}', '{$now}')");
+                }
+
+                $this->db->query("INSERT INTO inventory_movements (SKU, QTY, UNIT_COST, MOV_TYPE, PO_CODE, OT_CODE, RQCODE, CREATED_AT) VALUES ('{$sku}', '{$qty}', '{$cost}', 'RECEIPT', '{$poCode}', '{$ot}', '{$rq}', '{$now}')");
+
+                $this->registerLegacyMovement($sku, $desc, $qty, $cost, $poCode, $ot, $rq, $info['created_by'], $now);
+            }
+
+            $totalOrdered = $this->db->query("SELECT COALESCE(SUM(QTY),0) AS QTY FROM purchase_order_items WHERE PO_CODE = '{$poCode}'");
+            $totalReceived = $this->db->query("SELECT COALESCE(SUM(RECEIVED_QTY),0) AS QTY FROM po_receipts WHERE PO_CODE = '{$poCode}'");
+
+            $ordered = isset($totalOrdered[0]['QTY']) ? floatval($totalOrdered[0]['QTY']) : 0;
+            $received = isset($totalReceived[0]['QTY']) ? floatval($totalReceived[0]['QTY']) : 0;
+
+            $status = ($ordered > 0 && $received >= $ordered) ? 'RECEIVED' : 'RECEIVED_PARTIAL';
+            $this->db->query("UPDATE purchase_orders SET STATUS = '{$status}', UPDATED_AT = '{$now}' WHERE CODE = '{$poCode}'");
+            $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', '{$status}', 'Recepción de mercancía', '{$now}')");
+
+            if (!empty($poQuery[0]['RQCODE'])) {
+                $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', 'RQ_ATTENDED', 'Requisición atendida', '{$now}')");
+            }
+
+            $this->db->commit();
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            throw $e;
+        }
 
         return ['message' => 'received', 'status' => true];
+    }
+
+    private function registerLegacyMovement($sku, $desc, $qty, $cost, $poCode, $ot, $rq, $user, $now)
+    {
+        try {
+            $inveItem = $this->db->query("SELECT * FROM inve WHERE CODE = '{$sku}' LIMIT 1");
+            if (count($inveItem) > 0) {
+                $item = $inveItem[0];
+                $currentQty = floatval($item['AMOUNT']);
+                $newQty = $currentQty + $qty;
+                $newCost = $newQty > 0 ? ((($item['COST'] * $currentQty) + ($cost * $qty)) / $newQty) : $cost;
+                $this->db->query("UPDATE inve SET AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}', COST = '{$newCost}' WHERE CODE = '{$sku}'");
+            } else {
+                $this->db->query("INSERT INTO inve (CODE, DESCRIPTION, COST, AMOUNT, REAL_AMOUNT, UTILITY_PCT, STATUS) VALUES ('{$sku}', '{$desc}', '{$cost}', '{$qty}', '{$qty}', 0, 1)");
+                $newCost = $cost;
+            }
+
+            $idOtValue = $ot ? "'{$ot}'" : "NULL";
+            $idRq = $rq ? "Ingreso asociado a RQ {$rq}" : '';
+            $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, ID_OC, OBSERVACIONES)
+                VALUES ('{$sku}', 'ENTRADA', 'OC', '{$qty}', '{$cost}', '{$qty * $cost}', '{$user}', {$idOtValue}, '{$poCode}', '{$idRq}')");
+
+            if (!empty($ot)) {
+                $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, ID_OC, OBSERVACIONES)
+                    VALUES ('{$sku}', 'SALIDA', 'RQ_ALMACEN', '{$qty}', '{$newCost}', '{$qty * $newCost}', '{$user}', {$idOtValue}, '{$poCode}', 'Consumo directo en OT')");
+                $this->db->query("UPDATE inve SET AMOUNT = AMOUNT - {$qty}, REAL_AMOUNT = REAL_AMOUNT - {$qty} WHERE CODE = '{$sku}'");
+                $this->db->query("UPDATE inventory_items SET ON_HAND = ON_HAND - {$qty} WHERE SKU = '{$sku}'");
+                $this->db->query("UPDATE orders SET TOTALCOST = IFNULL(TOTALCOST,0) + {$qty * $newCost} WHERE CODE = '{$ot}'");
+            }
+        } catch (Exception $e) {
+            // Ignorar fallas de tablas legadas pero no detener recepción
+        }
     }
 }
 
