@@ -15,7 +15,7 @@ class entryPoint{
             $this->params = json_decode(file_get_contents("php://input"), true);
         }
     }
-
+}
 $entry = new entryPoint($_POST);
-echo $entry->start();
+//echo $entry->start();
 ?>
