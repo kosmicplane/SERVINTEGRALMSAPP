@@ -3,14 +3,22 @@ date_default_timezone_set('America/Bogota');
 // require('../fpdf/fpdf.php');
 require('../fpdf/mc_table.php');
 require('../phpExcel/Classes/PHPExcel.php');
+require_once __DIR__ . '/authorization.php';
 
 class users{
     private $db;
-	function __construct()
-	{
-		$this->db = new sql_query();
-		session_start();
-	}
+    private $auth;
+        function __construct()
+        {
+                $this->db = new sql_query();
+                session_start();
+                $this->auth = new Authorization();
+        }
+        private function requirePermission(string $permission, array $context = [])
+        {
+                $user = $this->auth->resolveUser(['data' => $context]);
+                $this->auth->authorizePermission($permission, $user);
+        }
 	function login($info)
 	{
 	
@@ -900,14 +908,17 @@ class users{
 
                         return $resp;
                 }
-	}
-	function inveSave($info)
-	{
-		$otype = $info["otype"];
+        }
+        function inveSave($info)
+        {
+                $otype = $info["otype"];
                 $utype = $info["utype"];
-                
-                 
-                
+
+                $permission = $otype == "c" ? 'inventory.create' : 'inventory.edit';
+                $this->requirePermission($permission, $info);
+
+
+
                 $CODE = $info["a-inveCode"];
                 $DESCRIPTION = $info["a-inveDesc"];
                 $COST = $info["a-inveCost"];
@@ -967,10 +978,11 @@ class users{
 			$resp["status"] = true;
 			return $resp;
 
-	}
-	function orderSave($info)
-	{
-		$otype = $info["otype"];
+        }
+        function orderSave($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
+                $otype = $info["otype"];
                 
 		$CODE = md5($info["a-orderParent"].$info["date"]);
 		$DATE = $info["date"];
@@ -1214,8 +1226,10 @@ class users{
                         return $resp;
                 }
         }
-	function addInvQty($info)
-	{
+        function addInvQty($info)
+        {
+                $this->requirePermission('inventory.movement', $info);
+
                 $code = $info["code"];
                 $qty = $info["qty"];
                 
@@ -1323,11 +1337,12 @@ class users{
 			
 			return $resp;
 	}
-	function saveoPart($info)
-	{
-			$CODE = md5($info["pcode"].$info["date"]);
-			$OCODE = $info["ocode"];
-			$PDESC = $info["pdesc"];
+        function saveoPart($info)
+        {
+                        $this->requirePermission('costSheets.manage', $info);
+                        $CODE = md5($info["pcode"].$info["date"]);
+                        $OCODE = $info["ocode"];
+                        $PDESC = $info["pdesc"];
 			$PCODE = $info["pcode"];
 			$PCOST = $info["pcost"];
 			$PAMOUNT = $info["pamount"];
@@ -1340,12 +1355,13 @@ class users{
 			$resp["status"] = true;
 			return $resp;
 
-	}
-	function saveoOther($info)
-	{
-			$CODE = md5($info["ocode"].$info["date"]);
-			$OTYPE = $info["otype"];
-			$OCODE = $info["ocode"];
+        }
+        function saveoOther($info)
+        {
+                        $this->requirePermission('costSheets.manage', $info);
+                        $CODE = md5($info["ocode"].$info["date"]);
+                        $OTYPE = $info["otype"];
+                        $OCODE = $info["ocode"];
 			$ODESC = $info["odesc"];
 			$COST = $info["ocost"];
 			$AMOUNT = $info["oamount"];
@@ -1358,12 +1374,14 @@ class users{
 			$resp["status"] = true;
 			return $resp;
 
-	}
-	function saveoOtherLeg($info)
-	{
-			
-			$now = new DateTime();
-			$now = $now->format('Y-m-d H:i:s');
+        }
+        function saveoOtherLeg($info)
+        {
+
+                        $this->requirePermission('costSheets.manage', $info);
+
+                        $now = new DateTime();
+                        $now = $now->format('Y-m-d H:i:s');
 			
 			$UCODE = $info["ucode"];
 			
@@ -1489,10 +1507,11 @@ class users{
 			return $resp;
 
 	}
-	function updateActCost($info)
-	{
-			$actCode = $info["actCode"];
-			$newCost = $info["newCost"];
+        function updateActCost($info)
+        {
+                        $this->requirePermission('costSheets.manage', $info);
+                        $actCode = $info["actCode"];
+                        $newCost = $info["newCost"];
 			
 			$str = "UPDATE oactis SET ACOST = '".$newCost."' WHERE CODE = '".$actCode."' ";
 			$query = $this->db->query($str);
@@ -1502,10 +1521,11 @@ class users{
 			return $resp;
 			
 	}
-	function updatePartCost($info)
-	{
-			$partCode = $info["partCode"];
-			$newCost = $info["newCost"];
+        function updatePartCost($info)
+        {
+                        $this->requirePermission('costSheets.manage', $info);
+                        $partCode = $info["partCode"];
+                        $newCost = $info["newCost"];
 			
 			$str = "UPDATE oparts SET PCOST = '".$newCost."' WHERE CODE = '".$partCode."' ";
 			$query = $this->db->query($str);
@@ -1515,8 +1535,9 @@ class users{
 			return $resp;
 			
 	}
-	function updateOtherCost($info)
-	{
+        function updateOtherCost($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
                 $otherCode = $info["otherCode"];
                 $newCost = $info["newCost"];
                 
@@ -1789,10 +1810,11 @@ class users{
                 $resp["status"] = true;
                 return $resp;
         }
-	function reportCreate($info)
-	{
-		$ocode = $info["ocode"];
-		$date = $info["odate"];
+        function reportCreate($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
+                $ocode = $info["ocode"];
+                $date = $info["odate"];
 		$diff = $info["diff"];
 		$str = "SELECT *  FROM orders WHERE CODE = '".$ocode."'";
 		$query = $this->db->query($str);
@@ -2120,10 +2142,11 @@ class users{
 		return $resp;
                 
         }
-	function reportCreateTotalized($info)
-	{
-		$ocode = $info["ocode"];
-		$date = $info["odate"];
+        function reportCreateTotalized($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
+                $ocode = $info["ocode"];
+                $date = $info["odate"];
 		$diff = $info["diff"];
 		$str = "SELECT *  FROM orders WHERE CODE = '".$ocode."'";
 		$query = $this->db->query($str);
@@ -2585,11 +2608,13 @@ class users{
 
 		return $resp;
 	
-	}
-	function getOtotals($info)
-	{
-			
-			$oList = $info["picks"];
+        }
+        function getOtotals($info)
+        {
+
+                        $this->requirePermission('costSheets.manage', $info);
+
+                        $oList = $info["picks"];
 			$retCheck = $info["retCheck"];
 			$ansList = array();
 			$ansTotaled = array();
@@ -2711,11 +2736,12 @@ class users{
 			$resp["status"] = true;
 			return $resp;
 			
-	}
-	function generateRecepit($info, $nullnum = null, $nullres = null)
-	{
-			$picks = $info["picks"];
-			$date = explode(" ", $info["date"])[0];
+        }
+        function generateRecepit($info, $nullnum = null, $nullres = null)
+        {
+                        $this->requirePermission('purchases.orders', $info);
+                        $picks = $info["picks"];
+                        $date = explode(" ", $info["date"])[0];
 			$diedate = explode(" ", $info["diedate"])[0];
 			$retCheck = $info["retCheck"];
 			
@@ -3031,11 +3057,12 @@ class users{
 			$resp["message"] =  $path;
 			$resp["status"] = true;
 			return $resp;
-	}
-	function nullifyReceipt($info)
-	{
-			$nullnum = $info["nullnum"];
-			$nullres = $info["nullres"];
+        }
+        function nullifyReceipt($info)
+        {
+                        $this->requirePermission('purchases.orders', $info);
+                        $nullnum = $info["nullnum"];
+                        $nullres = $info["nullres"];
 			$parent = $info["parent"];
 			$retCheck = $info["retCheck"];
 			
@@ -3062,11 +3089,12 @@ class users{
 			$resp["status"] = true;
 			
 			return $resp;
-	}
-	function redateReceipt($info)
-	{
-			$nullnum = $info["nullnum"];
-			$nullres = $info["nullres"];
+        }
+        function redateReceipt($info)
+        {
+                        $this->requirePermission('purchases.orders', $info);
+                        $nullnum = $info["nullnum"];
+                        $nullres = $info["nullres"];
 			$parent = $info["parent"];
 			$retCheck = $info["retCheck"];
 			
@@ -3300,9 +3328,10 @@ class users{
 		$resp["status"] = true;
 		
 		return $resp;
-	}
-	function setResolution($info)
-	{
+        }
+        function setResolution($info)
+        {
+                $this->requirePermission('purchases.orders', $info);
                 $resolution = $info["a-resoNumber"];
                 $date = $info["a-resoDate"];
                 $start = $info["a-resoIninum"];
@@ -3389,8 +3418,9 @@ class users{
 		return $resp;
                 
         }
-	function discountInv($info)
-	{
+        function discountInv($info)
+        {
+                $this->requirePermission('inventory.movement', $info);
                 $items = $info["items"];
                 
                 for($i=0; $i<count($items); $i++)
@@ -3828,10 +3858,11 @@ class users{
 
 	// REPORTERY BLOCK START -------------------------
 
-	function exportCVS($info)
-	{
-		$type = $info["rtype"];
-		$lang = $info["lang"];
+        function exportCVS($info)
+        {
+                $this->requirePermission('reports.export', $info);
+                $type = $info["rtype"];
+                $lang = $info["lang"];
 		$langFile = parse_ini_file("../../lang/lang.ini", true);
 		$lang = $langFile[$lang];
 		

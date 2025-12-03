@@ -7,21 +7,40 @@ CREATE TABLE IF NOT EXISTS suppliers (
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS inventory_items (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    sku TEXT NOT NULL UNIQUE,
-    name TEXT NOT NULL,
-    stock INTEGER NOT NULL DEFAULT 0,
-    average_cost REAL NOT NULL DEFAULT 0,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- Catálogo de inventario real
+CREATE TABLE IF NOT EXISTS inve (
+    CODE TEXT PRIMARY KEY,
+    DESCRIPTION TEXT NOT NULL,
+    COST REAL NOT NULL DEFAULT 0,
+    MARGIN REAL NOT NULL DEFAULT 0,
+    AMOUNT REAL NOT NULL DEFAULT 0,
+    STATUS INTEGER NOT NULL DEFAULT 1,
+    UTILITY_PCT REAL NOT NULL DEFAULT 0,
+    REAL_AMOUNT REAL NOT NULL DEFAULT 0,
+    PHYSICAL_COUNT REAL NOT NULL DEFAULT 0,
+    VARIANCE REAL NOT NULL DEFAULT 0
 );
 
-CREATE TRIGGER IF NOT EXISTS trg_inventory_items_updated_at
-AFTER UPDATE ON inventory_items
-BEGIN
-    UPDATE inventory_items SET updated_at = CURRENT_TIMESTAMP WHERE rowid = NEW.rowid;
-END;
+-- Movimientos de inventario (entradas/salidas)
+CREATE TABLE IF NOT EXISTS inve_movimientos (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ITEM_CODE TEXT NOT NULL,
+    TIPO_MOVIMIENTO TEXT NOT NULL,
+    SUB_TIPO TEXT NOT NULL,
+    CANTIDAD REAL NOT NULL DEFAULT 0,
+    COSTO_UNITARIO REAL NOT NULL DEFAULT 0,
+    COSTO_TOTAL REAL NOT NULL DEFAULT 0,
+    FECHA_HORA TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ID_USUARIO TEXT DEFAULT NULL,
+    ID_OT TEXT DEFAULT NULL,
+    ID_OC TEXT DEFAULT NULL,
+    OBSERVACIONES TEXT,
+    FOREIGN KEY (ITEM_CODE) REFERENCES inve(CODE)
+);
+
+CREATE INDEX IF NOT EXISTS idx_item_fecha ON inve_movimientos (ITEM_CODE, FECHA_HORA);
+CREATE INDEX IF NOT EXISTS idx_ot ON inve_movimientos (ID_OT);
+CREATE INDEX IF NOT EXISTS idx_oc ON inve_movimientos (ID_OC);
 
 CREATE TABLE IF NOT EXISTS quotations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,11 +55,11 @@ CREATE TABLE IF NOT EXISTS quotations (
 CREATE TABLE IF NOT EXISTS quotation_items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     quotation_id INTEGER NOT NULL,
-    inventory_item_id INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
+    item_code TEXT NOT NULL,
+    quantity REAL NOT NULL,
     unit_price REAL NOT NULL,
     FOREIGN KEY (quotation_id) REFERENCES quotations(id),
-    FOREIGN KEY (inventory_item_id) REFERENCES inventory_items(id)
+    FOREIGN KEY (item_code) REFERENCES inve(CODE)
 );
 
 CREATE TABLE IF NOT EXISTS work_orders (
@@ -64,11 +83,11 @@ CREATE TABLE IF NOT EXISTS requisitions (
 CREATE TABLE IF NOT EXISTS requisition_items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     requisition_id INTEGER NOT NULL,
-    inventory_item_id INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
+    item_code TEXT NOT NULL,
+    quantity REAL NOT NULL,
     expected_unit_cost REAL,
     FOREIGN KEY (requisition_id) REFERENCES requisitions(id),
-    FOREIGN KEY (inventory_item_id) REFERENCES inventory_items(id)
+    FOREIGN KEY (item_code) REFERENCES inve(CODE)
 );
 
 CREATE TABLE IF NOT EXISTS purchase_orders (
@@ -85,25 +104,11 @@ CREATE TABLE IF NOT EXISTS purchase_orders (
 CREATE TABLE IF NOT EXISTS purchase_order_items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     purchase_order_id INTEGER NOT NULL,
-    inventory_item_id INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
+    item_code TEXT NOT NULL,
+    quantity REAL NOT NULL,
     unit_cost REAL NOT NULL,
     FOREIGN KEY (purchase_order_id) REFERENCES purchase_orders(id),
-    FOREIGN KEY (inventory_item_id) REFERENCES inventory_items(id)
-);
-
-CREATE TABLE IF NOT EXISTS inventory_movements (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    inventory_item_id INTEGER NOT NULL,
-    movement_type TEXT NOT NULL CHECK(movement_type IN ('IN','OUT')),
-    quantity INTEGER NOT NULL,
-    unit_cost REAL NOT NULL DEFAULT 0,
-    work_order_id INTEGER,
-    reference_type TEXT,
-    reference_id INTEGER,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (inventory_item_id) REFERENCES inventory_items(id),
-    FOREIGN KEY (work_order_id) REFERENCES work_orders(id)
+    FOREIGN KEY (item_code) REFERENCES inve(CODE)
 );
 
 CREATE TABLE IF NOT EXISTS role_permissions (
