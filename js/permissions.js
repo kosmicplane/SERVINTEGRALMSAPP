@@ -54,19 +54,15 @@ const METHOD_PERMISSION_MAP = {
         restoreLeg: 'internalSheets.manage',
         exportCVS: 'reports.export'
     },
-    inventory: {
+        inventory: {
         listItems: 'inventory.view',
         saveItem: ['inventory.create', 'inventory.edit', 'inventory.manage'],
         registerEntry: ['inventory.movement', 'inventory.manage'],
         registerExit: ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
-        saveItem: 'inventory.manage',
-        registerEntry: 'inventory.manage',
-        registerExit: 'inventory.manage',
-        listMovements: 'inventory.view',
-        exportInventory: 'inventory.view'
         recordPhysicalCount: 'inventory.manage',
         applyPhysicalAdjustment: 'inventory.manage',
-        listMovements: 'inventory.view'
+        listMovements: 'inventory.view',
+        exportInventory: 'inventory.view'
     },
     purchases: {
         createSupplier: 'purchases.orders',
@@ -100,7 +96,6 @@ const ACTION_PERMISSION_MAP = {
     'inventory.view': [
         '#inventoryExportBtn'
     ],
-    'costs.manage': [
     'inventory.manage': [
         '#inveSaveButton',
         '#inventoryEntryBtn',
@@ -128,6 +123,7 @@ const ACTION_PERMISSION_MAP = {
         '#legCloseButton'
     ]
 };
+
 
 function hasPermission(role, permission) {
     const allowed = ROLE_PERMISSIONS[role] || [];
