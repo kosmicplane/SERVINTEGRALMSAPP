@@ -9,9 +9,6 @@ class inventory
     public function __construct()
     {
         $this->db = new sql_query();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
         $this->auth = new Authorization();
         $this->ensureSchema();
     }
