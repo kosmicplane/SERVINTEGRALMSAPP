@@ -38,6 +38,18 @@ class inventory
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS PHYSICAL_COUNT DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER REAL_AMOUNT");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS VARIANCE DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER PHYSICAL_COUNT");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS STATUS TINYINT(1) NOT NULL DEFAULT 1");
+
+        $this->db->query("CREATE TABLE IF NOT EXISTS inve_cost_audit (
+            ID INT AUTO_INCREMENT PRIMARY KEY,
+            ITEM_CODE VARCHAR(64) NOT NULL,
+            COSTO_ANTERIOR DECIMAL(18,4) NOT NULL,
+            COSTO_NUEVO DECIMAL(18,4) NOT NULL,
+            USUARIO VARCHAR(64) NOT NULL,
+            OBSERVACIONES TEXT,
+            FECHA DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_inve_cost_item (ITEM_CODE),
+            INDEX idx_inve_cost_user (USUARIO)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
     }
 
     private function requireRole(array $allowedRoles)
@@ -132,6 +144,12 @@ class inventory
         return $totalCost / $totalQty;
     }
 
+    private function logCostAudit($itemCode, $oldCost, $newCost, $obs, $userCode)
+    {
+        $this->db->query("INSERT INTO inve_cost_audit (ITEM_CODE, COSTO_ANTERIOR, COSTO_NUEVO, USUARIO, OBSERVACIONES)
+            VALUES ('{$itemCode}', '{$oldCost}', '{$newCost}', '{$userCode}', '{$obs}')");
+    }
+
     public function registerEntry($info)
     {
         $this->requireRole(['A', 'CO']);
@@ -223,6 +241,111 @@ class inventory
         }
 
         return ['message' => 'exit', 'status' => true, 'new_qty' => $newQty, 'avg_cost' => $cost];
+    }
+
+    public function recordPhysicalCount($info)
+    {
+        $this->requireRole(['A', 'CO']);
+
+        $itemCode = $this->sanitize($info['item_code'] ?? '');
+        $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
+        $obs = isset($info['observaciones']) ? $this->sanitize($info['observaciones']) : '';
+
+        if ($itemCode === '' || $physicalCount === null || $physicalCount < 0) {
+            throw new Exception('Código y conteo físico válidos son obligatorios');
+        }
+
+        $item = $this->fetchItem($itemCode);
+        $realAmount = floatval($item['REAL_AMOUNT']);
+        $variance = $physicalCount - $realAmount;
+
+        $this->db->query("UPDATE inve SET PHYSICAL_COUNT = '{$physicalCount}', VARIANCE = '{$variance}' WHERE CODE = '{$itemCode}'");
+
+        return [
+            'message' => 'physical_count_saved',
+            'status' => true,
+            'variance' => $variance,
+            'physical_count' => $physicalCount,
+            'real_amount' => $realAmount,
+            'observaciones' => $obs,
+        ];
+    }
+
+    public function applyPhysicalAdjustment($info)
+    {
+        $role = $this->requireRole(['A', 'CO']);
+
+        $itemCode = $this->sanitize($info['item_code'] ?? '');
+        $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
+        $unitCost = isset($info['unit_cost']) && $info['unit_cost'] !== '' ? floatval($info['unit_cost']) : null;
+        $obs = isset($info['observaciones']) ? $this->sanitize($info['observaciones']) : '';
+        $userCode = $this->sanitize($_SESSION['user']['code'] ?? '');
+
+        if ($itemCode === '' || $physicalCount === null || $physicalCount < 0) {
+            throw new Exception('Código y conteo físico válidos son obligatorios para el ajuste');
+        }
+
+        $item = $this->fetchItem($itemCode);
+        $currentQty = floatval($item['REAL_AMOUNT']);
+        $currentCost = floatval($item['COST']);
+        $variance = $physicalCount - $currentQty;
+
+        if ($variance === 0) {
+            $this->db->query("UPDATE inve SET PHYSICAL_COUNT = '{$physicalCount}', VARIANCE = 0 WHERE CODE = '{$itemCode}'");
+            return ['message' => 'no_adjustment_needed', 'status' => true];
+        }
+
+        $costForAdjustment = $unitCost !== null ? $unitCost : $currentCost;
+        if ($costForAdjustment !== $currentCost && $role !== 'A') {
+            throw new Exception('Solo un administrador puede modificar el costo en ajustes de inventario');
+        }
+
+        if ($variance < 0 && abs($variance) > $currentQty) {
+            throw new Exception('El ajuste supera la existencia registrada');
+        }
+
+        $this->db->beginTransaction();
+        try {
+            $this->db->query("UPDATE inve SET PHYSICAL_COUNT = '{$physicalCount}', VARIANCE = '{$variance}' WHERE CODE = '{$itemCode}'");
+
+            if ($variance > 0) {
+                $newAvg = $this->calculateAverageCost($currentQty, $currentCost, $variance, $costForAdjustment);
+                $newQty = $currentQty + $variance;
+                $costTotal = $variance * $costForAdjustment;
+
+                $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, OBSERVACIONES)
+                    VALUES ('{$itemCode}', 'ENTRADA', 'AJUSTE', '{$variance}', '{$costForAdjustment}', '{$costTotal}', '{$userCode}', '{$obs}')");
+
+                $this->db->query("UPDATE inve SET AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}', COST = '{$newAvg}' WHERE CODE = '{$itemCode}'");
+
+                if ($newAvg !== $currentCost) {
+                    $this->logCostAudit($itemCode, $currentCost, $newAvg, $obs, $userCode);
+                }
+            } else {
+                $varianceAbs = abs($variance);
+                $costTotal = $varianceAbs * $currentCost;
+                $newQty = $currentQty - $varianceAbs;
+
+                $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, OBSERVACIONES)
+                    VALUES ('{$itemCode}', 'SALIDA', 'AJUSTE', '{$varianceAbs}', '{$currentCost}', '{$costTotal}', '{$userCode}', '{$obs}')");
+
+                $this->db->query("UPDATE inve SET AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}' WHERE CODE = '{$itemCode}'");
+            }
+
+            $this->db->query("UPDATE inve SET VARIANCE = 0 WHERE CODE = '{$itemCode}'");
+            $this->db->commit();
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            throw $e;
+        }
+
+        return [
+            'message' => 'adjustment_applied',
+            'status' => true,
+            'new_qty' => $physicalCount,
+            'variance' => $variance,
+            'cost_used' => $costForAdjustment,
+        ];
     }
 
     public function listMovements($info)

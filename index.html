@@ -826,7 +826,9 @@
                                                                 <div class="column" data-label="Costo compra">Costo compra</div>
                                                                 <div class="column" data-label="Margen %">Margen %</div>
                                                                 <div class="column" data-label="Valor venta">Valor</div>
-                                                                <div class="column" data-label="Existencia">Existencia</div>
+                                                                <div class="column" data-label="Existencia operativa">Existencia operativa</div>
+                                                                <div class="column" data-label="Conteo físico">Conteo físico</div>
+                                                                <div class="column" data-label="Diferencia">Diferencia</div>
                                                                 <div class="column" data-label="Acciones">Acciones</div>
                                                         </div>
                                                 </div>
@@ -870,6 +872,31 @@
                                                                 <span>Observaciones</span>
                                                                 <textarea id="inv-exit-obs"></textarea>
                                                                 <button id="inventoryExitBtn" onclick="inventoryRegisterExit()">Registrar salida</button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                                <h4>Conteo físico y ajustes</h4>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                                <span>Ítem</span>
+                                                                <select id="inv-count-item"></select>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                                <span>Conteo físico</span>
+                                                                <input id="inv-count-qty" type="text"/>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                                <span>Costo ajuste (solo admin)</span>
+                                                                <input id="inv-count-cost" type="text"/>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                                <span>Observaciones</span>
+                                                                <textarea id="inv-count-obs"></textarea>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                                <button id="inventoryCountBtn" onclick="inventoryRecordPhysical()">Guardar conteo</button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                                <button id="inventoryAdjustBtn" onclick="inventoryApplyAdjustment()">Generar ajuste</button>
                                                         </div>
                                                 </div>
                                         </div>

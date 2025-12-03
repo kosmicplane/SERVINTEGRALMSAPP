@@ -52,6 +52,8 @@ return [
             'saveItem' => 'inventory.manage',
             'registerEntry' => 'inventory.manage',
             'registerExit' => 'inventory.manage',
+            'recordPhysicalCount' => 'inventory.manage',
+            'applyPhysicalAdjustment' => 'inventory.manage',
             'listMovements' => 'inventory.view',
         ],
     ],
