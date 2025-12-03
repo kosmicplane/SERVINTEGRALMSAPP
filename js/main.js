@@ -308,7 +308,7 @@ var utype = getUtype(aud.TYPE);
 var name = aud.RESPNAME;
 document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
 
-setMenuItems(actualUtype);1
+setMenuItems(actualUtype);
 applyPermissionGuards(actualUtype);
 }
 	else
