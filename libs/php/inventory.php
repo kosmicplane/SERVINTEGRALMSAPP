@@ -1,8 +1,10 @@
 <?php
+require_once __DIR__ . '/authorization.php';
 
 class inventory
 {
     private $db;
+    private $auth;
 
     public function __construct()
     {
@@ -10,7 +12,14 @@ class inventory
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $this->auth = new Authorization();
         $this->ensureSchema();
+    }
+
+    private function requirePermission(string $permission, array $context = [])
+    {
+        $user = $this->auth->resolveUser(['data' => $context]);
+        $this->auth->authorizePermission($permission, $user);
     }
 
     private function ensureSchema()
@@ -52,22 +61,6 @@ class inventory
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
     }
 
-    private function requireRole(array $allowedRoles)
-    {
-        $role = null;
-        if (isset($_SESSION['user']['role'])) {
-            $role = $_SESSION['user']['role'];
-        } elseif (isset($_SESSION['user']['TYPE'])) {
-            $role = $_SESSION['user']['TYPE'];
-        }
-
-        if ($role === null || !in_array($role, $allowedRoles, true)) {
-            throw new Exception('Operación no permitida para el rol actual');
-        }
-
-        return $role;
-    }
-
     private function sanitize($value)
     {
         return addslashes($value);
@@ -102,9 +95,10 @@ class inventory
 
     public function saveItem($info)
     {
-        $this->requireRole(['A', 'CO']);
-
         $otype = isset($info['otype']) ? $info['otype'] : 'c';
+        $permission = $otype === 'c' ? 'inventory.create' : 'inventory.edit';
+        $this->requirePermission($permission, $info);
+
         $CODE = $this->sanitize($info['a-inveCode'] ?? '');
         $DESCRIPTION = $this->sanitize($info['a-inveDesc'] ?? '');
         $COST = isset($info['a-inveCost']) ? floatval($info['a-inveCost']) : 0;
@@ -152,7 +146,7 @@ class inventory
 
     public function registerEntry($info)
     {
-        $this->requireRole(['A', 'CO']);
+        $this->requirePermission('inventory.movement', $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $subType = $info['sub_type'] ?? 'STOCK';
@@ -196,11 +190,7 @@ class inventory
     public function registerExit($info)
     {
         $subType = $info['sub_type'] ?? 'RQ_ALMACEN';
-        if ($subType === 'AJUSTE') {
-            $this->requireRole(['A']);
-        } else {
-            $this->requireRole(['A', 'CO']);
-        }
+        $this->requirePermission($subType === 'AJUSTE' ? 'inventory.adjustment' : 'inventory.movement', $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $qty = isset($info['quantity']) ? floatval($info['quantity']) : 0;

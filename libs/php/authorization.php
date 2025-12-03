@@ -43,18 +43,41 @@ class Authorization
             return true;
         }
 
-        $role = $user['role'] ?? $user['TYPE'] ?? null;
+        if (is_array($permission)) {
+            foreach ($permission as $candidate) {
+                if ($this->userHasPermission($candidate, $user, false)) {
+                    return true;
+                }
+            }
 
-        if ($role === null) {
-            throw new Exception('Rol del usuario no disponible para validar autorización');
+            throw new Exception('Operación no permitida para el rol actual');
         }
 
-        $allowedPermissions = $this->rolePermissions[$role] ?? [];
+        return $this->authorizePermission($permission, $user);
+    }
 
-        if (in_array('*', $allowedPermissions, true) || in_array($permission, $allowedPermissions, true)) {
+    public function authorizePermission(string $permission, array $user)
+    {
+        if ($this->userHasPermission($permission, $user, true)) {
             return true;
         }
 
         throw new Exception('Operación no permitida para el rol actual');
+    }
+
+    public function userHasPermission(string $permission, array $user, bool $failIfMissingRole = false)
+    {
+        $role = $user['role'] ?? $user['TYPE'] ?? null;
+
+        if ($role === null) {
+            if ($failIfMissingRole) {
+                throw new Exception('Rol del usuario no disponible para validar autorización');
+            }
+            return false;
+        }
+
+        $allowedPermissions = $this->rolePermissions[$role] ?? [];
+
+        return in_array('*', $allowedPermissions, true) || in_array($permission, $allowedPermissions, true);
     }
 }
