@@ -128,6 +128,7 @@ function loadCheck()
         inve_entry_targets = ["inv-entry-item", "inv-entry-type", "inv-entry-qty", "inv-entry-cost", "inv-entry-ot", "inv-entry-oc", "inv-entry-obs"];
         inve_exit_targets = ["inv-exit-item", "inv-exit-type", "inv-exit-qty", "inv-exit-ot", "inv-exit-obs"];
         inve_mov_targets = ["inv-mov-item", "inv-mov-type", "inv-mov-from", "inv-mov-to", "inv-mov-ot"];
+        inve_count_targets = ["inv-count-item", "inv-count-qty", "inv-count-cost", "inv-count-obs"];
 	
 	a_orde_targets = ["a-orderParent", "a-orderSucu", "a-orderMaquis", "a-orderPriority", "a-orderPriority2", "a-orderDesc", "a-orderContact", "a-orderOrderClient"];
 	f_orde_targets = ["f-orderParent", "f-orderSucu", "f-orderNum", "f-orderAuthor", "f-orderState", "f-orderLocation"];
@@ -1650,7 +1651,7 @@ function facturedLock(set)
 }
 function inventoryFillSelects(items)
 {
-        var selects = ["inv-entry-item", "inv-exit-item", "inv-mov-item"];
+        var selects = ["inv-entry-item", "inv-exit-item", "inv-mov-item", "inv-count-item"];
         selects.forEach(function(sel){
                 var select = document.getElementById(sel);
                 if(!select){return;}
@@ -1705,6 +1706,39 @@ function inventoryRegisterExit()
         sendAjax("inventory","registerExit",info,function(response){
                 alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Salida registrada",300);
                 clearFields(inve_exit_targets);
+                inveGet();
+                inventoryMovementsGet();
+        });
+}
+function inventoryRecordPhysical()
+{
+        var info = {};
+        info.item_code = $("#inv-count-item").val();
+        info.physical_count = parseFloat($("#inv-count-qty").val());
+        info.observaciones = $("#inv-count-obs").val();
+
+        if(!info.item_code || info.physical_count === undefined || isNaN(info.physical_count) || info.physical_count < 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes registrar un conteo físico válido",300); return;}
+
+        sendAjax("inventory","recordPhysicalCount",info,function(response){
+                alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Conteo físico guardado",300);
+                inveGet();
+        });
+}
+function inventoryApplyAdjustment()
+{
+        var info = {};
+        info.item_code = $("#inv-count-item").val();
+        info.physical_count = parseFloat($("#inv-count-qty").val());
+        info.unit_cost = $("#inv-count-cost").val();
+        info.observaciones = $("#inv-count-obs").val();
+
+        if(info.unit_cost === ""){info.unit_cost = null;}else{info.unit_cost = parseFloat(info.unit_cost);}        
+        if(!info.item_code || info.physical_count === undefined || isNaN(info.physical_count) || info.physical_count < 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes registrar un conteo físico válido",300); return;}
+        if(info.unit_cost !== null && (isNaN(info.unit_cost) || info.unit_cost < 0)){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes registrar un costo válido",300); return;}
+
+        sendAjax("inventory","applyPhysicalAdjustment",info,function(response){
+                alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Ajuste generado",300);
+                clearFields(inve_count_targets);
                 inveGet();
                 inventoryMovementsGet();
         });
@@ -7096,7 +7130,10 @@ function tableCreator(tableId, list)
                         var d = cellCreator('% Margen', list[i].MARGIN)
                         var sellValue = parseInt(list[i].COST)+((parseInt(list[i].COST)*parseInt(list[i].MARGIN))/100);
                         var e = cellCreator('Valor venta', addCommas(sellValue));
-                        var f = cellCreator('% Margen', list[i].AMOUNT);
+                        var existence = (list[i].REAL_AMOUNT !== undefined) ? list[i].REAL_AMOUNT : list[i].AMOUNT;
+                        var f = cellCreator('Existencia operativa', existence);
+                        var g = cellCreator('Conteo físico', list[i].PHYSICAL_COUNT);
+                        var h = cellCreator('Diferencia', list[i].VARIANCE);
                         
                         var edit = document.createElement("img");
                         edit.src = "irsc/editIcon.png";
@@ -7109,7 +7146,8 @@ function tableCreator(tableId, list)
                                 editMode = 1;
                                 var info = this.reg;
                                
-                                var items = [info.CODE, info.DESCRIPTION, info.COST, info.MARGIN, info.AMOUNT];
+                                var existenceValue = (info.REAL_AMOUNT !== undefined) ? info.REAL_AMOUNT : info.AMOUNT;
+                                var items = [info.CODE, info.DESCRIPTION, info.COST, info.MARGIN, existenceValue];
                                 document.getElementById("a-inveCode").disabled = true;
                                 inveSaveButton.innerHTML = "Guardar";
                                 infoFiller(items, a_inve_targets);
@@ -7140,7 +7178,7 @@ function tableCreator(tableId, list)
 
                         var icons = [edit, add, del];
                         var x = cellOptionsCreator('', icons)
-                        var cells = [a,b,c,d,e,f,x];
+                        var cells = [a,b,c,d,e,f,g,h,x];
                         for(var r=0; r<cells.length; r++){row.appendChild(cells[r]);}
                         table.appendChild(row);
                 }

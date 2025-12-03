@@ -1,12 +1,24 @@
 <?php
+require_once __DIR__ . '/authorization.php';
 
 class purchases
 {
     private $db;
+    private $auth;
 
     public function __construct()
     {
         $this->db = new sql_query();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $this->auth = new Authorization();
+    }
+
+    private function requirePermission(string $permission, array $context = [])
+    {
+        $user = $this->auth->resolveUser(['data' => $context]);
+        $this->auth->authorizePermission($permission, $user);
     }
 
     private function ensureTables()
@@ -23,6 +35,35 @@ class purchases
             CITY VARCHAR(128) DEFAULT NULL,
             CREATED_AT DATETIME NOT NULL,
             UPDATED_AT DATETIME NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+
+        $this->db->query("CREATE TABLE IF NOT EXISTS inve (
+            CODE VARCHAR(64) PRIMARY KEY,
+            DESCRIPTION VARCHAR(255) NOT NULL,
+            COST DECIMAL(18,4) NOT NULL DEFAULT 0,
+            MARGIN DECIMAL(10,2) NOT NULL DEFAULT 0,
+            AMOUNT DECIMAL(18,4) NOT NULL DEFAULT 0,
+            STATUS TINYINT(1) NOT NULL DEFAULT 1,
+            UTILITY_PCT DECIMAL(10,2) NOT NULL DEFAULT 0,
+            REAL_AMOUNT DECIMAL(18,4) NOT NULL DEFAULT 0,
+            PHYSICAL_COUNT DECIMAL(18,4) NOT NULL DEFAULT 0,
+            VARIANCE DECIMAL(18,4) NOT NULL DEFAULT 0,
+            UPDATED_AT DATETIME NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+
+        $this->db->query("CREATE TABLE IF NOT EXISTS inve_movimientos (
+            ID INT AUTO_INCREMENT PRIMARY KEY,
+            ITEM_CODE VARCHAR(64) NOT NULL,
+            TIPO_MOVIMIENTO VARCHAR(32) NOT NULL,
+            SUB_TIPO VARCHAR(32) NOT NULL,
+            CANTIDAD DECIMAL(18,4) NOT NULL DEFAULT 0,
+            COSTO_UNITARIO DECIMAL(18,4) NOT NULL DEFAULT 0,
+            COSTO_TOTAL DECIMAL(18,4) NOT NULL DEFAULT 0,
+            FECHA_HORA DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            ID_USUARIO VARCHAR(64) DEFAULT NULL,
+            ID_OT VARCHAR(64) DEFAULT NULL,
+            ID_OC VARCHAR(64) DEFAULT NULL,
+            OBSERVACIONES TEXT
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
         $this->db->query("CREATE TABLE IF NOT EXISTS purchase_orders (
@@ -71,32 +112,11 @@ class purchases
             CREATED_BY VARCHAR(128) DEFAULT NULL,
             CREATED_AT DATETIME NOT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
-
-        $this->db->query("CREATE TABLE IF NOT EXISTS inventory_items (
-            ID INT AUTO_INCREMENT PRIMARY KEY,
-            SKU VARCHAR(128) UNIQUE,
-            DESCRIPTION TEXT,
-            AVG_COST DECIMAL(18,4) DEFAULT 0,
-            ON_HAND DECIMAL(18,4) DEFAULT 0,
-            UPDATED_AT DATETIME NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
-
-        $this->db->query("CREATE TABLE IF NOT EXISTS inventory_movements (
-            ID INT AUTO_INCREMENT PRIMARY KEY,
-            SKU VARCHAR(128) NOT NULL,
-            QTY DECIMAL(18,4) NOT NULL,
-            UNIT_COST DECIMAL(18,2) NOT NULL,
-            MOV_TYPE VARCHAR(32) NOT NULL,
-            PO_CODE VARCHAR(64) DEFAULT NULL,
-            OT_CODE VARCHAR(64) DEFAULT NULL,
-            RQCODE VARCHAR(64) DEFAULT NULL,
-            CREATED_AT DATETIME NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-        ");
     }
 
     public function createSupplier($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $code = md5($info['NAME'] . $info['NIT'] . date('c'));
         $now = date('Y-m-d H:i:s');
@@ -112,6 +132,7 @@ class purchases
 
     public function listSuppliers()
     {
+        $this->requirePermission('purchases.orders');
         $this->ensureTables();
         $query = $this->db->query("SELECT * FROM suppliers ORDER BY NAME ASC");
         return ['message' => $query, 'status' => true];
@@ -119,6 +140,7 @@ class purchases
 
     public function createPoFromRq($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = 'OC-' . date('YmdHis');
         $now = date('Y-m-d H:i:s');
@@ -152,6 +174,7 @@ class purchases
 
     public function updateNegotiatedCosts($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = $info['po_code'];
         $items = isset($info['items']) ? $info['items'] : [];
@@ -174,6 +197,7 @@ class purchases
 
     public function listPurchaseOrders()
     {
+        $this->requirePermission('purchases.orders');
         $this->ensureTables();
         $query = $this->db->query("SELECT purchase_orders.*, suppliers.NAME AS SUPPLIERNAME FROM purchase_orders LEFT JOIN suppliers ON suppliers.CODE = purchase_orders.SUPPLIERCODE ORDER BY purchase_orders.CREATED_AT DESC LIMIT 50");
 
@@ -186,6 +210,7 @@ class purchases
 
     public function receivePurchase($info)
     {
+        $this->requirePermission('purchases.orders', $info);
         $this->ensureTables();
         $poCode = $info['po_code'];
         $receipts = isset($info['receipts']) ? $info['receipts'] : [];
@@ -202,17 +227,18 @@ class purchases
 
             $this->db->query("INSERT INTO po_receipts (PO_CODE, ITEM_CODE, RECEIVED_QTY, UNIT_COST, OT_CODE, RQCODE, CREATED_BY, CREATED_AT) VALUES ('{$poCode}', '{$itemCode}', '{$qty}', '{$cost}', '{$ot}', '{$rq}', '{$info['created_by']}', '{$now}')");
 
-            $existing = $this->db->query("SELECT * FROM inventory_items WHERE SKU = '{$sku}'");
+            $existing = $this->db->query("SELECT * FROM inve WHERE CODE = '{$sku}'");
             if (count($existing) > 0) {
                 $current = $existing[0];
-                $newQty = $current['ON_HAND'] + $qty;
-                $newAvg = $newQty > 0 ? ((($current['AVG_COST'] * $current['ON_HAND']) + ($cost * $qty)) / $newQty) : $cost;
-                $this->db->query("UPDATE inventory_items SET AVG_COST = '{$newAvg}', ON_HAND = '{$newQty}', DESCRIPTION = '{$desc}', UPDATED_AT = '{$now}' WHERE SKU = '{$sku}'");
+                $newQty = $current['AMOUNT'] + $qty;
+                $newAvg = $newQty > 0 ? ((($current['COST'] * $current['AMOUNT']) + ($cost * $qty)) / $newQty) : $cost;
+                $this->db->query("UPDATE inve SET COST = '{$newAvg}', AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}', DESCRIPTION = '{$desc}', UPDATED_AT = '{$now}' WHERE CODE = '{$sku}'");
             } else {
-                $this->db->query("INSERT INTO inventory_items (SKU, DESCRIPTION, AVG_COST, ON_HAND, UPDATED_AT) VALUES ('{$sku}', '{$desc}', '{$cost}', '{$qty}', '{$now}')");
+                $this->db->query("INSERT INTO inve (CODE, DESCRIPTION, COST, AMOUNT, REAL_AMOUNT, UPDATED_AT) VALUES ('{$sku}', '{$desc}', '{$cost}', '{$qty}', '{$qty}', '{$now}')");
             }
 
-            $this->db->query("INSERT INTO inventory_movements (SKU, QTY, UNIT_COST, MOV_TYPE, PO_CODE, OT_CODE, RQCODE, CREATED_AT) VALUES ('{$sku}', '{$qty}', '{$cost}', 'RECEIPT', '{$poCode}', '{$ot}', '{$rq}', '{$now}')");
+            $totalCost = $qty * $cost;
+            $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_OC, ID_OT, OBSERVACIONES, FECHA_HORA, ID_USUARIO) VALUES ('{$sku}', 'ENTRADA', 'OC', '{$qty}', '{$cost}', '{$totalCost}', '{$poCode}', '{$ot}', 'Entrada de mercancía OC {$poCode}', '{$now}', '{$info['created_by']}')");
         }
 
         $this->db->query("UPDATE purchase_orders SET STATUS = 'RECEIVED', UPDATED_AT = '{$now}' WHERE CODE = '{$poCode}'");
