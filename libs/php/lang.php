@@ -1,16 +1,17 @@
 <?php
 
 class lang{
-	
-	
-
 	private $db = null;
-	
-	function __construct()
-	{
-		$this->db = new sql_query();
-		session_start();
-	}
+    function __construct()
+    {
+        $this->db = new sql_query();
+
+        // Igual que en users: no reabrir la sesión
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
 	
 	function langGet($data)
 	{
