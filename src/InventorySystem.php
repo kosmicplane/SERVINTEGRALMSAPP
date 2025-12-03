@@ -43,18 +43,19 @@ class InventorySystem
         return (int)$this->pdo->lastInsertId();
     }
 
-    public function createInventoryItem(string $sku, string $name, int $stock = 0, float $averageCost = 0): int
+    public function createInventoryItem(string $sku, string $name, float $stock = 0, float $averageCost = 0): string
     {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO inventory_items(sku, name, stock, average_cost) VALUES(:sku, :name, :stock, :average_cost)'
+            'INSERT INTO inve(CODE, DESCRIPTION, COST, AMOUNT, REAL_AMOUNT) VALUES(:code, :desc, :cost, :amount, :real_amount)'
         );
         $stmt->execute([
-            ':sku' => $sku,
-            ':name' => $name,
-            ':stock' => $stock,
-            ':average_cost' => $averageCost,
+            ':code' => $sku,
+            ':desc' => $name,
+            ':cost' => $averageCost,
+            ':amount' => $stock,
+            ':real_amount' => $stock,
         ]);
-        return (int)$this->pdo->lastInsertId();
+        return $sku;
     }
 
     public function createQuotation(int $supplierId, array $items, string $role): int
@@ -75,11 +76,11 @@ class InventorySystem
 
         foreach ($items as $item) {
             $insertItem = $this->pdo->prepare(
-                'INSERT INTO quotation_items(quotation_id, inventory_item_id, quantity, unit_price) VALUES(:quotation, :inventory, :qty, :price)'
+                'INSERT INTO quotation_items(quotation_id, item_code, quantity, unit_price) VALUES(:quotation, :item_code, :qty, :price)'
             );
             $insertItem->execute([
                 ':quotation' => $quotationId,
-                ':inventory' => $item['inventory_item_id'],
+                ':item_code' => $item['item_code'],
                 ':qty' => $item['quantity'],
                 ':price' => $item['unit_price'],
             ]);
@@ -146,7 +147,7 @@ class InventorySystem
             $rq = $this->getRequisition($requisitionId);
 
             foreach ($items as $item) {
-                $this->consumeInventory((int)$item['inventory_item_id'], (int)$item['quantity'], $rq['work_order_id'], $requisitionId);
+                $this->consumeInventory($item['item_code'], (float)$item['quantity'], $rq['work_order_id'], $requisitionId);
             }
 
             $update = $this->pdo->prepare('UPDATE requisitions SET status = :status WHERE id = :id');
@@ -199,11 +200,11 @@ class InventorySystem
 
         foreach ($items as $item) {
             $insert = $this->pdo->prepare(
-                'INSERT INTO purchase_order_items(purchase_order_id, inventory_item_id, quantity, unit_cost) VALUES(:po, :inventory, :qty, :cost)'
+                'INSERT INTO purchase_order_items(purchase_order_id, item_code, quantity, unit_cost) VALUES(:po, :item_code, :qty, :cost)'
             );
             $insert->execute([
                 ':po' => $poId,
-                ':inventory' => $item['inventory_item_id'],
+                ':item_code' => $item['item_code'],
                 ':qty' => $item['quantity'],
                 ':cost' => $item['expected_unit_cost'] ?? 0,
             ]);
@@ -219,8 +220,8 @@ class InventorySystem
         try {
             foreach ($receipts as $receipt) {
                 $this->increaseInventory(
-                    (int)$receipt['inventory_item_id'],
-                    (int)$receipt['quantity'],
+                    $receipt['item_code'],
+                    (float)$receipt['quantity'],
                     (float)$receipt['unit_cost'],
                     $purchaseOrderId
                 );
@@ -238,7 +239,7 @@ class InventorySystem
     public function exportInventory(string $role): string
     {
         $this->requirePermission($role, 'export_inventory');
-        $stmt = $this->pdo->query('SELECT sku, name, stock, average_cost FROM inventory_items ORDER BY sku');
+        $stmt = $this->pdo->query('SELECT CODE AS sku, DESCRIPTION AS name, AMOUNT AS stock, COST AS average_cost FROM inve ORDER BY CODE');
         $rows = $stmt ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
 
         $csv = fopen('php://temp', 'r+');
@@ -256,70 +257,75 @@ class InventorySystem
     {
         foreach ($items as $item) {
             $stmt = $this->pdo->prepare(
-                'INSERT INTO requisition_items(requisition_id, inventory_item_id, quantity, expected_unit_cost) VALUES(:rq, :inventory, :qty, :cost)'
+                'INSERT INTO requisition_items(requisition_id, item_code, quantity, expected_unit_cost) VALUES(:rq, :item_code, :qty, :cost)'
             );
             $stmt->execute([
                 ':rq' => $requisitionId,
-                ':inventory' => $item['inventory_item_id'],
+                ':item_code' => $item['item_code'],
                 ':qty' => $item['quantity'],
                 ':cost' => $item['expected_unit_cost'] ?? null,
             ]);
         }
     }
 
-    private function consumeInventory(int $inventoryItemId, int $quantity, ?int $workOrderId, int $requisitionId): void
+    private function consumeInventory(string $itemCode, float $quantity, ?int $workOrderId, int $requisitionId): void
     {
-        $current = $this->getInventoryItem($inventoryItemId);
-        if ($current['stock'] < $quantity) {
+        $current = $this->getInventoryItem($itemCode);
+        if ($current['AMOUNT'] < $quantity) {
             throw new RuntimeException('Inventario insuficiente para completar la requisición');
         }
 
-        $newStock = $current['stock'] - $quantity;
-        $update = $this->pdo->prepare('UPDATE inventory_items SET stock = :stock WHERE id = :id');
-        $update->execute([':stock' => $newStock, ':id' => $inventoryItemId]);
+        $newStock = $current['AMOUNT'] - $quantity;
+        $update = $this->pdo->prepare('UPDATE inve SET AMOUNT = :stock, REAL_AMOUNT = :real WHERE CODE = :code');
+        $update->execute([':stock' => $newStock, ':real' => $newStock, ':code' => $itemCode]);
 
         $movement = $this->pdo->prepare(
-            'INSERT INTO inventory_movements(inventory_item_id, movement_type, quantity, unit_cost, work_order_id, reference_type, reference_id)
-            VALUES(:inventory, :type, :qty, :cost, :wo, :ref_type, :ref_id)'
+            'INSERT INTO inve_movimientos(ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_OT, ID_OC, OBSERVACIONES)
+            VALUES(:item_code, :type, :sub_type, :qty, :cost, :total, :wo, :oc, :obs)'
         );
         $movement->execute([
-            ':inventory' => $inventoryItemId,
-            ':type' => 'OUT',
+            ':item_code' => $itemCode,
+            ':type' => 'SALIDA',
+            ':sub_type' => 'RQ',
             ':qty' => $quantity,
-            ':cost' => $current['average_cost'],
+            ':cost' => $current['COST'],
+            ':total' => $quantity * $current['COST'],
             ':wo' => $workOrderId,
-            ':ref_type' => 'requisition',
-            ':ref_id' => $requisitionId,
+            ':oc' => null,
+            ':obs' => 'Salida por requisición #' . $requisitionId,
         ]);
     }
 
-    private function increaseInventory(int $inventoryItemId, int $quantity, float $unitCost, int $purchaseOrderId): void
+    private function increaseInventory(string $itemCode, float $quantity, float $unitCost, int $purchaseOrderId): void
     {
-        $current = $this->getInventoryItem($inventoryItemId);
-        $existingStockValue = $current['stock'] * $current['average_cost'];
+        $current = $this->getInventoryItem($itemCode);
+        $existingStockValue = $current['AMOUNT'] * $current['COST'];
         $newStockValue = $existingStockValue + ($quantity * $unitCost);
-        $newStock = $current['stock'] + $quantity;
+        $newStock = $current['AMOUNT'] + $quantity;
         $newAverage = $newStock > 0 ? $newStockValue / $newStock : $unitCost;
 
-        $update = $this->pdo->prepare('UPDATE inventory_items SET stock = :stock, average_cost = :cost WHERE id = :id');
+        $update = $this->pdo->prepare('UPDATE inve SET AMOUNT = :stock, REAL_AMOUNT = :real, COST = :cost WHERE CODE = :code');
         $update->execute([
             ':stock' => $newStock,
+            ':real' => $newStock,
             ':cost' => $newAverage,
-            ':id' => $inventoryItemId,
+            ':code' => $itemCode,
         ]);
 
         $movement = $this->pdo->prepare(
-            'INSERT INTO inventory_movements(inventory_item_id, movement_type, quantity, unit_cost, work_order_id, reference_type, reference_id)
-            VALUES(:inventory, :type, :qty, :cost, :wo, :ref_type, :ref_id)'
+            'INSERT INTO inve_movimientos(ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_OT, ID_OC, OBSERVACIONES)
+            VALUES(:item_code, :type, :sub_type, :qty, :cost, :total, :wo, :oc, :obs)'
         );
         $movement->execute([
-            ':inventory' => $inventoryItemId,
-            ':type' => 'IN',
+            ':item_code' => $itemCode,
+            ':type' => 'ENTRADA',
+            ':sub_type' => 'OC',
             ':qty' => $quantity,
             ':cost' => $unitCost,
+            ':total' => $quantity * $unitCost,
             ':wo' => null,
-            ':ref_type' => 'purchase_order',
-            ':ref_id' => $purchaseOrderId,
+            ':oc' => $purchaseOrderId,
+            ':obs' => 'Entrada por OC #' . $purchaseOrderId,
         ]);
     }
 
@@ -341,10 +347,10 @@ class InventorySystem
         return $result;
     }
 
-    private function getInventoryItem(int $inventoryItemId): array
+    private function getInventoryItem(string $itemCode): array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM inventory_items WHERE id = :id');
-        $stmt->execute([':id' => $inventoryItemId]);
+        $stmt = $this->pdo->prepare('SELECT * FROM inve WHERE CODE = :code');
+        $stmt->execute([':code' => $itemCode]);
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$result) {
             throw new RuntimeException('Ítem de inventario no encontrado');

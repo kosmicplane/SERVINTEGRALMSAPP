@@ -60,6 +60,11 @@ return [
             'saveItem' => ['inventory.create', 'inventory.edit', 'inventory.manage'],
             'registerEntry' => ['inventory.movement', 'inventory.manage'],
             'registerExit' => ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
+            'saveItem' => 'inventory.manage',
+            'registerEntry' => 'inventory.manage',
+            'registerExit' => 'inventory.manage',
+            'recordPhysicalCount' => 'inventory.manage',
+            'applyPhysicalAdjustment' => 'inventory.manage',
             'listMovements' => 'inventory.view',
         ],
         'purchases' => [

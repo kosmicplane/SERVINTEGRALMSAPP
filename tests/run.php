@@ -31,10 +31,10 @@ runTest('Cotización aprobada genera OT', function (InventorySystem $system, PDO
     $system->setPermission('manager', 'generate_work_order', true);
 
     $supplierId = $system->createSupplier('Proveedor Demo');
-    $itemId = $system->createInventoryItem('SKU-1', 'Producto 1');
+    $itemCode = $system->createInventoryItem('SKU-1', 'Producto 1');
 
     $quotationId = $system->createQuotation($supplierId, [
-        ['inventory_item_id' => $itemId, 'quantity' => 2, 'unit_price' => 100],
+        ['item_code' => $itemCode, 'quantity' => 2, 'unit_price' => 100],
     ], 'manager');
 
     $workOrderId = $system->approveQuotation($quotationId, 'manager');
@@ -53,22 +53,23 @@ runTest('RQ de almacén descuenta inventario y referencia a OT', function (Inven
     $system->setPermission('storekeeper', 'generate_work_order', true);
 
     $workOrderId = $system->generateWorkOrder(null, 'storekeeper');
-    $itemId = $system->createInventoryItem('SKU-2', 'Cable', 10, 5.0);
+    $itemCode = $system->createInventoryItem('SKU-2', 'Cable', 10, 5.0);
 
     $rqId = $system->createWarehouseRequisition($workOrderId, [
-        ['inventory_item_id' => $itemId, 'quantity' => 4],
+        ['item_code' => $itemCode, 'quantity' => 4],
     ], 'storekeeper');
 
     $system->fulfillWarehouseRequisition($rqId, 'storekeeper');
 
-    $stmt = $pdo->query('SELECT stock FROM inventory_items WHERE id = ' . $itemId);
+    $stmt = $pdo->prepare('SELECT AMOUNT FROM inve WHERE CODE = :code');
+    $stmt->execute([':code' => $itemCode]);
     $stock = (int)$stmt->fetchColumn();
     if ($stock !== 6) {
         throw new RuntimeException('El stock esperado de 6 no coincide');
     }
 
-    $movement = $pdo->query('SELECT work_order_id, reference_type FROM inventory_movements ORDER BY id DESC LIMIT 1')->fetch(PDO::FETCH_ASSOC);
-    if ($movement['work_order_id'] != $workOrderId || $movement['reference_type'] !== 'requisition') {
+    $movement = $pdo->query('SELECT ID_OT FROM inve_movimientos ORDER BY ID DESC LIMIT 1')->fetch(PDO::FETCH_ASSOC);
+    if ($movement['ID_OT'] != $workOrderId) {
         throw new RuntimeException('El movimiento no está ligado correctamente a la OT');
     }
 });
@@ -80,27 +81,28 @@ runTest('RQ de compras genera OC y entrada con costos promedio', function (Inven
     $system->setPermission('buyer', 'generate_work_order', true);
 
     $supplierId = $system->createSupplier('Proveedor Compras');
-    $itemId = $system->createInventoryItem('SKU-3', 'Pieza', 5, 20.0);
+    $itemCode = $system->createInventoryItem('SKU-3', 'Pieza', 5, 20.0);
     $workOrderId = $system->generateWorkOrder(null, 'buyer');
 
     $rqId = $system->createPurchaseRequisition($workOrderId, [
-        ['inventory_item_id' => $itemId, 'quantity' => 5, 'expected_unit_cost' => 18.0],
+        ['item_code' => $itemCode, 'quantity' => 5, 'expected_unit_cost' => 18.0],
     ], 'buyer');
 
     $poId = $system->createPurchaseOrderFromRequisition($rqId, $supplierId, 'buyer');
 
     $system->receivePurchaseOrder($poId, [
-        ['inventory_item_id' => $itemId, 'quantity' => 5, 'unit_cost' => 16.0],
+        ['item_code' => $itemCode, 'quantity' => 5, 'unit_cost' => 16.0],
     ], 'buyer');
 
-    $stmt = $pdo->query('SELECT stock, average_cost FROM inventory_items WHERE id = ' . $itemId);
+    $stmt = $pdo->prepare('SELECT AMOUNT, COST FROM inve WHERE CODE = :code');
+    $stmt->execute([':code' => $itemCode]);
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ((int)$data['stock'] !== 10) {
+    if ((int)$data['AMOUNT'] !== 10) {
         throw new RuntimeException('La entrada no actualizó el stock correctamente');
     }
 
     $expectedAverage = ((5 * 20) + (5 * 16)) / 10;
-    if (abs($data['average_cost'] - $expectedAverage) > 0.0001) {
+    if (abs($data['COST'] - $expectedAverage) > 0.0001) {
         throw new RuntimeException('El costo promedio no coincide');
     }
 
@@ -123,12 +125,12 @@ runTest('Exportación de inventario genera CSV', function (InventorySystem $syst
 runTest('Restricciones de permisos bloquean operaciones', function (InventorySystem $system) {
     $system->setPermission('guest', 'create_quotation', false);
     $supplierId = $system->createSupplier('Proveedor Restringido');
-    $itemId = $system->createInventoryItem('SKU-5', 'Bloqueado');
+    $itemCode = $system->createInventoryItem('SKU-5', 'Bloqueado');
     $error = null;
 
     try {
         $system->createQuotation($supplierId, [
-            ['inventory_item_id' => $itemId, 'quantity' => 1, 'unit_price' => 10],
+            ['item_code' => $itemCode, 'quantity' => 1, 'unit_price' => 10],
         ], 'guest');
     } catch (Throwable $e) {
         $error = $e->getMessage();
