@@ -5,10 +5,6 @@ class lang{
     function __construct()
     {
         $this->db = new sql_query();
-
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
     }
 	
 	function langGet($data)
