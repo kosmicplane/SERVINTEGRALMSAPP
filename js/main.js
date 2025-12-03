@@ -1750,6 +1750,18 @@ function inventoryMovementsGet()
                 }
         });
 }
+function inventoryExport()
+{
+        sendAjax("inventory","exportInventory",{},function(response){
+                var path = response.message || response;
+                if(!path){
+                        alertBox(language["alert"],"<img src='irsc/infoGeneral.png' class='infoIcon'/><br>No se pudo generar el archivo de inventario",300);
+                        return;
+                }
+
+                downloadReport(path);
+        });
+}
 function setStarttime(value)
 {
         var thisTime = value;

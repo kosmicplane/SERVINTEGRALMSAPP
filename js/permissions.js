@@ -51,7 +51,8 @@ const METHOD_PERMISSION_MAP = {
         saveItem: 'inventory.manage',
         registerEntry: 'inventory.manage',
         registerExit: 'inventory.manage',
-        listMovements: 'inventory.view'
+        listMovements: 'inventory.view',
+        exportInventory: 'inventory.view'
     }
 };
 
@@ -61,6 +62,9 @@ const ACTION_PERMISSION_MAP = {
         '#addInvQty',
         '#inventoryEntryBtn',
         '#inventoryExitBtn'
+    ],
+    'inventory.view': [
+        '#inventoryExportBtn'
     ],
     'costs.manage': [
         '#orderSaveButton',

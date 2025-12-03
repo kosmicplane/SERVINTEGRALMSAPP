@@ -53,6 +53,7 @@ return [
             'registerEntry' => 'inventory.manage',
             'registerExit' => 'inventory.manage',
             'listMovements' => 'inventory.view',
+            'exportInventory' => 'inventory.view',
         ],
     ],
 ];
