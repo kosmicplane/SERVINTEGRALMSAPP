@@ -11,12 +11,6 @@ class users{
     function __construct()
     {
         $this->db = new sql_query();
-
-        // Solo iniciar sesión si aún no hay una activa
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $this->auth = new Authorization();
     }
 	private function requirePermission(string $permission, array $context = [])
