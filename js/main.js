@@ -1,6 +1,7 @@
 var defaultLanguage = {
                 alert: "Información",
                 missAuth: "No autorizado",
+                missingContext: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>No se pudo validar la sesión actual. Por favor vuelve a iniciar sesión",
                 sys022: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes selecionar un tipo de usuario",
                 sys005: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir un Email valido",
                 sys006: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una contraseña",
@@ -330,15 +331,20 @@ function checkLogin()
 		
 		document.getElementById("exitIcon").style.display = "block";
 
-		aud = JSON.parse(window.localStorage.getItem("aud"));
-		actualUtype = window.localStorage.getItem("userLoged");
+                aud = JSON.parse(window.localStorage.getItem("aud"));
+                actualUtype = aud.TYPE || window.localStorage.getItem("userLoged");
+                if (actualUtype)
+                {
+                                window.localStorage.setItem("userLoged", actualUtype);
+                }
 
-var utype = getUtype(aud.TYPE);
-var name = aud.RESPNAME;
-document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
+                var utype = getUtype(aud.TYPE);
+                var name = aud.RESPNAME;
+                document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
 
-setMenuItems(actualUtype);
-applyPermissionGuards(actualUtype);
+                setMenuItems(actualUtype);
+                applyPermissionGuards(actualUtype);
+                document.body.classList.toggle('hide-prices', actualUtype === 'T' || actualUtype === 'Técnico');
 }
 	else
 	{
@@ -9506,12 +9512,35 @@ function addCommas(nStr)
 }
 function guardRequestPermissions(obj, method)
 {
-		if (typeof canCallProtectedMethod !== 'function')
-		{
-				return true;
-		}
+                if (typeof canCallProtectedMethod !== 'function')
+                {
+                                return { allowed: true };
+                }
 
-		return canCallProtectedMethod(obj, method, actualUtype);
+                var role = actualUtype;
+
+                if (!role && typeof getStoredUserContext === 'function')
+                {
+                                var storedContext = getStoredUserContext();
+                                if (storedContext && storedContext.role)
+                                {
+                                                role = storedContext.role;
+                                                actualUtype = role;
+                                }
+                }
+
+                if (!role)
+                {
+                                return {
+                                                allowed: false,
+                                                reason: language["missingContext"] || "No hay un usuario activo. Inicia sesión nuevamente."
+                                };
+                }
+
+                return {
+                                allowed: canCallProtectedMethod(obj, method, role),
+                                reason: language["missAuth"] || "No autorizado"
+                };
 }
 function getUserContextForRequest()
 {
@@ -9538,11 +9567,15 @@ function getUserContextForRequest()
 }
 function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorFunction)
 {
-                if (!guardRequestPermissions(obj, method))
+                var permissionResult = guardRequestPermissions(obj, method);
+                var isAllowed = typeof permissionResult === 'object' ? permissionResult.allowed : permissionResult;
+
+                if (!isAllowed)
                 {
-                                alertBox(language["alert"], language["missAuth"], 300);
-				return;
-		}
+                                var reason = (permissionResult && permissionResult.reason) ? permissionResult.reason : (language["missAuth"] || "No autorizado");
+                                alertBox(language["alert"], reason, 300);
+                                return;
+                }
 
 		showLoader = 1;
 
