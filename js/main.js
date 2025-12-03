@@ -14,6 +14,7 @@ var defaultLanguage = {
 };
 
 var language = {};
+var activeInterface = "";
 
 $(document).ready(function() {
     loadCheck();
@@ -696,15 +697,20 @@ function setSearchBoxLegs(list)
 // IFLOAD
 function ifLoad(code)
 {
-	var ifc = document.getElementById(code);
-	var box = document.getElementById("wa");
-	var limbo = document.getElementById("hidden");
-	if(box.children.length > 0)
-	{
-		limbo.appendChild(box.children[0]);
-	}
+        var ifc = document.getElementById(code);
+        var box = document.getElementById("wa");
+        var limbo = document.getElementById("hidden");
+        if(!ifc){return;}
+        if(box.children.length > 0)
+        {
+                var currentTab = box.children[0];
+                currentTab.classList.add("hiddenTab");
+                limbo.appendChild(currentTab);
+        }
 
-	box.appendChild(ifc);
+        ifc.classList.remove("hiddenTab");
+        box.appendChild(ifc);
+        activeInterface = code;
 	
 	if(code == "ifPassRec")
 	{
@@ -968,12 +974,7 @@ function ifLoad(code)
         }
         if(code == "ifMasterP")
         {
-                clearSupplierForm();
-                loadSuppliers();
-                loadPurchaseOrders();
-                poDraftItems = [];
-                receiptDraftItems = [];
-                renderPoDraftItems();
+                initializePurchaseTab();
         }
         if(code == "ifMasterF")
         {
@@ -8989,10 +8990,23 @@ function pssChange(mail, type)
 	
 	container.appendChild(icon);
 	container.appendChild(changePassBox);
-	container.appendChild(recMailSend);
+        container.appendChild(recMailSend);
         container.appendChild(recMailCancel);
 
         formBox("pssChangeBox",language["changePass"]+" para "+mail,300);
+}
+function initializePurchaseTab()
+{
+        if(activeInterface !== "ifMasterP")
+        {
+                return;
+        }
+        clearSupplierForm();
+        loadSuppliers();
+        loadPurchaseOrders();
+        poDraftItems = [];
+        receiptDraftItems = [];
+        renderPoDraftItems();
 }
 function clearSupplierForm()
 {
