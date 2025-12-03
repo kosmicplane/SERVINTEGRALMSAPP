@@ -6,12 +6,10 @@ class lang{
     {
         $this->db = new sql_query();
 
-        // Igual que en users: no reabrir la sesión
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
-
 	
 	function langGet($data)
 	{
