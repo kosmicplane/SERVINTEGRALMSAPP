@@ -367,6 +367,31 @@ class inventory
 
         return ['message' => $query, 'status' => true];
     }
+
+    public function exportInventory()
+    {
+        $this->requireRole(['A', 'CO', 'JZ', 'C']);
+
+        $rows = $this->db->query("SELECT CODE, DESCRIPTION, AMOUNT, COST FROM inve WHERE STATUS = 1 ORDER BY CODE ASC");
+
+        $csv = "Codigo,Descripcion,Existencias,Costo total\n";
+        foreach ($rows as $row) {
+            $code = str_replace('"', '""', $row['CODE']);
+            $desc = str_replace('"', '""', $row['DESCRIPTION']);
+            $amount = number_format((float) $row['AMOUNT'], 4, '.', '');
+            $totalCost = number_format((float) $row['AMOUNT'] * (float) $row['COST'], 2, '.', '');
+
+            $csv .= "\"{$code}\",\"{$desc}\",{$amount},{$totalCost}\n";
+        }
+
+        $fileName = 'inventory-' . date('Ymd_His') . '.csv';
+        $relativePath = "reports/{$fileName}";
+        $absolutePath = __DIR__ . '/../../' . $relativePath;
+
+        file_put_contents($absolutePath, $csv);
+
+        return ['message' => $relativePath, 'status' => true];
+    }
 }
 
 ?>

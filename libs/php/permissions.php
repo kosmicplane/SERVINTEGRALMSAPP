@@ -66,6 +66,7 @@ return [
             'recordPhysicalCount' => 'inventory.manage',
             'applyPhysicalAdjustment' => 'inventory.manage',
             'listMovements' => 'inventory.view',
+            'exportInventory' => 'inventory.view',
         ],
         'purchases' => [
             'createSupplier' => 'purchases.orders',
