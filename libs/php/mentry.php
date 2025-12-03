@@ -44,11 +44,13 @@ class entryPoint{
                 $auth->assertUserConsistency($user, $this->params["data"] ?? []);
                 $auth->authorize($class, $method, $user);
             }
-    
+
             $exec = $instance->$method($this->params["data"]);
             $resp = array("data" => $exec, "exception" => "");
             echo json_encode($resp);
-        } catch (Exception $e) {
+
+        // ⬇️ capturamos cualquier cosa que pueda volar, no sólo Exception
+        } catch (Throwable $e) {
             $resp = array("data" => $exec, "exception" => $e->getMessage());
             echo json_encode($resp);
         }
