@@ -15,42 +15,42 @@ class entryPoint{
             $this->params = json_decode(file_get_contents("php://input"), true);
         }
     }
-
     function start()
     {
-        session_start();
+        // Iniciar la sesión solo si no hay una activa
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         require_once "dataBase.php";
         require_once "authorization.php";
         require_once $this->params["class"].".php";
-
+    
         $class = $this->params["class"];
         $instance = new $class();
         $method = $this->params["method"];
-
+    
         $publicEndpoints = array(
             'users' => array('login'),
-            'lang' => array('langGet'),
+            'lang'  => array('langGet'),
         );
-
+    
         $exec = null;
-
-        try
-        {
+    
+        try {
             if (!(isset($publicEndpoints[$class]) && in_array($method, $publicEndpoints[$class], true))) {
                 $auth = new Authorization();
                 $user = $auth->resolveUser($this->params);
                 $auth->assertUserConsistency($user, $this->params["data"] ?? []);
                 $auth->authorize($class, $method, $user);
             }
-
+    
             $exec = $instance->$method($this->params["data"]);
             $resp = array("data" => $exec, "exception" => "");
-            return json_encode($resp);
-        }
-        catch (Exception $e)
-        {
+            echo json_encode($resp);
+        } catch (Exception $e) {
             $resp = array("data" => $exec, "exception" => $e->getMessage());
-            return json_encode($resp);
+            echo json_encode($resp);
         }
     }
 }
