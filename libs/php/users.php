@@ -1780,56 +1780,6 @@ class users{
         }
         function getTechiListO($info)
         {
-                try {
-                        $this->requirePermission('costSheets.manage', $info);
-                } catch (Exception $e) {
-                        return [
-                                "message" => $e->getMessage(),
-                                "status" => false,
-                        ];
-                }
-
-                $str = "SELECT CODE, RESPNAME, CATEGORY, TYPE, LOCATION, MASTERY, DETAILS FROM users WHERE STATUS = '1' AND TYPE IN ('T','JZ','CO') ORDER BY TYPE ASC";
-                $query = $this->db->query($str);
-
-                if(count($query) > 0)
-                {
-                        $resp["message"] = $query;
-                        $resp["status"] = true;
-                }
-                else
-                {
-                        $resp["message"] = array();
-                        $resp["status"] = true;
-                }
-
-                return $resp;
-        }
-	function setTechO($info)
-	{
-		$ocode = $info["ocode"];
-		$name = $info["name"];
-		$code = $info["code"];
-		$resptype = $info["resptype"];
-		
-		if($resptype == "T")
-		{
-			$str = "UPDATE orders SET TECHCODE = '".$code."', TECHNAME = '".$name."', STATE = '2', RESPTYPE = '$resptype'  WHERE CODE ='".$ocode."'";
-		}
-		else if($resptype == "JZ")
-		{
-			$str = "UPDATE orders SET JZCODE = '".$code."',  TECHNAME = '".$name."', STATE = '6', RESPTYPE = '$resptype'  WHERE CODE ='".$ocode."'";
-		}
-		else if($resptype == "CO")
-		{
-			$str = "UPDATE orders SET AUTORCODE = '".$code."',  TECHNAME = '".$name."', STATE = '1', RESPTYPE = '$resptype'  WHERE CODE ='".$ocode."'";
-		}
-		
-		
-		$query = $this->db->query($str);
-	}
-        function getTechiListO($info)
-        {
                 $str = "SELECT CODE, RESPNAME, CATEGORY, TYPE, LOCATION, MASTERY, DETAILS  FROM users WHERE (TYPE = 'T' OR TYPE = 'JZ' OR TYPE = 'CO') AND STATUS = '1' ORDER BY TYPE ASC";
                 $query = $this->db->executePrepared($str);
 
