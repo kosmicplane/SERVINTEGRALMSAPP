@@ -37,9 +37,9 @@ class sql_query
 		$this->pg->rollBack();	
 	}
 
-	function query($string)
-	{
-		$resp = $this->pg->query($string);
+        function query($string)
+        {
+                $resp = $this->pg->query($string);
 		$error = $this->pg->errorInfo();
 		if(empty($error[1]))
 		{
@@ -57,8 +57,34 @@ class sql_query
 
 			throw new Exception(implode($error," "), 1);
 	
-		}
-	}
+                }
+        }
+
+        function executePrepared($string, array $params = array(), $expectsResultSet = true)
+        {
+                $stmt = $this->pg->prepare($string);
+
+                if ($stmt === false)
+                {
+                        $error = $this->pg->errorInfo();
+                        throw new Exception(implode($error, " "), 1);
+                }
+
+                $executed = $stmt->execute($params);
+
+                if ($executed === false)
+                {
+                        $error = $stmt->errorInfo();
+                        throw new Exception(implode($error, " "), 1);
+                }
+
+                if ($expectsResultSet)
+                {
+                        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+
+                return $stmt->rowCount();
+        }
 }
 
 ?>
