@@ -1,3 +1,19 @@
+var defaultLanguage = {
+                alert: "Información",
+                missAuth: "No autorizado",
+                sys022: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes selecionar un tipo de usuario",
+                sys005: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir un Email valido",
+                sys006: "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una contraseña",
+                loginTitle1: "Control de Mantenimientos",
+                loginTitle2: "Seleccione su tipo de usuario e ingrese sus datos para empezar",
+                loginButton: "Ingreso",
+                userLoginBox: "Email",
+                userPassBox: "Contraseña",
+                accept: "Aceptar"
+};
+
+var language = {};
+
 $(document).ready(function() {
     loadCheck();
 });
@@ -262,9 +278,9 @@ function checkStart()
 }
 function langPickIni()
 {
-	if (!localStorage.getItem("langPl")) 
-	{
-		lang = "es_co"; 
+        if (!localStorage.getItem("langPl"))
+        {
+                lang = "es_co";
 		langGetIni(lang);
 	}
 	else
@@ -273,18 +289,31 @@ function langPickIni()
 		langGetIni(lang);
 	}
 }
-function langGetIni(l) 
+function langGetIni(l)
 {
-	var info ={};
-	info.lang = l;
-	
-	sendAjax("lang","langGet",info,function(response)
-	{
-		
-		language = response.message;
-		setLang();
-		checkLogin();
-	});
+        var info ={};
+        info.lang = l;
+        var request = sendAjax("lang","langGet",info,function(response)
+        {
+
+                language = Object.assign({}, defaultLanguage, response.message || {});
+                setLang();
+        }, null, null, function(){
+                language = Object.assign({}, defaultLanguage);
+                setLang();
+                alertBox(defaultLanguage.alert, "No se pudo cargar el idioma seleccionado. Se usará el idioma por defecto.", 300);
+        });
+
+        if (request && typeof request.always === 'function')
+        {
+                request.always(function(){
+                        checkLogin();
+                });
+        }
+        else
+        {
+                checkLogin();
+        }
 }
 function checkLogin()
 {
@@ -344,20 +373,27 @@ function getUtype(utype)
 }
 function setLang()
 {
-	for (var text in language)
-	{
-		
-		if(text == "platInstrucctions"){continue}
-		
-		if(document.getElementById(text))
-		{
-			var element = document.getElementById(text);
-			element.innerHTML = language[text];
+        if (!language || typeof language !== 'object')
+        {
+                        language = {};
+        }
 
-			if(element.type == "text" || element.type == "password"){element.placeholder = language[text];}
-			if(element.type == "textarea" || element.type == "password"){element.innerHTML = "";element.placeholder = language[text];}
-		}
-	}
+        language = Object.keys(language).length ? Object.assign({}, defaultLanguage, language) : Object.assign({}, defaultLanguage);
+
+        for (var text in language)
+        {
+
+                if(text == "platInstrucctions"){continue}
+
+                if(document.getElementById(text))
+                {
+                        var element = document.getElementById(text);
+                        element.innerHTML = language[text];
+
+                        if(element.type == "text" || element.type == "password"){element.placeholder = language[text];}
+                        if(element.type == "textarea" || element.type == "password"){element.innerHTML = "";element.placeholder = language[text];}
+                }
+        }
 }
 function backHome()
 {
@@ -9493,11 +9529,11 @@ function getUserContextForRequest()
 
 		return null;
 }
-function sendAjax(obj, method, data, responseFunction, noLoader, asValue)
+function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorFunction)
 {
-		if (!guardRequestPermissions(obj, method))
-		{
-				alertBox(language["alert"], language["missAuth"], 300);
+                if (!guardRequestPermissions(obj, method))
+                {
+                                alertBox(language["alert"], language["missAuth"], 300);
 				return;
 		}
 
@@ -9519,11 +9555,11 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue)
 		info.data = data;
 		info.user = getUserContextForRequest();
 
-		$.ajax({
-				type: 'POST',
-				url: 'libs/php/mentry.php',
-				contentType: 'application/json',
-				data: JSON.stringify(info),
+                return $.ajax({
+                                type: 'POST',
+                                url: 'libs/php/mentry.php',
+                                contentType: 'application/json',
+                                data: JSON.stringify(info),
 				cache: false,
 				async: true,
 				success: function(data){
@@ -9541,13 +9577,19 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue)
 								 $("#loaderDiv").fadeOut();
 								 showLoader = 0;
 						 }
-				},
-				error: function( jqXhr, textStatus, errorThrown )
-				{
-						$("#loaderDiv").fadeOut();
-						console.log( errorThrown );
-				}
-		});
+                                },
+                                error: function( jqXhr, textStatus, errorThrown )
+                                {
+                                                $("#loaderDiv").fadeOut();
+                                                showLoader = 0;
+                                                console.log( errorThrown );
+
+                                                if (typeof errorFunction === 'function')
+                                                {
+                                                                errorFunction(jqXhr, textStatus, errorThrown);
+                                                }
+                                }
+                });
 
 
 }
