@@ -42,11 +42,13 @@ class Authorization
 
     public function assertUserConsistency(array $sessionUser, array $requestData)
     {
-        if (isset($requestData['autorCode']) && $requestData['autorCode'] !== ($sessionUser['code'] ?? null)) {
+        $sessionCode = strtoupper((string)($sessionUser['code'] ?? ''));
+
+        if (isset($requestData['autorCode']) && strtoupper((string)$requestData['autorCode']) !== $sessionCode) {
             throw new Exception('El usuario autenticado no coincide con la operación solicitada');
         }
 
-        if (isset($requestData['ucode']) && $requestData['ucode'] !== ($sessionUser['code'] ?? null)) {
+        if (isset($requestData['ucode']) && strtoupper((string)$requestData['ucode']) !== $sessionCode) {
             throw new Exception('El usuario autenticado no coincide con la operación solicitada');
         }
     }
