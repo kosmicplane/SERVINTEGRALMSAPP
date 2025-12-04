@@ -19,6 +19,33 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
+    private function requireRole(array $allowedRoles)
+    {
+        $user = $this->auth->resolveUser(['data' => []]);
+        $role = $user['role'] ?? $user['TYPE'] ?? null;
+
+        if ($role === null) {
+            throw new Exception('Rol del usuario no disponible para validar autorización');
+        }
+
+        if (!in_array($role, $allowedRoles, true)) {
+            throw new Exception('Operación no permitida para el rol actual');
+        }
+
+        $caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['function'] ?? '';
+        $permissionByMethod = [
+            'recordPhysicalCount' => 'inventory.manage',
+            'applyPhysicalAdjustment' => 'inventory.adjustment',
+            'exportInventory' => 'inventory.view',
+        ];
+
+        if (isset($permissionByMethod[$caller])) {
+            $this->auth->authorizePermission($permissionByMethod[$caller], $user);
+        }
+
+        return $role;
+    }
+
     private function ensureSchema()
     {
         $this->db->query("CREATE TABLE IF NOT EXISTS inve_movimientos (
