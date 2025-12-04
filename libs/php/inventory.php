@@ -19,9 +19,15 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
-    private function requireRole(array $allowedRoles, array $context = [])
+    private function requireRole(array $allowedRoles, $context = [])
     {
-        $contextData = is_array($context) ? $context : [];
+        $contextData = [];
+        if (is_array($context)) {
+            $contextData = $context;
+        } elseif (is_object($context)) {
+            $contextData = (array) $context;
+        }
+
         $user = $this->auth->resolveUser(['data' => $contextData]);
         $role = $user['role'] ?? $user['TYPE'] ?? null;
 
