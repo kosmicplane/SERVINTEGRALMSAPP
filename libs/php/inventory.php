@@ -19,7 +19,7 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
-    private function requireRole(array $roles, array $context = [])
+    private function requireRole(array $allowedRoles, array $context = [])
     {
         $user = $this->auth->resolveUser(['data' => $context]);
         $role = $user['role'] ?? $user['TYPE'] ?? null;
@@ -28,8 +28,19 @@ class inventory
             throw new Exception('Rol del usuario no disponible para validar autorización');
         }
 
-        if (!in_array($role, $roles, true)) {
+        if (!in_array($role, $allowedRoles, true)) {
             throw new Exception('Operación no permitida para el rol actual');
+        }
+
+        $caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['function'] ?? '';
+        $permissionByMethod = [
+            'recordPhysicalCount' => 'inventory.manage',
+            'applyPhysicalAdjustment' => 'inventory.adjustment',
+            'exportInventory' => 'inventory.view',
+        ];
+
+        if (isset($permissionByMethod[$caller])) {
+            $this->auth->authorizePermission($permissionByMethod[$caller], $user);
         }
 
         return $role;
