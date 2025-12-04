@@ -46,41 +46,46 @@ class users{
         }
         function login($info)
         {
-	
-		$str = "SELECT * FROM users WHERE users.MAIL = '".$info["autor"]."' AND users.PASSWD = '".md5($info["pssw"])."' AND users.TYPE = '".$info["type"]."'";
-		$query = $this->db->query($str);	
+                $resp = array("status" => false, "message" => "");
 
-		if(count($query) > 0)
-		{
-			
-			if($query[0]["STATUS"] == "0")
-			{
-					$resp["message"] = "Disabled";
-					$resp["status"] = true;
-					return $resp;
-			}
-			$resp["message"] = $query[0];
-			$resp["status"] = true;
-				$_SESSION['user'] = array(
-						'code' => $resp["message"]["CODE"],
-						'role' => $resp["message"]["TYPE"],
-						'email' => $resp["message"]["MAIL"],
-						'name' => $resp["message"]["RESPNAME"],
-				);
+                $query = $this->db->executePrepared(
+                        "SELECT * FROM users WHERE users.MAIL = :mail AND users.PASSWD = :pass AND users.TYPE = :type",
+                        array(
+                                ':mail' => $info["autor"] ?? '',
+                                ':pass' => md5($info["pssw"] ?? ''),
+                                ':type' => $info["type"] ?? '',
+                        )
+                );
 
-				$info["autor"] = $resp["message"]["RESPNAME"];
+                if(count($query) > 0)
+                {
 
-				// SAVELOG
-				$this->chlog($info);
-		}
-		else
-		{
-			$resp["message"] = "";
-			$resp["status"] = false; 
-		}
+                        if($query[0]["STATUS"] == "0")
+                        {
+                                        $resp["message"] = "Disabled";
+                                        $resp["status"] = false;
+                                        return $resp;
+                        }
+                        $resp["message"] = $query[0];
+                        $resp["status"] = true;
+                                if (session_status() === PHP_SESSION_ACTIVE) {
+                                                session_regenerate_id(true);
+                                }
+                                $_SESSION['user'] = array(
+                                                'code' => $resp["message"]["CODE"],
+                                                'role' => $resp["message"]["TYPE"],
+                                                'email' => $resp["message"]["MAIL"],
+                                                'name' => $resp["message"]["RESPNAME"],
+                                );
 
-		return $resp;
-	}
+                                $info["autor"] = $resp["message"]["RESPNAME"];
+
+                                // SAVELOG
+                                $this->chlog($info);
+                }
+
+                return $resp;
+        }
 	function chlog($info)
 	{
 			$OPCODE = md5($info["date"]); 

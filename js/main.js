@@ -9531,6 +9531,16 @@ function guardRequestPermissions(obj, method)
                                 return { allowed: true };
                 }
 
+                var publicEndpoints = {
+                                'users': ['login'],
+                                'lang': ['langGet']
+                };
+
+                if (publicEndpoints[obj] && publicEndpoints[obj].indexOf(method) !== -1)
+                {
+                                return { allowed: true };
+                }
+
                 var role = actualUtype;
 
                 if (!role && typeof getStoredUserContext === 'function')

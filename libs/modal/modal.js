@@ -66,32 +66,26 @@ function confirmBox(title,content,method,wide,param)
 }
 function alertBox(title,content,wide,aTxt)
 {
-	var modal = document.getElementById("box");
+        var modal = document.getElementById("box");
 
-	modal.className = "modalCover";
-	modal.style.display = "block";
-        
-	var modalTitle =  document.getElementById("boxTitle");
-	modalTitle.innerHTML = title;
-	var modalArea = document.getElementById("modalBox");
-	var contentDiv = document.getElementById("boxContent");
-	contentDiv.innerHTML = "";
+        modal.className = "modalCover";
+        modal.style.display = "block";
 
-	modalArea.style.maxWidth  = wide+"px";
+        var modalTitle =  document.getElementById("boxTitle");
+        modalTitle.innerHTML = title || (language && language["alert"]) || "Alerta";
+        var modalArea = document.getElementById("modalBox");
+        var contentDiv = document.getElementById("boxContent");
+        contentDiv.innerHTML = "";
 
-	var aceptb = document.createElement("button");
-	aceptb.onclick = hide_pop;
+        modalArea.style.maxWidth  = wide+"px";
 
-	if(aTxt == null)
-	{
-		aceptb.innerHTML = language["accept"];
-	}
-	else
-	{
-		aceptb.innerHTML = aTxt;
-	}
+        var aceptb = document.createElement("button");
+        aceptb.onclick = hide_pop;
 
-	contentDiv.innerHTML = content;
+        var defaultAccept = (language && language["accept"]) ? language["accept"] : "Aceptar";
+        aceptb.innerHTML = aTxt == null ? defaultAccept : aTxt;
+
+        contentDiv.innerHTML = content || "";
 
 	var buttonDiv = document.createElement("div");
 	buttonDiv.className = "modalButtons";

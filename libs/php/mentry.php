@@ -26,13 +26,27 @@ class entryPoint {
         $resp = array("data" => null, "exception" => "");
 
         try {
+            if (!is_array($this->params) || empty($this->params["class"]) || empty($this->params["method"])) {
+                throw new Exception('Parámetros incompletos en la solicitud');
+            }
+
+            $class  = $this->params["class"];
+            $method = $this->params["method"];
+
+            $filePath = __DIR__ . "/{$class}.php";
+            if (!file_exists($filePath)) {
+                throw new Exception("Clase solicitada inválida");
+            }
+
             require_once "dataBase.php";
             require_once "authorization.php";
-            require_once $this->params["class"] . ".php";
+            require_once $filePath;
 
-            $class    = $this->params["class"];
+            if (!class_exists($class) || !method_exists($class, $method)) {
+                throw new Exception("Método solicitado inválido");
+            }
+
             $instance = new $class();
-            $method   = $this->params["method"];
 
             // Endpoints públicos (no requieren sesión / autorización previa)
             $publicEndpoints = array(
@@ -48,9 +62,10 @@ class entryPoint {
                 $auth->authorize($class, $method, $user);
             }
 
-            $resp["data"] = $instance->$method($this->params["data"]);
+            $payload = $this->params["data"] ?? array();
+            $resp["data"] = $instance->$method($payload);
         } catch (Exception $e) {
-            $resp["exception"] = "Error al procesar la solicitud";
+            $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
         } catch (Throwable $e) {
             $resp["exception"] = "Error al procesar la solicitud";
