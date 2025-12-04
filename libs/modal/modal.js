@@ -66,28 +66,28 @@ function confirmBox(title,content,method,wide,param)
 }
 function alertBox(title,content,wide,aTxt)
 {
-	var modal = document.getElementById("box");
+        var modal = document.getElementById("box");
 
-	modal.className = "modalCover";
-	modal.style.display = "block";
+        modal.className = "modalCover";
+        modal.style.display = "block";
         
 	var modalTitle =  document.getElementById("boxTitle");
-	modalTitle.innerHTML = title;
-	var modalArea = document.getElementById("modalBox");
-	var contentDiv = document.getElementById("boxContent");
-	contentDiv.innerHTML = "";
+        modalTitle.innerHTML = (title === undefined || title === null) ? (language["alert"] || "Alerta") : title;
+        var modalArea = document.getElementById("modalBox");
+        var contentDiv = document.getElementById("boxContent");
+        contentDiv.innerHTML = "";
 
 	modalArea.style.maxWidth  = wide+"px";
 
 	var aceptb = document.createElement("button");
 	aceptb.onclick = hide_pop;
 
-	if(aTxt == null)
-	{
-		aceptb.innerHTML = language["accept"];
-	}
-	else
-	{
+        if(aTxt == null || typeof aTxt === 'undefined')
+        {
+                aceptb.innerHTML = language["accept"];
+        }
+        else
+        {
 		aceptb.innerHTML = aTxt;
 	}
 

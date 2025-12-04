@@ -9531,6 +9531,12 @@ function guardRequestPermissions(obj, method)
                                 return { allowed: true };
                 }
 
+                // Endpoints públicos o no protegidos: permitir sin sesión previa
+                if (method === 'login' || (obj === 'lang' && method === 'langGet'))
+                {
+                                return { allowed: true };
+                }
+
                 var role = actualUtype;
 
                 if (!role && typeof getStoredUserContext === 'function')
@@ -9543,8 +9549,16 @@ function guardRequestPermissions(obj, method)
                                 }
                 }
 
+                // Si no hay rol pero el método no tiene permisos asociados, se permite (comportamiento legacy)
                 if (!role)
                 {
+                                var permission = (METHOD_PERMISSION_MAP[obj] || {})[method];
+
+                                if (!permission)
+                                {
+                                                return { allowed: true };
+                                }
+
                                 return {
                                                 allowed: false,
                                                 reason: language["missingContext"] || "No hay un usuario activo. Inicia sesión nuevamente."

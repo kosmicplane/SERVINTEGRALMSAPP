@@ -28,11 +28,33 @@ class entryPoint {
         try {
             require_once "dataBase.php";
             require_once "authorization.php";
-            require_once $this->params["class"] . ".php";
+            if (!is_array($this->params)) {
+                throw new Exception('Solicitud inválida');
+            }
 
-            $class    = $this->params["class"];
+            $class  = $this->params["class"] ?? null;
+            $method = $this->params["method"] ?? null;
+
+            if (!$class || !$method) {
+                throw new Exception('No se especificó el destino de la solicitud');
+            }
+
+            $targetFile = $class . ".php";
+            if (!file_exists($targetFile)) {
+                throw new Exception('Recurso no disponible');
+            }
+
+            require_once $targetFile;
+
+            if (!class_exists($class)) {
+                throw new Exception('Clase de destino no encontrada');
+            }
+
             $instance = new $class();
-            $method   = $this->params["method"];
+
+            if (!method_exists($instance, $method)) {
+                throw new Exception('Método solicitado no disponible');
+            }
 
             // Endpoints públicos (no requieren sesión / autorización previa)
             $publicEndpoints = array(
@@ -48,12 +70,13 @@ class entryPoint {
                 $auth->authorize($class, $method, $user);
             }
 
-            $resp["data"] = $instance->$method($this->params["data"]);
+            $data = $this->params["data"] ?? array();
+            $resp["data"] = $instance->$method($data);
         } catch (Exception $e) {
-            $resp["exception"] = "Error al procesar la solicitud";
+            $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
         } catch (Throwable $e) {
-            $resp["exception"] = "Error al procesar la solicitud";
+            $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
         }
 
