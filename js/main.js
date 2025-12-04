@@ -9553,8 +9553,16 @@ function guardRequestPermissions(obj, method)
                                 }
                 }
 
+                // Si no hay rol pero el método no tiene permisos asociados, se permite (comportamiento legacy)
                 if (!role)
                 {
+                                var permission = (METHOD_PERMISSION_MAP[obj] || {})[method];
+
+                                if (!permission)
+                                {
+                                                return { allowed: true };
+                                }
+
                                 return {
                                                 allowed: false,
                                                 reason: language["missingContext"] || "No hay un usuario activo. Inicia sesión nuevamente."

@@ -68,7 +68,7 @@ class entryPoint {
             $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
         } catch (Throwable $e) {
-            $resp["exception"] = "Error al procesar la solicitud";
+            $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());
         }
 
