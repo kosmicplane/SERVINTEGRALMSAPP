@@ -15,10 +15,22 @@ var defaultLanguage = {
 
 var language = {};
 var activeInterface = "";
+var permissionsApplied = false;
 
 function getNormalizedUserCode() {
     const code = window.aud && window.aud.CODE ? String(window.aud.CODE) : '';
     return code.toUpperCase();
+}
+
+function applyPermissionGuardsOnce(role) {
+    if (permissionsApplied) {
+        return;
+    }
+
+    if (typeof applyPermissionGuards === 'function' && role) {
+        applyPermissionGuards(role);
+        permissionsApplied = true;
+    }
 }
 
 $(document).ready(function() {
@@ -355,7 +367,7 @@ function checkLogin()
                 document.getElementById("userTypeInfo").innerHTML = utype+" - "+name;
 
                 setMenuItems(actualUtype);
-                applyPermissionGuards(actualUtype);
+                applyPermissionGuardsOnce(actualUtype);
                 document.body.classList.toggle('hide-prices', actualUtype === 'T' || actualUtype === 'Técnico');
 }
 	else
@@ -500,7 +512,7 @@ function login()
                         console.log(actualUtype);
                         localStorage.setItem("userLoged",actualUtype);
                         setMenuItems(actualUtype);
-                        applyPermissionGuards(actualUtype);
+                        applyPermissionGuardsOnce(actualUtype);
                         document.body.classList.toggle('hide-prices', actualUtype === 'T' || actualUtype === 'Técnico');
 		}
 		else
@@ -667,10 +679,11 @@ function logout()
         var icon = document.getElementById("respIcon");
 
         document.getElementById("hidden").appendChild(icon)
-		
-		document.getElementById("userTypeInfo").innerHTML = "";
-		
+
+                document.getElementById("userTypeInfo").innerHTML = "";
+
         actualUtype = null;
+        permissionsApplied = false;
         aud = null;
         backHome();
         
