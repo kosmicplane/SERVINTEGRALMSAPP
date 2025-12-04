@@ -140,3 +140,172 @@ runTest('Restricciones de permisos bloquean operaciones', function (InventorySys
         throw new RuntimeException('Se permitió crear la cotización sin permisos');
     }
 });
+
+function runSimpleTest(string $name, callable $callback): void
+{
+    try {
+        $callback();
+        echo "[PASS] {$name}\n";
+    } catch (Throwable $e) {
+        echo "[FAIL] {$name}: {$e->getMessage()}\n";
+        exit(1);
+    }
+}
+
+function ensureInventoryTestDoubles(): void
+{
+    if (!class_exists('sql_query')) {
+        class sql_query
+        {
+            public static $fixture = [];
+            public $queries = [];
+
+            public function __construct()
+            {
+            }
+
+            public function beginTransaction(): void
+            {
+                $this->queries[] = 'BEGIN';
+            }
+
+            public function commit(): void
+            {
+                $this->queries[] = 'COMMIT';
+            }
+
+            public function rollBack(): void
+            {
+                $this->queries[] = 'ROLLBACK';
+            }
+
+            public function query($string)
+            {
+                $this->queries[] = $string;
+
+                if (preg_match("/SELECT \* FROM inve WHERE CODE = '([^']+)'/", $string, $matches)) {
+                    $code = $matches[1];
+                    return isset(self::$fixture[$code]) ? [self::$fixture[$code]] : [];
+                }
+
+                if (preg_match('/SELECT CODE, DESCRIPTION, AMOUNT, COST FROM inve/', $string)) {
+                    $rows = [];
+                    foreach (self::$fixture as $code => $data) {
+                        $rows[] = [
+                            'CODE' => $code,
+                            'DESCRIPTION' => $data['DESCRIPTION'] ?? '',
+                            'AMOUNT' => $data['AMOUNT'] ?? 0,
+                            'COST' => $data['COST'] ?? 0,
+                        ];
+                    }
+
+                    return $rows;
+                }
+
+                return [];
+            }
+        }
+    }
+}
+
+function makeInventoryForRole(string $role): inventory
+{
+    ensureInventoryTestDoubles();
+
+    if (!isset($_SESSION) || !is_array($_SESSION)) {
+        $_SESSION = [];
+    }
+
+    $_SESSION['user'] = [
+        'role' => $role,
+        'TYPE' => $role,
+        'code' => 'tester',
+    ];
+
+    sql_query::$fixture = [
+        'SKU-TEST' => [
+            'CODE' => 'SKU-TEST',
+            'DESCRIPTION' => 'Item de prueba',
+            'AMOUNT' => 10,
+            'REAL_AMOUNT' => 10,
+            'COST' => 5,
+            'MARGIN' => 0,
+        ],
+    ];
+
+    require_once __DIR__ . '/../libs/php/inventory.php';
+
+    return new inventory();
+}
+
+runSimpleTest('Inventario: conteo físico permitido para roles autorizados', function () {
+    $inv = makeInventoryForRole('A');
+
+    $result = $inv->recordPhysicalCount([
+        'item_code' => 'SKU-TEST',
+        'physical_count' => 12,
+        'observaciones' => 'conteo',
+    ]);
+
+    if ($result['status'] !== true || $result['variance'] !== 2.0) {
+        throw new RuntimeException('El conteo físico no devolvió los datos esperados');
+    }
+});
+
+runSimpleTest('Inventario: conteo físico bloqueado para roles no autorizados', function () {
+    $inv = makeInventoryForRole('C');
+
+    try {
+        $inv->recordPhysicalCount([
+            'item_code' => 'SKU-TEST',
+            'physical_count' => 5,
+        ]);
+
+        throw new RuntimeException('Se permitió el conteo físico a un rol no autorizado');
+    } catch (Exception $e) {
+        if (strpos($e->getMessage(), 'Rol actual no autorizado') === false) {
+            throw $e;
+        }
+    }
+});
+
+runSimpleTest('Inventario: cambio de costo en ajuste requiere administrador', function () {
+    $inv = makeInventoryForRole('CO');
+
+    try {
+        $inv->applyPhysicalAdjustment([
+            'item_code' => 'SKU-TEST',
+            'physical_count' => 12,
+            'unit_cost' => 8,
+        ]);
+
+        throw new RuntimeException('Se permitió cambiar el costo sin rol administrador');
+    } catch (Exception $e) {
+        if (strpos($e->getMessage(), 'Solo un administrador puede modificar el costo') === false) {
+            throw $e;
+        }
+    }
+});
+
+runSimpleTest('Inventario: exportación permitida para roles autorizados', function () {
+    $inv = makeInventoryForRole('JZ');
+
+    $result = $inv->exportInventory();
+
+    if (empty($result['message']) || $result['status'] !== true) {
+        throw new RuntimeException('La exportación no generó el archivo esperado');
+    }
+});
+
+runSimpleTest('Inventario: exportación bloqueada para roles no permitidos', function () {
+    $inv = makeInventoryForRole('T');
+
+    try {
+        $inv->exportInventory();
+        throw new RuntimeException('Se permitió exportar inventario a un rol no autorizado');
+    } catch (Exception $e) {
+        if (strpos($e->getMessage(), 'Rol actual no autorizado') === false) {
+            throw $e;
+        }
+    }
+});
