@@ -345,7 +345,6 @@ class inventory
 
     public function recordPhysicalCount($info)
     {
-        $this->requirePermission('inventory.manage', $info);
         $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
@@ -374,7 +373,6 @@ class inventory
 
     public function applyPhysicalAdjustment($info)
     {
-        $this->requirePermission('inventory.adjustment', $info);
         $role = $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
@@ -482,7 +480,6 @@ class inventory
 
     public function exportInventory()
     {
-        $this->requirePermission('inventory.view');
         $this->requireRole(['A', 'CO', 'JZ', 'C']);
 
         $rows = $this->db->query("SELECT CODE, DESCRIPTION, AMOUNT, COST FROM inve WHERE STATUS = 1 ORDER BY CODE ASC");
