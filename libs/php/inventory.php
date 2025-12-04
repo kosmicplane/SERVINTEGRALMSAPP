@@ -19,6 +19,22 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
+    private function requireRole(array $roles, array $context = [])
+    {
+        $user = $this->auth->resolveUser(['data' => $context]);
+        $role = $user['role'] ?? $user['TYPE'] ?? null;
+
+        if ($role === null) {
+            throw new Exception('Rol del usuario no disponible para validar autorización');
+        }
+
+        if (!in_array($role, $roles, true)) {
+            throw new Exception('Operación no permitida para el rol actual');
+        }
+
+        return $role;
+    }
+
     private function ensureSchema()
     {
         $this->db->query("CREATE TABLE IF NOT EXISTS inve_movimientos (
@@ -318,7 +334,8 @@ class inventory
 
     public function recordPhysicalCount($info)
     {
-        $this->requireRole(['A', 'CO']);
+        $this->requirePermission('inventory.manage', $info);
+        $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
@@ -346,7 +363,8 @@ class inventory
 
     public function applyPhysicalAdjustment($info)
     {
-        $role = $this->requireRole(['A', 'CO']);
+        $this->requirePermission('inventory.adjustment', $info);
+        $role = $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
@@ -453,6 +471,7 @@ class inventory
 
     public function exportInventory()
     {
+        $this->requirePermission('inventory.view');
         $this->requireRole(['A', 'CO', 'JZ', 'C']);
 
         $rows = $this->db->query("SELECT CODE, DESCRIPTION, AMOUNT, COST FROM inve WHERE STATUS = 1 ORDER BY CODE ASC");
