@@ -19,6 +19,22 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
+    private function requireRole(array $roles, array $context = [])
+    {
+        $user = $this->auth->resolveUser(['data' => $context]);
+        $role = $user['role'] ?? $user['TYPE'] ?? null;
+
+        if ($role === null) {
+            throw new Exception('Rol del usuario no disponible para validar autorización');
+        }
+
+        if (!in_array($role, $roles, true)) {
+            throw new Exception('Rol actual no autorizado para esta operación');
+        }
+
+        return $role;
+    }
+
     private function ensureSchema()
     {
         $this->db->query("CREATE TABLE IF NOT EXISTS inve_movimientos (
@@ -232,7 +248,7 @@ class inventory
 
     public function recordPhysicalCount($info)
     {
-        $this->requireRole(['A', 'CO']);
+        $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
@@ -260,7 +276,7 @@ class inventory
 
     public function applyPhysicalAdjustment($info)
     {
-        $role = $this->requireRole(['A', 'CO']);
+        $role = $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
