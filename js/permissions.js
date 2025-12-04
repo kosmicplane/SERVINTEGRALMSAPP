@@ -72,7 +72,7 @@ const METHOD_PERMISSION_MAP = {
         registerExit: ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
         // conteo físico
         recordPhysicalCount: 'inventory.manage',
-        applyPhysicalAdjustment: 'inventory.manage',
+        applyPhysicalAdjustment: ['inventory.adjustment', 'inventory.manage'],
         // consultas / export
         listMovements: 'inventory.view',
         exportInventory: 'inventory.view'
