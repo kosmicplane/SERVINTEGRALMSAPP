@@ -9557,8 +9557,10 @@ function guardRequestPermissions(obj, method)
                 if (!role)
                 {
                                 var permission = (METHOD_PERMISSION_MAP[obj] || {})[method];
+                                var loginCover = document.getElementById("loginArea");
+                                var isLoginVisible = loginCover && window.getComputedStyle(loginCover).display !== 'none';
 
-                                if (!permission)
+                                if (!permission || isLoginVisible)
                                 {
                                                 return { allowed: true };
                                 }
