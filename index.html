@@ -77,19 +77,17 @@
 								</div>
 							</div>
 						</div>
-						<ul id="mymenu" class="topnav"></ul>
+                                                <ul id="mymenu" class="topnav">
+                                                        <li id="quoteNavItem"><a href="#" id="quoteNavLink">Cotizaciones</a></li>
+                                                </ul>
                                                 <div id="workArea" class="mainArea">
 
                                                         <div id="wa" class="workarea"></div>
                                                 </div>
-
-                                                <div id="quoteControls" class="quoteControls" style="margin-top:20px;">
-                                                        <label class="quoteToggleLabel">
-                                                                <input type="checkbox" id="quoteToggle" /> Mostrar cotizaciones
-                                                        </label>
-                                                </div>
-
-                                                <div id="quoteWrapper" style="display:none;">
+                                                <div id="quoteSection" class="quoteSection" style="display:none;">
+                                                        <div class="quoteControls" style="margin-top:20px;">
+                                                                <button id="closeQuoteSection" class="btn btn-link">Ocultar cotizaciones</button>
+                                                        </div>
                                                         <div id="quoteModule" class="workarea" style="margin-top:20px;"></div>
                                                 </div>
 						
