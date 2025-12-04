@@ -26,35 +26,27 @@ class entryPoint {
         $resp = array("data" => null, "exception" => "");
 
         try {
+            if (!is_array($this->params) || empty($this->params["class"]) || empty($this->params["method"])) {
+                throw new Exception('Parámetros incompletos en la solicitud');
+            }
+
+            $class  = $this->params["class"];
+            $method = $this->params["method"];
+
+            $filePath = __DIR__ . "/{$class}.php";
+            if (!file_exists($filePath)) {
+                throw new Exception("Clase solicitada inválida");
+            }
+
             require_once "dataBase.php";
             require_once "authorization.php";
-            if (!is_array($this->params)) {
-                throw new Exception('Solicitud inválida');
-            }
+            require_once $filePath;
 
-            $class  = $this->params["class"] ?? null;
-            $method = $this->params["method"] ?? null;
-
-            if (!$class || !$method) {
-                throw new Exception('No se especificó el destino de la solicitud');
-            }
-
-            $targetFile = $class . ".php";
-            if (!file_exists($targetFile)) {
-                throw new Exception('Recurso no disponible');
-            }
-
-            require_once $targetFile;
-
-            if (!class_exists($class)) {
-                throw new Exception('Clase de destino no encontrada');
+            if (!class_exists($class) || !method_exists($class, $method)) {
+                throw new Exception("Método solicitado inválido");
             }
 
             $instance = new $class();
-
-            if (!method_exists($instance, $method)) {
-                throw new Exception('Método solicitado no disponible');
-            }
 
             // Endpoints públicos (no requieren sesión / autorización previa)
             $publicEndpoints = array(
@@ -70,8 +62,8 @@ class entryPoint {
                 $auth->authorize($class, $method, $user);
             }
 
-            $data = $this->params["data"] ?? array();
-            $resp["data"] = $instance->$method($data);
+            $payload = $this->params["data"] ?? array();
+            $resp["data"] = $instance->$method($payload);
         } catch (Exception $e) {
             $resp["exception"] = $e->getMessage();
             error_log('Entrada fallida en mentry: ' . $e->getMessage());

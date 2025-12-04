@@ -70,28 +70,22 @@ function alertBox(title,content,wide,aTxt)
 
         modal.className = "modalCover";
         modal.style.display = "block";
-        
-	var modalTitle =  document.getElementById("boxTitle");
-        modalTitle.innerHTML = (title === undefined || title === null) ? (language["alert"] || "Alerta") : title;
+
+        var modalTitle =  document.getElementById("boxTitle");
+        modalTitle.innerHTML = title || (language && language["alert"]) || "Alerta";
         var modalArea = document.getElementById("modalBox");
         var contentDiv = document.getElementById("boxContent");
         contentDiv.innerHTML = "";
 
-	modalArea.style.maxWidth  = wide+"px";
+        modalArea.style.maxWidth  = wide+"px";
 
-	var aceptb = document.createElement("button");
-	aceptb.onclick = hide_pop;
+        var aceptb = document.createElement("button");
+        aceptb.onclick = hide_pop;
 
-        if(aTxt == null || typeof aTxt === 'undefined')
-        {
-                aceptb.innerHTML = language["accept"];
-        }
-        else
-        {
-		aceptb.innerHTML = aTxt;
-	}
+        var defaultAccept = (language && language["accept"]) ? language["accept"] : "Aceptar";
+        aceptb.innerHTML = aTxt == null ? defaultAccept : aTxt;
 
-	contentDiv.innerHTML = content;
+        contentDiv.innerHTML = content || "";
 
 	var buttonDiv = document.createElement("div");
 	buttonDiv.className = "modalButtons";

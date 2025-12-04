@@ -9531,8 +9531,12 @@ function guardRequestPermissions(obj, method)
                                 return { allowed: true };
                 }
 
-                // Endpoints públicos o no protegidos: permitir sin sesión previa
-                if (method === 'login' || (obj === 'lang' && method === 'langGet'))
+                var publicEndpoints = {
+                                'users': ['login'],
+                                'lang': ['langGet']
+                };
+
+                if (publicEndpoints[obj] && publicEndpoints[obj].indexOf(method) !== -1)
                 {
                                 return { allowed: true };
                 }
