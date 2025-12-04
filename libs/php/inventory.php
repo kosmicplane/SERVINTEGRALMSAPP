@@ -21,7 +21,8 @@ class inventory
 
     private function requireRole(array $allowedRoles, array $context = [])
     {
-        $user = $this->auth->resolveUser(['data' => $context]);
+        $contextData = is_array($context) ? $context : [];
+        $user = $this->auth->resolveUser(['data' => $contextData]);
         $role = $user['role'] ?? $user['TYPE'] ?? null;
 
         if ($role === null) {
