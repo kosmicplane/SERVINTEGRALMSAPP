@@ -5503,10 +5503,11 @@ function refreshRepuParents()
 function refreshTechParents()
 {
         var info = {};
-        
+        info.ucode = getNormalizedUserCode();
+
         sendAjax("users","getTechiListO",info,function(response)
-	{
-		var techs = response.message;
+        {
+                var techs = response.message;
 
                 if(document.getElementById("repoTech"))
                 {
@@ -7433,9 +7434,13 @@ function tableCreator(tableId, list)
 							actualTechVal = info.JZCODE+">"+info.TECHNAME+">"+info.RESPTYPE;
 						}
 						
-						sendAjax("users","getTechiListO","",function(response)
-						{
-								var ans = response.message;
+                                                var techInfo = {
+                                                                ucode: getNormalizedUserCode()
+                                                };
+
+                                                sendAjax("users","getTechiListO",techInfo,function(response)
+                                                {
+                                                                var ans = response.message;
 								
 								actualTechList = ans;
 								asignTechBox(info.CODE, info.CCODE);
@@ -8660,9 +8665,12 @@ function asignTechBox(ocode, num)
                 }
 
                 // Payload esperado por setTechO: código, nombre, tipo de responsable y código de orden
-                info.code = tmpVal.split(">")[0];
-                info.name = tmpVal.split(">")[1];
-                info.resptype = tmpVal.split(">")[2];
+                var techData = tmpVal.split(">");
+
+                info.ucode = getNormalizedUserCode();
+                info.techcode = techData[0];
+                info.techname = techData[1];
+                info.resptype = techData[2];
                 info.ocode = this.ocode;
 
                 sendAjax("users","setTechO",info,function(response)
