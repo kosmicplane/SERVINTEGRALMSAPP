@@ -19,7 +19,7 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
-    private function requireRole(array $allowedRoles, $context = [])
+    private function requireRole(array $allowedRoles, array $context = [])
     {
         $contextData = [];
         if (is_array($context)) {
