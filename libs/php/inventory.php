@@ -19,6 +19,16 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
+    private function requireRole(array $allowedRoles, array $context = [])
+    {
+        $contextData = [];
+        if (is_array($context)) {
+            $contextData = $context;
+        } elseif (is_object($context)) {
+            $contextData = (array) $context;
+        }
+
+        $user = $this->auth->resolveUser(['data' => $contextData]);
     private function requireRole(array $allowedRoles)
     {
         $user = $this->auth->resolveUser(['data' => []]);
@@ -345,7 +355,7 @@ class inventory
 
     public function recordPhysicalCount($info)
     {
-        $this->requireRole(['A', 'CO']);
+        $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
@@ -373,7 +383,7 @@ class inventory
 
     public function applyPhysicalAdjustment($info)
     {
-        $role = $this->requireRole(['A', 'CO']);
+        $role = $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
