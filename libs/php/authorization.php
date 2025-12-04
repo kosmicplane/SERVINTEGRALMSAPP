@@ -18,10 +18,26 @@ class Authorization
         }
 
         if (isset($params['data']['user']) && is_array($params['data']['user'])) {
-            return $params['data']['user'];
+            return $this->normalizeUser($params['data']['user']);
+        }
+
+        if (isset($params['user']) && is_array($params['user'])) {
+            return $this->normalizeUser($params['user']);
         }
 
         throw new Exception('Usuario no autenticado o sesión expirada');
+    }
+
+    private function normalizeUser(array $user)
+    {
+        if (isset($user['code']) || isset($user['role']) || isset($user['email']) || isset($user['name'])) {
+            $user['CODE'] = $user['CODE'] ?? $user['code'] ?? null;
+            $user['TYPE'] = $user['TYPE'] ?? $user['role'] ?? null;
+            $user['MAIL'] = $user['MAIL'] ?? $user['email'] ?? null;
+            $user['RESPNAME'] = $user['RESPNAME'] ?? $user['name'] ?? null;
+        }
+
+        return $user;
     }
 
     public function assertUserConsistency(array $sessionUser, array $requestData)
