@@ -16,6 +16,11 @@ var defaultLanguage = {
 var language = {};
 var activeInterface = "";
 
+function getNormalizedUserCode() {
+    const code = window.aud && window.aud.CODE ? String(window.aud.CODE) : '';
+    return code.toUpperCase();
+}
+
 $(document).ready(function() {
     loadCheck();
 });
@@ -1096,7 +1101,7 @@ function ifLoad(code)
 function refreshLegCodes()
 {
 	var info = {};
-	info.ucode = aud.CODE;
+	info.ucode = getNormalizedUserCode();
 	
 	sendAjax("users","refreshLegCodes",info,function(response)
 	{
@@ -1116,7 +1121,7 @@ function ordeGetCL()
         info["f-orderNum"] = document.getElementById("f-orderNumCL").value;
         info["f-orderState"] = document.getElementById("f-orderStateCL").value;
         info.techcode = "";
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
 		info.askType = aud.TYPE;
 		info.places = [];
 		$.each(aud.LOCATION.split("-"), function()
@@ -1131,7 +1136,7 @@ function ordeGetCL()
 function refreshOrderTParents()
 {
         var info = {};
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
         
         sendAjax("users","getParentSucus",info,function(response)
 	{
@@ -1216,7 +1221,7 @@ function ordeGetT()
         info["f-orderNum"] = document.getElementById("f-orderNumT").value;
         info["f-orderState"] = "2";
         info["techcode"] = aud.CODE;
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
 		info.askType = aud.TYPE;
 		info.places = [];
 		$.each(aud.LOCATION.split("-"), function()
@@ -1297,7 +1302,7 @@ function recGet()
 function refreshReceiptParents()
 {
         var info = {};
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
         
         sendAjax("users","getParentSucus",info,function(response)
 	{
@@ -1330,7 +1335,7 @@ function refreshReceiptParents()
 function refreshReportsParents()
 {
         var info = {};
-        info.ucode = aud.CODE;
+        info.ucode = getNormalizedUserCode();
         sendAjax("users","getParentSucus",info,function(response)
 	{
 		var pas = response.message;
@@ -2449,7 +2454,7 @@ function refreshoOther()
 function refreshOrderParents()
 {
 	var info = {};
-	info.ucode = aud.CODE;
+	info.ucode = getNormalizedUserCode();
 	
         
 	sendAjax("users","getParentSucus",info,function(response)
@@ -2762,7 +2767,7 @@ function getActualLocation(code)
 function refreshOrderParentsCL()
 {
         var info = {};
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
         
 	sendAjax("users","getParentSucus",info,function(response)
 	{
@@ -3586,7 +3591,7 @@ function sucuSave(item)
 function refreshMaquiParents()
 {
         var info = {};
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
 		console.log(info)
         
         sendAjax("users","getParentSucus",info,function(response)
@@ -4198,7 +4203,7 @@ function ordeGet()
 	var info = {};
 	var  info = infoHarvest(f_orde_targets);
 	info.techcode = "";
-	info.ucode = aud.CODE;
+	info.ucode = getNormalizedUserCode();
 	info.askType = aud.TYPE;
 	info.places = [];
 	$.each(aud.LOCATION.split("-"), function()
@@ -4369,7 +4374,7 @@ function orderSave(item)
 	
 	info.utype = "O";
 	info.autor = aud.RESPNAME;
-	info.autorCode = aud.CODE;
+	info.autorCode = getNormalizedUserCode();
 	info.date = getNow();
 	info.type = "O";
 	
@@ -5302,7 +5307,7 @@ function refreshOtypeParents()
 function refreshRepoParents()
 {
         var info = {};
-		info.ucode = aud.CODE;
+		info.ucode = getNormalizedUserCode();
         
         sendAjax("users","getParentSucus",info,function(response)
 	{
@@ -9944,7 +9949,7 @@ function legExportBox(closeV)
 function legExport()
 {
 	var info = infoHarvest(legTargets);
-	info.ucode = aud.CODE;
+	info.ucode = getNormalizedUserCode();
 	info.uname = aud.RESPNAME;
 	info.lang = "es_co";
 	info.rtype = "leg";
@@ -9969,7 +9974,7 @@ function legExport()
 function legCreate()
 {
 	var info = infoHarvest(legTargets);
-	info.ucode = aud.CODE;
+	info.ucode = getNormalizedUserCode();
 	info.uname = aud.RESPNAME;
 	
 	if(actualLegState == "1")

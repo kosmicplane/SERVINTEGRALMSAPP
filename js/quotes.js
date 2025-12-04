@@ -208,6 +208,10 @@ function loadCatalog() {
 }
 
 function collectQuoteInfo() {
+    const normalizedUserCode = (typeof getNormalizedUserCode === 'function'
+        ? getNormalizedUserCode()
+        : (window.aud && window.aud.CODE ? String(window.aud.CODE).toUpperCase() : '')) || 'webuser';
+
     const items = [];
     document.querySelectorAll('#quoteItems tbody tr').forEach(row => {
         items.push({
@@ -244,7 +248,7 @@ function collectQuoteInfo() {
         internalCosts: internalCosts,
         status: document.getElementById('quoteStatus').textContent,
         autor: 'webuser',
-        autorCode: 'webuser',
+        autorCode: normalizedUserCode,
         date: new Date().toISOString().slice(0, 19).replace('T', ' ')
     };
 }
