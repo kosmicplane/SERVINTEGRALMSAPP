@@ -35,8 +35,8 @@ function confirmBox(title,content,method,wide,param)
 
 	modalArea.style.maxWidth  = wide+"px";
 
-	var aceptb = document.createElement("button");
-	aceptb.innerHTML = language["accept"];
+        var aceptb = document.createElement("button");
+        aceptb.innerHTML = (language && language["accept"]) || (typeof defaultLanguage !== 'undefined' && defaultLanguage.accept) || "Aceptar";
         
         if(param != "none")
         {
@@ -47,8 +47,8 @@ function confirmBox(title,content,method,wide,param)
                 aceptb.onclick = function(e){hide_pop(); method();};
         }
 
-	var cancelb = document.createElement("button");
-	cancelb.innerHTML = language["cancel"];
+        var cancelb = document.createElement("button");
+        cancelb.innerHTML = (language && language["cancel"]) || (typeof defaultLanguage !== 'undefined' && defaultLanguage.cancel) || "Cancelar";
 	cancelb.className = "separatedButton";
 	cancelb.onclick = hide_pop;
 
@@ -82,7 +82,7 @@ function alertBox(title,content,wide,aTxt)
         var aceptb = document.createElement("button");
         aceptb.onclick = hide_pop;
 
-        var defaultAccept = (language && language["accept"]) ? language["accept"] : "Aceptar";
+        var defaultAccept = (language && language["accept"]) ? language["accept"] : ((typeof defaultLanguage !== 'undefined' && defaultLanguage.accept) ? defaultLanguage.accept : "Aceptar");
         aceptb.innerHTML = aTxt == null ? defaultAccept : aTxt;
 
         contentDiv.innerHTML = content || "";

@@ -385,7 +385,7 @@ function setLang()
                         language = {};
         }
 
-        language = Object.keys(language).length ? Object.assign({}, defaultLanguage, language) : Object.assign({}, defaultLanguage);
+        language = Object.assign({}, defaultLanguage, language || {});
 
         for (var text in language)
         {
@@ -9605,7 +9605,9 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorF
                 if (!isAllowed)
                 {
                                 var reason = (permissionResult && permissionResult.reason) ? permissionResult.reason : (language["missAuth"] || "No autorizado");
-                                alertBox(language["alert"], reason, 300);
+                                var alertTitle = language?.alert || defaultLanguage.alert;
+                                var acceptText = language?.accept || defaultLanguage.accept;
+                                alertBox(alertTitle, reason, 300, acceptText);
                                 return;
                 }
 
@@ -9644,7 +9646,9 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorF
 
                                                                 if(tmpJson.exception)
                                                                 {
-                                                                                alertBox(language["alert"] || "Información", tmpJson.exception, 350);
+                                                                                var alertTitle = language?.alert || defaultLanguage.alert;
+                                                                                var acceptText = language?.accept || defaultLanguage.accept;
+                                                                                alertBox(alertTitle, tmpJson.exception, 350, acceptText);
 
                                                                                 if (typeof errorFunction === 'function')
                                                                                 {
@@ -9664,7 +9668,9 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorF
                                                                  $("#loaderDiv").fadeOut();
                                                                  showLoader = 0;
                                                                  console.log(data);
-                                                                 alertBox(language["alert"] || "Información", "No se pudo interpretar la respuesta del servidor", 350);
+                                                                 var alertTitle = language?.alert || defaultLanguage.alert;
+                                                                 var acceptText = language?.accept || defaultLanguage.accept;
+                                                                 alertBox(alertTitle, "No se pudo interpretar la respuesta del servidor", 350, acceptText);
 
                                                                  if (typeof errorFunction === 'function')
                                                                  {
@@ -9679,7 +9685,9 @@ function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorF
                                                 console.log( errorThrown );
 
                                                 var errMsg = errorThrown || textStatus || "No se pudo completar la solicitud";
-                                                alertBox(language["alert"] || "Información", errMsg, 350);
+                                                var alertTitle = language?.alert || defaultLanguage.alert;
+                                                var acceptText = language?.accept || defaultLanguage.accept;
+                                                alertBox(alertTitle, errMsg, 350, acceptText);
 
                                                 if (typeof errorFunction === 'function')
                                                 {
