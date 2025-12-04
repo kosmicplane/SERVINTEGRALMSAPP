@@ -330,10 +330,16 @@ function checkLogin()
 		var loginCover = document.getElementById("loginArea");
 		loginCover.style.display = "none";
 		
-		document.getElementById("exitIcon").style.display = "block";
+                document.getElementById("exitIcon").style.display = "block";
 
                 aud = JSON.parse(window.localStorage.getItem("aud"));
                 actualUtype = aud.TYPE || window.localStorage.getItem("userLoged");
+                setLogin({
+                                code: aud.CODE,
+                                role: aud.TYPE,
+                                email: aud.MAIL || aud.mail,
+                                name: aud.RESPNAME
+                });
                 if (actualUtype)
                 {
                                 window.localStorage.setItem("userLoged", actualUtype);
@@ -456,14 +462,20 @@ function login()
 			localStorage.setItem("lastMail", document.getElementById("userLoginBox").value);
 			// document.getElementById("userLoginBox").value = ""; 
 			document.getElementById("userPassBox").value = ""; 
-		
-			aud = ans;
-			
-			document.getElementById("mymenu").style.display = "block";
-			
-			localStorage.setItem("aud",JSON.stringify(aud));
-			actualUcode = aud.CODE;
-			actualUname = aud.BNAME;
+
+                        aud = ans;
+
+                        document.getElementById("mymenu").style.display = "block";
+
+                        localStorage.setItem("aud",JSON.stringify(aud));
+                        setLogin({
+                                        code: aud.CODE,
+                                        role: aud.TYPE,
+                                        email: aud.MAIL || aud.mail,
+                                        name: aud.RESPNAME
+                        });
+                        actualUcode = aud.CODE;
+                        actualUname = aud.BNAME;
 					
 			var loginCover = document.getElementById("loginArea");
 			loginCover.style.display = "none";
@@ -641,8 +653,9 @@ function logout()
         workArea.style.display = "none";
         localStorage.removeItem("userLoged");
         localStorage.removeItem("aud");
-		
-		document.getElementById("mymenu").style.display = "none";
+        localStorage.removeItem("userContext");
+
+                document.getElementById("mymenu").style.display = "none";
 		
         document.getElementById("exitIcon").style.display = "none";
 
@@ -9578,26 +9591,42 @@ function guardRequestPermissions(obj, method)
 }
 function getUserContextForRequest()
 {
-		if (typeof getStoredUserContext === 'function')
-		{
-				var stored = getStoredUserContext();
+                if (typeof getStoredUserContext === 'function')
+                {
+                                var stored = getStoredUserContext();
 				if (stored)
 				{
 						return stored;
 				}
 		}
 
-		if (aud)
-		{
-				return {
-						code: aud.CODE,
-						role: aud.TYPE,
-						email: aud.MAIL || aud.mail,
-						name: aud.RESPNAME
-				};
-		}
+                if (aud)
+                {
+                                return {
+                                                code: aud.CODE,
+                                                role: aud.TYPE,
+                                                email: aud.MAIL,
+                                                name: aud.RESPNAME
+                                };
+                }
 
-		return null;
+                return null;
+}
+function setLogin(userContext)
+{
+                if (typeof localStorage === 'undefined')
+                {
+                                return;
+                }
+
+                try
+                {
+                                localStorage.setItem('userContext', JSON.stringify(userContext));
+                }
+                catch (e)
+                {
+                                // ignore storage errors
+                }
 }
 function sendAjax(obj, method, data, responseFunction, noLoader, asValue, errorFunction)
 {

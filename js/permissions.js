@@ -200,10 +200,22 @@ function getStoredUserContext() {
     }
 
     try {
+        const storedContext = localStorage.getItem('userContext');
+        if (storedContext) {
+            const parsed = JSON.parse(storedContext);
+            return {
+                code: parsed.code ?? parsed.CODE,
+                role: parsed.role ?? parsed.TYPE,
+                email: parsed.email ?? parsed.MAIL ?? parsed.mail,
+                name: parsed.name ?? parsed.RESPNAME
+            };
+        }
+
         const aud = localStorage.getItem('aud');
         if (!aud) {
             return null;
         }
+
         const parsed = JSON.parse(aud);
         return {
             code: parsed.CODE,
