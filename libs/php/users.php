@@ -1840,8 +1840,8 @@ class users{
                 $this->requirePermission('costSheets.manage', $info);
 
                 $ocode = $info["ocode"] ?? "";
-                $name = $info["name"] ?? "";
-                $code = $info["code"] ?? "";
+                $name = $info["techname"] ?? $info["name"] ?? "";
+                $code = $info["techcode"] ?? $info["code"] ?? "";
                 $resptype = $info["resptype"] ?? "";
 
                 $resp = array("status" => false, "message" => "");
