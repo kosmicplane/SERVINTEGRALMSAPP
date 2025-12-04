@@ -86,18 +86,29 @@ class users{
 
                 return $resp;
         }
-	function chlog($info)
-	{
-			$OPCODE = md5($info["date"]); 
-			$AUTOR = $info["autor"]; 
-			$DATE = $info["date"]; 
-			$TYPE = $info["type"]; 
-			$TARGET = $info["target"]; 
-			$OPTYPE = $info["optype"];    
-			$STATUS = "1";
-			$str = "INSERT INTO log (OPCODE, AUTOR, DATE, TYPE, TARGET, OPTYPE, STATUS) VALUES ('".$OPCODE."', '".$AUTOR."', '".$DATE."', '".$TYPE."', '".$TARGET."', '".$OPTYPE."', '".$STATUS."')";
-			$query = $this->db->query($str);
-	}
+        function chlog($info)
+        {
+                        $OPCODE = md5($info["date"]);
+                        $AUTOR = $info["autor"];
+                        $DATE = $info["date"];
+                        $TYPE = $info["type"];
+                        $TARGET = $info["target"];
+                        $OPTYPE = $info["optype"];
+                        $STATUS = "1";
+                        $this->db->executePrepared(
+                                "INSERT INTO log (OPCODE, AUTOR, DATE, TYPE, TARGET, OPTYPE, STATUS) VALUES (:opcode, :autor, :date, :type, :target, :optype, :status)",
+                                array(
+                                        ':opcode' => $OPCODE,
+                                        ':autor' => $AUTOR,
+                                        ':date' => $DATE,
+                                        ':type' => $TYPE,
+                                        ':target' => $TARGET,
+                                        ':optype' => $OPTYPE,
+                                        ':status' => $STATUS,
+                                ),
+                                false
+                        );
+        }
 	function delDir($path)
 	{
 			if (is_dir($path) === true)
@@ -136,9 +147,28 @@ class users{
                 $TECHNAME = $info["tech"];
                 $TECHCODE = $info["techcode"];
                 $OCCODE = $info["occode"];
-                
-                $str = "INSERT INTO oactis (OCODE, CODE, ACODE, ADESC, ACOST, ADURATION, DATE, MAQUI, MAQUINAME, MAQUICODE, TECHNAME, TECHCODE, OCCODE, UNIPRICE, UNIVALUE) VALUES ('".$OCODE."', '".$CODE."', '".$ACODE."', '".$ADESC."', '".$ACOST."', '".$ADURATION."','".$DATE."', '".$MAQUI."', '".$MAQUINAME."', '".$MAQUICODE."', '".$TECHNAME."', '".$TECHCODE."', '".$OCCODE."','".$UNIPRICE."', '".$UNIVALUE."')";
-                $query = $this->db->query($str);
+
+                $this->db->executePrepared(
+                        "INSERT INTO oactis (OCODE, CODE, ACODE, ADESC, ACOST, ADURATION, DATE, MAQUI, MAQUINAME, MAQUICODE, TECHNAME, TECHCODE, OCCODE, UNIPRICE, UNIVALUE) VALUES (:ocode, :code, :acode, :adesc, :acost, :aduration, :date, :maqui, :maquiname, :maquicode, :techname, :techcode, :occode, :uniprice, :univalue)",
+                        array(
+                                ':ocode' => $OCODE,
+                                ':code' => $CODE,
+                                ':acode' => $ACODE,
+                                ':adesc' => $ADESC,
+                                ':acost' => $ACOST,
+                                ':aduration' => $ADURATION,
+                                ':date' => $DATE,
+                                ':maqui' => $MAQUI,
+                                ':maquiname' => $MAQUINAME,
+                                ':maquicode' => $MAQUICODE,
+                                ':techname' => $TECHNAME,
+                                ':techcode' => $TECHCODE,
+                                ':occode' => $OCCODE,
+                                ':uniprice' => $UNIPRICE,
+                                ':univalue' => $UNIVALUE,
+                        ),
+                        false
+                );
                 
                 $resp["message"] = "done";
                 $resp["status"] = true;
@@ -152,24 +182,28 @@ class users{
                 $nit = $info["f-clientNit"];
                 $email = $info["f-clientEmail"];
                 $type = 'C';
-                
-                $where = "WHERE  TYPE = '$type' AND STATUS != 'null' ";
 
-		if($name != "")
-		{
-			$where .= "AND  CNAME LIKE '%$name%'";
-		}
-		if($nit != "")
-		{
-			$where .= "AND  NIT = '$nit'";
-		}
-		if($email != "")
-		{
-			$where .= "AND  MAIL = '$email'";
-		}
-                
+                $where = "WHERE  TYPE = :type AND STATUS != 'null' ";
+                $params = array(':type' => $type);
+
+                if($name != "")
+                {
+                        $where .= "AND  CNAME LIKE :name";
+                        $params[':name'] = "%$name%";
+                }
+                if($nit != "")
+                {
+                        $where .= "AND  NIT = :nit";
+                        $params[':nit'] = $nit;
+                }
+                if($email != "")
+                {
+                        $where .= "AND  MAIL = :email";
+                        $params[':email'] = $email;
+                }
+
                 $str = "SELECT *  FROM users $where ORDER BY CNAME ASC";
-                $query = $this->db->query($str);
+                $query = $this->db->executePrepared($str, $params);
 			
                 if(count($query) > 0)
                 {

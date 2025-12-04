@@ -118,8 +118,22 @@ class purchases
         $code = md5($info['NAME'] . $info['NIT'] . date('c'));
         $now = date('Y-m-d H:i:s');
 
-        $str = "INSERT INTO suppliers (CODE, NAME, NIT, CONTACT, EMAIL, PHONE, ADDRESS, CITY, CREATED_AT, UPDATED_AT) VALUES ('{$code}', '{$info['NAME']}', '{$info['NIT']}', '{$info['CONTACT']}', '{$info['EMAIL']}', '{$info['PHONE']}', '{$info['ADDRESS']}', '{$info['CITY']}', '{$now}', '{$now}')";
-        $this->db->query($str);
+        $this->db->executePrepared(
+            "INSERT INTO suppliers (CODE, NAME, NIT, CONTACT, EMAIL, PHONE, ADDRESS, CITY, CREATED_AT, UPDATED_AT) VALUES (:code, :name, :nit, :contact, :email, :phone, :address, :city, :created_at, :updated_at)",
+            array(
+                ':code' => $code,
+                ':name' => $info['NAME'],
+                ':nit' => $info['NIT'],
+                ':contact' => $info['CONTACT'],
+                ':email' => $info['EMAIL'],
+                ':phone' => $info['PHONE'],
+                ':address' => $info['ADDRESS'],
+                ':city' => $info['CITY'],
+                ':created_at' => $now,
+                ':updated_at' => $now,
+            ),
+            false
+        );
 
         return [
             'message' => ['CODE' => $code],
@@ -149,7 +163,21 @@ class purchases
         $notes = isset($info['notes']) ? $info['notes'] : '';
         $createdBy = isset($info['created_by']) ? $info['created_by'] : null;
 
-        $this->db->query("INSERT INTO purchase_orders (CODE, RQCODE, SUPPLIERCODE, STATUS, CURRENCY, NOTES, CREATED_BY, CREATED_AT, UPDATED_AT) VALUES ('{$poCode}', '{$rqCode}', '{$supplier}', '{$status}', '{$currency}', '{$notes}', '{$createdBy}', '{$now}', '{$now}')");
+        $this->db->executePrepared(
+            "INSERT INTO purchase_orders (CODE, RQCODE, SUPPLIERCODE, STATUS, CURRENCY, NOTES, CREATED_BY, CREATED_AT, UPDATED_AT) VALUES (:code, :rqcode, :supplier, :status, :currency, :notes, :created_by, :created_at, :updated_at)",
+            array(
+                ':code' => $poCode,
+                ':rqcode' => $rqCode,
+                ':supplier' => $supplier,
+                ':status' => $status,
+                ':currency' => $currency,
+                ':notes' => $notes,
+                ':created_by' => $createdBy,
+                ':created_at' => $now,
+                ':updated_at' => $now,
+            ),
+            false
+        );
 
         $items = isset($info['items']) ? $info['items'] : [];
         foreach ($items as $item) {
@@ -160,11 +188,35 @@ class purchases
             $desc = $item['description'];
             $rqItem = isset($item['rq_item_code']) ? $item['rq_item_code'] : null;
 
-            $sql = "INSERT INTO purchase_order_items (CODE, PO_CODE, RQ_ITEM_CODE, DESCRIPTION, QTY, UNIT_COST, NEGOTIATED_COST, CREATED_AT, UPDATED_AT) VALUES ('{$itemCode}', '{$poCode}', '{$rqItem}', '{$desc}', '{$qty}', '{$cost}', '{$nego}', '{$now}', '{$now}')";
-            $this->db->query($sql);
+            $sql = "INSERT INTO purchase_order_items (CODE, PO_CODE, RQ_ITEM_CODE, DESCRIPTION, QTY, UNIT_COST, NEGOTIATED_COST, CREATED_AT, UPDATED_AT) VALUES (:code, :po_code, :rq_item_code, :description, :qty, :unit_cost, :negotiated_cost, :created_at, :updated_at)";
+            $this->db->executePrepared(
+                $sql,
+                array(
+                    ':code' => $itemCode,
+                    ':po_code' => $poCode,
+                    ':rq_item_code' => $rqItem,
+                    ':description' => $desc,
+                    ':qty' => $qty,
+                    ':unit_cost' => $cost,
+                    ':negotiated_cost' => $nego,
+                    ':created_at' => $now,
+                    ':updated_at' => $now,
+                ),
+                false
+            );
         }
 
-        $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_BY, CREATED_AT) VALUES ('{$poCode}', '{$status}', 'Orden creada desde RQ', '{$createdBy}', '{$now}')");
+        $this->db->executePrepared(
+            "INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_BY, CREATED_AT) VALUES (:po_code, :status, :commentary, :created_by, :created_at)",
+            array(
+                ':po_code' => $poCode,
+                ':status' => $status,
+                ':commentary' => 'Orden creada desde RQ',
+                ':created_by' => $createdBy,
+                ':created_at' => $now,
+            ),
+            false
+        );
 
         return ['message' => ['POCODE' => $poCode], 'status' => true];
     }
@@ -182,12 +234,34 @@ class purchases
                 continue;
             }
             $cost = isset($item['negotiated_cost']) ? $item['negotiated_cost'] : $item['unit_cost'];
-            $sql = "UPDATE purchase_order_items SET NEGOTIATED_COST = '{$cost}', UPDATED_AT = '{$now}' WHERE CODE = '{$item['code']}'";
-            $this->db->query($sql);
+            $sql = "UPDATE purchase_order_items SET NEGOTIATED_COST = :negotiated_cost, UPDATED_AT = :updated_at WHERE CODE = :code";
+            $this->db->executePrepared(
+                $sql,
+                array(
+                    ':negotiated_cost' => $cost,
+                    ':updated_at' => $now,
+                    ':code' => $item['code'],
+                ),
+                false
+            );
         }
 
-        $this->db->query("UPDATE purchase_orders SET UPDATED_AT = '{$now}', STATUS = 'NEGOTIATED' WHERE CODE = '{$poCode}'");
-        $this->db->query("INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES ('{$poCode}', 'NEGOTIATED', 'Costos pactados', '{$now}')");
+        $this->db->executePrepared(
+            "UPDATE purchase_orders SET UPDATED_AT = :updated_at, STATUS = 'NEGOTIATED' WHERE CODE = :po_code",
+            array(
+                ':updated_at' => $now,
+                ':po_code' => $poCode,
+            ),
+            false
+        );
+        $this->db->executePrepared(
+            "INSERT INTO purchase_order_status (PO_CODE, STATUS, COMMENTARY, CREATED_AT) VALUES (:po_code, 'NEGOTIATED', 'Costos pactados', :created_at)",
+            array(
+                ':po_code' => $poCode,
+                ':created_at' => $now,
+            ),
+            false
+        );
 
         return ['message' => 'updated', 'status' => true];
     }

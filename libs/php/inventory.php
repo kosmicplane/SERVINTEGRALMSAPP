@@ -66,7 +66,10 @@ class inventory
     private function fetchItem($code)
     {
         $code = $this->sanitize($code);
-        $query = $this->db->query("SELECT * FROM inve WHERE CODE = '{$code}' LIMIT 1");
+        $query = $this->db->executePrepared(
+            "SELECT * FROM inve WHERE CODE = :code LIMIT 1",
+            array(':code' => $code)
+        );
         if (count($query) === 0) {
             throw new Exception('Ítem de inventario no encontrado');
         }
@@ -78,15 +81,18 @@ class inventory
         $code = isset($info['code']) ? $this->sanitize($info['code']) : '';
         $desc = isset($info['description']) ? $this->sanitize($info['description']) : '';
         $where = "WHERE STATUS = 1";
+        $params = array();
 
         if ($code !== '') {
-            $where .= " AND CODE = '{$code}'";
+            $where .= " AND CODE = :code";
+            $params[':code'] = $code;
         }
         if ($desc !== '') {
-            $where .= " AND DESCRIPTION LIKE '%{$desc}%'";
+            $where .= " AND DESCRIPTION LIKE :description";
+            $params[':description'] = "%{$desc}%";
         }
 
-        $query = $this->db->query("SELECT * FROM inve {$where} ORDER BY DESCRIPTION ASC");
+        $query = $this->db->executePrepared("SELECT * FROM inve {$where} ORDER BY DESCRIPTION ASC", $params);
         return ['message' => $query, 'status' => true];
     }
 
@@ -108,19 +114,47 @@ class inventory
         }
 
         if ($otype === 'c') {
-            $existing = $this->db->query("SELECT CODE FROM inve WHERE CODE = '{$CODE}' ORDER BY CODE ASC");
+            $existing = $this->db->executePrepared(
+                "SELECT CODE FROM inve WHERE CODE = :code ORDER BY CODE ASC",
+                array(':code' => $CODE)
+            );
             if (count($existing) > 0) {
                 return ['message' => 'exist', 'status' => false];
             }
 
-            $this->db->query("INSERT INTO inve (CODE, DESCRIPTION, COST, MARGIN, AMOUNT, REAL_AMOUNT, UTILITY_PCT, STATUS)
-                VALUES ('{$CODE}', '{$DESCRIPTION}', '{$COST}', '{$MARGIN}', '{$AMOUNT}', '{$AMOUNT}', '{$MARGIN}', '{$STATUS}')");
+            $this->db->executePrepared(
+                "INSERT INTO inve (CODE, DESCRIPTION, COST, MARGIN, AMOUNT, REAL_AMOUNT, UTILITY_PCT, STATUS)
+                VALUES (:code, :description, :cost, :margin, :amount, :real_amount, :utility_pct, :status)",
+                array(
+                    ':code' => $CODE,
+                    ':description' => $DESCRIPTION,
+                    ':cost' => $COST,
+                    ':margin' => $MARGIN,
+                    ':amount' => $AMOUNT,
+                    ':real_amount' => $AMOUNT,
+                    ':utility_pct' => $MARGIN,
+                    ':status' => $STATUS,
+                ),
+                false
+            );
 
             return ['message' => 'create', 'status' => true];
         }
 
-        $this->db->query("UPDATE inve SET DESCRIPTION='{$DESCRIPTION}', COST='{$COST}', MARGIN='{$MARGIN}',
-            AMOUNT = '{$AMOUNT}', REAL_AMOUNT = '{$AMOUNT}', UTILITY_PCT = '{$MARGIN}' WHERE CODE ='{$CODE}'");
+        $this->db->executePrepared(
+            "UPDATE inve SET DESCRIPTION=:description, COST=:cost, MARGIN=:margin,
+            AMOUNT = :amount, REAL_AMOUNT = :real_amount, UTILITY_PCT = :utility_pct WHERE CODE =:code",
+            array(
+                ':description' => $DESCRIPTION,
+                ':cost' => $COST,
+                ':margin' => $MARGIN,
+                ':amount' => $AMOUNT,
+                ':real_amount' => $AMOUNT,
+                ':utility_pct' => $MARGIN,
+                ':code' => $CODE,
+            ),
+            false
+        );
 
         return ['message' => 'edit', 'status' => true];
     }
@@ -137,8 +171,18 @@ class inventory
 
     private function logCostAudit($itemCode, $oldCost, $newCost, $obs, $userCode)
     {
-        $this->db->query("INSERT INTO inve_cost_audit (ITEM_CODE, COSTO_ANTERIOR, COSTO_NUEVO, USUARIO, OBSERVACIONES)
-            VALUES ('{$itemCode}', '{$oldCost}', '{$newCost}', '{$userCode}', '{$obs}')");
+        $this->db->executePrepared(
+            "INSERT INTO inve_cost_audit (ITEM_CODE, COSTO_ANTERIOR, COSTO_NUEVO, USUARIO, OBSERVACIONES)
+            VALUES (:item_code, :costo_anterior, :costo_nuevo, :usuario, :obs)",
+            array(
+                ':item_code' => $itemCode,
+                ':costo_anterior' => $oldCost,
+                ':costo_nuevo' => $newCost,
+                ':usuario' => $userCode,
+                ':obs' => $obs,
+            ),
+            false
+        );
     }
 
     public function registerEntry($info)
@@ -164,16 +208,38 @@ class inventory
 
         $newAvg = $this->calculateAverageCost($currentQty, $currentCost, $qty, $unitCost);
         $newQty = $currentQty + $qty;
-        $idOcValue = $idOc ? "'{$idOc}'" : "NULL";
-        $idOtValue = $idOt ? "'{$idOt}'" : "NULL";
         $costTotal = $qty * $unitCost;
 
         $this->db->beginTransaction();
         try {
-            $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, ID_OC, OBSERVACIONES)
-                VALUES ('{$itemCode}', 'ENTRADA', '{$subType}', '{$qty}', '{$unitCost}', '{$costTotal}', '{$userCode}', {$idOtValue}, {$idOcValue}, '{$obs}')");
+            $this->db->executePrepared(
+                "INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, ID_OC, OBSERVACIONES)
+                VALUES (:item_code, 'ENTRADA', :sub_tipo, :cantidad, :costo_unitario, :costo_total, :id_usuario, :id_ot, :id_oc, :obs)",
+                array(
+                    ':item_code' => $itemCode,
+                    ':sub_tipo' => $subType,
+                    ':cantidad' => $qty,
+                    ':costo_unitario' => $unitCost,
+                    ':costo_total' => $costTotal,
+                    ':id_usuario' => $userCode,
+                    ':id_ot' => $idOt,
+                    ':id_oc' => $idOc,
+                    ':obs' => $obs,
+                ),
+                false
+            );
 
-            $this->db->query("UPDATE inve SET AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}', COST = '{$newAvg}', UTILITY_PCT = '{$item['MARGIN']}' WHERE CODE = '{$itemCode}'");
+            $this->db->executePrepared(
+                "UPDATE inve SET AMOUNT = :amount, REAL_AMOUNT = :real_amount, COST = :cost, UTILITY_PCT = :utility_pct WHERE CODE = :code",
+                array(
+                    ':amount' => $newQty,
+                    ':real_amount' => $newQty,
+                    ':cost' => $newAvg,
+                    ':utility_pct' => $item['MARGIN'],
+                    ':code' => $itemCode,
+                ),
+                false
+            );
 
             $this->db->commit();
         } catch (Exception $e) {
@@ -211,15 +277,35 @@ class inventory
         }
 
         $newQty = $currentQty - $qty;
-        $idOtValue = $idOt ? "'{$idOt}'" : "NULL";
         $costTotal = $qty * $cost;
 
         $this->db->beginTransaction();
         try {
-            $this->db->query("INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, OBSERVACIONES)
-                VALUES ('{$itemCode}', 'SALIDA', '{$subType}', '{$qty}', '{$cost}', '{$costTotal}', '{$userCode}', {$idOtValue}, '{$obs}')");
+            $this->db->executePrepared(
+                "INSERT INTO inve_movimientos (ITEM_CODE, TIPO_MOVIMIENTO, SUB_TIPO, CANTIDAD, COSTO_UNITARIO, COSTO_TOTAL, ID_USUARIO, ID_OT, OBSERVACIONES)
+                VALUES (:item_code, 'SALIDA', :sub_tipo, :cantidad, :costo_unitario, :costo_total, :id_usuario, :id_ot, :obs)",
+                array(
+                    ':item_code' => $itemCode,
+                    ':sub_tipo' => $subType,
+                    ':cantidad' => $qty,
+                    ':costo_unitario' => $cost,
+                    ':costo_total' => $costTotal,
+                    ':id_usuario' => $userCode,
+                    ':id_ot' => $idOt,
+                    ':obs' => $obs,
+                ),
+                false
+            );
 
-            $this->db->query("UPDATE inve SET AMOUNT = '{$newQty}', REAL_AMOUNT = '{$newQty}' WHERE CODE = '{$itemCode}'");
+            $this->db->executePrepared(
+                "UPDATE inve SET AMOUNT = :amount, REAL_AMOUNT = :real_amount WHERE CODE = :code",
+                array(
+                    ':amount' => $newQty,
+                    ':real_amount' => $newQty,
+                    ':code' => $itemCode,
+                ),
+                false
+            );
 
             $this->db->commit();
         } catch (Exception $e) {
