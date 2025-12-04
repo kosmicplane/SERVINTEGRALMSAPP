@@ -1,22 +1,55 @@
 let quoteInitialized = false;
+let quoteVisible = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('quoteToggle');
-    const wrapper = document.getElementById('quoteWrapper');
+    setupQuoteNavigation();
+});
 
-    if (!toggle || !wrapper) {
-        return;
+function setupQuoteNavigation() {
+    const navLink = document.getElementById('quoteNavLink');
+    const closeButton = document.getElementById('closeQuoteSection');
+    const menu = document.getElementById('mymenu');
+
+    if (navLink) {
+        navLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            showQuoteSection();
+        });
     }
 
-    toggle.addEventListener('change', function () {
-        if (this.checked) {
-            wrapper.style.display = 'block';
-            activateQuotes();
-        } else {
-            deactivateQuotes();
-        }
-    });
-});
+    if (closeButton) {
+        closeButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            hideQuoteSection();
+        });
+    }
+
+    if (menu) {
+        menu.addEventListener('click', function (event) {
+            const clickedLink = event.target.closest('a');
+            if (clickedLink && clickedLink.id !== 'quoteNavLink') {
+                hideQuoteSection();
+            }
+        });
+    }
+}
+
+function showQuoteSection() {
+    if (quoteVisible) {
+        return;
+    }
+    const section = document.getElementById('quoteSection');
+    if (section) {
+        section.style.display = 'block';
+    }
+    activateQuotes();
+    quoteVisible = true;
+}
+
+function hideQuoteSection() {
+    deactivateQuotes();
+    quoteVisible = false;
+}
 
 function activateQuotes() {
     const container = document.getElementById('quoteModule');
@@ -39,9 +72,9 @@ function deactivateQuotes() {
         container.style.display = 'none';
     }
 
-    const wrapper = document.getElementById('quoteWrapper');
-    if (wrapper) {
-        wrapper.style.display = 'none';
+    const section = document.getElementById('quoteSection');
+    if (section) {
+        section.style.display = 'none';
     }
 
     const catalog = document.getElementById('catalogCodes');
@@ -50,6 +83,7 @@ function deactivateQuotes() {
     }
 
     quoteInitialized = false;
+    quoteVisible = false;
 }
 
 function renderQuoteUI(container) {
