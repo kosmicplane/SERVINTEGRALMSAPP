@@ -13,9 +13,23 @@ class inventory
         $this->ensureSchema();
     }
 
-    private function requirePermission(string $permission, array $context = [])
+    private function normalizeContext($context): array
     {
-        $user = $this->auth->resolveUser(['data' => $context]);
+        if (is_array($context)) {
+            return $context;
+        }
+
+        if (is_object($context)) {
+            return (array) $context;
+        }
+
+        return [];
+    }
+
+    private function requirePermission(string $permission, $context = [])
+    {
+        $contextData = $this->normalizeContext($context);
+        $user = $this->auth->resolveUser(['data' => $contextData]);
         $this->auth->authorizePermission($permission, $user);
     }
 
