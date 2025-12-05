@@ -81,15 +81,6 @@
                                                 <div id="workArea" class="mainArea">
 
                                                         <div id="wa" class="workarea"></div>
-                                                        <div id="quoteControls" class="quoteControls" style="margin-top:20px;">
-                                                                <label class="quoteToggleLabel">
-                                                                        <input type="checkbox" id="quoteToggle" /> Mostrar cotizaciones
-                                                                </label>
-                                                        </div>
-
-                                                        <div id="quoteWrapper" style="display:none;">
-                                                                <div id="quoteModule" class="workarea" style="margin-top:20px;"></div>
-                                                        </div>
                                                 </div>
 
                                         </div>
@@ -2551,8 +2542,8 @@
 				
 			</div>
 			
-			<div id="budgetFileLoad">
-			
+                        <div id="budgetFileLoad">
+
                         <form action="loadBudget.php" method="post" enctype="multipart/form-data" target="upload_target" >
 				<!-- <p id="End_upload_process"><img src="https://incocrea.com/servintegral/irsc/loader2.gif" /></p> -->
 				<input id="budgetSelectorOrder" name="myfile" type="file" placeholder="Imagen" class="fileBox"/>
@@ -2560,12 +2551,16 @@
 			</form>
 			
 			
-			<img src="irsc/mainLogo.png"/>
-			<img src="irsc/mainLogo2.png"/>
-			<img src="irsc/infoGeneral.png"/>
-			<img src="irsc/exit.png"/>
-		</div>
-		
+                        <img src="irsc/mainLogo.png"/>
+                        <img src="irsc/mainLogo2.png"/>
+                        <img src="irsc/infoGeneral.png"/>
+                        <img src="irsc/exit.png"/>
+                </div>
+
+                <div id="ifMasterQ" class="hiddenTab">
+                        <div id="quoteModule" class="workarea"></div>
+                </div>
+
                 <!-- Custom JS -->
                         <!--script src="js/jsLoader.js"></script-->
                         <script src="js/quotes.js"></script>

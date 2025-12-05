@@ -10,7 +10,8 @@ var defaultLanguage = {
                 loginButton: "Ingreso",
                 userLoginBox: "Email",
                 userPassBox: "Contraseña",
-                accept: "Aceptar"
+                accept: "Aceptar",
+                menuMasterQ: "Cotizaciones"
 };
 
 var language = {};
@@ -548,6 +549,9 @@ function setMenuItems(value)
                 mainMenu.appendChild(menuCreator("menuMasterI"));
                 mainMenu.appendChild(menuCreator("menuMasterF"));
                 mainMenu.appendChild(menuCreator("menuMasterP"));
+                if (typeof hasPermission === 'function' && hasPermission(value, 'quotes.manage')) {
+                                mainMenu.appendChild(menuCreator("menuMasterQ"));
+                }
                 mainMenu.appendChild(menuCreator("menuMasterLeg"));
                 mainMenu.appendChild(menuCreator("menuMasterL"));
 		
@@ -576,6 +580,9 @@ function setMenuItems(value)
                 mainMenu.appendChild(menuCreator("menuMasterI"));
                 mainMenu.appendChild(menuCreator("menuMasterF"));
                 mainMenu.appendChild(menuCreator("menuMasterP"));
+                if (typeof hasPermission === 'function' && hasPermission(value, 'quotes.manage')) {
+                                mainMenu.appendChild(menuCreator("menuMasterQ"));
+                }
                 // mainMenu.appendChild(menuCreator("menuMasterL"));
                 mainMenu.appendChild(menuCreator("menuMasterLeg"));
 		
@@ -601,6 +608,9 @@ function setMenuItems(value)
                 mainMenu.appendChild(menuCreator("menuMasterI"));
                 mainMenu.appendChild(menuCreator("menuMasterF"));
                 mainMenu.appendChild(menuCreator("menuMasterP"));
+                if (typeof hasPermission === 'function' && hasPermission(value, 'quotes.manage')) {
+                                mainMenu.appendChild(menuCreator("menuMasterQ"));
+                }
                 // mainMenu.appendChild(menuCreator("menuMasterL"));
                 mainMenu.appendChild(menuCreator("menuMasterLeg"));
 		
@@ -884,8 +894,8 @@ function ifLoad(code)
                 actTypesRefresh();
                 actisGet();
 	}
-	if(code == "ifMasterI")
-	{
+        if(code == "ifMasterI")
+        {
                 document.getElementById("s-clearerInve").onclick = function()
                 {
                         if(editMode == 0)
@@ -908,9 +918,13 @@ function ifLoad(code)
                 inveSaveButton.innerHTML = "Crear";
                 clearFields(a_inve_targets, "a-inve");
                 inveGet();
-	}
-	if(code == "ifMasterL")
-	{
+        }
+        if(code == "ifMasterQ")
+        {
+                activateQuotes();
+        }
+        if(code == "ifMasterL")
+        {
                 document.getElementById("f-clearerLog").onclick = function()
                 {
                         clearFields(f_log_targets);

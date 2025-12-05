@@ -15,14 +15,16 @@ const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
         'costSheets.manage',
         'internalSheets.view',
         'internalSheets.manage',
-        'reports.export'
+        'reports.export',
+        'quotes.manage'
     ],
     JZ: [
         'inventory.view',
         'inventory.manage',
         'costSheets.manage',
         'internalSheets.view',
-        'reports.export'
+        'reports.export',
+        'quotes.manage'
     ],
     T: [
         'internalSheets.view'
@@ -87,6 +89,16 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         updateNegotiatedCosts: 'purchases.orders',
         listPurchaseOrders: 'purchases.orders',
         receivePurchase: 'purchases.orders'
+    },
+    quotes: {
+        createQuote: 'quotes.manage',
+        updateQuote: 'quotes.manage',
+        sendQuote: 'quotes.manage',
+        approveQuote: 'quotes.manage',
+        rejectQuote: 'quotes.manage',
+        getCatalog: 'quotes.manage',
+        getClientsForQuotes: 'quotes.manage',
+        getBranchesForClient: 'quotes.manage'
     }
 };
 
