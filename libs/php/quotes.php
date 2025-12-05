@@ -1,11 +1,35 @@
 <?php
+require_once __DIR__ . '/authorization.php';
+
 class quotes
 {
     private $db;
+    private $auth;
 
     public function __construct()
     {
         $this->db = new sql_query();
+        $this->auth = new Authorization();
+    }
+
+    private function normalizeContext($context)
+    {
+        if (is_array($context)) {
+            return $context;
+        }
+
+        if (is_object($context)) {
+            return (array) $context;
+        }
+
+        return [];
+    }
+
+    private function authorizeQuotePermission(string $permission, $context = [])
+    {
+        $contextData = $this->normalizeContext($context);
+        $user = $this->auth->resolveUser(['data' => $contextData]);
+        $this->auth->authorizePermission($permission, $user);
     }
 
     private function buildQuoteCode($clientCode, $date)
@@ -15,6 +39,7 @@ class quotes
 
     public function createQuote($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $date = $info["date"];
         $code = $this->buildQuoteCode($info["clientCode"], $date);
         $status = "draft";
@@ -35,6 +60,7 @@ class quotes
 
     public function updateQuote($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $code = $info["code"];
         $status = $info["status"];
         $total = $this->calculateTotal($info["items"]);
@@ -58,6 +84,7 @@ class quotes
 
     public function sendQuote($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $code = $info["code"];
         $date = $info["date"];
         $str = "UPDATE quotes SET STATUS='sent', SENT_AT='".$date."' WHERE CODE='".$code."'";
@@ -71,6 +98,7 @@ class quotes
 
     public function approveQuote($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $code = $info["code"];
         $date = $info["date"];
         $orderCode = $this->createOrderFromQuote($code, $info);
@@ -86,6 +114,7 @@ class quotes
 
     public function rejectQuote($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $code = $info["code"];
         $str = "UPDATE quotes SET STATUS='rejected' WHERE CODE='".$code."'";
         $this->db->query($str);
@@ -98,8 +127,41 @@ class quotes
 
     public function getCatalog($info)
     {
+        $this->authorizeQuotePermission('quotes.manage', $info);
         $str = "SELECT CODE, NAME, TYPE, INVENTORY_CODE, UNIT, DEFAULT_PRICE FROM catalog_items WHERE STATUS = 1 ORDER BY NAME ASC";
         $query = $this->db->query($str);
+
+        $resp["message"] = $query;
+        $resp["status"] = true;
+        return $resp;
+    }
+
+    public function getClientsForQuotes($info)
+    {
+        $this->authorizeQuotePermission('quotes.manage', $info);
+        $str = "SELECT CODE, CNAME FROM users WHERE TYPE = 'C' AND STATUS = '1' ORDER BY CNAME ASC";
+        $query = $this->db->query($str);
+
+        $resp["message"] = $query;
+        $resp["status"] = true;
+        return $resp;
+    }
+
+    public function getBranchesForClient($info)
+    {
+        $this->authorizeQuotePermission('quotes.manage', $info);
+        $context = $this->normalizeContext($info);
+        $clientCode = isset($context['clientCode']) ? $context['clientCode'] : '';
+
+        $where = "WHERE STATUS = 1";
+        $params = array();
+        if ($clientCode !== '') {
+            $where .= " AND PARENTCODE = :parent";
+            $params[':parent'] = $clientCode;
+        }
+
+        $str = "SELECT CODE, NAME, PARENTCODE, PARENTNAME FROM sucus {$where} ORDER BY NAME ASC";
+        $query = $this->db->executePrepared($str, $params);
 
         $resp["message"] = $query;
         $resp["status"] = true;
