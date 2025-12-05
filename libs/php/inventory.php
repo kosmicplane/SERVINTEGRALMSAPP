@@ -13,10 +13,56 @@ class inventory
         $this->ensureSchema();
     }
 
-    private function requirePermission(string $permission, array $context = [])
+    private function normalizeContext($context): array
     {
-        $user = $this->auth->resolveUser(['data' => $context]);
+        if (is_array($context)) {
+            return $context;
+        }
+
+        if (is_object($context)) {
+            return (array) $context;
+        }
+
+        return [];
+    }
+
+    private function resolveUserFromContext($context): array
+    {
+        $contextData = $this->normalizeContext($context);
+        return $this->auth->resolveUser(['data' => $contextData]);
+    }
+
+    private function requirePermission(string $permission, $context = [])
+    {
+        $user = $this->resolveUserFromContext($context);
         $this->auth->authorizePermission($permission, $user);
+    }
+
+    private function requireRole(array $allowedRoles, $context = [])
+    {
+        $user = $this->resolveUserFromContext($context);
+        $role = $user['role'] ?? $user['TYPE'] ?? null;
+
+        if ($role === null) {
+            throw new Exception('Rol del usuario no disponible para validar autorización');
+        }
+
+        if (!in_array($role, $allowedRoles, true)) {
+            throw new Exception('Operación no permitida para el rol actual');
+        }
+
+        $caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['function'] ?? '';
+        $permissionByMethod = [
+            'recordPhysicalCount' => 'inventory.manage',
+            'applyPhysicalAdjustment' => 'inventory.adjustment',
+            'exportInventory' => 'inventory.view',
+        ];
+
+        if (isset($permissionByMethod[$caller])) {
+            $this->auth->authorizePermission($permissionByMethod[$caller], $user);
+        }
+
+        return $role;
     }
 
     private function ensureSchema()
@@ -318,7 +364,7 @@ class inventory
 
     public function recordPhysicalCount($info)
     {
-        $this->requireRole(['A', 'CO']);
+        $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
@@ -346,7 +392,7 @@ class inventory
 
     public function applyPhysicalAdjustment($info)
     {
-        $role = $this->requireRole(['A', 'CO']);
+        $role = $this->requireRole(['A', 'CO'], $info);
 
         $itemCode = $this->sanitize($info['item_code'] ?? '');
         $physicalCount = isset($info['physical_count']) ? floatval($info['physical_count']) : null;
