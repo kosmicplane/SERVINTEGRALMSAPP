@@ -76,7 +76,8 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         applyPhysicalAdjustment: ['inventory.adjustment', 'inventory.manage'],
         // consultas / export
         listMovements: 'inventory.view',
-        exportInventory: 'inventory.view'
+        exportInventory: 'inventory.view',
+        importInventoryFile: 'inventory.manage'
     },
 
     purchases: {
@@ -116,7 +117,8 @@ const ACTION_PERMISSION_MAP = global.ACTION_PERMISSION_MAP || {
         '#inveSaveButton',
         '#inventoryEntryBtn',
         '#inventoryExitBtn',
-        '#addInvQty'
+        '#addInvQty',
+        '#inventoryImportBtn'
     ],
     'costSheets.manage': [
         '#orderSaveButton',

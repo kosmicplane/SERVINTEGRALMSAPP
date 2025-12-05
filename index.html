@@ -845,6 +845,18 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div class="row fLabel fields panelButtFull">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
+                                                                <h4>Importar / comparar inventario</h4>
+                                                                <input type="file" id="inventoryImportFile" accept=".xlsx,.xls,.csv" />
+                                                                <button id="inventoryImportBtn" onclick="inventoryImportCompare()">Importar / Comparar inventario</button>
+                                                        </div>
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-8 ">
+                                                                <div id="inventoryImportResults" class="table"></div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                                                <div class="row fLabel fields panelButtFull">
                                                         <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                                 <h4>Entrada de inventario</h4>
                                                                 <span>Ítem</span>
