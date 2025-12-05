@@ -13,21 +13,29 @@ class inventory
         $this->ensureSchema();
     }
 
-    private function requirePermission(string $permission, array $context = [])
+    private function normalizeContext($context): array
     {
-        $user = $this->auth->resolveUser(['data' => $context]);
+        if (is_array($context)) {
+            return $context;
+        }
+
+        if (is_object($context)) {
+            return (array) $context;
+        }
+
+        return [];
+    }
+
+    private function requirePermission(string $permission, $context = [])
+    {
+        $contextData = $this->normalizeContext($context);
+        $user = $this->auth->resolveUser(['data' => $contextData]);
         $this->auth->authorizePermission($permission, $user);
     }
 
     private function requireRole(array $allowedRoles, $context = [])
     {
-        $contextData = [];
-        if (is_array($context)) {
-            $contextData = $context;
-        } elseif (is_object($context)) {
-            $contextData = (array) $context;
-        }
-
+        $contextData = $this->normalizeContext($context);
         $user = $this->auth->resolveUser(['data' => $contextData]);
         $role = $user['role'] ?? $user['TYPE'] ?? null;
 
