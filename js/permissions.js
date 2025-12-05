@@ -1,7 +1,8 @@
 // js/permissions.js
 
+(function (global) {
 // Qué puede hacer cada rol (A = admin, CO = coordinador, JZ = jefe zona, T = técnico, C = cliente)
-const ROLE_PERMISSIONS = {
+const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
     A: ['*'],
     CO: [
         'inventory.view',
@@ -32,7 +33,7 @@ const ROLE_PERMISSIONS = {
 };
 
 // Mapea métodos del backend -> permisos lógicos
-const METHOD_PERMISSION_MAP = {
+const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
     users: {
         getInveList: 'inventory.view',
         inveSave: ['inventory.create', 'inventory.edit', 'inventory.manage'],
@@ -89,7 +90,7 @@ const METHOD_PERMISSION_MAP = {
 };
 
 // Qué controles del DOM se protegen con cada permiso
-const ACTION_PERMISSION_MAP = {
+const ACTION_PERMISSION_MAP = global.ACTION_PERMISSION_MAP || {
     'inventory.create': [
         '#inveSaveButton'
     ],
@@ -228,9 +229,14 @@ function getStoredUserContext() {
     }
 }
 
-// Exponer en window para que main.js los use
-window.hasPermission = hasPermission;
-window.canCallProtectedMethod = canCallProtectedMethod;
-window.applyPermissionGuards = applyPermissionGuards;
-window.getStoredUserContext = getStoredUserContext;
+(global.ROLE_PERMISSIONS = ROLE_PERMISSIONS);
+(global.METHOD_PERMISSION_MAP = METHOD_PERMISSION_MAP);
+(global.ACTION_PERMISSION_MAP = ACTION_PERMISSION_MAP);
 
+// Exponer en window para que main.js los use
+global.hasPermission = hasPermission;
+global.canCallProtectedMethod = canCallProtectedMethod;
+global.applyPermissionGuards = applyPermissionGuards;
+global.getStoredUserContext = getStoredUserContext;
+
+})(window);
