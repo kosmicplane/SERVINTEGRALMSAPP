@@ -1,4 +1,8 @@
 <?php
+        if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+        }
+
         $result = 0;
 
         function sanitize_path_segment($segment) {
@@ -10,36 +14,87 @@
                 return preg_replace('/[^A-Za-z0-9._-]/', '_', $cleanName);
         }
 
-        function respond_with_result($result, $message = '') {
+        function respond_with_result($status, $message = '') {
                 $safeMessage = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-                echo '<script language="javascript" type="text/javascript">(function(){var res="'.addslashes($result).'";var msg="'.addslashes($safeMessage).'";try{if(window.top&&window.top!==window&&window.top.document){var cb=window.top.loadFinish||(window.top.window&&window.top.window.loadFinish);if(typeof cb==="function"){cb(res);return;}}}catch(e){} if(msg){document.write(msg);}else{document.write(res);}})();</script>';
+                echo '<script language="javascript" type="text/javascript">(function(){var cb=(window.top&&window.top.loadFinish)||null;if(typeof cb==="function"){cb('.json_encode($status).','.json_encode($safeMessage).');return;}document.write('.json_encode($safeMessage ?: $status).');})();</script>';
+                exit;
+        }
+
+        if (empty($_SESSION['user'])) {
+                respond_with_result('error', 'No hay sesión activa, por favor ingrese de nuevo.');
         }
 
         if (empty($_FILES) || !is_array($_FILES)) {
-                respond_with_result(0, 'No files were uploaded.');
-                return;
+                respond_with_result('error', 'No se seleccionó ningún archivo.');
         }
 
         $itemKeys = array_keys($_FILES);
-        $itemFolder = sanitize_path_segment($itemKeys[0]);
 
-        if ($itemFolder === '' || empty($_FILES[$itemFolder]['name']) || !is_array($_FILES[$itemFolder]['name'])) {
-                respond_with_result(0, 'No files were uploaded.');
-                return;
+        if (!isset($itemKeys[0])) {
+                respond_with_result('error', 'No se recibió información del archivo.');
+        }
+
+        $itemKey = $itemKeys[0];
+        $fileInfo = $_FILES[$itemKey] ?? null;
+        $itemFolder = sanitize_path_segment(str_replace(['[]'], '', $itemKey));
+
+        if ($itemFolder === '') {
+                respond_with_result('error', 'No se recibió el código de la orden.');
+        }
+
+        if (empty($fileInfo) || empty($fileInfo['name'])) {
+                respond_with_result('error', 'No se seleccionó ningún archivo.');
+        }
+
+        $names = $fileInfo['name'];
+        $tmpNames = $fileInfo['tmp_name'];
+        $errors = $fileInfo['error'];
+        $sizes = $fileInfo['size'];
+
+        if (!is_array($names)) {
+                $names = [$names];
+                $tmpNames = [$tmpNames];
+                $errors = [$errors];
+                $sizes = [$sizes];
         }
 
         $destination_path = "/home/izorlnspatmm/public_html/app/irsc/pics/".$itemFolder."/order/";
 
                  // $destination_path = "/xampp/htdocs/www/servintegral/irsc/pics/".$itemFolder."/order/";
 
-        // CLEAR FOLDER
-        $files = glob($destination_path."*"); foreach($files as $file){ if(is_file($file))unlink($file); }
-        // CREATE FILES
-        for($i=0; $i<count($_FILES[$itemFolder]['name']); $i++)
-        {
-                $target_path =  $destination_path . htmlentities(sanitize_filename($_FILES[$itemFolder]['name'][$i]));
-                if(@move_uploaded_file($_FILES[$itemFolder]['tmp_name'][$i], $target_path)){$result = 1;}else{$result = 0;}
+        if (!is_dir($destination_path) && !@mkdir($destination_path, 0755, true)) {
+                respond_with_result('error', 'No fue posible preparar la carpeta de destino.');
         }
-        // RETURN TO JS
-        respond_with_result($result, $result ? '' : 'Upload failed.');
+
+        $files = glob($destination_path."*"); foreach($files as $file){ if(is_file($file))unlink($file); }
+
+        $allowedExt = ['jpg','jpeg','png','pdf'];
+        $maxSize = 50 * 1024 * 1024;
+
+        foreach ($names as $index => $name) {
+                if ($errors[$index] !== UPLOAD_ERR_OK) {
+                        respond_with_result('error', 'Error al cargar el archivo. Código: '.$errors[$index]);
+                }
+
+                if (empty($name)) {
+                        respond_with_result('error', 'No se seleccionó ningún archivo.');
+                }
+
+                if (empty($tmpNames[$index]) || !is_uploaded_file($tmpNames[$index])) {
+                        respond_with_result('error', 'No se pudo procesar el archivo cargado.');
+                }
+
+                if ($sizes[$index] <= 0 || $sizes[$index] > $maxSize) {
+                        respond_with_result('error', 'El archivo supera el tamaño permitido (50MB).');
+                }
+
+                $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+                if (!in_array($ext, $allowedExt, true)) {
+                        respond_with_result('error', 'Tipo de archivo no permitido. Solo se aceptan imágenes (JPG/PNG) o PDF.');
+                }
+
+                $target_path =  $destination_path . htmlentities(sanitize_filename($name));
+                if(@move_uploaded_file($tmpNames[$index], $target_path)){$result = 1;}else{respond_with_result('error', 'No fue posible guardar el archivo. Consulte con soporte.');}
+        }
+        respond_with_result('ok', 'Archivo cargado correctamente.');
 ?>

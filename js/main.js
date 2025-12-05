@@ -3375,17 +3375,32 @@ function loadPics(param)
         // document.getElementById(param+'_upload_process').style.display = 'block';
 	document.getElementById("upButton"+param).click();
 }
-function loadFinish(result) {
-    console.log("Resultado recibido:", result); // Debug para verificar qué llega
-    if (result == 1) {
-        alertBox("Información", "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Carga completada", 300);
-    } else {
-        alertBox("Información", "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Error en la carga", 300);
+function loadFinish(result, message) {
+    console.log("Resultado recibido:", result, message);
+
+    var status = result;
+    var msg = message;
+
+    if (typeof result === "object" && result !== null) {
+        status = result.status || result.result || result.state || result;
+        msg = result.message || result.msg || message;
     }
 
-    if (actualLoadType != "bud") {
-        document.getElementById("picSelector" + actualLoadType).value = "";
-    } else {
+    if (status === 1 || status === "1") {
+        status = "ok";
+    }
+
+    var isOk = status === "ok";
+    var finalMsg = msg || (isOk ? "Carga completada" : "Error en la carga");
+
+    alertBox("Información", "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>" + finalMsg, 300);
+
+    if (actualLoadType && actualLoadType !== "bud") {
+        var selector = document.getElementById("picSelector" + actualLoadType);
+        if (selector) {
+            selector.value = "";
+        }
+    } else if (actualLoadType === "bud") {
         saveFilePath();
     }
 }
