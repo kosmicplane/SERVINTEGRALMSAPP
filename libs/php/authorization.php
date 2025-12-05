@@ -40,8 +40,12 @@ class Authorization
         return $user;
     }
 
-    public function assertUserConsistency(array $sessionUser, array $requestData)
+    public function assertUserConsistency(array $sessionUser, $requestData)
     {
+        if (!is_array($requestData)) {
+            $requestData = [];
+        }
+
         $sessionCode = strtoupper((string)($sessionUser['code'] ?? ''));
 
         if (isset($requestData['autorCode']) && strtoupper((string)$requestData['autorCode']) !== $sessionCode) {
