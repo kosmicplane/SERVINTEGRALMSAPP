@@ -43,7 +43,11 @@ class Authorization
     public function assertUserConsistency(array $sessionUser, $requestData)
     {
         if (!is_array($requestData)) {
-            $requestData = [];
+            if (is_object($requestData)) {
+                $requestData = (array) $requestData;
+            } else {
+                $requestData = [];
+            }
         }
 
         $sessionCode = strtoupper((string)($sessionUser['code'] ?? ''));

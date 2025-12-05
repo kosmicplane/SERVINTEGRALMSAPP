@@ -1858,6 +1858,110 @@ function inventoryMovementsGet()
                 }
         });
 }
+
+function inventoryImportCompare()
+{
+        var input = document.getElementById("inventoryImportFile");
+        if(!input || !input.files || input.files.length === 0){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes seleccionar un archivo XLSX, XLS o CSV",320); return;}
+
+        var file = input.files[0];
+        var ext = file.name.split('.').pop().toLowerCase();
+        if(["xlsx","xls","csv"].indexOf(ext) === -1){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Formato no soportado. Usa XLSX, XLS o CSV",320); return;}
+
+        var reader = new FileReader();
+        reader.onload = function(e){
+                var base64 = e.target.result.split(",")[1];
+                var info = {file_name: file.name, file_data: base64};
+
+                sendAjax("inventory","importInventoryFile",info,function(response){
+                        renderInventoryImportResults(response.message);
+                });
+        };
+
+        reader.readAsDataURL(file);
+}
+
+function renderInventoryImportResults(report)
+{
+        var container = document.getElementById("inventoryImportResults");
+        if(!container){return;}
+        container.innerHTML = "";
+
+        var summary = document.createElement("div");
+        summary.className = "table-head";
+        summary.innerHTML = "<div class='column' data-label='Resumen'>Items en archivo: " + report.summary.total_file_items + " | Items en BD: " + report.summary.total_db_items + " | Nuevos: " + report.summary.new_items + " | Faltantes: " + report.summary.missing_items + " | Diferentes: " + report.summary.differences + "</div>";
+        container.appendChild(summary);
+
+        function buildSection(title, rows, columns){
+                var head = document.createElement("div");
+                head.className = "table-head";
+                var titleCol = document.createElement("div");
+                titleCol.className = "column";
+                titleCol.setAttribute("data-label", title);
+                titleCol.innerHTML = title;
+                head.appendChild(titleCol);
+                container.appendChild(head);
+
+                if(!rows || rows.length === 0){
+                        var emptyRow = document.createElement("div");
+                        emptyRow.className = "table-row";
+                        var col = document.createElement("div");
+                        col.className = "column";
+                        col.setAttribute("data-label", title);
+                        col.innerHTML = "Sin registros";
+                        emptyRow.appendChild(col);
+                        container.appendChild(emptyRow);
+                        return;
+                }
+
+                var headRow = document.createElement("div");
+                headRow.className = "table-head";
+                columns.forEach(function(c){
+                        var colh = document.createElement("div");
+                        colh.className = "column";
+                        colh.setAttribute("data-label", c.label);
+                        colh.innerHTML = c.label;
+                        headRow.appendChild(colh);
+                });
+                container.appendChild(headRow);
+
+                rows.forEach(function(item){
+                        var row = document.createElement("div");
+                        row.className = "table-row";
+                        columns.forEach(function(c){
+                                var col = document.createElement("div");
+                                col.className = "column";
+                                col.setAttribute("data-label", c.label);
+                                col.innerHTML = item[c.key];
+                                row.appendChild(col);
+                        });
+                        container.appendChild(row);
+                });
+        }
+
+        buildSection("Ítems nuevos en archivo", report.new_items, [
+                {label: "Código", key: "code"},
+                {label: "Descripción", key: "description"},
+                {label: "Cantidad", key: "amount"},
+                {label: "Costo", key: "cost"}
+        ]);
+
+        buildSection("Ítems faltantes en archivo", report.missing_items, [
+                {label: "Código", key: "code"},
+                {label: "Descripción", key: "description"},
+                {label: "Cantidad BD", key: "amount"},
+                {label: "Costo BD", key: "cost"}
+        ]);
+
+        buildSection("Diferencias entre archivo y BD", report.differences, [
+                {label: "Código", key: "code"},
+                {label: "Descripción", key: "description"},
+                {label: "Cant. BD", key: "db_amount"},
+                {label: "Cant. Archivo", key: "file_amount"},
+                {label: "Costo BD", key: "db_cost"},
+                {label: "Costo Archivo", key: "file_cost"}
+        ]);
+}
 function inventoryExport()
 {
         sendAjax("inventory","exportInventory",{},function(response){

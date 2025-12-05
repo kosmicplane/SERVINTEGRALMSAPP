@@ -66,6 +66,7 @@ return [
             'applyPhysicalAdjustment' => ['inventory.adjustment', 'inventory.manage'],
             'listMovements' => 'inventory.view',
             'exportInventory' => 'inventory.view',
+            'importInventoryFile' => 'inventory.manage',
         ],
         'purchases' => [
             'createSupplier' => 'purchases.orders',

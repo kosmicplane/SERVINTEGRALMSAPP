@@ -38,19 +38,10 @@ class inventory
         $this->auth->authorizePermission($permission, $user);
     }
 
-    private function requireRole(array $allowedRoles, array $context = [])
+    private function requireRole(array $allowedRoles, $context = [])
     {
-        $contextData = [];
-        if (is_array($context)) {
-            $contextData = $context;
-        } elseif (is_object($context)) {
-            $contextData = (array) $context;
-        }
-
+        $contextData = $this->normalizeContext($context);
         $user = $this->auth->resolveUser(['data' => $contextData]);
-    private function requireRole(array $allowedRoles)
-    {
-        $user = $this->auth->resolveUser(['data' => []]);
         $role = $user['role'] ?? $user['TYPE'] ?? null;
 
         if ($role === null) {
@@ -66,6 +57,7 @@ class inventory
             'recordPhysicalCount' => 'inventory.manage',
             'applyPhysicalAdjustment' => 'inventory.adjustment',
             'exportInventory' => 'inventory.view',
+            'importInventoryFile' => 'inventory.manage',
         ];
 
         if (isset($permissionByMethod[$caller])) {
@@ -239,6 +231,147 @@ class inventory
             ),
             false
         );
+    }
+
+    private function mapInventoryRow(array $row, array $headers)
+    {
+        $normalizedHeaders = array_map(function ($h) {
+            return strtolower(trim((string) $h));
+        }, $headers);
+
+        $data = [];
+        foreach ($normalizedHeaders as $index => $header) {
+            $data[$header] = $row[$index] ?? null;
+        }
+
+        $code = trim((string) ($data['codigo'] ?? $data['code'] ?? $data['item'] ?? ''));
+        if ($code === '') {
+            return null;
+        }
+
+        $description = trim((string) ($data['descripcion'] ?? $data['description'] ?? ''));
+        $amount = isset($data['cantidad']) ? $data['cantidad'] : ($data['existencia'] ?? ($data['amount'] ?? 0));
+        $cost = isset($data['costo']) ? $data['costo'] : ($data['costo_unitario'] ?? ($data['cost'] ?? 0));
+
+        return [
+            'code' => $code,
+            'description' => $description,
+            'amount' => (float) $amount,
+            'cost' => (float) $cost,
+        ];
+    }
+
+    private function parseCsvFile(string $path): array
+    {
+        $handle = fopen($path, 'r');
+        if ($handle === false) {
+            throw new Exception('No se pudo leer el archivo CSV');
+        }
+
+        $headers = fgetcsv($handle);
+        if ($headers === false) {
+            fclose($handle);
+            return [];
+        }
+
+        $items = [];
+        while (($row = fgetcsv($handle)) !== false) {
+            $mapped = $this->mapInventoryRow($row, $headers);
+            if ($mapped !== null) {
+                $items[] = $mapped;
+            }
+        }
+
+        fclose($handle);
+        return $items;
+    }
+
+    private function parseExcelFile(string $path): array
+    {
+        require_once __DIR__ . '/../phpExcel/Classes/PHPExcel/IOFactory.php';
+
+        $reader = PHPExcel_IOFactory::createReaderForFile($path);
+        $excel = $reader->load($path);
+        $sheetData = $excel->getActiveSheet()->toArray(null, true, true, false);
+
+        if (empty($sheetData)) {
+            return [];
+        }
+
+        $headers = array_shift($sheetData);
+        $items = [];
+        foreach ($sheetData as $row) {
+            $mapped = $this->mapInventoryRow(array_values($row), $headers);
+            if ($mapped !== null) {
+                $items[] = $mapped;
+            }
+        }
+
+        return $items;
+    }
+
+    private function buildInventoryComparison(array $importedItems): array
+    {
+        $existingRows = $this->db->query("SELECT CODE, DESCRIPTION, AMOUNT, COST FROM inve WHERE STATUS = 1");
+        $existingByCode = [];
+        foreach ($existingRows as $row) {
+            $existingByCode[$row['CODE']] = [
+                'code' => $row['CODE'],
+                'description' => $row['DESCRIPTION'],
+                'amount' => (float) $row['AMOUNT'],
+                'cost' => (float) $row['COST'],
+            ];
+        }
+
+        $importedByCode = [];
+        foreach ($importedItems as $item) {
+            $importedByCode[$item['code']] = $item;
+        }
+
+        $newItems = [];
+        $missingItems = [];
+        $differences = [];
+
+        foreach ($importedByCode as $code => $item) {
+            if (!isset($existingByCode[$code])) {
+                $newItems[] = $item;
+                continue;
+            }
+
+            $existing = $existingByCode[$code];
+            $amountDiffers = abs($existing['amount'] - $item['amount']) > 0.0001;
+            $costDiffers = abs($existing['cost'] - $item['cost']) > 0.0001;
+
+            if ($amountDiffers || $costDiffers) {
+                $differences[] = [
+                    'code' => $code,
+                    'description' => $existing['description'],
+                    'db_amount' => $existing['amount'],
+                    'file_amount' => $item['amount'],
+                    'db_cost' => $existing['cost'],
+                    'file_cost' => $item['cost'],
+                ];
+            }
+        }
+
+        foreach ($existingByCode as $code => $item) {
+            if (!isset($importedByCode[$code])) {
+                $missingItems[] = $item;
+            }
+        }
+
+        return [
+            'summary' => [
+                'total_file_items' => count($importedByCode),
+                'total_db_items' => count($existingByCode),
+                'new_items' => count($newItems),
+                'missing_items' => count($missingItems),
+                'differences' => count($differences),
+            ],
+            'new_items' => $newItems,
+            'missing_items' => $missingItems,
+            'differences' => $differences,
+        ];
     }
 
     public function registerEntry($info)
@@ -530,6 +663,51 @@ class inventory
         file_put_contents($absolutePath, $csv);
 
         return ['message' => $relativePath, 'status' => true];
+    }
+
+    public function importInventoryFile($info)
+    {
+        $this->requireRole(['A', 'CO'], $info);
+
+        $fileName = $info['file_name'] ?? '';
+        $fileData = $info['file_data'] ?? '';
+
+        if ($fileName === '' || $fileData === '') {
+            throw new Exception('Debe adjuntar un archivo de inventario para importar');
+        }
+
+        $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $allowed = ['xlsx', 'xls', 'csv'];
+        if (!in_array($ext, $allowed, true)) {
+            throw new Exception('Formato de archivo no soportado. Use XLSX, XLS o CSV');
+        }
+
+        if (strpos($fileData, ',') !== false) {
+            $parts = explode(',', $fileData, 2);
+            $fileData = $parts[1];
+        }
+
+        $binary = base64_decode($fileData, true);
+        if ($binary === false) {
+            throw new Exception('No se pudo decodificar el archivo recibido');
+        }
+
+        $tempPath = sys_get_temp_dir() . '/inventory_import_' . uniqid() . '.' . $ext;
+        file_put_contents($tempPath, $binary);
+
+        try {
+            $items = $ext === 'csv' ? $this->parseCsvFile($tempPath) : $this->parseExcelFile($tempPath);
+        } finally {
+            @unlink($tempPath);
+        }
+
+        if (empty($items)) {
+            throw new Exception('El archivo no contiene filas reconocibles de inventario');
+        }
+
+        $report = $this->buildInventoryComparison($items);
+
+        return ['message' => $report, 'status' => true];
     }
 }
 
