@@ -1,22 +1,7 @@
 let quoteInitialized = false;
-
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('quoteToggle');
-    const wrapper = document.getElementById('quoteWrapper');
-
-    if (!toggle || !wrapper) {
-        return;
-    }
-
-    toggle.addEventListener('change', function () {
-        if (this.checked) {
-            wrapper.style.display = 'block';
-            activateQuotes();
-        } else {
-            deactivateQuotes();
-        }
-    });
-});
+let catalogItems = [];
+let quoteClients = [];
+let quoteBranches = [];
 
 function activateQuotes() {
     const container = document.getElementById('quoteModule');
@@ -35,21 +20,8 @@ function activateQuotes() {
 function deactivateQuotes() {
     const container = document.getElementById('quoteModule');
     if (container) {
-        container.innerHTML = '';
         container.style.display = 'none';
     }
-
-    const wrapper = document.getElementById('quoteWrapper');
-    if (wrapper) {
-        wrapper.style.display = 'none';
-    }
-
-    const catalog = document.getElementById('catalogCodes');
-    if (catalog && catalog.parentNode) {
-        catalog.parentNode.removeChild(catalog);
-    }
-
-    quoteInitialized = false;
 }
 
 function renderQuoteUI(container) {
@@ -62,21 +34,21 @@ function renderQuoteUI(container) {
         '  </div>',
         '  <div class="col-md-3">',
         '    <label>Cliente</label>',
-        '    <input id="quoteClient" class="form-control" placeholder="Código de cliente" />',
+        '    <select id="quoteClient" class="form-control"></select>',
         '  </div>',
         '  <div class="col-md-3">',
         '    <label>Nombre de cliente</label>',
-        '    <input id="quoteClientName" class="form-control" placeholder="Razón social" />',
+        '    <input id="quoteClientName" class="form-control" placeholder="Razón social" readonly />',
         '  </div>',
         '</div>',
         '<div class="row" style="margin-top:10px;">',
         '  <div class="col-md-3">',
         '    <label>Sucursal</label>',
-        '    <input id="quoteSucu" class="form-control" placeholder="Código sucursal" />',
+        '    <select id="quoteSucu" class="form-control"></select>',
         '  </div>',
         '  <div class="col-md-3">',
         '    <label>Nombre sucursal</label>',
-        '    <input id="quoteSucuName" class="form-control" placeholder="Nombre sucursal" />',
+        '    <input id="quoteSucuName" class="form-control" placeholder="Nombre sucursal" readonly />',
         '  </div>',
         '  <div class="col-md-3">',
         '    <label>Contacto</label>',
@@ -142,9 +114,52 @@ function renderQuoteUI(container) {
     document.getElementById('approveQuote').addEventListener('click', () => changeStatus('approveQuote'));
     document.getElementById('rejectQuote').addEventListener('click', () => changeStatus('rejectQuote'));
 
+    setupClientBranchSync();
     addItemRow();
     addCostRow();
     loadCatalog();
+    loadClientOptions();
+    loadBranchOptions('');
+}
+
+function setupClientBranchSync() {
+    const clientSelect = document.getElementById('quoteClient');
+    const branchSelect = document.getElementById('quoteSucu');
+
+    if (clientSelect) {
+        clientSelect.addEventListener('change', () => {
+            syncClientFields();
+            loadBranchOptions(clientSelect.value);
+        });
+    }
+
+    if (branchSelect) {
+        branchSelect.addEventListener('change', syncBranchFields);
+    }
+}
+
+function syncClientFields() {
+    const clientSelect = document.getElementById('quoteClient');
+    const clientName = document.getElementById('quoteClientName');
+    const selected = clientSelect && clientSelect.selectedOptions.length > 0
+        ? clientSelect.selectedOptions[0]
+        : null;
+
+    if (clientName) {
+        clientName.value = selected ? selected.textContent : '';
+    }
+}
+
+function syncBranchFields() {
+    const branchSelect = document.getElementById('quoteSucu');
+    const branchName = document.getElementById('quoteSucuName');
+    const selected = branchSelect && branchSelect.selectedOptions.length > 0
+        ? branchSelect.selectedOptions[0]
+        : null;
+
+    if (branchName) {
+        branchName.value = selected ? selected.textContent : '';
+    }
 }
 
 function addItemRow(prefill) {
@@ -165,7 +180,49 @@ function addItemRow(prefill) {
     ].join('');
     row.querySelector('.type').value = prefill && prefill.type ? prefill.type : 'item';
     row.querySelector('.removeRow').addEventListener('click', () => row.remove());
+    attachItemRowEvents(row);
     tbody.appendChild(row);
+}
+
+function attachItemRowEvents(row) {
+    const codeInput = row.querySelector('.code');
+    if (codeInput) {
+        codeInput.addEventListener('change', () => fillRowFromCatalog(codeInput.value, row));
+        codeInput.setAttribute('list', 'catalogCodes');
+    }
+}
+
+function fillRowFromCatalog(code, row) {
+    if (!code || !row || catalogItems.length === 0) {
+        return;
+    }
+
+    const catalogItem = catalogItems.find(item => String(item.CODE) === String(code));
+    if (!catalogItem) {
+        return;
+    }
+
+    const desc = row.querySelector('.desc');
+    const type = row.querySelector('.type');
+    const inventory = row.querySelector('.inventoryCode');
+    const unitPrice = row.querySelector('.unitPrice');
+
+    if (desc) {
+        desc.value = catalogItem.NAME || '';
+    }
+
+    if (type && catalogItem.TYPE) {
+        const normalized = catalogItem.TYPE.toLowerCase().includes('serv') ? 'servicio' : 'item';
+        type.value = normalized;
+    }
+
+    if (inventory) {
+        inventory.value = catalogItem.INVENTORY_CODE || '';
+    }
+
+    if (unitPrice && Object.prototype.hasOwnProperty.call(catalogItem, 'DEFAULT_PRICE')) {
+        unitPrice.value = catalogItem.DEFAULT_PRICE;
+    }
 }
 
 function addCostRow(prefill) {
@@ -176,7 +233,7 @@ function addCostRow(prefill) {
     const row = document.createElement('tr');
     row.innerHTML = [
         `<td><input class="form-control costType" value="${prefill ? prefill.type : ''}" placeholder="Ej: Mano de obra" /></td>`,
-        `<td><input class="form-control costAmount" type="number" min="0" step="0.01" value="${prefill ? prefill.amount : '0'}" /></td>`,
+        `<td><input class="form-control costAmount" type="number" min="0" step="0.01" value="${prefill ? prefill.amount : '0'}"/></td>`,
         `<td><input class="form-control costNote" value="${prefill ? prefill.note : ''}" /></td>`,
         '<td><button class="btn btn-link text-danger removeRow">X</button></td>'
     ].join('');
@@ -193,16 +250,85 @@ function loadCatalog() {
         .then(r => r.json())
         .then(data => {
             if (!data || !data.data || !data.data.message) return;
-            const catalog = data.data.message;
+            catalogItems = data.data.message;
+            const existing = document.getElementById('catalogCodes');
+            if (existing && existing.parentNode) {
+                existing.parentNode.removeChild(existing);
+            }
             const list = document.createElement('datalist');
             list.id = 'catalogCodes';
-            catalog.forEach(item => {
+            catalogItems.forEach(item => {
                 const option = document.createElement('option');
                 option.value = item.CODE;
                 option.label = `${item.NAME} (${item.TYPE})`;
                 list.appendChild(option);
             });
             document.body.appendChild(list);
+
+            document.querySelectorAll('#quoteItems tbody tr').forEach(attachItemRowEvents);
+        })
+        .catch(() => {});
+}
+
+function loadClientOptions() {
+    fetch('libs/php/mentry.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({class: 'quotes', method: 'getClientsForQuotes', data: {}})
+    })
+        .then(r => r.json())
+        .then(data => {
+            const select = document.getElementById('quoteClient');
+            if (!select) {
+                return;
+            }
+            if (!data || !data.data || !data.data.message) {
+                select.innerHTML = '<option value="">Seleccione un cliente</option>';
+                return;
+            }
+
+            quoteClients = data.data.message;
+            select.innerHTML = '<option value="">Seleccione un cliente</option>';
+            quoteClients.forEach(client => {
+                const option = document.createElement('option');
+                option.value = client.CODE;
+                option.textContent = client.CNAME;
+                select.appendChild(option);
+            });
+            syncClientFields();
+        })
+        .catch(() => {});
+}
+
+function loadBranchOptions(clientCode) {
+    fetch('libs/php/mentry.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({class: 'quotes', method: 'getBranchesForClient', data: {clientCode: clientCode || ''}})
+    })
+        .then(r => r.json())
+        .then(data => {
+            const select = document.getElementById('quoteSucu');
+            if (!select) {
+                return;
+            }
+
+            if (!data || !data.data || !data.data.message) {
+                select.innerHTML = '<option value="">Seleccione una sucursal</option>';
+                syncBranchFields();
+                return;
+            }
+
+            quoteBranches = data.data.message;
+            select.innerHTML = '<option value="">Seleccione una sucursal</option>';
+            quoteBranches.forEach(branch => {
+                const option = document.createElement('option');
+                option.value = branch.CODE;
+                option.textContent = branch.NAME;
+                option.dataset.parent = branch.PARENTCODE || '';
+                select.appendChild(option);
+            });
+            syncBranchFields();
         })
         .catch(() => {});
 }

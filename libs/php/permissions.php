@@ -14,6 +14,7 @@ return [
             'internalSheets.view',
             'internalSheets.manage',
             'reports.export',
+            'quotes.manage',
         ],
         'JZ' => [
             'inventory.view',
@@ -21,6 +22,7 @@ return [
             'costSheets.manage',
             'internalSheets.view',
             'reports.export',
+            'quotes.manage',
         ],
         'T' => [
             'internalSheets.view',
@@ -75,6 +77,16 @@ return [
             'updateNegotiatedCosts' => 'purchases.orders',
             'listPurchaseOrders' => 'purchases.orders',
             'receivePurchase' => 'purchases.orders',
+        ],
+        'quotes' => [
+            'createQuote' => 'quotes.manage',
+            'updateQuote' => 'quotes.manage',
+            'sendQuote' => 'quotes.manage',
+            'approveQuote' => 'quotes.manage',
+            'rejectQuote' => 'quotes.manage',
+            'getCatalog' => 'quotes.manage',
+            'getClientsForQuotes' => 'quotes.manage',
+            'getBranchesForClient' => 'quotes.manage',
         ],
     ],
 ];
