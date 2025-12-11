@@ -76,6 +76,7 @@ class users{
                                                 'role' => $resp["message"]["TYPE"],
                                                 'email' => $resp["message"]["MAIL"],
                                                 'name' => $resp["message"]["RESPNAME"],
+                                                'client_code' => $resp["message"]["CLIENT_CODE"] ?? $resp["message"]["CODE"] ?? null,
                                 );
 
                                 $info["autor"] = $resp["message"]["RESPNAME"];
@@ -183,8 +184,18 @@ class users{
                 $email = $info["f-clientEmail"];
                 $type = 'C';
 
-                $where = "WHERE  TYPE = :type AND STATUS != 'null' ";
+                $sessionUser = $this->auth->resolveUser(['data' => $info]);
+                $sessionRole = $sessionUser['TYPE'] ?? $sessionUser['role'] ?? '';
+                $clientCode = $sessionUser['CLIENT_CODE'] ?? $sessionUser['client_code'] ?? '';
+
+                $where = "WHERE  TYPE = :type AND STATUS != 'null' AND (CLIENT_CODE IS NULL OR CLIENT_CODE = CODE) ";
                 $params = array(':type' => $type);
+
+                if($sessionRole === 'C' && $clientCode !== '')
+                {
+                        $where .= "AND CODE = :clientCode ";
+                        $params[':clientCode'] = $clientCode;
+                }
 
                 if($name != "")
                 {
@@ -257,33 +268,44 @@ class users{
 		return $resp;
 	
 	}
-	function getParentSucus($info)
-	{
-			$user = $info["ucode"];
-			
-			$str = "SELECT CODE, CNAME FROM users WHERE TYPE = 'C' AND STATUS = '1' ORDER BY CNAME ASC";
-			$query = $this->db->query($str);
-			
-			if(count($query) > 0){$parents = $query;}
-			else{$parents = array();}
-			
-			$str = "SELECT PARENTCODE, CODE, NAME, CITY, DEPTO FROM sucus WHERE STATUS = '1' ORDER BY CODE ASC";
-			$query = $this->db->query($str);
-			
-			if(count($query) > 0){$sucus = $query;}
-			else{$sucus = array();}
-			
-			$str = "SELECT CODE, CCODE, SUCUNAME, PARENTCODE, LOCATION FROM orders ORDER BY CCODE DESC";
-			$query = $this->db->query($str);
-			
-			if(count($query) > 0){$orders = $query;}
-			else{$orders = array();}
-			
-			$str = "SELECT * FROM others WHERE LEGAUTOR = '".$user."' ORDER BY LEGDATE ASC";
-			$query = $this->db->query($str);
-			
-			if(count($query) > 0){$legs = $query;}
-			else{$legs = array();}
+        function getParentSucus($info)
+        {
+                        $userCode = $info["ucode"] ?? '';
+                        $sessionUser = $this->auth->resolveUser(['data' => $info]);
+                        $userRole = $sessionUser['TYPE'] ?? $sessionUser['role'] ?? '';
+                        $clientCode = $sessionUser['CLIENT_CODE'] ?? $sessionUser['client_code'] ?? '';
+
+                        if($userCode === '' && isset($sessionUser['CODE']))
+                        {
+                            $userCode = $sessionUser['CODE'];
+                        }
+
+                        $whereClients = "WHERE TYPE = 'C' AND STATUS = '1' AND (CLIENT_CODE IS NULL OR CLIENT_CODE = CODE)";
+                        if ($userRole === 'C' && $clientCode !== '') {
+                            $whereClients .= " AND CODE = '".$clientCode."'";
+                        }
+
+                        $parents = $this->db->query("SELECT CODE, CNAME FROM users {$whereClients} ORDER BY CNAME ASC");
+                        if(!is_array($parents)){$parents = array();}
+
+                        $sucuWhere = "WHERE STATUS = '1'";
+                        if ($userRole === 'C' && $clientCode !== '') {
+                            $sucuWhere .= " AND PARENTCODE = '".$clientCode."'";
+                        }
+
+                        $sucus = $this->db->query("SELECT PARENTCODE, CODE, NAME, CITY, DEPTO FROM sucus {$sucuWhere} ORDER BY CODE ASC");
+                        if(!is_array($sucus)){$sucus = array();}
+
+                        $ordersWhere = "";
+                        if ($userRole === 'C' && $clientCode !== '') {
+                            $ordersWhere = "WHERE PARENTCODE = '".$clientCode."'";
+                        }
+
+                        $orders = $this->db->query("SELECT CODE, CCODE, SUCUNAME, PARENTCODE, LOCATION FROM orders {$ordersWhere} ORDER BY CCODE DESC");
+                        if(!is_array($orders)){$orders = array();}
+
+                        $legs = $this->db->query("SELECT * FROM others WHERE LEGAUTOR = '".$userCode."' ORDER BY LEGDATE ASC");
+                        if(!is_array($legs)){$legs = array();}
 			
 			$list = array();
 			$list["parents"] = $parents;
@@ -494,16 +516,27 @@ class users{
 	function getOrdeList($info)
     {
     // Obtener los valores de los filtros (con valores predeterminados vacíos o nulos)
-    $parent = $info["f-orderParent"] ?? ''; 
+    $parent = $info["f-orderParent"] ?? '';
     $sucu = $info["f-orderSucu"] ?? '';
-    $num = intval($info["f-orderNum"] ?? 0); 
-    $state = $info["f-orderState"] ?? ''; 
-    $author = $info["f-orderAuthor"] ?? ''; 
-    $location = $info["f-orderLocation"] ?? ''; 
-    $techcode = $info["techcode"] ?? ''; 
-    $ucode = $info["ucode"] ?? ''; 
+    $num = intval($info["f-orderNum"] ?? 0);
+    $state = $info["f-orderState"] ?? '';
+    $author = $info["f-orderAuthor"] ?? '';
+    $location = $info["f-orderLocation"] ?? '';
+    $techcode = $info["techcode"] ?? '';
+    $ucode = $info["ucode"] ?? '';
     $places = $info["places"] ?? [];
     $askType = $info["askType"] ?? 'A';
+
+    $sessionUser = $this->auth->resolveUser(['data' => $info]);
+    $sessionRole = $sessionUser['TYPE'] ?? $sessionUser['role'] ?? $askType;
+    $clientCode = $sessionUser['CLIENT_CODE'] ?? $sessionUser['client_code'] ?? '';
+
+    $askType = $sessionRole ?: $askType;
+
+    if ($sessionRole === 'C' && $clientCode !== '') {
+        $parent = $clientCode;
+        $askType = 'C';
+    }
 
     // Comenzamos con la parte base de la consulta
     $where = "WHERE STATUS = 1 ";
@@ -653,7 +686,7 @@ class users{
                                 
                                 $CODE = md5($MAIL.$utype);
                                 
-                                $str = "INSERT INTO users (CODE, RESPNAME, MAIL, PHONE, NIT, ADDRESS, LOCATION, PASSWD, STATUS, REGDATE, CNAME, TYPE, CNATURE) VALUES ('".$CODE."', '".$RESPNAME."', '".$MAIL."', '".$PHONE."', '".$NIT."', '".$ADDRESS."', '".$LOCATION."', '".$PASSWD."', '".$STATUS."', '".$REGDATE."', '".$CNAME."', '".$utype."', '".$CNATURE."')";
+                                $str = "INSERT INTO users (CODE, RESPNAME, MAIL, PHONE, NIT, ADDRESS, LOCATION, PASSWD, STATUS, REGDATE, CNAME, TYPE, CNATURE, CLIENT_CODE) VALUES ('".$CODE."', '".$RESPNAME."', '".$MAIL."', '".$PHONE."', '".$NIT."', '".$ADDRESS."', '".$LOCATION."', '".$PASSWD."', '".$STATUS."', '".$REGDATE."', '".$CNAME."', '".$utype."', '".$CNATURE."', '".$CODE."')";
                                 $query = $this->db->query($str);
 
                                 $this->chlog($info);
@@ -668,7 +701,7 @@ class users{
                 {
                         $CCODE = $info["ccode"];
                         
-                        $str = "UPDATE users SET RESPNAME='".$RESPNAME."', MAIL='".$MAIL."', ADDRESS='".$ADDRESS."', NIT='".$NIT."', PHONE='".$PHONE."', CNAME = '".$CNAME."', LOCATION = '".$LOCATION."', CNATURE = '".$CNATURE."' WHERE CODE='".$CCODE."' AND TYPE = '$utype'"; 
+                        $str = "UPDATE users SET RESPNAME='".$RESPNAME."', MAIL='".$MAIL."', ADDRESS='".$ADDRESS."', NIT='".$NIT."', PHONE='".$PHONE."', CNAME = '".$CNAME."', LOCATION = '".$LOCATION."', CNATURE = '".$CNATURE."', CLIENT_CODE = '".$CCODE."' WHERE CODE='".$CCODE."' AND TYPE = '$utype'"; 
 			$query = $this->db->query($str);
                         
                         $str = "UPDATE sucus SET PARENTNAME='".$CNAME."' WHERE PARENTCODE='".$CCODE."'"; 
@@ -849,20 +882,28 @@ class users{
 		$RESPNAME = $info["a-techiName"];
 		$NIT = $info["a-techiId"];
 		$PHONE = $info["a-techiPhone"];
-		$ADDRESS = $info["a-techiAddress"];
-		$MAIL = $info["a-techiEmail"];
-		$LOCATION = $info["a-techiCity"];
-		$CATEGORY = $info["a-techiCat"];
-		$MASTERY = $info["a-techiMastery"];
-		$DETAILS = $info["a-techiDetails"];
-                
-                
-		$STATUS = "1";
+                $ADDRESS = $info["a-techiAddress"];
+                $MAIL = $info["a-techiEmail"];
+                $LOCATION = $info["a-techiCity"];
+                $CATEGORY = $info["a-techiCat"];
+                $MASTERY = $info["a-techiMastery"];
+                $DETAILS = $info["a-techiDetails"];
+                $CLIENT_CODE = $info["a-techiClient"] ?? '';
 
-		if($otype == "c")
-		{
-			$REGDATE = $info["date"];
-			$PASSWD = md5($NIT);
+
+                $STATUS = "1";
+
+                if($utype == "C" && $CLIENT_CODE == "")
+                {
+                                $resp["message"] = "missing_client";
+                                $resp["status"] = false;
+                                return $resp;
+                }
+
+                if($otype == "c")
+                {
+                        $REGDATE = $info["date"];
+                        $PASSWD = md5($NIT);
 			 
 			$str = "SELECT users.MAIL FROM users WHERE users.MAIL = '$MAIL' AND users.TYPE = '$utype'";
 			$query = $this->db->query($str);
@@ -879,7 +920,7 @@ class users{
 					
 					$CODE = md5($MAIL.$utype);
 					
-					$str = "INSERT INTO users (CODE, RESPNAME, MAIL, PHONE, NIT, ADDRESS, LOCATION, PASSWD, STATUS, REGDATE, CNAME, TYPE, CATEGORY, MASTERY, DETAILS) VALUES ('".$CODE."', '".$RESPNAME."', '".$MAIL."', '".$PHONE."', '".$NIT."', '".$ADDRESS."', '".$LOCATION."', '".$PASSWD."', '".$STATUS."', '".$REGDATE."', '".$CNAME."', '".$utype."', '".$CATEGORY."', '".$MASTERY."', '".$DETAILS."')";
+					$str = "INSERT INTO users (CODE, RESPNAME, MAIL, PHONE, NIT, ADDRESS, LOCATION, PASSWD, STATUS, REGDATE, CNAME, TYPE, CATEGORY, MASTERY, DETAILS, CLIENT_CODE) VALUES ('".$CODE."', '".$RESPNAME."', '".$MAIL."', '".$PHONE."', '".$NIT."', '".$ADDRESS."', '".$LOCATION."', '".$PASSWD."', '".$STATUS."', '".$REGDATE."', '".$CNAME."', '".$utype."', '".$CATEGORY."', '".$MASTERY."', '".$DETAILS."', '".$CLIENT_CODE."')";
 					$query = $this->db->query($str);
 
 					$this->chlog($info);
@@ -894,7 +935,7 @@ class users{
 		{
 				$code = $info["techiCode"];
 				
-				$str = "UPDATE users SET RESPNAME='".$RESPNAME."', MAIL='".$MAIL."', ADDRESS='".$ADDRESS."', NIT='".$NIT."', PHONE='".$PHONE."', CNAME = '".$CNAME."', LOCATION = '".$LOCATION."', CATEGORY = '".$CATEGORY."', MASTERY = '".$MASTERY."', DETAILS = '".$DETAILS."' WHERE CODE ='".$code."' AND TYPE = '$utype'"; 
+				$str = "UPDATE users SET RESPNAME='".$RESPNAME."', MAIL='".$MAIL."', ADDRESS='".$ADDRESS."', NIT='".$NIT."', PHONE='".$PHONE."', CNAME = '".$CNAME."', LOCATION = '".$LOCATION."', CATEGORY = '".$CATEGORY."', MASTERY = '".$MASTERY."', DETAILS = '".$DETAILS."', CLIENT_CODE = '".$CLIENT_CODE."' WHERE CODE ='".$code."' AND TYPE = '$utype'"; 
 	$query = $this->db->query($str);
 				
 				$str = "UPDATE oreports SET TECHNAME='".$RESPNAME."' WHERE TECHCODE='".$code."'"; 

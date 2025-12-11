@@ -11,6 +11,7 @@ const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
         'inventory.movement',
         'inventory.adjustment',
         'inventory.manage',
+        'orders.view',
         'purchases.orders',
         'costSheets.manage',
         'internalSheets.view',
@@ -21,6 +22,7 @@ const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
     JZ: [
         'inventory.view',
         'inventory.manage',
+        'orders.view',
         'costSheets.manage',
         'internalSheets.view',
         'reports.export',
@@ -28,13 +30,15 @@ const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
     ],
     CP: [
         'purchases.orders',
-        'inventory.view'
+        'inventory.view',
+        'orders.view'
     ],
     T: [
-        'internalSheets.view'
+        'internalSheets.view',
+        'orders.view'
     ],
     C: [
-        'inventory.view'
+        'orders.view'
     ]
 };
 
@@ -45,6 +49,9 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         inveSave: ['inventory.create', 'inventory.edit', 'inventory.manage'],
         addInvQty: ['inventory.movement', 'inventory.manage'],
         discountInv: ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
+
+        getParentSucus: 'orders.view',
+        getOrdeList: 'orders.view',
 
         saveoPart: 'costSheets.manage',
         saveoOther: 'costSheets.manage',
@@ -227,15 +234,16 @@ function getStoredUserContext() {
 
     try {
         const storedContext = localStorage.getItem('userContext');
-        if (storedContext) {
-            const parsed = JSON.parse(storedContext);
-            return {
-                code: parsed.code ?? parsed.CODE,
-                role: parsed.role ?? parsed.TYPE,
-                email: parsed.email ?? parsed.MAIL ?? parsed.mail,
-                name: parsed.name ?? parsed.RESPNAME
-            };
-        }
+            if (storedContext) {
+                const parsed = JSON.parse(storedContext);
+                return {
+                    code: parsed.code ?? parsed.CODE,
+                    role: parsed.role ?? parsed.TYPE,
+                    email: parsed.email ?? parsed.MAIL ?? parsed.mail,
+                    name: parsed.name ?? parsed.RESPNAME,
+                    client_code: parsed.client_code ?? parsed.CLIENT_CODE
+                };
+            }
 
         const aud = localStorage.getItem('aud');
         if (!aud) {
@@ -247,7 +255,8 @@ function getStoredUserContext() {
             code: parsed.CODE,
             role: parsed.TYPE,
             email: parsed.MAIL || parsed.mail,
-            name: parsed.RESPNAME
+            name: parsed.RESPNAME,
+            client_code: parsed.CLIENT_CODE
         };
     } catch (e) {
         return null;
