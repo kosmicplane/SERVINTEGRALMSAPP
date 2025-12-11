@@ -2380,6 +2380,7 @@
 <div class="panel panel-default">
 <div class="panel-heading"><span class="ifTitle" id="purchaseSuppliers"></span></div>
 <div class="panel-body">
+<input id="p-supplier-id" type="hidden" />
 <div class="row fLabel fields panelButtFull">
 <div class="col-xs-12">
 <label id="purchaseSupplierName"></label>
@@ -2418,7 +2419,11 @@
 <button id="purchaseSupplierClear" class="btn btn-default btn-block" onclick="clearSupplierForm()"></button>
 </div>
 </div>
-<h5 style="margin-top:20px;">Lista de proveedores</h5>
+</div>
+</div>
+<div class="panel panel-default supplier-list-panel">
+<div class="panel-heading"><span class="ifTitle" id="purchaseSuppliersList"></span></div>
+<div class="panel-body supplier-table-wrapper">
 <div id="purchaseSuppliersTable" class="table">
 <div class="table-head">
 <div class="column" data-label="Proveedor">Proveedor</div>

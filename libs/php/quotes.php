@@ -125,6 +125,51 @@ class quotes
         return $resp;
     }
 
+    public function listQuotes($info)
+    {
+        $this->authorizeQuotePermission('quotes.manage', $info);
+        $sql = "SELECT CODE, DATE, CLIENTNAME, STATUS, TOTAL FROM quotes ORDER BY DATE DESC LIMIT 200";
+        $query = $this->db->query($sql);
+
+        return [
+            'message' => $query,
+            'status' => true,
+        ];
+    }
+
+    public function getQuote($info)
+    {
+        $this->authorizeQuotePermission('quotes.manage', $info);
+        $context = $this->normalizeContext($info);
+        $code = isset($context['code']) ? $context['code'] : '';
+
+        if ($code === '') {
+            return ['status' => false, 'message' => 'Código de cotización inválido'];
+        }
+
+        $quoteSql = "SELECT * FROM quotes WHERE CODE = :code LIMIT 1";
+        $quote = $this->db->executePrepared($quoteSql, [':code' => $code]);
+
+        if (!$quote || count($quote) === 0) {
+            return ['status' => false, 'message' => 'Cotización no encontrada'];
+        }
+
+        $itemsSql = "SELECT ITEM_CODE, ITEM_DESC, ITEM_TYPE, QTY, UNIT_PRICE, TAX, INVENTORY_CODE FROM quote_items WHERE QUOTE_CODE = :code";
+        $internalSql = "SELECT COST_TYPE, AMOUNT, NOTE FROM quote_internal_costs WHERE QUOTE_CODE = :code";
+
+        $items = $this->db->executePrepared($itemsSql, [':code' => $code]);
+        $internalCosts = $this->db->executePrepared($internalSql, [':code' => $code]);
+
+        return [
+            'message' => [
+                'quote' => $quote[0],
+                'items' => $items,
+                'internalCosts' => $internalCosts,
+            ],
+            'status' => true,
+        ];
+    }
+
     public function getCatalog($info)
     {
         $this->authorizeQuotePermission('quotes.manage', $info);
