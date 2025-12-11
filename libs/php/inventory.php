@@ -88,6 +88,7 @@ class inventory
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS UTILITY_PCT DECIMAL(10,2) NOT NULL DEFAULT 0 AFTER MARGIN");
+        $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS UNIT VARCHAR(32) NULL AFTER DESCRIPTION");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS REAL_AMOUNT DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER AMOUNT");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS PHYSICAL_COUNT DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER REAL_AMOUNT");
         $this->db->query("ALTER TABLE inve ADD COLUMN IF NOT EXISTS VARIANCE DECIMAL(18,4) NOT NULL DEFAULT 0 AFTER PHYSICAL_COUNT");
@@ -250,14 +251,26 @@ class inventory
         }
 
         $description = trim((string) ($data['descripcion'] ?? $data['description'] ?? ''));
+        $unit = trim((string) ($data['unidad'] ?? $data['unidad_de_medida'] ?? $data['unit'] ?? ''));
         $amount = isset($data['cantidad']) ? $data['cantidad'] : ($data['existencia'] ?? ($data['amount'] ?? 0));
         $cost = isset($data['costo']) ? $data['costo'] : ($data['costo_unitario'] ?? ($data['cost'] ?? 0));
+        $utility = isset($data['% utilidad']) ? $data['% utilidad'] : ($data['utilidad'] ?? ($data['utility'] ?? null));
+        $statusRaw = $data['estado'] ?? ($data['status'] ?? 1);
+        $status = 1;
+        if (is_string($statusRaw)) {
+            $status = strtolower(trim($statusRaw)) === 'inactivo' ? 0 : 1;
+        } elseif (is_numeric($statusRaw)) {
+            $status = (int) $statusRaw ? 1 : 0;
+        }
 
         return [
             'code' => $code,
             'description' => $description,
+            'unit' => $unit,
             'amount' => (float) $amount,
             'cost' => (float) $cost,
+            'utility' => $utility !== null ? (float) $utility : null,
+            'status' => $status,
         ];
     }
 
@@ -308,6 +321,33 @@ class inventory
         }
 
         return $items;
+    }
+
+    private function decodeImportFile(string $fileName, string $fileData, array $allowedExtensions): array
+    {
+        if ($fileName === '' || $fileData === '') {
+            throw new Exception('Debe adjuntar un archivo de inventario para importar');
+        }
+
+        $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        if (!in_array($ext, $allowedExtensions, true)) {
+            throw new Exception('Formato de archivo no soportado. Use XLSX, XLS o CSV');
+        }
+
+        if (strpos($fileData, ',') !== false) {
+            $parts = explode(',', $fileData, 2);
+            $fileData = $parts[1];
+        }
+
+        $binary = base64_decode($fileData, true);
+        if ($binary === false) {
+            throw new Exception('No se pudo decodificar el archivo recibido');
+        }
+
+        $tempPath = sys_get_temp_dir() . '/inventory_import_' . uniqid() . '.' . $ext;
+        file_put_contents($tempPath, $binary);
+
+        return [$tempPath, $ext];
     }
 
     private function buildInventoryComparison(array $importedItems): array
@@ -372,6 +412,174 @@ class inventory
             'missing_items' => $missingItems,
             'differences' => $differences,
         ];
+    }
+
+    private function parseInventoryFile(string $tempPath, string $ext): array
+    {
+        return $ext === 'csv' ? $this->parseCsvFile($tempPath) : $this->parseExcelFile($tempPath);
+    }
+
+    public function importItemsFromExcel($info)
+    {
+        $this->requirePermission('inventory.manage', $info);
+
+        $fileName = $info['file_name'] ?? '';
+        $fileData = $info['file_data'] ?? '';
+
+        [$tempPath, $ext] = $this->decodeImportFile($fileName, $fileData, ['xlsx', 'xls', 'csv']);
+
+        try {
+            $items = $this->parseInventoryFile($tempPath, $ext);
+        } finally {
+            @unlink($tempPath);
+        }
+
+        if (empty($items)) {
+            throw new Exception('El archivo no contiene filas reconocibles de inventario');
+        }
+
+        $created = 0;
+        $updated = 0;
+        $errors = [];
+
+        foreach ($items as $index => $item) {
+            try {
+                $code = $this->sanitize($item['code']);
+                $description = $this->sanitize($item['description'] ?? '');
+                $unit = $this->sanitize($item['unit'] ?? '');
+                $cost = isset($item['cost']) ? (float) $item['cost'] : 0;
+                $utility = $item['utility'] !== null ? (float) $item['utility'] : null;
+                $status = $item['status'] ?? 1;
+
+                if ($code === '' || $description === '') {
+                    throw new Exception('Código y descripción son obligatorios');
+                }
+
+                $existing = $this->db->executePrepared(
+                    "SELECT CODE FROM inve WHERE CODE = :code LIMIT 1",
+                    [':code' => $code]
+                );
+
+                if (empty($existing)) {
+                    $this->db->executePrepared(
+                        "INSERT INTO inve (CODE, DESCRIPTION, UNIT, COST, MARGIN, UTILITY_PCT, AMOUNT, REAL_AMOUNT, STATUS)
+                        VALUES (:code, :description, :unit, :cost, :margin, :utility, 0, 0, :status)",
+                        [
+                            ':code' => $code,
+                            ':description' => $description,
+                            ':unit' => $unit,
+                            ':cost' => $cost,
+                            ':margin' => $utility ?? 0,
+                            ':utility' => $utility ?? 0,
+                            ':status' => $status,
+                        ],
+                        false
+                    );
+                    $created++;
+                    continue;
+                }
+
+                $this->db->executePrepared(
+                    "UPDATE inve SET DESCRIPTION = :description, UNIT = :unit, MARGIN = COALESCE(:margin, MARGIN),
+                    UTILITY_PCT = COALESCE(:utility, UTILITY_PCT), STATUS = :status WHERE CODE = :code",
+                    [
+                        ':description' => $description,
+                        ':unit' => $unit,
+                        ':margin' => $utility,
+                        ':utility' => $utility,
+                        ':status' => $status,
+                        ':code' => $code,
+                    ],
+                    false
+                );
+                if ($cost > 0) {
+                    $this->db->executePrepared(
+                        "UPDATE inve SET COST = :cost WHERE CODE = :code",
+                        [':cost' => $cost, ':code' => $code],
+                        false
+                    );
+                }
+
+                $updated++;
+            } catch (Exception $e) {
+                $errors[] = [
+                    'row' => $index + 2,
+                    'code' => $item['code'] ?? '',
+                    'error' => $e->getMessage(),
+                ];
+            }
+        }
+
+        return [
+            'message' => [
+                'created' => $created,
+                'updated' => $updated,
+                'errors' => $errors,
+            ],
+            'status' => empty($errors),
+        ];
+    }
+
+    public function importStockFromExcel($info)
+    {
+        $this->requirePermission('inventory.manage', $info);
+
+        $fileName = $info['file_name'] ?? '';
+        $fileData = $info['file_data'] ?? '';
+
+        [$tempPath, $ext] = $this->decodeImportFile($fileName, $fileData, ['xlsx', 'xls', 'csv']);
+
+        try {
+            $rows = $this->parseInventoryFile($tempPath, $ext);
+        } finally {
+            @unlink($tempPath);
+        }
+
+        if (empty($rows)) {
+            throw new Exception('El archivo no contiene filas reconocibles de inventario');
+        }
+
+        $summary = ['processed' => 0, 'created_entries' => 0, 'errors' => []];
+
+        foreach ($rows as $index => $row) {
+            $summary['processed']++;
+            try {
+                $code = $row['code'] ?? '';
+                $qty = isset($row['amount']) ? (float) $row['amount'] : 0;
+                $cost = isset($row['cost']) ? (float) $row['cost'] : 0;
+
+                if ($code === '' || $qty <= 0) {
+                    throw new Exception('Código y cantidad válidos son obligatorios');
+                }
+
+                $existing = $this->db->executePrepared(
+                    "SELECT CODE FROM inve WHERE CODE = :code LIMIT 1",
+                    [':code' => $code]
+                );
+
+                if (empty($existing)) {
+                    throw new Exception('Ítem no existe en inventario');
+                }
+
+                $this->registerEntry([
+                    'item_code' => $code,
+                    'sub_type' => 'STOCK',
+                    'quantity' => $qty,
+                    'unit_cost' => $cost,
+                    'observaciones' => 'Importación Excel',
+                ]);
+
+                $summary['created_entries']++;
+            } catch (Exception $e) {
+                $summary['errors'][] = [
+                    'row' => $index + 2,
+                    'code' => $row['code'] ?? '',
+                    'error' => $e->getMessage(),
+                ];
+            }
+        }
+
+        return ['message' => $summary, 'status' => empty($summary['errors'])];
     }
 
     public function registerEntry($info)
@@ -672,31 +880,10 @@ class inventory
         $fileName = $info['file_name'] ?? '';
         $fileData = $info['file_data'] ?? '';
 
-        if ($fileName === '' || $fileData === '') {
-            throw new Exception('Debe adjuntar un archivo de inventario para importar');
-        }
-
-        $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        $allowed = ['xlsx', 'xls', 'csv'];
-        if (!in_array($ext, $allowed, true)) {
-            throw new Exception('Formato de archivo no soportado. Use XLSX, XLS o CSV');
-        }
-
-        if (strpos($fileData, ',') !== false) {
-            $parts = explode(',', $fileData, 2);
-            $fileData = $parts[1];
-        }
-
-        $binary = base64_decode($fileData, true);
-        if ($binary === false) {
-            throw new Exception('No se pudo decodificar el archivo recibido');
-        }
-
-        $tempPath = sys_get_temp_dir() . '/inventory_import_' . uniqid() . '.' . $ext;
-        file_put_contents($tempPath, $binary);
+        [$tempPath, $ext] = $this->decodeImportFile($fileName, $fileData, ['xlsx', 'xls', 'csv']);
 
         try {
-            $items = $ext === 'csv' ? $this->parseCsvFile($tempPath) : $this->parseExcelFile($tempPath);
+            $items = $this->parseInventoryFile($tempPath, $ext);
         } finally {
             @unlink($tempPath);
         }

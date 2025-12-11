@@ -24,6 +24,10 @@ return [
             'reports.export',
             'quotes.manage',
         ],
+        'CP' => [
+            'purchases.orders',
+            'inventory.view',
+        ],
         'T' => [
             'internalSheets.view',
         ],
@@ -58,6 +62,7 @@ return [
             'refreshLegCodes' => 'internalSheets.manage',
             'restoreLeg' => 'internalSheets.manage',
             'exportCVS' => 'reports.export',
+            'importActivitiesFromExcel' => 'costSheets.manage',
         ],
         'inventory' => [
             'listItems' => 'inventory.view',
@@ -69,6 +74,8 @@ return [
             'listMovements' => 'inventory.view',
             'exportInventory' => 'inventory.view',
             'importInventoryFile' => 'inventory.manage',
+            'importItemsFromExcel' => 'inventory.manage',
+            'importStockFromExcel' => 'inventory.manage',
         ],
         'purchases' => [
             'createSupplier' => 'purchases.orders',
