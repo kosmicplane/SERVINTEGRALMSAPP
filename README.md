@@ -26,6 +26,9 @@ El archivo `database/migrations/002_inventory_movimientos.sql` documenta los ALT
 - **Integridad de existencias:** Cada ENTRADA suma `inve.AMOUNT`/`REAL_AMOUNT` y recalcula costo promedio; cada SALIDA resta asegurando no quedar negativo.
 
 ## Guías rápidas de operación
+- **Importar materiales desde Excel:** En "Administrar Inventario" (roles A/CO) envía `class: "inventory"`, `method: "importItemsFromExcel"` con `{file_name, file_data(base64)}`. El archivo debe incluir columnas: `Código ítem`, `Descripción`, `Unidad de medida` (opcional), `Costo de compra inicial`, `% utilidad` (opcional) y `Estado` (1/0 o Activo/Inactivo). Los códigos nuevos se crean y los existentes actualizan descripción/unidad/utilidad sin tocar movimientos.
+- **Subir inventario físico desde Excel:** Con `method: "importStockFromExcel"` y las columnas `Código ítem`, `Existencia` y `Costo unitario` (opcional). Cada fila genera una ENTRADA tipo STOCK con observación "Importación Excel" para recalcular costo promedio.
+- **Importar actividades desde Excel:** Desde el catálogo de actividades (`users::importActivitiesFromExcel`) se aceptan XLSX/CSV con `Código actividad`, `Descripción`, `Categoría/Tipo`, `Tarifa` y `Tiempo/Duración` (opcional). Códigos nuevos crean registros en `actis`; los existentes se actualizan.
 - **RQ a almacén (consumo interno):** Registrar salida con tipo "RQ Almacén" asociando la OT correspondiente para dejar el vínculo listo para costeo interno.
 - **RQ por compras y OC:** El módulo `libs/php/purchases.php` contiene los esbozos para convertir RQ de compras en OC. El campo `id_oc` en `inventory::registerEntry` permite asociar la entrada con la OC cuando se reciba la mercancía.
 - **Entradas/salidas de almacén:** Usar los formularios dedicados en la sección de inventario; cada movimiento queda en `inve_movimientos` y afecta `inve.AMOUNT`.
@@ -35,6 +38,7 @@ El archivo `database/migrations/002_inventory_movimientos.sql` documenta los ALT
 ## Seguridad y roles
 - Roles se resuelven desde sesión y `permissions.php`. Sólo `A` (administrador) y `CO` (logística) pueden crear ítems y registrar movimientos; ajustes restrictivos validados en backend (`inventory::requireRole`).
 - Frontend aplica guardas via `js/permissions.js` deshabilitando controles sin permisos.
+- Nuevo rol `CP` (comprador) puede consultar inventario y operar sobre compras (`purchases.orders`) sin acceso a ajustes de inventario.
 
 ## Uso del dispatcher
 Todos los formularios hacen AJAX a `libs/php/mentry.php` con `{class, method, data}`. Ejemplos:

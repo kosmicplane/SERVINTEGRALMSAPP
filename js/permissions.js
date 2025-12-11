@@ -26,6 +26,10 @@ const ROLE_PERMISSIONS = global.ROLE_PERMISSIONS || {
         'reports.export',
         'quotes.manage'
     ],
+    CP: [
+        'purchases.orders',
+        'inventory.view'
+    ],
     T: [
         'internalSheets.view'
     ],
@@ -64,6 +68,8 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         restoreLeg: 'internalSheets.manage',
 
         exportCVS: 'reports.export'
+        ,
+        importActivitiesFromExcel: 'costSheets.manage'
     },
 
     inventory: {
@@ -79,7 +85,9 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         // consultas / export
         listMovements: 'inventory.view',
         exportInventory: 'inventory.view',
-        importInventoryFile: 'inventory.manage'
+        importInventoryFile: 'inventory.manage',
+        importItemsFromExcel: 'inventory.manage',
+        importStockFromExcel: 'inventory.manage'
     },
 
     purchases: {

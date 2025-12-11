@@ -908,9 +908,9 @@ class users{
 				return $resp;
 		}
 	}
-	function actiSave($info)
-	{
-		$otype = $info["otype"];
+        function actiSave($info)
+        {
+                $otype = $info["otype"];
                 $utype = $info["utype"];
                 
                 
@@ -1013,9 +1013,128 @@ class users{
                                 $resp["message"] = "create";
                                 $resp["status"] = true;
 
-                                return $resp;
-                                
+                        return $resp;
+
+        }
+
+        function importActivitiesFromExcel($info)
+        {
+                $this->requirePermission('costSheets.manage', $info);
+
+                $fileName = $info['file_name'] ?? '';
+                $fileData = $info['file_data'] ?? '';
+
+                if ($fileName === '' || $fileData === '') {
+                        throw new Exception('Debe adjuntar un archivo con actividades');
+                }
+
+                $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                $allowed = ['xlsx', 'xls', 'csv'];
+                if (!in_array($ext, $allowed, true)) {
+                        throw new Exception('Formato no soportado, use XLSX/XLS/CSV');
+                }
+
+                if (strpos($fileData, ',') !== false) {
+                        $parts = explode(',', $fileData, 2);
+                        $fileData = $parts[1];
+                }
+
+                $binary = base64_decode($fileData, true);
+                if ($binary === false) {
+                        throw new Exception('No se pudo leer el archivo adjunto');
+                }
+
+                $tempPath = sys_get_temp_dir() . '/activities_' . uniqid() . '.' . $ext;
+                file_put_contents($tempPath, $binary);
+
+                try {
+                        if ($ext === 'csv') {
+                                $rows = array_map('str_getcsv', file($tempPath));
+                        } else {
+                                $reader = PHPExcel_IOFactory::createReaderForFile($tempPath);
+                                $excel = $reader->load($tempPath);
+                                $rows = $excel->getActiveSheet()->toArray(null, true, true, false);
                         }
+                } finally {
+                        @unlink($tempPath);
+                }
+
+                if (empty($rows)) {
+                        throw new Exception('El archivo está vacío');
+                }
+
+                $headers = array_map(function ($h) {
+                        return strtolower(trim((string)$h));
+                }, array_shift($rows));
+
+                $created = 0;
+                $updated = 0;
+                $errors = [];
+
+                foreach ($rows as $idx => $row) {
+                        $data = [];
+                        foreach ($headers as $i => $header) {
+                                $data[$header] = $row[$i] ?? '';
+                        }
+
+                        $code = trim((string)($data['codigo actividad'] ?? $data['codigo'] ?? $data['code'] ?? ''));
+                        $description = trim((string)($data['descripcion'] ?? $data['description'] ?? ''));
+                        $category = trim((string)($data['categoria'] ?? $data['tipo'] ?? $data['category'] ?? ''));
+                        $cost = isset($data['tarifa']) ? $data['tarifa'] : ($data['costo'] ?? 0);
+                        $duration = isset($data['tiempo']) ? $data['tiempo'] : ($data['duracion'] ?? 0);
+
+                        if ($code === '' || $description === '' || $category === '') {
+                                $errors[] = ['row' => $idx + 2, 'error' => 'Código, descripción y categoría son obligatorios'];
+                                continue;
+                        }
+
+                        try {
+                                $existing = $this->db->executePrepared(
+                                        "SELECT CODE FROM actis WHERE CODE = :code LIMIT 1",
+                                        [':code' => $code]
+                                );
+
+                                if (empty($existing)) {
+                                        $this->db->executePrepared(
+                                                "INSERT INTO actis (CODE, ACTYPE, DESCRIPTION, DURATION, COST, STATUS) VALUES (:code, :actype, :description, :duration, :cost, 1)",
+                                                [
+                                                        ':code' => $code,
+                                                        ':actype' => $category,
+                                                        ':description' => $description,
+                                                        ':duration' => $duration,
+                                                        ':cost' => $cost,
+                                                ],
+                                                false
+                                        );
+                                        $created++;
+                                } else {
+                                        $this->db->executePrepared(
+                                                "UPDATE actis SET ACTYPE = :actype, DESCRIPTION = :description, DURATION = :duration, COST = :cost WHERE CODE = :code",
+                                                [
+                                                        ':actype' => $category,
+                                                        ':description' => $description,
+                                                        ':duration' => $duration,
+                                                        ':cost' => $cost,
+                                                        ':code' => $code,
+                                                ],
+                                                false
+                                        );
+                                        $updated++;
+                                }
+                        } catch (Exception $e) {
+                                $errors[] = ['row' => $idx + 2, 'code' => $code, 'error' => $e->getMessage()];
+                        }
+                }
+
+                return [
+                        'message' => [
+                                'created' => $created,
+                                'updated' => $updated,
+                                'errors' => $errors,
+                        ],
+                        'status' => empty($errors),
+                ];
+        }
                 }
                 else
                 {
