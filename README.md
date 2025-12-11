@@ -18,6 +18,7 @@ Aplicación PHP sin framework para gestión de clientes, órdenes y operaciones 
 El archivo `database/migrations/002_inventory_movimientos.sql` documenta los ALTER/CREATE necesarios para el módulo de inventario (columnas de utilidad, conteo físico y tabla `inve_movimientos`).
 
 ## Flujos clave
+- **Compras:** Desde el menú "Compras" puedes crear/editar proveedores (columna izquierda), generar órdenes de compra desde una RQ, actualizar costos pactados y registrar recepciones por OC (columna derecha). Cada bloque usa filas y columnas de Bootstrap para mantener formularios y tablas separados.
 - **Crear ítem de inventario:** En "Administrar Inventario" diligenciar código, descripción, costo y margen, luego "Crear" (requiere rol administrador/logística). Se guarda en `inventory::saveItem`.
 - **Entrada de stock (stock/recuperado/OC):** Sección "Entrada de inventario" seleccionando ítem, tipo, cantidad y costo. Envía a `inventory::registerEntry`, crea movimiento y recalcula costo promedio.
 - **Salida por RQ de almacén:** Sección "Salida de inventario" con tipo "RQ Almacén", cantidad e OT asociada. Usa `inventory::registerExit` y descuenta existencias validando saldo.
@@ -32,7 +33,7 @@ El archivo `database/migrations/002_inventory_movimientos.sql` documenta los ALT
 - **RQ a almacén (consumo interno):** Registrar salida con tipo "RQ Almacén" asociando la OT correspondiente para dejar el vínculo listo para costeo interno.
 - **RQ por compras y OC:** El módulo `libs/php/purchases.php` contiene los esbozos para convertir RQ de compras en OC. El campo `id_oc` en `inventory::registerEntry` permite asociar la entrada con la OC cuando se reciba la mercancía.
 - **Entradas/salidas de almacén:** Usar los formularios dedicados en la sección de inventario; cada movimiento queda en `inve_movimientos` y afecta `inve.AMOUNT`.
-- **Generación de cotización, aprobación y OT:** El flujo de referencia se encuentra en `tests/run.php` y `database/migrations/001_core_schema.sql` (cotizaciones, aprobación y creación de OT enlazadas).
+- **Generación de cotización, aprobación y OT:** El flujo de referencia se encuentra en `tests/run.php` y `database/migrations/001_core_schema.sql` (cotizaciones, aprobación y creación de OT enlazadas). El módulo de cotizaciones se abre desde el menú superior "Cotizaciones" y renderiza en el área central como el resto de módulos.
 - **Exportación de inventario:** La lógica de exportación de referencia está en `tests/run.php`; el costo promedio actualizado en `inve.COST` es la base para cualquier exportación o costo interno.
 
 ## Seguridad y roles

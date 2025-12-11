@@ -532,8 +532,8 @@ function setMenuItems(value)
 	var utypePicker = document.getElementById("a-techiCat");
 	var utypePickerF = document.getElementById("f-techiCat");
 	
-	utypePicker.value = "T";
-	utypePickerF.value = "T";
+        utypePicker.value = "T";
+        utypePickerF.value = "";
 	
 	if(value == "A")
 	{
@@ -1020,6 +1020,13 @@ function ifLoad(code)
         if(code == "ifMasterP")
         {
                 initializePurchaseTab();
+        }
+        if(code == "ifMasterQ")
+        {
+                if(typeof activateQuotes === "function")
+                {
+                        activateQuotes();
+                }
         }
         if(code == "ifMasterF")
         {
@@ -1841,34 +1848,41 @@ function inventoryMovementsGet()
         info.id_ot = $("#inv-mov-ot").val();
 
         sendAjax("inventory","listMovements",info,function(response){
-                var data = response.message;
+                var data = response.message || [];
                 var table = document.getElementById("inventoryMovementsTable");
-                table.innerHTML = "";
-
-                var head = document.createElement("div");
-                head.className = "table-head";
+                if(!table){return;}
+                var tbody = table.querySelector("tbody");
+                var thead = table.querySelector("thead");
                 var labels = ["Fecha", "Item", "Tipo", "Subtipo", "Cantidad", "Costo unitario", "Costo total", "OT", "OC", "Usuario", "Observaciones"];
                 var keys = ["FECHA_HORA", "ITEM_CODE", "TIPO_MOVIMIENTO", "SUB_TIPO", "CANTIDAD", "COSTO_UNITARIO", "COSTO_TOTAL", "ID_OT", "ID_OC", "ID_USUARIO", "OBSERVACIONES"];
-                for(var i=0;i<labels.length;i++){
-                        var col = document.createElement("div");
-                        col.className = "column";
-                        col.setAttribute("data-label", labels[i]);
-                        col.innerHTML = labels[i];
-                        head.appendChild(col);
-                }
-                table.appendChild(head);
+                var align = ["text-center", "text-left", "text-center", "text-center", "text-right", "text-right", "text-right", "text-center", "text-center", "text-left", "text-left"];
 
-                for(var j=0;j<data.length;j++){
-                        var row = document.createElement("div");
-                        row.className = "table-row";
-                        for(var k=0;k<keys.length;k++){
-                                var colr = document.createElement("div");
-                                colr.className = "column";
-                                colr.setAttribute("data-label", labels[k]);
-                                colr.innerHTML = data[j][keys[k]];
-                                row.appendChild(colr);
+                if(thead){
+                        thead.innerHTML = "<tr>" + labels.map(function(label){return "<th>"+label+"</th>";}).join("") + "</tr>";
+                }
+                if(tbody){
+                        tbody.innerHTML = "";
+                        if(data.length === 0){
+                                var emptyRow = document.createElement("tr");
+                                var emptyCell = document.createElement("td");
+                                emptyCell.colSpan = labels.length;
+                                emptyCell.className = "text-center";
+                                emptyCell.innerHTML = language["noResults"] || "Sin resultados";
+                                emptyRow.appendChild(emptyCell);
+                                tbody.appendChild(emptyRow);
+                                return;
                         }
-                        table.appendChild(row);
+
+                        for(var j=0;j<data.length;j++){
+                                var row = document.createElement("tr");
+                                for(var k=0;k<keys.length;k++){
+                                        var cell = document.createElement("td");
+                                        cell.className = align[k];
+                                        cell.innerHTML = data[j][keys[k]] !== undefined && data[j][keys[k]] !== null ? data[j][keys[k]] : "";
+                                        row.appendChild(cell);
+                                }
+                                tbody.appendChild(row);
+                        }
                 }
         });
 }
@@ -9424,6 +9438,8 @@ function registerReceipt()
                 receiptDraftItems = [];
                 renderPoDraftItems();
                 loadPurchaseOrders();
+                inveGet();
+                inventoryMovementsGet();
         });
 }
 function loadPurchaseOrders()
