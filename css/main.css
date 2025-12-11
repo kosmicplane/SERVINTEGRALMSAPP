@@ -827,6 +827,29 @@ ul.topnav li.icon
 .supplier-list-panel {
         margin-top: 15px;
 }
+
+.purchase-suppliers-column .panel + .panel {
+        margin-top: 15px;
+}
+
+.quote-module {
+        padding: 10px;
+}
+
+#inventoryMovementsTable {
+        table-layout: fixed;
+}
+
+#inventoryMovementsTable th,
+#inventoryMovementsTable td {
+        vertical-align: middle;
+        white-space: nowrap;
+}
+
+#inventoryMovementsTable th:last-child,
+#inventoryMovementsTable td:last-child {
+        white-space: normal;
+}
 /*---------------------------------------------*/
 
 /*----------------TABLES--------------------*/
