@@ -141,6 +141,40 @@ class purchases
         ];
     }
 
+    public function updateSupplier($info)
+    {
+        $this->requirePermission('purchases.orders', $info);
+        $this->ensureTables();
+
+        $id = isset($info['ID']) ? intval($info['ID']) : 0;
+        if ($id <= 0) {
+            return ['status' => false, 'message' => 'ID de proveedor inválido'];
+        }
+
+        $now = date('Y-m-d H:i:s');
+        $sql = "UPDATE suppliers SET NAME = :name, NIT = :nit, CONTACT = :contact, EMAIL = :email, PHONE = :phone, ADDRESS = :address, CITY = :city, UPDATED_AT = :updated_at WHERE ID = :id";
+        $this->db->executePrepared(
+            $sql,
+            array(
+                ':name' => isset($info['NAME']) ? $info['NAME'] : '',
+                ':nit' => isset($info['NIT']) ? $info['NIT'] : '',
+                ':contact' => isset($info['CONTACT']) ? $info['CONTACT'] : '',
+                ':email' => isset($info['EMAIL']) ? $info['EMAIL'] : '',
+                ':phone' => isset($info['PHONE']) ? $info['PHONE'] : '',
+                ':address' => isset($info['ADDRESS']) ? $info['ADDRESS'] : '',
+                ':city' => isset($info['CITY']) ? $info['CITY'] : '',
+                ':updated_at' => $now,
+                ':id' => $id,
+            ),
+            false
+        );
+
+        return [
+            'message' => ['ID' => $id],
+            'status' => true,
+        ];
+    }
+
     public function listSuppliers()
     {
         $this->requirePermission('purchases.orders');

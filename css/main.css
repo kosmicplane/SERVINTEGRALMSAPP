@@ -819,6 +819,14 @@ ul.topnav li.icon
         box-sizing: border-box;
 
 }
+.supplier-table-wrapper {
+        max-height: 300px;
+        overflow-y: auto;
+}
+
+.supplier-list-panel {
+        margin-top: 15px;
+}
 /*---------------------------------------------*/
 
 /*----------------TABLES--------------------*/

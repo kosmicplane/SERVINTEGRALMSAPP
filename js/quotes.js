@@ -15,6 +15,7 @@ function activateQuotes() {
     }
 
     container.style.display = 'block';
+    loadQuotesList();
 }
 
 function deactivateQuotes() {
@@ -27,6 +28,19 @@ function deactivateQuotes() {
 function renderQuoteUI(container) {
     container.innerHTML = [
         '<h3>Gestión de Cotizaciones</h3>',
+        '<div class="panel panel-default">',
+        '  <div class="panel-heading clearfix">',
+        '    <span>Listado de cotizaciones</span>',
+        '    <button class="btn btn-primary btn-sm pull-right" id="newQuoteBtn">Nueva cotización</button>',
+        '  </div>',
+        '  <div class="panel-body">',
+        '    <div id="quoteListEmpty" class="alert alert-info" style="display:none;">No hay cotizaciones registradas.</div>',
+        '    <table id="quoteList" class="table table-bordered">',
+        '      <thead><tr><th>Código</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Total</th></tr></thead>',
+        '      <tbody></tbody>',
+        '    </table>',
+        '  </div>',
+        '</div>',
         '<div class="row">',
         '  <div class="col-md-6">',
         '    <label>Código de cotización</label>',
@@ -107,6 +121,7 @@ function renderQuoteUI(container) {
         '<div id="quoteAlert" class="alert" style="display:none; margin-top:10px;"></div>'
     ].join('');
 
+    document.getElementById('newQuoteBtn').addEventListener('click', resetQuoteForm);
     document.getElementById('addItemRow').addEventListener('click', addItemRow);
     document.getElementById('addCostRow').addEventListener('click', addCostRow);
     document.getElementById('saveQuote').addEventListener('click', saveQuote);
@@ -115,8 +130,7 @@ function renderQuoteUI(container) {
     document.getElementById('rejectQuote').addEventListener('click', () => changeStatus('rejectQuote'));
 
     setupClientBranchSync();
-    addItemRow();
-    addCostRow();
+    resetQuoteForm();
     loadCatalog();
     loadClientOptions();
     loadBranchOptions('');
@@ -159,6 +173,56 @@ function syncBranchFields() {
 
     if (branchName) {
         branchName.value = selected ? selected.textContent : '';
+    }
+}
+
+function ensureOption(select, value, label) {
+    if (!select || value === undefined || value === null || value === '') {
+        return;
+    }
+    const found = Array.prototype.find.call(select.options || [], opt => String(opt.value) === String(value));
+    if (!found) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = label || value;
+        select.appendChild(option);
+    }
+}
+
+function resetQuoteForm() {
+    const code = document.getElementById('quoteCode');
+    if (code) { code.value = ''; }
+    const client = document.getElementById('quoteClient');
+    if (client) { client.value = ''; }
+    const clientName = document.getElementById('quoteClientName');
+    if (clientName) { clientName.value = ''; }
+    const sucu = document.getElementById('quoteSucu');
+    if (sucu) { sucu.value = ''; }
+    const sucuName = document.getElementById('quoteSucuName');
+    if (sucuName) { sucuName.value = ''; }
+    const contact = document.getElementById('quoteContact');
+    if (contact) { contact.value = ''; }
+    const valid = document.getElementById('quoteValid');
+    if (valid) { valid.value = ''; }
+    const notes = document.getElementById('quoteNotes');
+    if (notes) { notes.value = ''; }
+    const currency = document.getElementById('quoteCurrency');
+    if (currency) { currency.value = 'COP'; }
+    const comment = document.getElementById('statusComment');
+    if (comment) { comment.value = ''; }
+    const status = document.getElementById('quoteStatus');
+    if (status) { status.textContent = 'Borrador'; }
+
+    const itemsBody = document.querySelector('#quoteItems tbody');
+    const costBody = document.querySelector('#internalCosts tbody');
+    if (itemsBody) { itemsBody.innerHTML = ''; }
+    if (costBody) { costBody.innerHTML = ''; }
+    addItemRow();
+    addCostRow();
+
+    const alertBox = document.getElementById('quoteAlert');
+    if (alertBox) {
+        alertBox.style.display = 'none';
     }
 }
 
@@ -242,95 +306,183 @@ function addCostRow(prefill) {
 }
 
 function loadCatalog() {
-    fetch('libs/php/mentry.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({class: 'quotes', method: 'getCatalog', data: {}})
-    })
-        .then(r => r.json())
-        .then(data => {
-            if (!data || !data.data || !data.data.message) return;
-            catalogItems = data.data.message;
-            const existing = document.getElementById('catalogCodes');
-            if (existing && existing.parentNode) {
-                existing.parentNode.removeChild(existing);
-            }
-            const list = document.createElement('datalist');
-            list.id = 'catalogCodes';
-            catalogItems.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.CODE;
-                option.label = `${item.NAME} (${item.TYPE})`;
-                list.appendChild(option);
-            });
-            document.body.appendChild(list);
+    sendAjax('quotes', 'getCatalog', {}, function (data) {
+        if (!data || !data.message) return;
+        catalogItems = data.message;
+        const existing = document.getElementById('catalogCodes');
+        if (existing && existing.parentNode) {
+            existing.parentNode.removeChild(existing);
+        }
+        const list = document.createElement('datalist');
+        list.id = 'catalogCodes';
+        catalogItems.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.CODE;
+            option.label = `${item.NAME} (${item.TYPE})`;
+            list.appendChild(option);
+        });
+        document.body.appendChild(list);
 
-            document.querySelectorAll('#quoteItems tbody tr').forEach(attachItemRowEvents);
-        })
-        .catch(() => {});
+        document.querySelectorAll('#quoteItems tbody tr').forEach(attachItemRowEvents);
+    }, true, false, () => showQuoteAlert('No se pudo cargar el catálogo de ítems.', 'alert-danger'));
 }
 
 function loadClientOptions() {
-    fetch('libs/php/mentry.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({class: 'quotes', method: 'getClientsForQuotes', data: {}})
-    })
-        .then(r => r.json())
-        .then(data => {
-            const select = document.getElementById('quoteClient');
-            if (!select) {
-                return;
-            }
-            if (!data || !data.data || !data.data.message) {
-                select.innerHTML = '<option value="">Seleccione un cliente</option>';
-                return;
-            }
-
-            quoteClients = data.data.message;
+    sendAjax('quotes', 'getClientsForQuotes', {}, function (data) {
+        const select = document.getElementById('quoteClient');
+        if (!select) {
+            return;
+        }
+        if (!data || !data.message) {
             select.innerHTML = '<option value="">Seleccione un cliente</option>';
-            quoteClients.forEach(client => {
-                const option = document.createElement('option');
-                option.value = client.CODE;
-                option.textContent = client.CNAME;
-                select.appendChild(option);
-            });
-            syncClientFields();
-        })
-        .catch(() => {});
+            return;
+        }
+
+        quoteClients = data.message;
+        select.innerHTML = '<option value="">Seleccione un cliente</option>';
+        quoteClients.forEach(client => {
+            const option = document.createElement('option');
+            option.value = client.CODE;
+            option.textContent = client.CNAME;
+            select.appendChild(option);
+        });
+        syncClientFields();
+    }, true, false, () => showQuoteAlert('No se pudieron cargar los clientes.', 'alert-danger'));
 }
 
-function loadBranchOptions(clientCode) {
-    fetch('libs/php/mentry.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({class: 'quotes', method: 'getBranchesForClient', data: {clientCode: clientCode || ''}})
-    })
-        .then(r => r.json())
-        .then(data => {
-            const select = document.getElementById('quoteSucu');
-            if (!select) {
-                return;
-            }
+function loadBranchOptions(clientCode, preselect) {
+    sendAjax('quotes', 'getBranchesForClient', {clientCode: clientCode || ''}, function (data) {
+        const select = document.getElementById('quoteSucu');
+        if (!select) {
+            return;
+        }
 
-            if (!data || !data.data || !data.data.message) {
-                select.innerHTML = '<option value="">Seleccione una sucursal</option>';
-                syncBranchFields();
-                return;
-            }
-
-            quoteBranches = data.data.message;
+        if (!data || !data.message) {
             select.innerHTML = '<option value="">Seleccione una sucursal</option>';
-            quoteBranches.forEach(branch => {
-                const option = document.createElement('option');
-                option.value = branch.CODE;
-                option.textContent = branch.NAME;
-                option.dataset.parent = branch.PARENTCODE || '';
-                select.appendChild(option);
-            });
             syncBranchFields();
-        })
-        .catch(() => {});
+            return;
+        }
+
+        quoteBranches = data.message;
+        select.innerHTML = '<option value="">Seleccione una sucursal</option>';
+        quoteBranches.forEach(branch => {
+            const option = document.createElement('option');
+            option.value = branch.CODE;
+            option.textContent = branch.NAME;
+            option.dataset.parent = branch.PARENTCODE || '';
+            select.appendChild(option);
+        });
+        if (preselect) {
+            ensureOption(select, preselect);
+            select.value = preselect;
+        }
+        syncBranchFields();
+    }, true, false, () => showQuoteAlert('No se pudieron cargar las sucursales.', 'alert-danger'));
+}
+
+function loadQuotesList() {
+    sendAjax('quotes', 'listQuotes', {}, function (data) {
+        const quotes = (data && data.message) ? data.message : [];
+        renderQuotesList(quotes);
+    }, true, false, () => showQuoteAlert('No se pudieron cargar las cotizaciones.', 'alert-danger'));
+}
+
+function renderQuotesList(quotes) {
+    const tbody = document.querySelector('#quoteList tbody');
+    const emptyBox = document.getElementById('quoteListEmpty');
+    if (!tbody) {
+        return;
+    }
+    tbody.innerHTML = '';
+
+    if (!quotes || quotes.length === 0) {
+        if (emptyBox) {
+            emptyBox.style.display = 'block';
+        }
+        return;
+    }
+
+    if (emptyBox) {
+        emptyBox.style.display = 'none';
+    }
+
+    quotes.forEach(quote => {
+        const row = document.createElement('tr');
+        row.innerHTML = [
+            `<td>${quote.CODE || ''}</td>`,
+            `<td>${quote.CLIENTNAME || ''}</td>`,
+            `<td>${quote.DATE || ''}</td>`,
+            `<td>${quote.STATUS || ''}</td>`,
+            `<td>${quote.TOTAL || ''}</td>`
+        ].join('');
+        row.addEventListener('click', () => loadQuoteDetail(quote.CODE));
+        tbody.appendChild(row);
+    });
+}
+
+function loadQuoteDetail(code) {
+    if (!code) {
+        return;
+    }
+    sendAjax('quotes', 'getQuote', {code: code}, function (data) {
+        if (!data || !data.message || !data.message.quote) {
+            showQuoteAlert('No se encontró la cotización solicitada.', 'alert-warning');
+            return;
+        }
+        populateQuoteDetail(data.message);
+    }, true, false, () => showQuoteAlert('No se pudo cargar la cotización seleccionada.', 'alert-danger'));
+}
+
+function populateQuoteDetail(detail) {
+    resetQuoteForm();
+    const quote = detail.quote;
+
+    ensureOption(document.getElementById('quoteClient'), quote.CLIENTCODE, quote.CLIENTNAME);
+    ensureOption(document.getElementById('quoteSucu'), quote.SUCUCODE, quote.SUCUNAME);
+
+    document.getElementById('quoteCode').value = quote.CODE || '';
+    document.getElementById('quoteClient').value = quote.CLIENTCODE || '';
+    document.getElementById('quoteClientName').value = quote.CLIENTNAME || '';
+    document.getElementById('quoteSucu').value = quote.SUCUCODE || '';
+    document.getElementById('quoteSucuName').value = quote.SUCUNAME || '';
+    document.getElementById('quoteContact').value = quote.CONTACT || '';
+    document.getElementById('quoteValid').value = quote.VALIDUNTIL || '';
+    document.getElementById('quoteCurrency').value = quote.CURRENCY || 'COP';
+    document.getElementById('quoteNotes').value = quote.NOTES || '';
+    document.getElementById('quoteStatus').textContent = quote.STATUS || 'Borrador';
+
+    loadBranchOptions(quote.CLIENTCODE || '', quote.SUCUCODE || '');
+    syncClientFields();
+    syncBranchFields();
+
+    const itemsBody = document.querySelector('#quoteItems tbody');
+    const costBody = document.querySelector('#internalCosts tbody');
+    if (itemsBody) { itemsBody.innerHTML = ''; }
+    if (costBody) { costBody.innerHTML = ''; }
+
+    if (Array.isArray(detail.items)) {
+        detail.items.forEach(item => {
+            addItemRow({
+                code: item.ITEM_CODE,
+                desc: item.ITEM_DESC,
+                type: item.ITEM_TYPE,
+                qty: item.QTY,
+                unitPrice: item.UNIT_PRICE,
+                tax: item.TAX,
+                inventoryCode: item.INVENTORY_CODE
+            });
+        });
+    }
+
+    if (Array.isArray(detail.internalCosts)) {
+        detail.internalCosts.forEach(cost => {
+            addCostRow({
+                type: cost.COST_TYPE,
+                amount: cost.AMOUNT,
+                note: cost.NOTE
+            });
+        });
+    }
 }
 
 function collectQuoteInfo() {
@@ -388,6 +540,7 @@ function saveQuote() {
             document.getElementById('quoteStatus').textContent = resp.message.status;
         }
         showQuoteAlert('Cotización guardada correctamente', 'alert-success');
+        loadQuotesList();
     });
 }
 
@@ -407,24 +560,18 @@ function changeStatus(method) {
         } else {
             showQuoteAlert('Estado actualizado', 'alert-info');
         }
+        loadQuotesList();
     });
 }
 
 function sendQuoteRequest(method, data, cb) {
-    fetch('libs/php/mentry.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({class: 'quotes', method: method, data: data})
-    })
-        .then(r => r.json())
-        .then(payload => {
-            if (payload && payload.data) {
-                cb(payload.data);
-            } else {
-                showQuoteAlert('No se pudo procesar la respuesta del servidor.', 'alert-danger');
-            }
-        })
-        .catch(() => showQuoteAlert('Error al comunicarse con el servidor.', 'alert-danger'));
+    sendAjax('quotes', method, data, function (payload) {
+        if (payload) {
+            cb(payload);
+        } else {
+            showQuoteAlert('No se pudo procesar la respuesta del servidor.', 'alert-danger');
+        }
+    }, false, false, () => showQuoteAlert('Error al comunicarse con el servidor.', 'alert-danger'));
 }
 
 function showQuoteAlert(msg, cssClass) {

@@ -183,7 +183,7 @@ function loadCheck()
 
         f_orde_targetsT = ["f-orderParentT", "f-orderSucuT", "f-orderNumT"];
 
-        purchaseSupplierTargets = ["p-supplier-name", "p-supplier-nit", "p-supplier-contact", "p-supplier-email", "p-supplier-phone", "p-supplier-address", "p-supplier-city"];
+        purchaseSupplierTargets = ["p-supplier-id", "p-supplier-name", "p-supplier-nit", "p-supplier-contact", "p-supplier-email", "p-supplier-phone", "p-supplier-address", "p-supplier-city"];
         poDraftItems = [];
         receiptDraftItems = [];
         purchaseSuppliers = [];
@@ -9197,10 +9197,12 @@ function initializePurchaseTab()
 function clearSupplierForm()
 {
         clearFields(purchaseSupplierTargets);
+        document.getElementById("purchaseSupplierSave").innerHTML = language["purchaseSupplierSave"];
 }
 function saveSupplier()
 {
         var info = {};
+        var supplierId = document.getElementById("p-supplier-id").value;
         info.NAME = document.getElementById("p-supplier-name").value;
         info.NIT = document.getElementById("p-supplier-nit").value;
         info.CONTACT = document.getElementById("p-supplier-contact").value;
@@ -9209,7 +9211,14 @@ function saveSupplier()
         info.ADDRESS = document.getElementById("p-supplier-address").value;
         info.CITY = document.getElementById("p-supplier-city").value;
 
-        sendAjax("purchases","createSupplier",info,function(response)
+        var method = "createSupplier";
+        if(supplierId && supplierId !== "")
+        {
+                info.ID = supplierId;
+                method = "updateSupplier";
+        }
+
+        sendAjax("purchases", method, info, function(response)
         {
                 clearSupplierForm();
                 loadSuppliers();
@@ -9219,7 +9228,7 @@ function loadSuppliers()
 {
         sendAjax("purchases","listSuppliers",{},function(response)
         {
-                purchaseSuppliers = response.message;
+                purchaseSuppliers = response && response.message ? response.message : [];
                 renderSuppliers();
                 renderSupplierPicker();
         }, true);
@@ -9228,6 +9237,8 @@ function renderSuppliers()
 {
         var table = document.getElementById("purchaseSuppliersTable");
         tableClear("purchaseSuppliersTable");
+
+        purchaseSuppliers = purchaseSuppliers || [];
 
         if(purchaseSuppliers.length == 0)
         {
@@ -9243,6 +9254,12 @@ function renderSuppliers()
                 var row = document.createElement("div");
                 row.className = "rowT";
 
+                row.onclick = (function(supplier){
+                        return function(){
+                                fillSupplierForm(supplier);
+                        };
+                })(purchaseSuppliers[i]);
+
                 var a = cellCreator('Proveedor', purchaseSuppliers[i].NAME);
                 var b = cellCreator('Contacto', purchaseSuppliers[i].CONTACT);
                 var c = cellCreator('Correo', purchaseSuppliers[i].EMAIL);
@@ -9256,6 +9273,17 @@ function renderSuppliers()
                 }
                 table.appendChild(row);
         }
+}
+function fillSupplierForm(supplier)
+{
+        document.getElementById("p-supplier-id").value = supplier.ID || "";
+        document.getElementById("p-supplier-name").value = supplier.NAME || "";
+        document.getElementById("p-supplier-nit").value = supplier.NIT || "";
+        document.getElementById("p-supplier-contact").value = supplier.CONTACT || "";
+        document.getElementById("p-supplier-email").value = supplier.EMAIL || "";
+        document.getElementById("p-supplier-phone").value = supplier.PHONE || "";
+        document.getElementById("p-supplier-address").value = supplier.ADDRESS || "";
+        document.getElementById("p-supplier-city").value = supplier.CITY || "";
 }
 function renderSupplierPicker()
 {

@@ -92,6 +92,7 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
 
     purchases: {
         createSupplier: 'purchases.orders',
+        updateSupplier: 'purchases.orders',
         listSuppliers: 'purchases.orders',
         createPoFromRq: 'purchases.orders',
         updateNegotiatedCosts: 'purchases.orders',
@@ -106,7 +107,9 @@ const METHOD_PERMISSION_MAP = global.METHOD_PERMISSION_MAP || {
         rejectQuote: 'quotes.manage',
         getCatalog: 'quotes.manage',
         getClientsForQuotes: 'quotes.manage',
-        getBranchesForClient: 'quotes.manage'
+        getBranchesForClient: 'quotes.manage',
+        listQuotes: 'quotes.manage',
+        getQuote: 'quotes.manage'
     }
 };
 
