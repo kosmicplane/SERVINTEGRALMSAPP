@@ -342,7 +342,12 @@ class users{
 		$location = $info["f-techiLocation"];
 		$type = $info["f-techiCat"];
 		
-		$where = "WHERE  TYPE = '$type' AND STATUS = 1 ";
+                $where = "WHERE STATUS = 1 ";
+
+                if($type != "")
+                {
+                        $where .= "AND TYPE = '$type' ";
+                }
 
 		if($id != "")
 		{

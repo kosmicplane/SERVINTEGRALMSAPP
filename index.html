@@ -22,10 +22,11 @@
 		<script src="libs/dp/build/jquery.datetimepicker.full.min.js"></script>
 		<link href="libs/modal/modal.css" rel="stylesheet"/>
 		<script src="libs/modal/modal.js"></script>
-		<script src="js/typeahead.js"></script>
-		<script src="js/permissions.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/live.js"></script>
+                <script src="js/typeahead.js"></script>
+                <script src="js/permissions.js"></script>
+                <script src="js/quotes.js"></script>
+                <script src="js/main.js"></script>
+                <script src="js/live.js"></script>
         
 	</head>
 	<body>
@@ -623,12 +624,13 @@
 							<div class="row fLabel fields panelButtFull">
 								 <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 										<span>Tipo usuario</span>
-										<select id="f-techiCat">
-										<option value = "T">Técnico</option>
-										<option value = "CO">Coordinador</option>
-										<option value = "JZ">Jefe de Zona</option>
-									</select>
-								</div>
+                                                                                <select id="f-techiCat">
+                                                                                <option value = "">Todos</option>
+                                                                                <option value = "T">Técnico</option>
+                                                                                <option value = "CO">Coordinador</option>
+                                                                                <option value = "JZ">Jefe de Zona</option>
+                                                                        </select>
+                                                                </div>
 								 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>Identificación</span>
 										<input id="f-techiId" type="text"/>
@@ -949,7 +951,26 @@
                                                 </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                                                <div id="inventoryMovementsTable" class="table"></div>
+                                                <div class="table-responsive">
+                                                        <table id="inventoryMovementsTable" class="table table-striped table-bordered">
+                                                                <thead>
+                                                                        <tr>
+                                                                                <th>Fecha</th>
+                                                                                <th>Item</th>
+                                                                                <th>Tipo</th>
+                                                                                <th>Subtipo</th>
+                                                                                <th>Cantidad</th>
+                                                                                <th>Costo unitario</th>
+                                                                                <th>Costo total</th>
+                                                                                <th>OT</th>
+                                                                                <th>OC</th>
+                                                                                <th>Usuario</th>
+                                                                                <th>Observaciones</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                        </table>
+                                                </div>
                                         </div>
                                 </div>
                         </div>
@@ -2352,178 +2373,204 @@
                                         </div>
                         </div>
 
-                        <div id = "ifMasterP" class="hiddenTab">
-                                <div class = "ifBox">
-                                        <div class="col-md-12 col-lg-6" >
-                                                <div class="ifTitle" id="purchaseSuppliers"></div>
-                                                <div class="row fLabel fields panelButtFull">
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseSupplierName"></span>
-                                                                <input id="p-supplier-name" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseSupplierNit"></span>
-                                                                <input id="p-supplier-nit" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-5 col-lg-5 ">
-                                                                <span id="purchaseSupplierContact"></span>
-                                                                <input id="p-supplier-contact" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseSupplierEmail"></span>
-                                                                <input id="p-supplier-email" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseSupplierPhone"></span>
-                                                                <input id="p-supplier-phone" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseSupplierAddress"></span>
-                                                                <input id="p-supplier-address" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseSupplierCity"></span>
-                                                                <input id="p-supplier-city" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseSupplierSave" value="Guardar" onclick="saveSupplier()"></button>
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseSupplierClear" value="Limpiar" onclick="clearSupplierForm()"></button>
-                                                        </div>
-                                                </div>
-                                                <div id="purchaseSuppliersTable" class="table">
-                                                        <div class="table-head">
-                                                                <div class="column" data-label="Proveedor">Proveedor</div>
-                                                                <div class="column" data-label="Contacto">Contacto</div>
-                                                                <div class="column" data-label="Correo">Correo</div>
-                                                                <div class="column" data-label="Teléfono">Teléfono</div>
-                                                                <div class="column" data-label="Ciudad">Ciudad</div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="col-md-12 col-lg-6" >
-                                                <div class="ifTitle" id="purchaseOrderTitle"></div>
-                                                <div class="row fLabel fields panelButtFull">
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseOrderRq"></span>
-                                                                <input id="p-order-rq" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseOrderSupplier"></span>
-                                                                <select id="p-order-supplier"></select>
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseOrderCurrency"></span>
-                                                                <select id="p-order-currency">
-                                                                        <option value="COP">COP</option>
-                                                                        <option value="USD">USD</option>
-                                                                </select>
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-                                                                <span id="purchaseOrderNotes"></span>
-                                                                <textarea id="p-order-notes"></textarea>
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseOrderDescription"></span>
-                                                                <input id="p-order-item-desc" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseOrderQty"></span>
-                                                                <input id="p-order-item-qty" type="number" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseOrderCost"></span>
-                                                                <input id="p-order-item-cost" type="number" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseOrderAddItem" value="Agregar" onclick="addPoItem()"></button>
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseOrderCreate" value="Crear" onclick="createPoFromRq()"></button>
-                                                        </div>
-                                                </div>
-                                                <div class="row fLabel fields panelButtFull">
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseOrderCode"></span>
-                                                                <input id="p-order-code" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseOrderUpdate" value="Actualizar" onclick="updateNegotiatedCosts()"></button>
-                                                        </div>
-                                                </div>
-                                                <div class="ifTitle" id="purchaseOrderReceiveTitle"></div>
-                                                <div class="row fLabel fields panelButtFull">
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseReceiptSku"></span>
-                                                                <input id="p-receipt-sku" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-                                                                <span id="purchaseReceiptDesc"></span>
-                                                                <input id="p-receipt-desc" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseReceiptQty"></span>
-                                                                <input id="p-receipt-qty" type="number" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
-                                                                <span id="purchaseReceiptCost"></span>
-                                                                <input id="p-receipt-cost" type="number" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseReceiptOt"></span>
-                                                                <input id="p-receipt-ot" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseReceiptRq"></span>
-                                                                <input id="p-receipt-rq" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span id="purchaseOrderCode"></span>
-                                                                <input id="p-receipt-po" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-                                                                <span>Código Item OC</span>
-                                                                <input id="p-receipt-item" type="text" />
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseReceiptAdd" value="Agregar" onclick="addReceiptItem()"></button>
-                                                        </div>
-                                                        <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
-                                                                <br class="hidden-xs">
-                                                                <button id="purchaseReceiptSubmit" value="Registrar" onclick="registerReceipt()"></button>
-                                                        </div>
-                                                </div>
-                                                <div id="purchaseDraftItems" class="table">
-                                                        <div class="table-head">
-                                                                <div class="column" data-label="Código">Código</div>
-                                                                <div class="column" data-label="Descripción">Descripción</div>
-                                                                <div class="column" data-label="Cantidad">Cantidad</div>
-                                                                <div class="column" data-label="Costo">Costo</div>
-                                                                <div class="column" data-label="Pactado">Pactado</div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                                                <div class="ifTitle" id="purchaseOrdersList"></div>
-                                                <div id="purchaseOrdersTable" class="table">
-                                                        <div class="table-head">
-                                                                <div class="column" data-label="OC">OC</div>
-                                                                <div class="column" data-label="Proveedor">Proveedor</div>
-                                                                <div class="column" data-label="Estado">Estado</div>
-                                                                <div class="column" data-label="RQ">RQ</div>
-                                                                <div class="column" data-label="Notas">Notas</div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
+<div id = "ifMasterP" class="hiddenTab">
+<div class = "ifBox">
+<div class="row">
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading"><span class="ifTitle" id="purchaseSuppliers"></span></div>
+<div class="panel-body">
+<div class="row fLabel fields panelButtFull">
+<div class="col-xs-12">
+<label id="purchaseSupplierName"></label>
+<input id="p-supplier-name" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierNit"></label>
+<input id="p-supplier-nit" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierContact"></label>
+<input id="p-supplier-contact" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierEmail"></label>
+<input id="p-supplier-email" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierPhone"></label>
+<input id="p-supplier-phone" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierAddress"></label>
+<input id="p-supplier-address" type="text" class="form-control" />
+</div>
+<div class="col-xs-12">
+<label id="purchaseSupplierCity"></label>
+<input id="p-supplier-city" type="text" class="form-control" />
+</div>
+</div>
+<div class="row" style="margin-top:10px;">
+<div class="col-xs-6">
+<button id="purchaseSupplierSave" class="btn btn-primary btn-block" onclick="saveSupplier()"></button>
+</div>
+<div class="col-xs-6">
+<button id="purchaseSupplierClear" class="btn btn-default btn-block" onclick="clearSupplierForm()"></button>
+</div>
+</div>
+<h5 style="margin-top:20px;">Lista de proveedores</h5>
+<div id="purchaseSuppliersTable" class="table">
+<div class="table-head">
+<div class="column" data-label="Proveedor">Proveedor</div>
+<div class="column" data-label="Contacto">Contacto</div>
+<div class="column" data-label="Correo">Correo</div>
+<div class="column" data-label="Teléfono">Teléfono</div>
+<div class="column" data-label="Ciudad">Ciudad</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="panel panel-default">
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrderTitle"></span></div>
+<div class="panel-body">
+<div class="row fLabel fields panelButtFull">
+<div class="col-sm-6 col-md-4">
+<label id="purchaseOrderRq"></label>
+<input id="p-order-rq" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-4">
+<label id="purchaseOrderSupplier"></label>
+<select id="p-order-supplier" class="form-control"></select>
+</div>
+<div class="col-sm-6 col-md-2">
+<label id="purchaseOrderCurrency"></label>
+<select id="p-order-currency" class="form-control">
+<option value="COP">COP</option>
+<option value="USD">USD</option>
+</select>
+</div>
+<div class="col-sm-12 col-md-6">
+<label id="purchaseOrderNotes"></label>
+<textarea id="p-order-notes" class="form-control"></textarea>
+</div>
+</div>
+<div class="row fLabel fields panelButtFull" style="margin-top:10px;">
+<div class="col-sm-6 col-md-4">
+<label id="purchaseOrderDescription"></label>
+<input id="p-order-item-desc" type="text" class="form-control" />
+</div>
+<div class="col-sm-3 col-md-2">
+<label id="purchaseOrderQty"></label>
+<input id="p-order-item-qty" type="number" class="form-control" />
+</div>
+<div class="col-sm-3 col-md-2">
+<label id="purchaseOrderCost"></label>
+<input id="p-order-item-cost" type="number" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-2" style="margin-top:24px;">
+<button id="purchaseOrderAddItem" class="btn btn-default btn-block" onclick="addPoItem()"></button>
+</div>
+<div class="col-sm-6 col-md-2" style="margin-top:24px;">
+<button id="purchaseOrderCreate" class="btn btn-primary btn-block" onclick="createPoFromRq()"></button>
+</div>
+</div>
+<div class="row fLabel fields panelButtFull" style="margin-top:10px;">
+<div class="col-sm-6 col-md-4">
+<label id="purchaseOrderCode"></label>
+<input id="p-order-code" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-3" style="margin-top:24px;">
+<button id="purchaseOrderUpdate" class="btn btn-info btn-block" onclick="updateNegotiatedCosts()"></button>
+</div>
+</div>
+<div class="row" style="margin-top:15px;">
+<div class="col-xs-12">
+<div id="purchaseDraftItems" class="table">
+<div class="table-head">
+<div class="column" data-label="Código">Código</div>
+<div class="column" data-label="Descripción">Descripción</div>
+<div class="column" data-label="Cantidad">Cantidad</div>
+<div class="column" data-label="Costo">Costo</div>
+<div class="column" data-label="Pactado">Pactado</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrderReceiveTitle"></span></div>
+<div class="panel-body">
+<div class="row fLabel fields panelButtFull">
+<div class="col-sm-6 col-md-3">
+<label id="purchaseReceiptSku"></label>
+<input id="p-receipt-sku" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-4">
+<label id="purchaseReceiptDesc"></label>
+<input id="p-receipt-desc" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-2">
+<label id="purchaseReceiptQty"></label>
+<input id="p-receipt-qty" type="number" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-2">
+<label id="purchaseReceiptCost"></label>
+<input id="p-receipt-cost" type="number" class="form-control" />
+</div>
+</div>
+<div class="row fLabel fields panelButtFull" style="margin-top:10px;">
+<div class="col-sm-6 col-md-3">
+<label id="purchaseReceiptOt"></label>
+<input id="p-receipt-ot" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-3">
+<label id="purchaseReceiptRq"></label>
+<input id="p-receipt-rq" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-3">
+<label id="purchaseOrderCode"></label>
+<input id="p-receipt-po" type="text" class="form-control" />
+</div>
+<div class="col-sm-6 col-md-3">
+<label>Código Item OC</label>
+<input id="p-receipt-item" type="text" class="form-control" />
+</div>
+</div>
+<div class="row" style="margin-top:10px;">
+<div class="col-sm-6 col-md-3">
+<button id="purchaseReceiptAdd" class="btn btn-default btn-block" onclick="addReceiptItem()"></button>
+</div>
+<div class="col-sm-6 col-md-3">
+<button id="purchaseReceiptSubmit" class="btn btn-success btn-block" onclick="registerReceipt()"></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row" style="margin-top:20px;">
+<div class="col-xs-12">
+<div class="panel panel-default">
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrdersList"></span></div>
+<div class="panel-body">
+<div id="purchaseOrdersTable" class="table">
+<div class="table-head">
+<div class="column" data-label="OC">OC</div>
+<div class="column" data-label="Proveedor">Proveedor</div>
+<div class="column" data-label="Estado">Estado</div>
+<div class="column" data-label="RQ">RQ</div>
+<div class="column" data-label="Notas">Notas</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
                         <div id="contactDiv" class="abuseReportDiv">
 				
@@ -2557,14 +2604,9 @@
                         <img src="irsc/exit.png"/>
                 </div>
 
-                <div id="ifQuotes" class="hiddenTab">
+                <div id="ifMasterQ" class="hiddenTab">
                         <div id="quoteModule" class="workarea"></div>
                 </div>
 
-                <!-- Custom JS -->
-                        <!--script src="js/jsLoader.js"></script-->
-                        <script src="js/quotes.js"></script>
-                <!-- Custom JS -->
-		
-	</body>
+        </body>
 </html>

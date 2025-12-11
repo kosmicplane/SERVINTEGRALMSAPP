@@ -68,9 +68,16 @@ runTest('RQ de almacén descuenta inventario y referencia a OT', function (Inven
         throw new RuntimeException('El stock esperado de 6 no coincide');
     }
 
-    $movement = $pdo->query('SELECT ID_OT FROM inve_movimientos ORDER BY ID DESC LIMIT 1')->fetch(PDO::FETCH_ASSOC);
+    $movement = $pdo->query('SELECT * FROM inve_movimientos ORDER BY ID DESC LIMIT 1')->fetch(PDO::FETCH_ASSOC);
     if ($movement['ID_OT'] != $workOrderId) {
         throw new RuntimeException('El movimiento no está ligado correctamente a la OT');
+    }
+
+    $expectedColumns = ['FECHA_HORA', 'ITEM_CODE', 'TIPO_MOVIMIENTO', 'SUB_TIPO', 'CANTIDAD', 'COSTO_UNITARIO', 'COSTO_TOTAL', 'ID_OT', 'ID_OC', 'ID_USUARIO', 'OBSERVACIONES'];
+    foreach ($expectedColumns as $column) {
+        if (!array_key_exists($column, $movement)) {
+            throw new RuntimeException("La columna {$column} no se encontró en el movimiento de inventario");
+        }
     }
 });
 
