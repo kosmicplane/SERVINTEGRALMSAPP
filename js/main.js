@@ -153,7 +153,7 @@ function loadCheck()
 	a_maqui_targets = ["a-maquiParent", "a-maquiSucu", "a-maquiPlate", "a-maquiName", "a-maquiModel", "a-maquiSerial", "a-maquiVolt", "a-maquiCurrent", "a-maquiPower", "a-maquiPhase", "a-maquiDetails"];
 	f_maqui_targets = ["f-maquiParent", "f-maquiSucu", "f-maquiPlate"];
 	
-	a_techi_targets = ["a-techiId", "a-techiName", "a-techiCat", "a-techiMastery", "a-techiEmail", "a-techiCity", "a-techiAddress", "a-techiPhone", "a-techiDetails"];
+        a_techi_targets = ["a-techiId", "a-techiName", "a-techiCat", "a-techiClient", "a-techiMastery", "a-techiEmail", "a-techiCity", "a-techiAddress", "a-techiPhone", "a-techiDetails"];
 	f_techi_targets = ["f-techiId", "f-techiCat", "f-techiName", "f-techiLocation"];
 	
         a_acti_targets = ["a-actiType", "a-actiDesc", "a-actiTime", "a-actiValue"];
@@ -188,6 +188,7 @@ function loadCheck()
         receiptDraftItems = [];
         purchaseSuppliers = [];
         purchaseOrders = [];
+        userClients = [];
 
         legTargets = ["legCode", "legItemParent", "legItemOrder", "legItemDate", "legItemNumber", "legItemConcept", "legItemDetail", "legItemCname", "legItemId",  "legItemBase", "legItemBase", "legItemTax" , "legItemTotal", "legItemRetFont", "legItemRetFont", "legItemRetICA", "legItemPayment" ];
 	
@@ -356,7 +357,8 @@ function checkLogin()
                                 code: aud.CODE,
                                 role: aud.TYPE,
                                 email: aud.MAIL || aud.mail,
-                                name: aud.RESPNAME
+                                name: aud.RESPNAME,
+                                client_code: aud.CLIENT_CODE || aud.client_code
                 });
                 if (actualUtype)
                 {
@@ -490,7 +492,8 @@ function login()
                                         code: aud.CODE,
                                         role: aud.TYPE,
                                         email: aud.MAIL || aud.mail,
-                                        name: aud.RESPNAME
+                                        name: aud.RESPNAME,
+                                        client_code: aud.CLIENT_CODE || aud.client_code
                         });
                         actualUcode = aud.CODE;
                         actualUname = aud.BNAME;
@@ -869,10 +872,13 @@ function ifLoad(code)
                         clearFields(f_techi_targets);
                         techisGet();
                 }
+                var techiTypeSelect = document.getElementById("a-techiCat");
+                if(techiTypeSelect){techiTypeSelect.onchange = toggleClientField;}
+                toggleClientField();
                 techiSaveButton.innerHTML = "Crear";
                 clearFields(a_techi_targets, "a-techi");
                 techisGet();
-	}
+        }
 	if(code == "ifMasterA")
 	{
                 document.getElementById("s-clearerActis").onclick = function()
@@ -924,7 +930,7 @@ function ifLoad(code)
                 clearFields(a_inve_targets, "a-inve");
                 inveGet();
         }
-        if(code == "ifQuotes")
+        if(code == "ifMasterQ")
         {
                 activateQuotes();
         }
@@ -3963,33 +3969,101 @@ function maquiSave(item)
 }
 function techisGet()
 {
-	var info = {};
-	var  info = infoHarvest(f_techi_targets);
-	
-	sendAjax("users","getTechiList",info,function(response)
-	{
-		var ans = response.message;
-		tableCreator("techisTable", ans);
-	});
+        var info = {};
+        var  info = infoHarvest(f_techi_targets);
+
+        sendAjax("users","getTechiList",info,function(response)
+        {
+                var ans = response.message;
+                tableCreator("techisTable", ans);
+        });
+}
+
+function fillClientOptions(select, selected)
+{
+        if(!select){return;}
+
+        select.innerHTML = "";
+        var placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.innerHTML = "Selecciona cliente";
+        select.appendChild(placeholder);
+
+        for(var i=0; i<userClients.length; i++)
+        {
+                var option = document.createElement("option");
+                option.value = userClients[i].CODE;
+                option.innerHTML = userClients[i].CNAME;
+                select.appendChild(option);
+        }
+
+        if(selected)
+        {
+                select.value = selected;
+        }
+}
+
+function ensureClientOptions(selected)
+{
+        var select = document.getElementById("a-techiClient");
+        if(!select){return;}
+
+        if(userClients.length > 0)
+        {
+                fillClientOptions(select, selected);
+                return;
+        }
+
+        sendAjax("users","getClientList",{},function(response)
+        {
+                userClients = response.message || [];
+                fillClientOptions(select, selected);
+        }, true);
+}
+
+function toggleClientField()
+{
+        var typeSelect = document.getElementById("a-techiCat");
+        var clientRow = document.getElementById("a-techiClientRow");
+        var clientField = document.getElementById("a-techiClient");
+
+        if(!typeSelect || !clientRow || !clientField){return;}
+
+        if(typeSelect.value === "C")
+        {
+                clientRow.style.display = "block";
+                ensureClientOptions(clientField.value);
+        }
+        else
+        {
+                clientRow.style.display = "none";
+                clientField.value = "";
+        }
 }
 function techisSave(item)
 {
         var  info = infoHarvest(a_techi_targets);
+
+        toggleClientField();
+
+        var selectedType = info["a-techiCat"];
         
         if(item.innerHTML == "Crear"){info.otype = "c";}
         if(item.innerHTML == "Guardar"){info.otype = "e";}
-        
-        info.utype = "T";
+
+        info.utype = selectedType;
         info.autor = aud.RESPNAME;
         info.date = getNow();
-        info.type = "T";
+        info.type = selectedType;
         info.target = info["a-techiEmail"];
+        info.client_code = info["a-techiClient"];
         
         
         if(info["a-techiId"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una identificación",300); return}
         else if(info["a-techiName"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir un nombre",300); return}
         else if(info["a-techiCat"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una categoría",300); return}
-        else if(info["a-techiMastery"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una especialidad",300); return}
+        else if(selectedType === "C" && info["a-techiClient"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes asociar un cliente",300); return}
+        else if(selectedType !== "C" && info["a-techiMastery"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una especialidad",300); return}
         else if(info["a-techiEmail"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir un Email",300); return} 		else if(info["a-techiCity"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una ciudad y departamento",300); return}
         else if(info["a-techiAddress"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir una dirección",300); return}
         else if(info["a-techiPhone"] == ""){alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes escribir al menos un teléfono",300); return}
@@ -4002,10 +4076,14 @@ function techisSave(item)
                 sendAjax("users","techiSave",info,function(response)
                 {
                         var ans = response.message;
-                        
+
                         if(ans == "exist")
                         {
                                 alertBox(language["alert"], language["sys002"],300);
+                        }
+                        else if(ans == "missing_client")
+                        {
+                                alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes asociar un cliente",300);
                         }
                         else
                         {
@@ -4023,6 +4101,12 @@ function techisSave(item)
                 sendAjax("users","techiSave",info,function(response)
                 {
                         var ans = response.message;
+
+                        if(ans == "missing_client")
+                        {
+                                alertBox(language["alert"], "<img src='irsc/infoGeneral.png' class='infoIcon'/><br>Debes asociar un cliente",300);
+                                return;
+                        }
 
                         alertBox(language["alert"], language["sys004"],300);
                         clearFields(a_techi_targets, "a-techi");
@@ -7230,16 +7314,16 @@ function tableCreator(tableId, list)
 				var row = document.createElement("div");
 				row.className = "rowT";
 				
-				var a = cellCreator('Identificación', list[i].NIT)
-				var b = cellCreator('Nombre', list[i].RESPNAME)
-				var c = cellCreator('Tipo', list[i].
-				TYPE)
-				var d = cellCreator('Especialidad', list[i].MASTERY)
-				var loc = cellCreator('Ciudad', list[i].LOCATION)
-				var e = cellCreator('Email', list[i].MAIL)
-				var f = cellCreator('Dirección', list[i].ADDRESS)
-				var g= cellCreator('Teléfonos', list[i].PHONE)
-				var h= cellCreator('Observaciones', list[i].DETAILS)
+                                var a = cellCreator('Identificación', list[i].NIT);
+                                var b = cellCreator('Nombre', list[i].RESPNAME);
+                                var c = cellCreator('Tipo', list[i].TYPE);
+                                var clientInfo = cellCreator('Cliente', list[i].CLIENT_CODE || "");
+                                var d = cellCreator('Especialidad', list[i].MASTERY);
+                                var loc = cellCreator('Ciudad', list[i].LOCATION);
+                                var e = cellCreator('Email', list[i].MAIL);
+                                var f = cellCreator('Dirección', list[i].ADDRESS);
+                                var g= cellCreator('Teléfonos', list[i].PHONE);
+                                var h= cellCreator('Observaciones', list[i].DETAILS);
 				
 				
 				var edit = document.createElement("img");
@@ -7253,9 +7337,11 @@ function tableCreator(tableId, list)
 						editMode = 1;
 						var info = this.reg;
 
-						var items = [decry(info.NIT), decry(info.RESPNAME), info.TYPE, info.MASTERY, info.MAIL, info.LOCATION, info.ADDRESS, info.PHONE, info.DETAILS];
-						infoFiller(items, a_techi_targets);
-						document.getElementById("a-techiId").disabled = true;
+                                                var items = [decry(info.NIT), decry(info.RESPNAME), info.TYPE, info.CLIENT_CODE || "", info.MASTERY, info.MAIL, info.LOCATION, info.ADDRESS, info.PHONE, info.DETAILS];
+                                                infoFiller(items, a_techi_targets);
+                                                ensureClientOptions(info.CLIENT_CODE || "");
+                                                toggleClientField();
+                                                document.getElementById("a-techiId").disabled = true;
 						// document.getElementById("a-techiEmail").disabled = true;
 						techiSaveButton.innerHTML = "Guardar";
 						actualTechiCode = this.reg.CODE;
@@ -7286,7 +7372,7 @@ function tableCreator(tableId, list)
 
 				var icons = [edit, pass, del];
 				var x = cellOptionsCreator('', icons)
-				var cells = [a,b,c,d,loc,e,f,g,h,x];
+                                var cells = [a,b,c,clientInfo,d,loc,e,f,g,h,x];
 				for(var r=0; r<cells.length; r++){row.appendChild(cells[r]);}
 				table.appendChild(row);
 			}

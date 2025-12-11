@@ -837,7 +837,12 @@ ul.topnav li.icon
 }
 
 #inventoryMovementsTable {
-        table-layout: fixed;
+        table-layout: auto;
+        min-width: 1000px;
+}
+
+.inventory-movements-wrapper {
+        overflow-x: auto;
 }
 
 #inventoryMovementsTable th,

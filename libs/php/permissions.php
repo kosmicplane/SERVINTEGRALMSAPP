@@ -9,6 +9,7 @@ return [
             'inventory.movement',
             'inventory.adjustment',
             'inventory.manage',
+            'orders.view',
             'purchases.orders',
             'costSheets.manage',
             'internalSheets.view',
@@ -19,6 +20,7 @@ return [
         'JZ' => [
             'inventory.view',
             'inventory.manage',
+            'orders.view',
             'costSheets.manage',
             'internalSheets.view',
             'reports.export',
@@ -27,12 +29,14 @@ return [
         'CP' => [
             'purchases.orders',
             'inventory.view',
+            'orders.view',
         ],
         'T' => [
             'internalSheets.view',
+            'orders.view',
         ],
         'C' => [
-            'inventory.view',
+            'orders.view',
         ],
     ],
     'method_permissions' => [
@@ -41,6 +45,8 @@ return [
             'inveSave' => ['inventory.create', 'inventory.edit', 'inventory.manage'],
             'addInvQty' => ['inventory.movement', 'inventory.manage'],
             'discountInv' => ['inventory.movement', 'inventory.adjustment', 'inventory.manage'],
+            'getParentSucus' => 'orders.view',
+            'getOrdeList' => 'orders.view',
             'saveoPart' => 'costSheets.manage',
             'saveoOther' => 'costSheets.manage',
             'saveoOtherLeg' => 'costSheets.manage',
@@ -94,6 +100,8 @@ return [
             'getCatalog' => 'quotes.manage',
             'getClientsForQuotes' => 'quotes.manage',
             'getBranchesForClient' => 'quotes.manage',
+            'listQuotes' => 'quotes.manage',
+            'getQuote' => 'quotes.manage',
         ],
     ],
 ];

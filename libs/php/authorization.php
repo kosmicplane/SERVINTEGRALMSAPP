@@ -35,6 +35,7 @@ class Authorization
             $user['TYPE'] = $user['TYPE'] ?? $user['role'] ?? null;
             $user['MAIL'] = $user['MAIL'] ?? $user['email'] ?? null;
             $user['RESPNAME'] = $user['RESPNAME'] ?? $user['name'] ?? null;
+            $user['CLIENT_CODE'] = $user['CLIENT_CODE'] ?? $user['client_code'] ?? null;
         }
 
         return $user;

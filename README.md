@@ -34,12 +34,14 @@ El archivo `database/migrations/002_inventory_movimientos.sql` documenta los ALT
 - **RQ por compras y OC:** El módulo `libs/php/purchases.php` contiene los esbozos para convertir RQ de compras en OC. El campo `id_oc` en `inventory::registerEntry` permite asociar la entrada con la OC cuando se reciba la mercancía.
 - **Entradas/salidas de almacén:** Usar los formularios dedicados en la sección de inventario; cada movimiento queda en `inve_movimientos` y afecta `inve.AMOUNT`.
 - **Generación de cotización, aprobación y OT:** El flujo de referencia se encuentra en `tests/run.php` y `database/migrations/001_core_schema.sql` (cotizaciones, aprobación y creación de OT enlazadas). El módulo de cotizaciones se abre desde el menú superior "Cotizaciones" y renderiza en el área central como el resto de módulos.
+- **Rol Cliente (C):** Los usuarios de tipo cliente se crean desde el administrador de usuarios asociándolos a un cliente existente. Este rol solo puede consultar sus propias órdenes y reportes asociados.
 - **Exportación de inventario:** La lógica de exportación de referencia está en `tests/run.php`; el costo promedio actualizado en `inve.COST` es la base para cualquier exportación o costo interno.
 
 ## Seguridad y roles
 - Roles se resuelven desde sesión y `permissions.php`. Sólo `A` (administrador) y `CO` (logística) pueden crear ítems y registrar movimientos; ajustes restrictivos validados en backend (`inventory::requireRole`).
 - Frontend aplica guardas via `js/permissions.js` deshabilitando controles sin permisos.
 - Nuevo rol `CP` (comprador) puede consultar inventario y operar sobre compras (`purchases.orders`) sin acceso a ajustes de inventario.
+- Rol `C` (cliente) tiene permisos de consulta sobre sus órdenes propias y no puede modificar inventario, compras ni cotizaciones.
 
 ## Uso del dispatcher
 Todos los formularios hacen AJAX a `libs/php/mentry.php` con `{class, method, data}`. Ejemplos:
