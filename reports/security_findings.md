@@ -1,0 +1,1741 @@
+# Security Findings
+
+Generated at: 2026-01-06T12:10:54.257550Z
+
+Total findings: 263
+
+## Findings
+- **wp-config.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: db6b3d9b3ec0ce973fa03263cd22dc6db5dc6e4a91edb59bdc8253e3cecf1ff3
+  - Size: 2311 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.777017Z
+- **app/libs/fpdf/fpdf.php**
+  - Reasons: suspicious_code
+  - Matches: chr_chain
+  - SHA256: 9450ffb3d8e51ff5025af50596dfcc21b72dc5d952a4ca98e49bfb67001a2f37
+  - Size: 48838 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.425020Z
+- **app/libs/fpdf/makefont/makefont.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 6e7f1986dc823b2d51c27ccc4fea2ce3d36925d64dea02bbbcef54edd479f741
+  - Size: 10538 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.425020Z
+- **app/libs/phpExcel/Classes/PHPExcel/Calculation.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 6f9b9d06bf2560eec23b275fe6da21361f8c4643216b3ed9099d56503192d832
+  - Size: 175229 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.429020Z
+- **app/libs/phpExcel/Classes/PHPExcel/Shared/PCLZip/pclzip.lib.php**
+  - Reasons: suspicious_code
+  - Matches: eval, gzinflate
+  - SHA256: 6a3fe846c9aeb8b3ede9cc594944c9008884c9eba88c1f7cf83b868dff0166f1
+  - Size: 197150 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.441020Z
+- **app/libs/phpExcel/Classes/PHPExcel/Reader/CSV.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 852ed3d0ffff95719838eee45af4778113c126de496033e1e6b5a7671edeb4d6
+  - Size: 9437 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.437020Z
+- **app/libs/phpExcel/Classes/PHPExcel/CachedObjectStorage/MemoryGZip.php**
+  - Reasons: suspicious_code
+  - Matches: gzinflate
+  - SHA256: a5c69625593f2563a26fd9a1ade767ed46317c8faca6cb6b60d9cebce36053b9
+  - Size: 4217 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.429020Z
+- **app/libs/phpExcel/Examples/25inmemoryimage.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 6d77cb96ea9b665b75e403bd6bee385576675efe9fd386e9698ffff09e639962
+  - Size: 3341 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/19namedrange.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 7bac1267241745c72ad034348721fd89e1b1c830b22f623205e32a5fe14fc469
+  - Size: 5314 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/26utf8.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 98e2f2c84a5eb1a279cd2c7b2cad57213e2750e2a101e35245c23831e3d925fc
+  - Size: 4938 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/29advancedvaluebinder.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: bb3e04b219ac389bb3b70e6bd4a6cba6010f0daa5224b6c7dc39b511ba540877
+  - Size: 7690 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/10autofilter-selection-display.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 44deb0f6f993c771b1a2781fec492837517e996ab1039daae3541307dfbd77ae
+  - Size: 7523 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/24readfilter.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 5938a6666d4c4c87ddde75f225adcb416cddd5caedca53cbbf8d9b56fc8bf642
+  - Size: 2603 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/01simple.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 0d3c0dd55e7bd6237ec5b7141be9390f665eada5b39976e85ada190d890e5298
+  - Size: 4433 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-scatter.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 65c0d326dbfe77ed70de625c5785a30a556180c07d8ea37ffdb7d96a9374344d
+  - Size: 4606 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/27imagesexcel5.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: ae0761f3d247c0361e3757a9dd5af52371c2eac636a157b14bb26434f3be45c9
+  - Size: 2493 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/06largescale-with-cellcaching-sqlite.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 3edb0acf78b11fb7c7c4a70e1edf50d68d9df95ddfa5d6ba3ab5043857e7a72d
+  - Size: 4976 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/06largescale-with-cellcaching.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 00a020f7b64ce21c85ccffa2bf99ebcf9a318e39aed244cb1be607bf68f6bd85
+  - Size: 4915 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/01simple-download-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 386c8a6d873349c684b388d5253cc4d48d0e954677f3c5efb0f4165663014776
+  - Size: 3251 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/04printing.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 85c5d2ca388ed0515ae560dd6329a50a22fdacab384571dc3ac0271a07d2a387
+  - Size: 5150 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/14excel5.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 9946e0822db3c686fd83bb2860f95d0f06aeec86d4c2c9c63e2a54fcb4f26857
+  - Size: 2303 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/runall.php**
+  - Reasons: suspicious_code
+  - Matches: shell_exec
+  - SHA256: 8d43cfb8e85851ef01f068021439eeb953f8adfaa05958075bf03cb7a1bd3175
+  - Size: 3636 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/10autofilter-selection-2.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 80d51241658da1daebccbd20fc3aaf5be39784581a36c012ac3dcd167ed468fe
+  - Size: 8251 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/21pdf.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: a33b0ea0ca03ca0f6fb02e9b12d32df3540d01764c3bb1185ce5015f40528c0f
+  - Size: 3411 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/06largescale-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 595cd1ca54cf765909c98825c3cdc7ee3ca0ff7556c5e69932c0e3921222660f
+  - Size: 4821 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-line.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 1f66ccc236f5f797c6726b4279a95094b7d7c1044493bb6148f010e61557f576
+  - Size: 4629 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/33chartcreate-pie.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: b2e11cf66eba867ac39031acb7ef33471d191cd239c9644ef40a6a0889e0a78a
+  - Size: 6488 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/03formulas.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 2e6379ea7bb4ab77089db84b4840b67728c0ef79055d95588399cb4a22d94fbb
+  - Size: 6592 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/20readexcel5.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 29a8c3ecfa35da2610bcfd06ba3c20202f0a181e07b50c8dff2082f52d7215f8
+  - Size: 2857 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/08conditionalformatting.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 66b7e5a120dd207a55f0ad915551c734d344c426b508dbb4d5c98494e224d4f4
+  - Size: 8342 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/16csv.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: d8433344c493f9dbb5df0a0459cb504b4485380466279c039b4c8e215cb38c78
+  - Size: 4715 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/02types-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 2854fed2449247afcffa406aa96b453fdfb58090c56ebd2b3ca861f8dda29c47
+  - Size: 7879 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/05featuredemo.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 8a0d28b51a6ad8b242d400cc5e5192681835660d44384dc8be35620797ffcdce
+  - Size: 2970 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-composite.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 17e87997062e0db7cf91d7cff020147e7a4328e0b26b623bb0a8eb987d1e829c
+  - Size: 6398 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/33chartcreate-radar.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 935ae123b96fa3985931b279da5e61e21e9993b5c0766754883915e850b71d50
+  - Size: 4969 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/22heavilyformatted.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: eb37be6dfb4303c07d962bb142c4086adb969b17008e0e96aa96e6046f396074
+  - Size: 4274 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/07reader.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: c60593140773a99dd2585c4e11545ad86c97e29653c3a92a31e7c7bea1c7bdf2
+  - Size: 2781 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-stock.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: a55d434ef83cc9050662f97e162f1259a79edc848117cff66f3d38f38521a819
+  - Size: 5243 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/30template.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 99aeb8d2b58b95165ba6df5d7abbbe75c447ea811e05043b176c92a0891f7b29
+  - Size: 3126 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/08conditionalformatting2.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 9636075eb0e6694ddd09caa4849247ad7dc69bcdb2bf542e971956d1cd0f8e7f
+  - Size: 5324 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/11documentsecurity.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 6cd99cb5965968b8551981e45245827ad7ef6259122ff9f40f78e13bf39cf94b
+  - Size: 4199 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/18extendedcalculation.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: c491e37e776151dc01804aff442083f3b3fa56a07396c379eed8c27d09513839
+  - Size: 4397 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/02types.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: de43a3fcc535bab53dec4e91dbca8cccf3bf507b69c2238232fcc57e958d8d6f
+  - Size: 7773 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-column.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 80d96f44c71c3d0be93e09dc1c4bae52a9cd131fbb4f7e36c407be9a163d7bf1
+  - Size: 4794 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/10autofilter.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 0d62e3b499352f7e9bd6034c5693146ac2e83f918500db751db8c771d80f2dd1
+  - Size: 7691 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/01simple-download-pdf.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e353c7e588574f31e03fd9d6e63108e6ebf8e3597146faf01af6e71792ca3d3c
+  - Size: 3563 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/10autofilter-selection-1.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 3b9dd25cc0685884e2d0b112ea83846085e542fee1369ec2eb446b67d7a0a20c
+  - Size: 8463 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/33chartcreate-bar-stacked.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 4038be877a2ff78b414a35b384b2b7d3abeb06e7e633debea379ee4c26858c2a
+  - Size: 4786 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/06largescale.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 9c3da2e61c52449603e1ba303e0b5d2ce084c5bfa13f502a665fd747802ef7e3
+  - Size: 4831 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/38cloneWorksheet.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 53331a1e3d31a64c2e173664aeb7b3e2e52f9c62fde6f78a839362223cc374af
+  - Size: 4221 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/01pharSimple.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: b437305d966cd65904b1df9b2e6720c7a1d2d6619525c4bb7436af07646a52fa
+  - Size: 4186 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/01simple-download-xlsx.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: bfac4ed1b93bf532235a41f98b56a07ba33f20b42f29462df08c5dbd68fecd33
+  - Size: 3299 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/36chartreadwriteHTML.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 582a1e7c17edeccd8e90e9b87650a9751683418fad7ea3e00b750a63fe07bb85
+  - Size: 4972 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/17html.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: f69e8566e5c20451914a02a4fd2c0ab33a05a6410847903a9c425ea487c4193b
+  - Size: 2405 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/23sharedstyles.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 8e7d338fa813e2775d872c51732a45d249f66d5e793245574b75caef2d27ac9d
+  - Size: 4602 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/40duplicateStyle.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 5b7e0957c0a80ec450df74ab313b7ffcc1a7078c4e330a9e9f08d487687c4072
+  - Size: 1712 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/31docproperties_write.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 5048afdd3ef7893fd2d45dd95a1abe1d2d46f70e4289d72dd15d60a1036ee660
+  - Size: 4966 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/33chartcreate-column-2.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: d1963776e7c4f82714ba93963abcd996e87abe3ffc215ec4f2653cdc4f1f62d5
+  - Size: 5312 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/12cellProtection.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 27bb48953d465ee961e6fbbfb01aa8c882e638c35b2e52812f11cbd8a37ff4a7
+  - Size: 3816 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/34chartupdate.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 5de158cd0e09a49dfcc642808eb1bcf3684b0bee4af03471e1a83df625160c1b
+  - Size: 2627 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/15datavalidation.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 4f4c307edf8aa948a2ff3dd9d0b35055669c1f77ed77f2825d40f9500506529b
+  - Size: 6213 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/35chartrender.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 94a199aef4b1dfe699876054cc097c9023ed1550703b7e8445afbe8a85249be4
+  - Size: 4204 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/31docproperties_write-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 4e6ba283d467d46c9721bc4a4ffe958085a9fdeb3b33b02dd67a65b9cb8dc6d9
+  - Size: 4936 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/37page_layout_view.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 8b5ea5e16efb573bb2db8117107a735c8a33638108d4d72ea205593795eefc0f
+  - Size: 3293 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/15datavalidation-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: bee79e40e41dcc1f63f5553457525a165518ef6fd26e066cc93b9aed103b4581
+  - Size: 6147 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/01simplePCLZip.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e1f09b3540e87907c8ea0e88c27b13c892c5719061f8acdda78b6c04b168cbfe
+  - Size: 3927 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/11documentsecurity-xls.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 5f4219ea127c330c734ae1ad72ad04b506bf055f5e5ab519ec360d76c5a80ed0
+  - Size: 4189 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/13calculation.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 4ca993f3fb36b96f7c12e237fd59b03d1e59809f905c466bc8fdf84512bef8e5
+  - Size: 11072 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/09pagebreaks.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e25aff2c2290738225e05fd7eac57a4e84b1304f9c06366bfd26b969b5506187
+  - Size: 5128 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/32chartreadwrite.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 08ff77fda06d723b92ff12c99903608c59094d9e48b294f764d3ab866f464053
+  - Size: 4408 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/36chartreadwritePDF.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 0885e022929eb893a4829ba149a83ef3e39ecdefd6e8d4df5350bdac29845001
+  - Size: 5722 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/28iterator.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 1065e492340c83ebb4f4fa88552976a7f338057eedb4c367c687116518cf8a73
+  - Size: 2365 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/06largescale-with-cellcaching-sqlite3.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 054f4803b857b9275db6cb5cda9325b250ecd33da84939ed8d4c5a440ea6e231
+  - Size: 4977 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-area.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 54671aadd74ed134e4b95a4b4fe5f3458a3c845ab2a9a73d765d64a4a5929345
+  - Size: 4652 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/07readerPCLZip.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 33d18216d3672a05dc294a8d5b57ac9f99aabc86a04dce62fb47150e60847efd
+  - Size: 2919 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.509019Z
+- **app/libs/phpExcel/Examples/33chartcreate-multiple-charts.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: c31f23cc3f40e1f8940ad31d9de05e9974377be8bcbff1bb5da987f6d12ce76b
+  - Size: 7191 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/phpExcel/Examples/33chartcreate-bar.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: ff69e9e49c5a8b574fa233232e89dbfb6bb8af612c3ef55556ad1fdeebd4086d
+  - Size: 4792 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.513019Z
+- **app/libs/php/users.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 3ed04d6704c4519cdc766ef21d98e9b02ba1560e805ae7c198f1d48227eff9d7
+  - Size: 154432 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.429020Z
+- **app/libs/php/inventory.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 1988d522dd37686a0e3dbdad98b1297997df1a3ef28d0e51b4b78b5afd3481f7
+  - Size: 34151 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.425020Z
+- **app/libs/php/mentry.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: c48a5070e40aa316ae604344676ed00694bc59e5680aeb60e812fe6947f325a4
+  - Size: 2782 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.425020Z
+- **app/tests/manual_diagnostics.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 68384fdc9c01d7edf0ef3f95d3b68ddaef04dd3a7799c626fec70d2946d33ea4
+  - Size: 3785 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.709017Z
+- **wp-content/install.php**
+  - Reasons: suspicious_location
+  - Matches: None
+  - SHA256: 9f6408d18caa59d387b9a6d0848b4cc746fac7a7eea580cd08abd05ef5e657ce
+  - Size: 168 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.829016Z
+- **wp-content/themes/Divi/includes/builder/framework.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 86b70ff49da84166760f9c9b9ced45211abad8cb48a6b996df74412bfaecd498
+  - Size: 46371 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.177024Z
+- **wp-content/themes/Divi/includes/builder/core.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 9034d1a142dda99a890e7d0b131b87d0f5de4d28d36c974736158bd7560c0235
+  - Size: 237773 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.173024Z
+- **wp-content/themes/Divi/includes/builder/class-et-builder-element.php**
+  - Reasons: suspicious_code
+  - Matches: gzinflate
+  - SHA256: 19e75b80eff6d07db117f6088072f521ab2ac5526f1cad48b7cdd59978500da5
+  - Size: 888866 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.169024Z
+- **wp-content/themes/Divi/includes/builder/frontend-builder/view.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 1ba30c35abd89830f6cabf2bf84e3860936b82d7d297e3e68d9ff0be4c545fc8
+  - Size: 7229 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.237024Z
+- **wp-content/themes/Divi/includes/builder/feature/dynamic-content.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 9fa45ea0b07ce560c0723502392838274174449dfb8ac0a03a469458213a5bb5
+  - Size: 55067 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.173024Z
+- **wp-content/themes/Divi/core/components/Portability.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set
+  - SHA256: 7388f72157d9f0f803b5aa1fedaf0827db0aafc49520197a4fec1ba2e2d11b1f
+  - Size: 79612 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.149024Z
+- **wp-content/themes/Divi/core/components/HTTPInterface.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: d71f54a52d85c3d1d7117d329bcd58e103d02fe8e4c563fc1669ad4dd03bb7f5
+  - Size: 11010 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.149024Z
+- **wp-content/themes/norcon_unop/framework/widget/sidebar-services-menus.php**
+  - Reasons: suspicious_code
+  - Matches: create_function
+  - SHA256: 859aa78f2d481128b3b5083f79ac238fc2c5cf33c2e618ddf4b1284a830500b4
+  - Size: 2406 bytes
+  - MTime (UTC): 2026-01-06T12:08:53.149016Z
+- **wp-content/plugins/wordpress-simple-paypal-shopping-cart/lib/stripe-gateway/lib/HttpClient/CurlClient.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 29080e668b4fdce6e8cc7781330493eca3c03688a16c6c3810181e895d8eba5a
+  - Size: 25461 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.573030Z
+- **wp-content/plugins/js_composer/include/classes/shortcodes/vc-raw-js.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 4132450b21727e21e0de84d113cb71fa54360d86b1025810a1bbb2cc1394857b
+  - Size: 1184 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.621038Z
+- **wp-content/plugins/js_composer/include/classes/shortcodes/vc-raw-html.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: e2e7df0caa88d6b580310b6883eaaaf60e4e032a750c007dac85c3db87bb7415
+  - Size: 1765 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.621038Z
+- **wp-content/plugins/js_composer/include/classes/core/class-vc-manager.php**
+  - Reasons: suspicious_code
+  - Matches: system
+  - SHA256: e9b3e4a392098967f68652e4dc6742fd0e20c776933d3e5bc0aff20988975ad7
+  - Size: 22409 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.613038Z
+- **wp-content/plugins/js_composer/include/params/default_params.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 41d1104ba780ab4a5e2b5a0089e25e0d0d4f011b0c12ffbe9172a147df62d964
+  - Size: 10635 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.625038Z
+- **wp-content/plugins/js_composer/include/helpers/helpers_factory.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 219aa0907ea884c4d36e485f245a5277dc3dbb00e57f1e3c1dcc832cda7b7881
+  - Size: 15565 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.625038Z
+- **wp-content/plugins/js_composer/include/templates/shortcodes/vc_raw_html.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0269b0f2087a94d180932ed0f0307d0ecded9406fd84788163968c3bbc2dd35a
+  - Size: 1314 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.637038Z
+- **wp-content/plugins/seo-by-rank-math/includes/class-data-encryption.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 07716c41d236bf0449e9458061fdfcca9b4c134a4bbfb0347ac567adf411047f
+  - Size: 4162 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.245033Z
+- **wp-content/plugins/seo-by-rank-math/includes/admin/class-registration.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: c7a603fda93c609c326a0ebea1b776738ad2f72f4e8d41c17994ba61f3524594
+  - Size: 8023 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.241032Z
+- **wp-content/plugins/seo-by-rank-math/includes/admin/wizard/class-compatibility.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 497825e30936b4c2eca955f8cf097e9f18318fb3253654e524708ff8d857f95b
+  - Size: 8420 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.245033Z
+- **wp-content/plugins/autodescription/inc/classes/meta/robots/main.class.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: a5b16bc074da68ba0c926ab9f5d6d492c9658171e4dfef1860c0056cece6dd4d
+  - Size: 5695 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.265024Z
+- **wp-content/plugins/autodescription/inc/classes/meta/robots/args.class.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: 940eb1f872699fe18009bc447fe9acfa0c20c3908391cd333000560b7a34c8a3
+  - Size: 5684 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.265024Z
+- **wp-content/plugins/autodescription/inc/classes/meta/robots/front.class.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: e0ac84f245480d1c607297363527845366acba2c1015b3cf10bd2e1dbdff07dd
+  - Size: 9262 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.265024Z
+- **wp-content/plugins/really-simple-ssl/class-admin.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec, ini_set
+  - SHA256: 8fed07419351c58d9de9ca125c187896808b51c122bd52f29461f33d9438d458
+  - Size: 104891 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.005034Z
+- **wp-content/plugins/really-simple-ssl/lets-encrypt/class-letsencrypt-handler.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 51438fcd1ea46bbc0137d43929a236bd52dfbef690777fad06d0a352020a2620
+  - Size: 60863 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.009035Z
+- **wp-content/plugins/really-simple-ssl/lets-encrypt/integrations/cpanel/cpanel.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 09cbc0d0a327c27d7d21c8a53585bb4cdb897a656cd8b5505eff586790d5170e
+  - Size: 11653 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.009035Z
+- **wp-content/plugins/really-simple-ssl/lets-encrypt/integrations/cloudways/cloudways.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: f3b026f87e33ab8ad0b3c94dfb3f37b1f26e58d4ebc4cdcb032a2eac7d8c575c
+  - Size: 8282 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.009035Z
+- **wp-content/plugins/really-simple-ssl/lets-encrypt/integrations/directadmin/httpsocket.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 2f22ba1f63f8a18d5ee9efefd765083f5d6c6227519f550cae807eb1b16dc55e
+  - Size: 10074 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.009035Z
+- **wp-content/plugins/really-simple-ssl/lib/admin/class-encryption.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 1d7ca3b2aed3e89f32559e829e858bade91d48f5a2270a6e58c7a474e56f9673
+  - Size: 3656 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.029034Z
+- **wp-content/plugins/really-simple-ssl/security/tests.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 690563ac229f6165e3acf43315265a16c29fdca357c10e2cbda4ac389a39f575
+  - Size: 13704 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.033034Z
+- **wp-content/plugins/really-simple-ssl/security/wordpress/two-fa/class-rsssl-two-factor-settings.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 8f8599637706b47a57592936bc401bb97e56404ab0ef6ae62e3ecab467a9f535
+  - Size: 23391 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.037034Z
+- **wp-content/plugins/really-simple-ssl/security/wordpress/vulnerabilities/FileStorage.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 9e1071a8fd25af8b8b4700efadc43e3a60e488026b239422909e2be4b4db069d
+  - Size: 3012 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.037034Z
+- **wp-content/plugins/ultimate-addons-for-gutenberg/lib/gutenberg-templates/inc/traits/helper.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 4386f29b700b0e3722b793afbb2e11b2404621c3449fdc5299bbaabadb96e6d8
+  - Size: 13817 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.517030Z
+- **wp-content/plugins/ultimate-addons-for-gutenberg/lib/zip-ai/classes/utils.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 795eaec665af32b9e8f13324cc7f1956f256a5c013f9e731b2185b75b443e4ad
+  - Size: 1516 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.529030Z
+- **wp-content/plugins/image-optimization/modules/connect/classes/data.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 1101be686dcc903c52474ec8dc315e50c5d264879e9995a4cc9556616511e348
+  - Size: 9069 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.485039Z
+- **wp-content/plugins/image-optimization/modules/optimization/classes/optimize-image.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: a43131543dbb603917f72ef87d33aeb8a0061cf53b87a9da071edae7f1b06b0f
+  - Size: 12592 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.489039Z
+- **wp-content/plugins/limit-login-attempts-reloaded/core/http/HttpTransportCurl.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 9b7a4f7e67a9490100d36ad73b49dd551f9b58ef7ed73d6b9dd18581081c28b9
+  - Size: 1644 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.713037Z
+- **wp-content/plugins/revslider/admin/includes/plugin-update.class.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e5c273d7995d30bba4c45a0c136d9a224ea9d9eccfceb3e5f0ae4e4dd6080c82
+  - Size: 365057 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.085034Z
+- **wp-content/plugins/revslider/includes/update.class.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: c628e557ea9550a9636880878e7a0b9ae4ec69592999763701f13bf6e93a73f8
+  - Size: 6981 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.117033Z
+- **wp-content/plugins/revslider/includes/functions.class.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 28f6a30287b53f481513b9f1cecce3616cb46209fd3480cd07aa914cb8272939
+  - Size: 40949 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.109034Z
+- **wp-content/plugins/revslider/includes/external-sources.class.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: a2feee91bf93e04ffb10338d51dd89aa15804d11f2805eae44d4ed6ef604238e
+  - Size: 55611 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.109034Z
+- **wp-content/plugins/revslider/includes/EspressoDev/InstagramBasicDisplay.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 126151246184af364766fb8b6622cb3ec65876a56c3bfc1fecd3461ca5e8049c
+  - Size: 9151 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.109034Z
+- **wp-content/plugins/revslider/includes/external/instagram.class.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 4f85d8832f4895cf8bcccf096552eb7d3cc4396a2036f01e673729670a9d950d
+  - Size: 26146 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.109034Z
+- **wp-content/plugins/devvn-image-hotspot/devvn-image-hotspot.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: d7b79070825a1b263e9bbeb2cf7e3a891580f09e37f4ee0066db8b3edac80481
+  - Size: 30377 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.645032Z
+- **wp-content/plugins/devvn-image-hotspot/admin/inc/add_shortcode_devvn_ihotspot.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: ee8b9d0eb787c60a7237949fa330e81baa52c6c8dc7323c9b683831512966c2c
+  - Size: 7414 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.645032Z
+- **wp-content/plugins/elementor/app/modules/import-export/module.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 3ca634ca08dec61687dfc52eaa3ad8fab4f5e1780480a8f3de2874480a3c19f4
+  - Size: 33840 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.649032Z
+- **wp-content/plugins/elementor/modules/ai/connect/ai.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 5cf19ba8df2574d6b6481e563c4214887ac7b5e7236ba26f3c23efbeebf76c80
+  - Size: 22824 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.017039Z
+- **wp-content/plugins/elementor/modules/element-cache/module.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: c7d5d932610bc63b8fead3656982e731f55f0039b51d9d0cb4088fd614887f36
+  - Size: 5350 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.029039Z
+- **wp-content/plugins/elementor/vendor_prefixed/dependency-injection/php-di/invoker/src/Invoker.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 3f405701ce14d81353741ad09c9b0c64e6885d29a0a27f30583482a4c0469999
+  - Size: 3326 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.041040Z
+- **wp-content/plugins/elementor/vendor_prefixed/dependency-injection/php-di/invoker/src/ParameterResolver/DefaultValueResolver.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 46d4993962055ddf3b16e393994963735dd1c512d156fce2b7a91334469f74ac
+  - Size: 1363 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.041040Z
+- **wp-content/plugins/elementor/vendor_prefixed/twig/symfony/polyfill-mbstring/Mbstring.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: eca80811ee443e78cd3698459094ee0d48d0453a4e378431b2f7989eb5cbc28c
+  - Size: 35777 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.049040Z
+- **wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Environment.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: 7bcc9dc7887eff24740779f28a66e0899c88010dc19ca7484897116797d74858
+  - Size: 26466 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.049040Z
+- **wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Extension/CoreExtension.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: 217fdb37555cf8dc05faaf3215f12f39864e3a9bb6c22aff2c7e8938edf3c666
+  - Size: 65036 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.049040Z
+- **wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Test/IntegrationTestCase.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: e66a704a8978c425ef2ea6c79e8bf12cb649b68680a8aafe9c67e278b09ef47f
+  - Size: 8820 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.057040Z
+- **wp-content/plugins/elementor/includes/template-library/manager.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 000253217a92f86c1ecce0255c24f80a4e28233c6313ed1fcf3f231a408128e7
+  - Size: 34132 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.013039Z
+- **wp-content/plugins/elementor/core/common/modules/connect/apps/library.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: d2f6d568905bed7f57faae09adbb30573335f4856754f2fbdc68652dc9e24f40
+  - Size: 4599 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.993039Z
+- **wp-content/plugins/elementor/core/files/uploads-manager.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0803170bde7941300ee4e1833fe5a74ca203f1040908e10386f8b435781a3b3d
+  - Size: 19067 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.997039Z
+- **wp-content/plugins/elementor/core/dynamic-tags/manager.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: fa897f01a8c2d2c9f38b7e5486e8443ace0e86627cd3999f705bef9b4a1494cc
+  - Size: 11341 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.993039Z
+- **wp-content/plugins/integration-for-szamlazzhu-woocommerce/index.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 70840012b1f74a04d8d010634bc097c99689fb40c4597b71693381591ba8f693
+  - Size: 99869 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.509039Z
+- **wp-content/plugins/integration-for-szamlazzhu-woocommerce/includes/class-xml-generator.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 6a1af59f327c012b3932c93cdf1fa42ce49f48c1082cfced89912f3faf750287
+  - Size: 8445 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.509039Z
+- **wp-content/plugins/integration-for-szamlazzhu-woocommerce/includes/class-vat-number.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 234e410f819adf172e4e4403b14c0d530de8e4d2437e31358a10c24ddef65f46
+  - Size: 23207 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.505039Z
+- **wp-content/plugins/suremails/inc/settings.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 215f1b4132bfb3c7b76e8d5fc65a4abec2ca85fac929d89c3b6a99f95ce3c4c1
+  - Size: 7716 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.345031Z
+- **wp-content/plugins/suremails/inc/emails/providers/aws/simple-email-service-request.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 60234a25fe686441f68c60195893bba562be2e25d43baa6681ee2c9214499fad
+  - Size: 10855 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.341032Z
+- **wp-content/plugins/norcon-common/redux-framework-master/ReduxCore/framework.php**
+  - Reasons: suspicious_code
+  - Matches: create_function
+  - SHA256: 07c31821b9bf07cd9a8ce28cc312995723da09c15abb6cefc808a0766de8d176
+  - Size: 208413 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.757037Z
+- **wp-content/plugins/darna-framework/includes/widgets/twitter/OAuth.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: f914ac03c040252f456f85d6a721ceb19b778e89da15a734458a29c3e95fe7b3
+  - Size: 17807 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.581030Z
+- **wp-content/plugins/darna-framework/includes/widgets/twitter/twitteroauth.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 70fd7addac5d0169a1a102c79a2d17e7adcd2585a57898b69567248d2b0bbcfa
+  - Size: 5678 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.581030Z
+- **wp-content/plugins/darna-framework/g5plus-framework/options/framework.php**
+  - Reasons: suspicious_code
+  - Matches: create_function
+  - SHA256: ed4b38f0fe9e8d4d38ca3198d334560459e9b9801729dd717c86c537444efc1e
+  - Size: 191091 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.525029Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Arborize.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 04188e1ee9446b980a47e645565116f2f92621b35888ebb511df9eb0c192b1cc
+  - Size: 2645 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.989026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 6223f220cf77a471199ccc2c8c218bcc9703bda4f4fdc9893d22177f57d6777c
+  - Size: 4643 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.001026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ChildDef/Table.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 71e5c5bfe1d3c38e560dd0bb4887c4957d19ddef81d2594a3b959018eb6e467f
+  - Size: 7605 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.989026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: fc2f7f77f330aa9f34aae414db258048f0545cf03835ce987291acabb219aabe
+  - Size: 937 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.001026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema/InterchangeBuilder.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: 065136b38f266e743efe8d549161acb2519101cfc224edbb2e5f5b66eb9baf46
+  - Size: 7074 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.993026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/URIScheme/data.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: e413510290ef44ffc88037372fefa8e9d73bae9dfe1e30ebd14623db1b2ee9fb
+  - Size: 4489 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.001026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/square/square/src/Apis/LoyaltyApi.php**
+  - Reasons: suspicious_code
+  - Matches: system
+  - SHA256: 6847145a92e5eafed112cf3e9eb1be19c69636f624a0a3a1d9d1d53a8491fa31
+  - Size: 25862 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.001026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/square/square/src/Models/BankAccount.php**
+  - Reasons: suspicious_code
+  - Matches: system
+  - SHA256: f2f1425734b6d876e61f191f0bfaca9a483f70b4727cd8cb3463a4884efd6725
+  - Size: 16786 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.005026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/CoreTestCase.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 05fec225bd62f74705d93b1e913d52dc0adaaaa7800759e21a5e47ee8eb3da7c
+  - Size: 2707 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/StatusCodeMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: e15d63a82480ceea3ae804758c795b7e2c32ff0d44d5197d7c3549972853a58e
+  - Size: 1836 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/HeadersMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 25a56c4d43110f5d6f01624d82919244b6cf29d4dff09c5baf78b98474ef2ee7
+  - Size: 1833 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/BodyMatchers/RawBodyMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: d87d26645aeae4d420653cae851d421ff1c5a8145f4d779e2a74bbf758bee2e2
+  - Size: 981 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/BodyMatchers/BodyMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: cab67a18aa15ad9435efa1bb697ba2e4d2768934a69fb8b7bc5f7c5fdb0d1955
+  - Size: 1260 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/BodyMatchers/NativeBodyMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 0be5b56ff0a252544d84815b1b461f6ca4729563377faeb5bd30c9a6a70a5486
+  - Size: 1627 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/core/src/TestCase/BodyMatchers/KeysBodyMatcher.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 049f97ab8ffc2b77409283a4bfc21dd1138f6a5a013e026b7639b73e639c3c37
+  - Size: 963 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/apimatic/unirest-php/src/HttpClient.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 06e893fc55232be4a5d354d346bfb090e9a94327fa12e32cedc92da23a8a141d
+  - Size: 14023 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.985026Z
+- **wp-content/plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib/HttpClient/CurlClient.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: d54c23dddf6c613608c57361471c0ec0f65594297c8c96d299f516e0c572d078
+  - Size: 26355 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.109025Z
+- **wp-content/plugins/wpforms-lite/includes/class-process.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: c07fdec72b7a94cbc823753dd1a7501177cdec0ce3795ede433c6d2b1020e9a7
+  - Size: 64512 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.917027Z
+- **wp-content/plugins/wpforms-lite/src/Tasks/Meta.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 83ddce2cfcc0bad8d204505562699c2c146522b2190fffa7292ce7d08369ee4f
+  - Size: 5573 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.957026Z
+- **wp-content/plugins/wpforms-lite/src/Helpers/Chain.php**
+  - Reasons: suspicious_code
+  - Matches: str_rot13
+  - SHA256: 63fc8a8ae762106a1112593ff4a6ba887db03ee28f566cb326664fd5f800d4c6
+  - Size: 8504 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.941026Z
+- **wp-content/plugins/wpforms-lite/src/Helpers/Crypto.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0c330360f391bb650e1748b5b711e727543a81f9d7ace8c8cf8d59a34a707819
+  - Size: 2931 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.941026Z
+- **wp-content/plugins/presto-player/inc/Libraries/BunnyCDN.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec, curl_exec_payload
+  - SHA256: bb77a8413c751ad0603b77d2d5bb310165bf4806237a7a960b58140818ff5e93
+  - Size: 47097 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.961035Z
+- **wp-content/plugins/astra-sites/inc/lib/ai-builder/inc/classes/zipwp/class-ai-builder-zipwp-integration.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 7bf482b708e6c2d56401bf59ab47076ef13985ccc050a335bc5aee72101429a5
+  - Size: 6753 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.121021Z
+- **wp-content/plugins/astra-sites/inc/lib/ai-builder/inc/traits/helper.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 00af98f8ab8e4e90207bf1ca3c4c7a3951c6677fc30bb6496f29784729349c8e
+  - Size: 26339 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.125021Z
+- **wp-content/plugins/astra-sites/inc/lib/ai-builder/inc/ajax/importer.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 44db7ec7f2224b70feef677c6f755310a550c8d96d577ef487ce79b43ae8b198
+  - Size: 17483 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.101021Z
+- **wp-content/plugins/astra-sites/inc/lib/starter-templates-importer/importer/st-importer.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 5f40254f09438ebb8ff7b6411f3727fb36cd8d3b0512f44387cf8a0a82fa3070
+  - Size: 9352 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.169022Z
+- **wp-content/plugins/astra-sites/inc/lib/starter-templates-importer/importer/wxr-importer/st-wxr-importer.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 7330b265f67adcce5a37d2d7c05829498b56c0ebb9edaf46dc3c38263fb83f5c
+  - Size: 29975 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.169022Z
+- **wp-content/plugins/astra-sites/inc/lib/gutenberg-templates/inc/traits/helper.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: f5cfd33c235db9c72164bc38b65a86624332c48de428708ad6454108b0d428ad
+  - Size: 13745 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.145022Z
+- **wp-content/plugins/astra-sites/inc/lib/zip-ai/classes/utils.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 795eaec665af32b9e8f13324cc7f1956f256a5c013f9e731b2185b75b443e4ad
+  - Size: 1516 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.185022Z
+- **wp-content/plugins/astra-sites/inc/lib/onboarding/classes/class-astra-sites-zipwp-helper.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: af5123a2b9cb7e49e2582b0091b639c271805b22846e25492ce9eb5f0eb47684
+  - Size: 6812 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.169022Z
+- **wp-content/plugins/one-click-demo-import/inc/OneClickDemoImport.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e0f96232c833b571442153953694347ac87973af462db52409f85baaddd613ee
+  - Size: 32210 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.789037Z
+- **wp-content/plugins/yoast-test-helper/src/wordpress-plugins/classwithtostring.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, eval
+  - SHA256: 9178939b12b8f7b5cfdf39b2f655753ee4be8ca344aa2af95cac474ffd06242e
+  - Size: 1481 bytes
+  - MTime (UTC): 2026-01-06T12:08:52.133025Z
+- **wp-content/plugins/gutenberg/build/widgets/blocks/legacy-widget.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: af7d6464e731742137d338d7041962fb427915c3429a45ad9379670599bf096a
+  - Size: 4075 bytes
+  - MTime (UTC): 2026-01-06T12:08:50.453039Z
+- **wp-content/plugins/wp-file-manager/file_folder_manager.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set
+  - SHA256: 86c70325b094ed48a1aceb65c00830ea524d8121ae23443a9da9017389653b5a
+  - Size: 87231 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.589029Z
+- **wp-content/plugins/wp-file-manager/lib/php/elFinderSession.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set
+  - SHA256: 8f82ca39bcc8195ce3136ae659ecf862d3d6f3ab83d3eadff9ccf34c2a75533e
+  - Size: 8764 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.705028Z
+- **wp-content/plugins/wp-file-manager/lib/php/elFinder.class.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, curl_exec, curl_exec_payload, ini_set, proc_open
+  - SHA256: f2c83e94a91d10ca4788ec750d48a0150d29bb7dab2bc4ee1502edbef2d12cea
+  - Size: 188084 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.705028Z
+- **wp-content/plugins/wp-file-manager/lib/php/elFinderVolumeDropbox2.class.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 4f1061043038039139505bbca8cc0b8aebf9c7671b217b54c0a0a3c4d1d851a4
+  - Size: 47412 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.709028Z
+- **wp-content/plugins/wp-file-manager/lib/php/elFinderVolumeDriver.class.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 471ff94f94a66c1128cae4c32c864f53f9291319ea5c182a7fb3fc41814224b8
+  - Size: 263137 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.709028Z
+- **wp-content/plugins/wp-file-manager/lib/php/elFinderVolumeBox.class.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 10f1617b8af194f01a9550c6d2ae29a54ad3babca485e2ddc050c59bcca4c8e4
+  - Size: 61772 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.705028Z
+- **wp-content/plugins/wp-file-manager/lib/php/editors/OnlineConvert/editor.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 1d4032d8731739e9c3e5c966d0a623116b59eb70ab749a8558d7f718c9f37b5f
+  - Size: 4304 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.705028Z
+- **wp-content/plugins/wp-file-manager/lib/php/editors/ZohoOffice/editor.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 6dec0a32cd9fbe61b033a7a91a4c98885f4547fa0d7aaef9e29eb82299fb4e17
+  - Size: 9268 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.705028Z
+- **wp-content/plugins/aioseoextensions/aioseoextensions.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: e04d1f3107dca167327c929d797a3a67b782691d242e6ef0aa583b324a0362e0
+  - Size: 1350 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.069020Z
+- **wp-content/plugins/all-in-one-wp-migration/functions.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set
+  - SHA256: d4a7b19b5969e7eeb24f5e1d17838d3db11ae6243c5ebb7f70981d11abe3fa24
+  - Size: 62652 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.073020Z
+- **wp-content/plugins/wp-mail-smtp/vendor_prefixed/monolog/monolog/src/Monolog/Handler/ProcessHandler.php**
+  - Reasons: suspicious_code
+  - Matches: proc_open
+  - SHA256: 2dd619707690ad01098a5d6279d61d99f3e96a256fb6c520565bba522cf9760b
+  - Size: 5255 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.785028Z
+- **wp-content/plugins/wp-mail-smtp/vendor_prefixed/monolog/monolog/src/Monolog/Handler/Curl/Util.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 1aa15448e59223a567ab36fab8efe51c1d0b9ca245ccad9ea52b3db808eac7b9
+  - Size: 1860 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.781028Z
+- **wp-content/plugins/wp-mail-smtp/vendor_prefixed/google/apiclient/src/Client.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: e71c4cdf8d987f1ef4e43bec0dca7a03625699b3b5b40c51df1b674a121919db
+  - Size: 44147 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.769028Z
+- **wp-content/plugins/wp-mail-smtp/vendor_prefixed/symfony/polyfill-mbstring/Mbstring.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 4ee1bd805318f04ba2462289c797631344f0e5ecf0395a26a1d73c2fb4d7ae68
+  - Size: 35744 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.793028Z
+- **wp-content/plugins/wp-mail-smtp/vendor_prefixed/guzzlehttp/guzzle/src/Handler/CurlHandler.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 6a91f436745088c612d3f44c2d5614a708e8eec85f01b6bf0107333bda69e4ab
+  - Size: 1518 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.777028Z
+- **wp-content/plugins/wp-mail-smtp/src/Tasks/Meta.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 6e4c519ab8dc795683fff98619f339d022b124ce1aecfa0980ce60e0969d413e
+  - Size: 13028 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.757028Z
+- **wp-content/plugins/wp-mail-smtp/src/Providers/Gmail/Auth.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 488334e37288312612ca93e62b7053ffc1f0bb12c2f2e4835742dd7cedf32ba2
+  - Size: 14232 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.753028Z
+- **wp-content/plugins/wp-mail-smtp/src/Helpers/PluginImportDataRetriever.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0e6da5ddd526d40da49dd7e7824cef86680d8f9e7f9fcc207981ac1390a443f4
+  - Size: 11088 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.753028Z
+- **wp-content/plugins/wp-mail-smtp/src/Helpers/Crypto.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 22105c4b91d42575d17b304a3d1bc604355e9474d68fb796a7a02686b1e94762
+  - Size: 5198 bytes
+  - MTime (UTC): 2026-01-06T12:08:51.753028Z
+- **wp-content/uploads/2024/03/themes.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:54.001008Z
+- **wp-content/uploads/2019/wp-config-sample.php**
+  - Reasons: php_in_uploads, suspicious_location
+  - Matches: None
+  - SHA256: f26d2f32baebb501d241d687f7362b878c92e8729b24f52f095d4cd226a90b30
+  - Size: 10 bytes
+  - MTime (UTC): 2026-01-06T12:08:53.781010Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/shortcode-for-current-date.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 13ebb125acb34b9cf68935382df5850d62f553487a4f38efd505cfff88ed6579
+  - Size: 3862 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/includes/sfcd-welcome-page-content.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 4728decbc10aa3d5622c5634827da7142088d250dd9c1083f96b16a3ea88cac0
+  - Size: 2149 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/includes/sfcd-admin-notices.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: bf52dc56678e7fd1f7a34d7cd26a93e3c1101600c375514c1e69598275100f35
+  - Size: 3111 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/includes/sfcd-menu-page.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 7a7e283a4c7e72470eeb53dc6ec29205f92aba12c5479c4b1dd624be5dd506be
+  - Size: 1725 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/includes/sfcd-menu-page-content.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 4dfb83c4db34f989c0d89091a37d96c96baa902504faa93c8acabbcf478659a2
+  - Size: 9839 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/includes/sfcd-welcome-page.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 1807b959e69b10a90714dec44e62be01455b2777fad49d110fa3d05b55cbfb6e
+  - Size: 2753 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/assets/admin/css/functions_post.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 4583ebe8c74b41aebc06ecdab78dddf334e82f6048563f3d949e61ad0d35d5f3
+  - Size: 205 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/2025/06/shortcode-for-current-date/assets/admin/css/check_file.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.324996Z
+- **wp-content/uploads/mailchimp-for-wp/debug-log.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/wpforms/cache/index.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: 76e7cd6781911a19d14c02f36b30ef35ebf891c9bcff7bdce70b366f66d06c6f
+  - Size: 99 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.784992Z
+- **wp-content/uploads/gravity_forms/a/a/f/e/mpueglbqdjn.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/a/a/f/e/vwoypjextqu.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/h/g/d/b/wadxovieztr.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/h/g/d/b/sctpjlwnimx.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/h/b/d/f/hgiautjfcwp.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/h/b/d/f/dgqpxwnvejf.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: bc3f9fbedb626bc51ae27cd3e3d74442d551a91409a72fd7d4e326ad375e9228
+  - Size: 170 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/d/h/b/h/yhsxoklbciz.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/d/h/b/h/qecwnrykupl.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/f/d/f/f/fnrwiogtjmp.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/f/d/f/f/toxceuadlsw.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/f/d/e/h/odafkqmgrvp.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/f/d/e/h/ljpybrmsgcq.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/e/a/h/b/owejpbrhmtq.php**
+  - Reasons: php_in_uploads, suspicious_code
+  - Matches: ini_set
+  - SHA256: 61ac0f5672251fec0d37e3205ffafef2756562eb0188ea4eba3bed89b1e7df80
+  - Size: 138 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/uploads/gravity_forms/e/a/h/b/ktushcievfd.php**
+  - Reasons: php_in_uploads
+  - Matches: None
+  - SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - Size: 0 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.384996Z
+- **wp-content/languages/plugins/woocommerce-es_CO.l10n.php**
+  - Reasons: suspicious_code
+  - Matches: system
+  - SHA256: 9b94ac5bdc3a5df87368cf43710e4b80bf3d8bccbff1ddf57118ab4c9a7b717f
+  - Size: 688567 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.961018Z
+- **wp-content/languages/plugins/woocommerce-es_ES.l10n.php**
+  - Reasons: suspicious_code
+  - Matches: system
+  - SHA256: fbbbdc44970c2b0fd885d98ac207510e947dd11d5dc305cdcf0ab2d246d1fd5c
+  - Size: 831790 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.993019Z
+- **wp-content/languages/plugins/wordfence-es_CO.l10n.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: 9affe42aa59bba5b795caaabdd13925ec734c61cd5b11e0cbc8c6413ead0f8d1
+  - Size: 359695 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.013019Z
+- **wp-content/languages/plugins/wordfence-es_ES.l10n.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: 01aa1443abc5eb750ee9b569a0f5069d4ade1abea35fd6c29ceec95f0a8e8e5c
+  - Size: 436700 bytes
+  - MTime (UTC): 2026-01-06T12:08:49.021019Z
+- **wp-includes/functions.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: d3be93e049b28c8ce4552247d339480c4c5ddd5af1664416e0eddebbb579aec1
+  - Size: 287546 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.992990Z
+- **wp-includes/class-wp-simplepie-sanitize-kses.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 9d2575c139f2e85b0c505623e2ef887b02c93b1d30dbc23312b9603e48f155ca
+  - Size: 1910 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.956991Z
+- **wp-includes/class-json.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: c2995f011303ef3fe0a9ac9be7dbb76c9aba7cefe46019e4b7b02d7ed8aacf39
+  - Size: 43684 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.944991Z
+- **wp-includes/class-wp-recovery-mode-cookie-service.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0290d5e6b418968e1bc03b2618593a1822e148a6e19e4b7accd35aefd58f6b59
+  - Size: 6877 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.956991Z
+- **wp-includes/default-constants.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 95c3a9ac07e13ced91017b059c3d38c1a3d827ba0293ff162da83e3d9bee4e72
+  - Size: 11365 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.984991Z
+- **wp-includes/class-wp-http-encoding.php**
+  - Reasons: suspicious_code
+  - Matches: gzinflate
+  - SHA256: 1ddccf64c212ebad750e2087ae71041ee068f165bc29e5afcbfe96318e8c8212
+  - Size: 6689 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.952991Z
+- **wp-includes/load.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set
+  - SHA256: 46a7410dc99f9f0c60897f5bedfe7db7fedf90d9bc500bca65798bbf12986061
+  - Size: 56440 bytes
+  - MTime (UTC): 2026-01-06T12:08:56.196989Z
+- **wp-includes/class-wp-customize-widgets.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 6a5309671dd08673d95b1e28fc8eba1fad680c881b0bbb4fdda7dd6260825454
+  - Size: 72210 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.952991Z
+- **wp-includes/class-snoopy.php**
+  - Reasons: suspicious_code
+  - Matches: eval
+  - SHA256: 84fe34f1549d11b015d919350ad4599e2af16ca7e630fe4eab3b79f87e1f0299
+  - Size: 37715 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.944991Z
+- **wp-includes/class-wp-http-curl.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 6fd8b8b380a3ddcda24bfb3e319567523f72a181517d5b041c3dd7a7038346cc
+  - Size: 12541 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.952991Z
+- **wp-includes/blocks/legacy-widget.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: b8795ef359db1b3a2a910f84a54a791ab10b048a614576554066c8b2fb36c10a
+  - Size: 3997 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.924991Z
+- **wp-includes/PHPMailer/SMTP.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 0c55c416e779bcfced26893ede9a391f527eacef5b61d0cf751d19713d171eb7
+  - Size: 49148 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.892992Z
+- **wp-includes/PHPMailer/PHPMailer.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode, ini_set, popen
+  - SHA256: 413cc1c10e6527c821f473c9e59c5201825b0383e8ce517e2a0b9f78ad399067
+  - Size: 183229 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.892992Z
+- **wp-includes/Requests/src/Requests.php**
+  - Reasons: suspicious_code
+  - Matches: gzinflate
+  - SHA256: df14a4da0eddc8f56f0ac364dd96e6fa653c4c54e7782430a8c2b8958d82fb54
+  - Size: 34001 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.896991Z
+- **wp-includes/Requests/src/Transport/Curl.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec
+  - SHA256: 4498e570c33cc4de77333a07fa57b8f92343134ac12f467317df345676d4fe3f
+  - Size: 19571 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.896991Z
+- **wp-includes/SimplePie/src/Sanitize.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 61e16bf51cc746b7a390b91eb8ad42dab3624b56f11ff32cf726c04c4588afcc
+  - Size: 25141 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.904991Z
+- **wp-includes/SimplePie/src/Gzdecode.php**
+  - Reasons: suspicious_code
+  - Matches: gzinflate
+  - SHA256: 6ded168b6061954d29198da359c25fb85fe8d8207a4b4a3fe31040fd63a78a02
+  - Size: 10220 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.900991Z
+- **wp-includes/SimplePie/src/File.php**
+  - Reasons: suspicious_code
+  - Matches: curl_exec, curl_exec_payload, gzinflate
+  - SHA256: c897a2a5979386c36aee3bf44f3ec770ce2d30defe209078834c50a568f031c4
+  - Size: 13043 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.900991Z
+- **wp-includes/Text/Diff.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: ddc917676e9d173ea77b727a01ad01df1d90ffb2acadbfecd0eb72faaa478d8b
+  - Size: 12871 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.904991Z
+- **wp-includes/Text/Diff/Engine/shell.php**
+  - Reasons: suspicious_code, suspicious_filename
+  - Matches: assert, shell_exec
+  - SHA256: a376895680e77451496664a3465712506e3d6a77d5f78271e34f903f769d9200
+  - Size: 5203 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.904991Z
+- **wp-includes/Text/Diff/Engine/native.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 0d4cf24fbc9579d21dcb4a1100f9af4cc53d4e38c754e2526f1d56dd429ecc0b
+  - Size: 16049 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.904991Z
+- **wp-includes/IXR/class-IXR-message.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: f2ec9b5642f6556f50c81dfe4b2806ab96264643d48df4cd920a4bf657c6dd45
+  - Size: 8191 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.892992Z
+- **wp-includes/pomo/po.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 70edaa1f4efd18fae100ac9f1f5d00a1b6c9d06bea5dc865406a633eadbd383c
+  - Size: 15357 bytes
+  - MTime (UTC): 2026-01-06T12:08:56.204989Z
+- **wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 25c5b174877aa1cf1d4e3a13836066512e4f6be74e64b6146628e5fbece9c739
+  - Size: 19233 bytes
+  - MTime (UTC): 2026-01-06T12:08:56.212989Z
+- **wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 1316bf57deae5b9a26a65b74d0153fbe65f0fd0fcf39a43991196d5e786e2739
+  - Size: 26893 bytes
+  - MTime (UTC): 2026-01-06T12:08:56.212989Z
+- **wp-includes/ID3/module.audio.ogg.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: 464adc0f78d5af5ef1cc591c89e98f6152faa5ccb35fd149fd946f44d6ba8bda
+  - Size: 43284 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.888992Z
+- **wp-includes/sodium_compat/autoload.php**
+  - Reasons: suspicious_code
+  - Matches: assert
+  - SHA256: 6d07afe8f71a5cd49d55261a1d18467d1b5fbb9aff1ddfe71dae92a1a04f6731
+  - Size: 3117 bytes
+  - MTime (UTC): 2026-01-06T12:08:56.216989Z
+- **wp-includes/html-api/class-wp-html-doctype-info.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: 917a0cfe281b43844970f40cd7f94204a3d5f2e8923a4676d1ba07ed1a563b23
+  - Size: 25357 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.992990Z
+- **wp-includes/html-api/class-wp-html-processor.php**
+  - Reasons: suspicious_code
+  - Matches: goto
+  - SHA256: da7a830e6c3c5b4b4f3ea352e1c86a1c83da9f1fc3712bd687f404617b0715cc
+  - Size: 212203 bytes
+  - MTime (UTC): 2026-01-06T12:08:55.996990Z
+- **wp-admin/plugins.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 39f237dda3e826ee702fe361f9713eeacad360c97c3f1bf2d40450e91bd2e714
+  - Size: 30724 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.773017Z
+- **wp-admin/update.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 2f115e46fd80300098d54bdd9c2388b5161b4996e72a64981771626ab19ed9ce
+  - Size: 13092 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.773017Z
+- **wp-admin/includes/file.php**
+  - Reasons: suspicious_code
+  - Matches: base64_decode
+  - SHA256: fe672154476189d0047cb1ff550cb38e351cb7b10029099ca33cacab09ad0129
+  - Size: 98169 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.745017Z
+- **wp-admin/includes/class-wp-debug-data.php**
+  - Reasons: suspicious_code
+  - Matches: ini_set
+  - SHA256: 3d9e473f1bf3550032152e96c9a1fb2b85e4c4815b812e1d67fcd416e55d4475
+  - Size: 66619 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.741017Z
+- **wp-admin/includes/class-pclzip.php**
+  - Reasons: suspicious_code
+  - Matches: eval, gzinflate
+  - SHA256: 74e844d42c1cbe89b43e9df36453f82632c2eaa800dcf17fc53a7822e808cbc4
+  - Size: 196695 bytes
+  - MTime (UTC): 2026-01-06T12:08:48.737017Z
+
+## Top 50 Largest Files
+- wp-content/uploads/2025/05/Untitled-design-3.gif: 12441562 bytes
+- wp-content/wflogs/GeoLite2-Country.mmdb: 7825225 bytes
+- wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.min.js: 5947325 bytes
+- wp-content/plugins/ultimate-addons-for-gutenberg/admin-core/assets/build/dashboard-app.js: 5741507 bytes
+- wp-content/plugins/gutenberg/build/vips/vips.wasm: 5643656 bytes
+- wp-content/plugins/gutenberg/build/vips/vips-heif.wasm: 4784788 bytes
+- wp-content/plugins/gutenberg/build/block-editor/index.min.js.map: 4011160 bytes
+- wp-content/plugins/gutenberg/changelog.txt: 3770012 bytes
+- wp-content/uploads/2025/05/adecuamos-3.png: 3696777 bytes
+- wp-content/plugins/gutenberg/build/components/index.min.js.map: 3652878 bytes
+- wp-content/themes/astra/inc/customizer/extend-custom-controls/build/index.js: 3454226 bytes
+- wp-content/plugins/elementor/assets/js/editor.js: 3378722 bytes
+- wp-content/uploads/astra-sites/import-22-May-2025-04-23-52-db356ae0d561b21b4e49f0268edd608e.log: 3136356 bytes
+- wp-content/themes/Divi/includes/builder/frontend-builder/build/bundle.js: 2885927 bytes
+- wp-content/plugins/gutenberg/build/block-library/index.min.js.map: 2833791 bytes
+- wp-content/uploads/2025/05/adecuamos-4.png: 2818776 bytes
+- wp-content/plugins/gutenberg/build/block-editor/index.js: 2760698 bytes
+- wp-includes/js/dist/block-editor.js: 2724345 bytes
+- wp-content/plugins/gutenberg/build/edit-site/index.min.js.map: 2502080 bytes
+- wp-content/et-cache/es_ES/modules-post-17273174007153.data: 2437598 bytes
+- wp-content/et-cache/es_ES/modules-page-17273173945725.data: 2437598 bytes
+- wp-includes/js/dist/components.js: 2357667 bytes
+- wp-content/plugins/gutenberg/build/vips/vips-jxl.wasm: 2352013 bytes
+- wp-content/plugins/gutenberg/build/components/index.js: 2344874 bytes
+- wp-content/uploads/2024/09/Gray-Minimalist-Home-Decor-Billboard-Landscape.png: 2344872 bytes
+- wp-content/uploads/2024/09/3.png: 2343238 bytes
+- wp-content/uploads/2024/09/Gray-Minimalist-Home-Decor-Billboard-Landscape-3-1.png: 2342639 bytes
+- wp-content/uploads/2024/09/Gray-Minimalist-Home-Decor-Billboard-Landscape-3.png: 2342639 bytes
+- wp-content/plugins/gutenberg/build/block-library/index.js: 2252497 bytes
+- wp-content/uploads/2024/09/2.png: 2234317 bytes
+- wp-includes/js/dist/block-library.js: 2232874 bytes
+- wp-content/uploads/2024/09/Gray-Minimalist-Home-Decor-Billboard-Landscape-1.png: 2223736 bytes
+- wp-content/plugins/elementor/assets/js/ai.js: 2153878 bytes
+- wp-content/plugins/elementor/assets/js/ai-gutenberg.js: 2116655 bytes
+- wp-content/plugins/elementor/assets/js/ai-media-library.js: 2099327 bytes
+- wp-content/plugins/elementor/assets/js/ai-unify-product-images.js: 2095187 bytes
+- wp-content/plugins/simple-google-icalendar-widget/error_log: 2009585 bytes
+- wp-content/plugins/autodescription/error_log: 1998076 bytes
+- wp-content/plugins/elementor/assets/js/ai-admin.js: 1981895 bytes
+- wp-content/themes/astra/assets/svg/ast-social-icons.json: 1977704 bytes
+- wp-content/languages/plugins/woocommerce-es_ES.po: 1941669 bytes
+- wp-content/uploads/2021/04/Diseno-sin-titulo-4.png: 1939455 bytes
+- wp-content/uploads/2025/05/adecuamos-7.gif: 1873344 bytes
+- wp-content/uploads/2025/05/1-6.png: 1837237 bytes
+- wp-content/uploads/2025/05/1-1.png: 1821407 bytes
+- wp-content/uploads/2025/05/1-3.png: 1821407 bytes
+- wp-content/uploads/2024/12/1-1.png: 1821321 bytes
+- wp-content/themes/remote-startup-solutions/js/build/all.js: 1811211 bytes
+- wp-content/uploads/2025/05/1-2.png: 1780344 bytes
+- wp-content/uploads/2025/05/1-4.png: 1780344 bytes
+
+## Top 50 Newest Files
+- tools/plugin_inventory.py: 2026-01-06T12:10:10.652316Z
+- tools/security_audit.py: 2026-01-06T12:09:58.800419Z
+- .gitignore: 2026-01-06T12:09:24.784743Z
+- wp-includes/widgets.php: 2026-01-06T12:08:56.236988Z
+- wp-login.php: 2026-01-06T12:08:56.236988Z
+- wp-signup.php: 2026-01-06T12:08:56.236988Z
+- wp-settings.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-text.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-media.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-media-image.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-custom-html.php: 2026-01-06T12:08:56.236988Z
+- wp-mail.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-media-video.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-media-gallery.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-links.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-recent-comments.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-categories.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-tag-cloud.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-archives.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-nav-menu-widget.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-block.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-media-audio.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-recent-posts.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-pages.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-rss.php: 2026-01-06T12:08:56.236988Z
+- wp-trackback.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-meta.php: 2026-01-06T12:08:56.236988Z
+- wp-load.php: 2026-01-06T12:08:56.236988Z
+- xmlrpc.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-calendar.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/widgets/class-wp-widget-search.php: 2026-01-06T12:08:56.236988Z
+- wp-links-opml.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/wp-diff.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/wp-db.php: 2026-01-06T12:08:56.236988Z
+- wp-includes/taxonomy.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/user.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/update.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/template.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme.json: 2026-01-06T12:08:56.232988Z
+- wp-includes/vars.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-templates.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-compat/sidebar.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-compat/embed-content.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/template-loader.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-previews.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-compat/comments.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-compat/header.php: 2026-01-06T12:08:56.232988Z
+- wp-includes/theme-i18n.json: 2026-01-06T12:08:56.232988Z
+- wp-includes/version.php: 2026-01-06T12:08:56.232988Z
+
+## PHP Density (Top 50 Directories)
+- wp-content/plugins/wpforms-lite/vendor_prefixed/square/square/src/Models: 1126 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/square/square/src/Models/Builders: 947 PHP files
+- wp-includes: 241 PHP files
+- wp-admin/includes: 106 PHP files
+- wp-content/themes/twentytwentyfive/patterns: 98 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib: 98 PHP files
+- wp-admin: 93 PHP files
+- wp-content/plugins/wordpress-simple-paypal-shopping-cart/lib/stripe-gateway/lib: 83 PHP files
+- app/libs/phpExcel/Examples: 79 PHP files
+- wp-content/plugins/js_composer/include/templates/shortcodes: 78 PHP files
+- wp-content/plugins/js_composer/include/classes/shortcodes: 75 PHP files
+- wp-content/plugins/gutenberg/build/block-library/blocks: 75 PHP files
+- wp-includes/blocks: 73 PHP files
+- wp-content/plugins/wp-mail-smtp/vendor_prefixed/monolog/monolog/src/Monolog/Handler: 68 PHP files
+- wp-content/themes/twentytwentytwo/inc/patterns: 66 PHP files
+- wp-content/themes/Divi/includes/builder/module: 59 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier: 58 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib/Service: 56 PHP files
+- wp-content/plugins/wp-mail-smtp/vendor_prefixed/google/apiclient-services/src/Gmail: 55 PHP files
+- wp-content/plugins/darna-framework/g5plus-framework/meta-box/inc/fields: 53 PHP files
+- wp-content/plugins/norcon-common/meta-box/inc/fields: 51 PHP files
+- wp-content/plugins/wordpress-simple-paypal-shopping-cart/lib/stripe-gateway/lib/Service: 48 PHP files
+- wp-content/plugins/elementor/includes/controls: 48 PHP files
+- wp-content/themes/Divi/includes/builder/plugin-compat: 46 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/square/square/src/Apis: 43 PHP files
+- wp-content/languages/plugins: 41 PHP files
+- wp-includes/rest-api/endpoints: 41 PHP files
+- wp-content/themes/neve/inc/customizer/controls/react: 37 PHP files
+- wp-includes/customize: 36 PHP files
+- wp-content/plugins/elementor/includes/widgets: 35 PHP files
+- wp-includes/Requests/src/Exception/Http: 33 PHP files
+- wp-content/plugins/wpforms-lite/src/SmartTags/SmartTag: 32 PHP files
+- wp-content/languages/themes: 32 PHP files
+- wp-content/themes/inspiro/patterns: 31 PHP files
+- wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Node/Expression/Binary: 30 PHP files
+- wp-content/plugins/wp-mail-smtp/vendor_prefixed/guzzlehttp/psr7/src: 30 PHP files
+- wp-admin/network: 30 PHP files
+- wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule: 29 PHP files
+- wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Node: 28 PHP files
+- wp-content/themes/Divi/core/components/api/email: 27 PHP files
+- wp-content/plugins/seo-by-rank-math/includes/admin: 27 PHP files
+- wp-content/plugins/yoast-test-helper/src: 27 PHP files
+- wp-content/plugins/revslider/includes: 26 PHP files
+- wp-content/plugins/wp-mail-smtp/src: 26 PHP files
+- wp-content/plugins/ultimate-addons-for-gutenberg/classes: 25 PHP files
+- wp-content/plugins/elementor/modules/atomic-widgets/prop-types: 25 PHP files
+- wp-content/plugins/wpforms-lite/templates/emails: 25 PHP files
+- wp-content/plugins/all-in-one-wp-migration/lib/view/import: 24 PHP files
+- wp-content/plugins/contact-form-7/includes: 24 PHP files
+- wp-content/plugins/contact-form-7/includes/swv/php/rules: 24 PHP files
