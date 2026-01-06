@@ -1,0 +1,204 @@
+[17-Jun-2025 08:07:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 08:22:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:02:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:02:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:10:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:16:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:18:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:18:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:18:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:19:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:21:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:22:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 12:25:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:03:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:11:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:11:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:11:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:12:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:12:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:13:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:13:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:13:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:17:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:19:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:19:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 13:28:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:06:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:06:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:15:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:16:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:16:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:21:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:21:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 14:22:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 19:33:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 19:33:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 19:33:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 19:33:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[17-Jun-2025 19:33:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[22-Jun-2025 13:38:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[22-Jun-2025 13:38:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[22-Jun-2025 13:39:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[24-Jun-2025 03:20:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[04-Nov-2025 13:18:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[06-Nov-2025 14:57:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[08-Nov-2025 17:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[11-Nov-2025 11:52:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[14-Nov-2025 06:09:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[16-Dec-2025 14:50:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[16-Dec-2025 14:50:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230
+[16-Dec-2025 14:50:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php:230
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/corpex/inc/customizer/corpex-header.php on line 230

@@ -1,0 +1,13 @@
+body.page,
+body.archive {
+
+    .content {
+        
+        @media (min-width: 48rem) {
+            &.has-sidebar {
+                display: flex;
+                gap: 2.5rem;
+            }
+        }
+    }
+}

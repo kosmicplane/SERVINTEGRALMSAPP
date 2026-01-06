@@ -1,0 +1,105 @@
+#colophon {
+    background: var(--primary-color);
+    padding: 0.9rem 0;
+
+    .site-info {
+        text-align: center;
+        color: #fff;
+    }
+
+    a, span {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    display: none;
+}
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.backToTopBtn {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    width: 47px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 2s infinite ease-in-out; /* Added animation */
+}
+
+
+/* Adjusted Arrow Icon */
+.arrow-up {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid var(--light-color);
+    position: relative; /* Changed from absolute to relative */
+}
+
+/* Circle Progress on the Button */
+.progress-ring {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.progress-ring__circle {
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-dasharray: 138; /* Circumference of the circle */
+    stroke-dashoffset: 138;
+    stroke: var(--light-color);
+    stroke-width: 4;
+    fill: transparent;
+}
+
+.backToTopBtn:hover {
+    background-color: var(--primary-color);;
+    transform: translateY(-5px);
+}
+
+.scroll-to-top.show {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

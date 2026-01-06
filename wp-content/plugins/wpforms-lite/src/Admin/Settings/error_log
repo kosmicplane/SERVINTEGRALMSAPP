@@ -1,0 +1,1 @@
+[11-Jun-2025 23:24:12 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wpforms-lite/src/Admin/Settings/Payments.php on line 4

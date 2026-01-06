@@ -1,0 +1,272 @@
+// Universal Styling Rules
+
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+// Define font mixins
+@mixin primary-font {
+    font-family: "Poppins", sans-serif;
+}
+
+@mixin secondary-font {
+    font-family: "Cabin", sans-serif;
+    font-weight: normal;
+}
+
+body {
+    overflow-x: hidden;
+    margin-bottom: 0 !important;
+    @include primary-font;  // Apply primary font to body
+
+    ::selection {
+        background: var(--primary-color);
+        color: #fff;
+    }
+}
+
+.button {
+    position: relative;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    font-size: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 4px 1rem;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include secondary-font;  // Apply secondary font to headings
+    font-weight: 700;
+    margin: 0;
+}
+
+h1 {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    
+    @media (min-width: 60rem) {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+
+    @media (min-width: 60rem) {
+        font-size: 2rem;
+        line-height: 2.25rem;
+    }
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+
+    @media (min-width: 60rem) {
+        font-size: 1.5rem;
+        line-height: 1.875rem;
+    }
+}
+
+h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    @media (min-width: 60rem) {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
+
+a {
+    color: var(--secondary-color);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.button {
+    position: relative;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    font-size: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 4px 1rem;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+}
+
+input[type="submit"] {
+    @extend .button;
+    background-color: var(--primary-color);
+    margin: 0;
+}
+
+ul, ol {
+    margin: 0;
+
+    ul, ol {
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    li {
+        margin: 0;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: #999999;
+	border: 1px solid #ccc;
+	padding: 0.3125rem 0.25rem;
+
+    &:focus {
+        outline: solid 2px var(--primary-color);
+    }
+
+    &:focus-visible {
+        outline-color: var(--primary-color) !important;
+        @include transition(all 100ms ease);
+    }
+}
+
+blockquote {
+    border-left: solid 4px var(--primary-color);
+    padding: 0.75rem 0 0.75rem 0.75rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+code {
+    background-color: black;
+    color: white;
+}
+
+.content {
+    padding: 0;
+   
+
+    @media screen and (min-width: 48rem) {
+        padding-bottom: 2.5rem;
+    }
+}
+
+.is-visible {
+    display: block !important;
+}
+
+.boxed {
+    max-width: 73.125rem;
+    margin: 0 auto;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+}
+
+.wide-width {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+}
+
+
+.container {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.full-width {
+    width: 100%;
+    .md-9{
+        width: 100%;
+    }
+    .single-content{
+        padding: 0px;
+    }
+}
+
+@media (min-width: 60rem) {
+
+    .md-3 {
+        width: 25%;
+    }
+    
+    .md-4 {
+        width: 33.33%;
+    }
+    
+    .md-6 {
+        width: 50%;
+    }
+    
+    .md-8 {
+        width: 66.33%;
+    }
+    .md-9 {
+        width: 75%;
+    }
+    .md-12 {
+        width: 100%;
+    }
+}
+
+.alignfull {
+	width: 100vw;
+    max-width: 100%;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
+/* style.css */
+
+.alignwide {
+    max-width: 90rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+// Search Form
+.search-form {
+    display: flex;
+    width: 100%;
+
+    label {
+        display: flex;
+    }
+}

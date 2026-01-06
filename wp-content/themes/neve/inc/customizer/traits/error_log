@@ -1,0 +1,1 @@
+[02-Jul-2025 18:06:51 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/themes/neve/inc/customizer/traits/features_upsell.php on line 9

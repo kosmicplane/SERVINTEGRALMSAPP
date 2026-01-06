@@ -1,0 +1,229 @@
+footer.main-footer-wrapper {
+	padding-top: 60px;
+	position: relative;
+	background-color: @footer_bg_color;
+	color: @footer_text_color;
+	text-transform: none;
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	.footer-above-wrapper {
+		text-align: center;
+		padding-bottom: 36px;
+	}
+
+	h4.widget-title {
+		font-family: @primary_font;
+		font-size: 16px;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		color: @footer_heading_text_color;
+		text-transform: none;
+		margin-bottom: 18px;
+
+		&:after {
+			display: none;
+		}
+	}
+	.sidebar {
+		aside {
+			margin-bottom: 24px;
+		}
+		.widget-social-profile {
+			li a i.fa {
+				color: @footer_heading_text_color;
+			}
+		}
+		.widget-twitter-wrap span.twitter-content a {
+			color: @footer_heading_text_color;
+			&:hover {
+				color: @primary_color;
+			}
+		}
+		.widget-twitter-wrap span.twitter-time {
+			text-transform: uppercase;
+			font-size: 11px;
+		}
+		.mail-chimp-wrapper .mail-chimp-button > input {
+			background-color: rgba(255, 255, 255, 0.1);
+			width: 100%;
+		}
+	}
+
+	.footer-logo .sub-description{
+		padding-top: 32px;
+		line-height: 20px;
+		font-size: 16px;
+		font-style: italic;
+	}
+
+	.sidebar-bottom-left {
+		text-align: left;
+	}
+	.sidebar-bottom-right {
+		text-align: right;
+	}
+	.bottom-bar-wrapper {
+		font-size: 12px;
+
+		.bottom-bar-inner {
+			padding-top: 18px;
+			padding-bottom: 18px;
+			border-top: solid 2px rgba(255, 255, 255, 0.2);
+		}
+		.sidebar {
+			aside {
+				margin-bottom: 0;
+			}
+			.widget_nav_menu > div > ul.menu {
+				overflow: visible;
+				border: none;
+				margin: 0;
+				padding: 0;
+				> li > a {
+					line-height: 42px;
+					text-transform: uppercase;
+				}
+
+				li {
+					display: inline-block;
+					position: relative;
+					white-space: nowrap;
+
+					> a {
+						font-size: 12px;
+					}
+
+					&:before {
+						display: none;
+					}
+
+					&:hover > ul {
+						display: block;
+					}
+				}
+
+				> li {
+					padding: 0;
+					margin: 0;
+					+ li {
+						margin-left: 20px;
+					}
+					ul {
+						display: none;
+						border-bottom:solid 2px @primary_color;
+						position: absolute;
+						z-index: 999;
+						left: 0;
+						bottom: 100%;
+						background-color: #fefefe;
+						color: @text_color;
+						text-align: left;
+						margin: 0;
+						min-width: 150px;
+						padding-left: 0;
+						padding-top: 5px;
+						li {
+							display: block;
+							line-height: 26px;
+							padding: 0 15px;
+						}
+						li + li {
+							border-top:solid 1px @border_color;
+						}
+						ul {
+							left: 100%;
+							top: 0;
+						}
+					}
+				}
+
+			}
+
+			.widget_text {
+				a {
+					font-weight: 700;
+					color: #bebebe;
+				}
+				a:hover {
+					color: @primary_color;
+				}
+			}
+		}
+	}
+	.bottom-bar-text {
+		margin: 0;
+		line-height: 42px;
+		text-transform: uppercase;
+		word-spacing: 0.1em;
+	}
+
+	.collapse:before{
+		content: "\f054";
+		font-family: "fontawesome";
+		position: absolute;
+		right: 10px;
+	}
+
+	.expanded,
+	.collapse{
+		display: block;
+		visibility: visible;
+		cursor: pointer;
+	}
+	.expanded:before{
+		content: "\f078";
+		font-family: "fontawesome";
+		position: absolute;
+		right: 10px;
+	}
+}
+body.footer-static {
+	padding-bottom: 0px !important;
+}
+
+body.footer-static footer.enable-parallax {
+	position: relative;
+}
+
+@media only screen and (min-width: 992px) {
+	footer.enable-parallax {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 0;
+		margin: auto;
+		width: 100%;
+		-webkit-backface-visibility: visible;
+		-moz-backface-visibility: visible;
+		-ms-backface-visibility: visible;
+		backface-visibility: visible;
+	}
+
+	body.boxed footer.enable-parallax {
+		max-width: 1200px;
+	}
+
+}
+
+@media screen and (max-width: 991px) {
+	footer.main-footer-wrapper .sidebar-bottom-right {
+		text-align: left;
+	}
+	footer.main-footer-wrapper.footer-collapse-able h4.widget-title {
+		margin-bottom: 0;
+	}
+	footer.main-footer-wrapper.footer-collapse-able h4.widget-title + div {
+		padding-top: 18px;
+		margin: 0;
+	}
+}

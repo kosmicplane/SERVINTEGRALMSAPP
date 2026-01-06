@@ -1,0 +1,650 @@
+# Translation of Themes - IndoFinance in Spanish (Spain)
+# This file is distributed under the same license as the Themes - IndoFinance package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-03-13 11:05:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es\n"
+"Project-Id-Version: Themes - IndoFinance\n"
+
+#. Theme Name of the theme
+#: style.css
+#, gp-priority: high
+msgid "IndoFinance"
+msgstr "IndoFinance"
+
+#. translators: 1: Theme name, 2: Theme author.
+#: footer.php:42
+msgid "Designed by %1$s"
+msgstr "Diseñado por %1$s"
+
+#: template-parts/featured-posts-slider.php:43
+#: template-parts/post-slider/featured-posts-slider.php:46
+msgid "By"
+msgstr "Por"
+
+#: template-parts/content-none.php:44
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Parece que no hemos podido encontrar lo que estás buscando. Quizá pueda ayudarte una búsqueda."
+
+#: template-parts/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Lo siento, pero no hay nada que coincida con tus términos de búsqueda. Por favor, inténtalo de nuevo con algunas palabras clave diferentes."
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "¿Listo para publicar tu primera entrada? <a href=\"%1$s\">Primeros pasos aquí</a>"
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "No se ha encontrado nada"
+
+#: template-parts/blog-style/content-style2.php:39
+#: template-parts/blog-style/content.php:39 template-parts/content-page.php:22
+#: template-parts/content-single.php:34
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: single.php:64
+msgid "Next:"
+msgstr "Siguiente:"
+
+#: single.php:63
+msgid "Previous:"
+msgstr "Anterior:"
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:100 template-parts/content-page.php:36
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Editar <span class=\"screen-reader-text\">%s</span>"
+
+#. translators: %s: post title
+#: inc/template-tags.php:83
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Deja un comentario<span class=\"screen-reader-text\"> en %s</span>"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:69
+msgctxt "list item separator"
+msgid " &#8226; "
+msgstr " &#8226; "
+
+#: inc/template-functions.php:94
+msgid "Search for:"
+msgstr "Buscar:"
+
+#: inc/template-functions.php:54
+msgid "Keep Reading..."
+msgstr "Sigue leyendo..."
+
+#: inc/modules/modules/search.php:10 inc/modules/search.php:9
+msgid "Search Button"
+msgstr "Botón de búsqueda"
+
+#: inc/modules/modules/nav-desktop.php:9 inc/modules/nav-desktop.php:9
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#: inc/metabox/page-options.php:44
+msgid "Enable the Sidebar"
+msgstr "Activar la barra lateral"
+
+#: inc/metabox/page-options.php:29
+msgid "Page Layout"
+msgstr "Diseño de la página"
+
+#: inc/metabox/page-options.php:6
+msgid "Display Options"
+msgstr "Mostrar las opciones"
+
+#: inc/customizer/theme-layout.php:268
+msgid "Search"
+msgstr "Buscar"
+
+#: inc/customizer/theme-layout.php:227
+msgid "Select Archive Page Layout"
+msgstr "Selecciona el diseño de la página del archivo"
+
+#: inc/customizer/theme-layout.php:203
+msgid "Archive"
+msgstr "Archivo"
+
+#: inc/customizer/theme-layout.php:147
+msgid "Single"
+msgstr "Individual"
+
+#: inc/customizer/theme-layout.php:131
+msgid "Dual Sidebar"
+msgstr "Doble barra lateral"
+
+#: inc/customizer/theme-layout.php:129
+msgid "Left Sidebar"
+msgstr "Barra lateral izquierda"
+
+#: inc/customizer/theme-layout.php:107 inc/customizer/theme-layout.php:171
+#: inc/customizer/theme-layout.php:292
+msgid "Select Layout"
+msgstr "Selecciona el diseño"
+
+#: inc/customizer/theme-layout.php:83 index.php:31
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer/theme-layout.php:63 inc/customizer/theme-layout.php:132
+#: inc/customizer/theme-layout.php:194 inc/customizer/theme-layout.php:250
+#: inc/customizer/theme-layout.php:315
+msgid "No Sidebar"
+msgstr "Sin barra lateral"
+
+#: inc/customizer/theme-layout.php:62 inc/customizer/theme-layout.php:130
+#: inc/customizer/theme-layout.php:193 inc/customizer/theme-layout.php:249
+#: inc/customizer/theme-layout.php:314
+msgid "Right Sidebar"
+msgstr "Barra lateral derecha"
+
+#: inc/customizer/theme-layout.php:58 inc/customizer/theme-layout.php:125
+#: inc/customizer/theme-layout.php:189 inc/customizer/theme-layout.php:245
+#: inc/customizer/theme-layout.php:310
+msgid "Select Sidebar Layout"
+msgstr "Selecciona el diseño de la barra lateral"
+
+#: inc/customizer/theme-layout.php:44 inc/customizer/theme-layout.php:111
+#: inc/customizer/theme-layout.php:175 inc/customizer/theme-layout.php:231
+#: inc/customizer/theme-layout.php:296 inc/metabox/page-options.php:31
+msgid "Boxed Layout"
+msgstr "Diseño en caja"
+
+#: inc/customizer/theme-layout.php:39
+msgid "Select Front Page"
+msgstr "Selecciona la página de inicio"
+
+#: inc/customizer/theme-layout.php:26 inc/customizer/theme-layout.php:94
+#: inc/customizer/theme-layout.php:158 inc/customizer/theme-layout.php:214
+#: inc/customizer/theme-layout.php:279 inc/metabox/page-options.php:39
+msgid "Show Title"
+msgstr "Muestra el título"
+
+#: inc/customizer/theme-layout.php:15
+msgid "Front Page"
+msgstr "Página de inicio"
+
+#: inc/customizer/theme-layout.php:6
+msgid "Layout"
+msgstr "Diseño"
+
+#: inc/customizer/post-category.php:109 inc/customizer/post-category.php:123
+msgid "Enter the URL of the background image."
+msgstr "Introduce la URL de la imagen de fondo."
+
+#: inc/customizer/post-category.php:107 inc/customizer/post-category.php:120
+msgid "Category Background Image"
+msgstr "Imagen de fondo de la categoría"
+
+#: inc/customizer/post-category.php:72
+msgid "Number of Categories:"
+msgstr "Número de categorías:"
+
+#: inc/customizer/post-category.php:14
+msgid "A widget to display categories with background images"
+msgstr "Un widget que muestra categorías con imagen de fondo"
+
+#: inc/customizer/post-category.php:13
+msgid "Category Background"
+msgstr "Fondo de categoria"
+
+#: inc/customizer/popular-post-widget.php:10
+#: inc/customizer/popular-post-widget.php:94
+msgid "Popular Posts"
+msgstr "Entradas populares"
+
+#: inc/customizer/panel-theme-options.php:90
+#: inc/customizer/panel-theme-options.php:103
+msgid "Read More"
+msgstr "Leer más"
+
+#: inc/customizer/panel-theme-options.php:68
+#: inc/customizer/panel-theme-options.php:81
+msgid "Sticky Sidebar"
+msgstr "Barra lateral fija"
+
+#: inc/customizer/panel-theme-options.php:60
+msgid "Light Color"
+msgstr "Color claro"
+
+#: inc/customizer/panel-theme-options.php:46
+msgid "Secondary Color"
+msgstr "Color secundario"
+
+#: inc/customizer/panel-theme-options.php:32
+msgid "Theme Color"
+msgstr "Color del tema"
+
+#: inc/customizer/panel-theme-options.php:19
+msgid "Theme Colors"
+msgstr "Colores del tema"
+
+#: inc/customizer/panel-theme-options.php:12
+msgid "Indofinance Options"
+msgstr "Opciones de Indofinance"
+
+#: inc/customizer/panel-footer.php:74 inc/customizer/panel-footer.php:88
+msgid "Footer Background Image"
+msgstr "Imagen de fondo del pie de página"
+
+#: inc/customizer/panel-footer.php:67
+msgid "Four Columns"
+msgstr "Cuatro columnas"
+
+#: inc/customizer/panel-footer.php:66
+msgid "Three Columns"
+msgstr "Tres columnas"
+
+#: inc/customizer/panel-footer.php:65
+msgid "Two Columns"
+msgstr "Dos columnas"
+
+#: inc/customizer/panel-footer.php:64
+msgid "One Column"
+msgstr "Una columna"
+
+#: inc/customizer/panel-footer.php:59
+msgid "Footer Column Layout"
+msgstr "Disposición de columna del pie de página"
+
+#: inc/customizer/panel-footer.php:44
+msgid "Footer Layout"
+msgstr "Diseño del pie de página"
+
+#: inc/customizer/panel-footer.php:27
+msgid " "
+msgstr " "
+
+#: inc/customizer/panel-footer.php:27
+msgid "&copy; "
+msgstr "&copy; "
+
+#: inc/customizer/panel-footer.php:18 inc/customizer/panel-footer.php:36
+msgid "Copyright Text"
+msgstr "Texto de copyright"
+
+#: inc/customizer/panel-footer.php:11
+msgid "Footer"
+msgstr "Pie de página"
+
+#: inc/customizer/header.php:147
+msgid "Icon %s"
+msgstr "Icono %s"
+
+#: inc/customizer/header.php:129
+msgid "-"
+msgstr "-"
+
+#: inc/customizer/header.php:120
+msgid "Social icons"
+msgstr "Iconos sociales"
+
+#: inc/customizer/header.php:101
+msgid "Enable Top Menu"
+msgstr "Activar el menú superior"
+
+#: inc/customizer/header.php:86
+msgid "Enable Top Bar"
+msgstr "Activar la barra superior"
+
+#: inc/customizer/header.php:71
+msgid "Top Bar"
+msgstr "Barra superior"
+
+#: inc/customizer/header.php:55
+msgid "Manage Header Widget"
+msgstr "Gestionar widget de cabecera"
+
+#: inc/customizer/header.php:47
+msgid "Widget"
+msgstr "Widget"
+
+#: inc/customizer/header.php:45
+msgid "Center"
+msgstr "Centrado"
+
+#: inc/customizer/header.php:44
+msgid "Full"
+msgstr "Completo"
+
+#: inc/customizer/header.php:43
+msgid "Default"
+msgstr "Por defecto"
+
+#: inc/customizer/header.php:38
+msgid "Choose the header layout for the theme"
+msgstr "Elije el diseño de la cabecera para el tema"
+
+#: inc/customizer/header.php:37
+msgid "Header Layout"
+msgstr "Diseño de la cabecera"
+
+#: inc/customizer/header.php:22
+msgid "Header Options"
+msgstr "Opciones de la cabecera"
+
+#: inc/customizer/header.php:15
+msgid "Header"
+msgstr "Cabecera"
+
+#: inc/customizer/grid-slider-widget.php:14
+msgid "Displays a slider of posts in a grid layout."
+msgstr "Muestra un carrusel de entradas dispuestas en cuadrícula."
+
+#: inc/customizer/grid-slider-widget.php:13
+msgid "Slider Grid"
+msgstr "Cuadrícula de carrusel"
+
+#: inc/customizer/featured-post.php:14
+msgid "A Widget to display featured posts"
+msgstr "Un widget que muestra entradas destacadas"
+
+#: inc/customizer/featured-post.php:13 inc/customizer/featured-post.php:90
+msgid "Featured Posts"
+msgstr "Entradas destacadas"
+
+#: inc/customizer/featured-post-module2.php:125
+#: inc/customizer/featured-post.php:113
+#: inc/customizer/grid-slider-widget.php:119
+msgid "Select category"
+msgstr "Selecciona la categoría"
+
+#: inc/customizer/featured-post-module2.php:123
+#: inc/customizer/featured-post.php:111
+#: inc/customizer/grid-slider-widget.php:117
+#: inc/customizer/popular-post-widget.php:135
+msgid "Category:"
+msgstr "Categoría:"
+
+#: inc/customizer/featured-post-module2.php:119
+#: inc/customizer/grid-slider-widget.php:113
+msgid "Date"
+msgstr "Fecha"
+
+#: inc/customizer/featured-post-module2.php:118
+#: inc/customizer/grid-slider-widget.php:112
+#: inc/customizer/popular-post-widget.php:127
+msgid "Random"
+msgstr "Al azar"
+
+#: inc/customizer/featured-post-module2.php:116
+#: inc/customizer/featured-post.php:104
+#: inc/customizer/grid-slider-widget.php:110
+msgid "Post Order:"
+msgstr "Orden de las entradas:"
+
+#: inc/customizer/featured-post-module2.php:112
+#: inc/customizer/featured-post.php:100
+#: inc/customizer/grid-slider-widget.php:106
+#: inc/customizer/popular-post-widget.php:113
+msgid "Number of Posts:"
+msgstr "Número de entradas:"
+
+#: inc/customizer/featured-post-module2.php:108
+#: inc/customizer/featured-post.php:96
+#: inc/customizer/grid-slider-widget.php:102
+#: inc/customizer/popular-post-widget.php:103
+#: inc/customizer/post-category.php:68
+msgid "Title:"
+msgstr "Título:"
+
+#: inc/customizer/featured-post-module2.php:102
+#: inc/customizer/grid-slider-widget.php:96 inc/customizer/post-category.php:64
+msgid "New title"
+msgstr "Nuevo título"
+
+#: inc/customizer/featured-post-module2.php:14
+msgid "A widget to display featured posts"
+msgstr "Un widget que muestra entradas destacadas"
+
+#: inc/customizer/featured-post-module2.php:13
+msgid "Featured Post Module 2"
+msgstr "Módulo de entrada destacada 2"
+
+#: inc/customizer/fa-style.php:231
+msgid "&mdash; Select Category &mdash;"
+msgstr "&mdash; Selecciona la categoría &mdash;"
+
+#: inc/customizer/fa-style.php:179
+msgid "Slider Width"
+msgstr "Ancho del carrusel"
+
+#: inc/customizer/fa-style.php:167 inc/customizer/featured-post.php:107
+msgid "Ascending"
+msgstr "Ascendiente"
+
+#: inc/customizer/fa-style.php:166 inc/customizer/featured-post.php:106
+msgid "Descending"
+msgstr "Descendiente"
+
+#: inc/customizer/fa-style.php:162
+msgid "Post Order"
+msgstr "Orden de las entradas"
+
+#: inc/customizer/fa-style.php:148
+msgid "Category"
+msgstr "Categoría"
+
+#: inc/customizer/fa-style.php:130
+msgid "Number of Posts"
+msgstr "Número de entradas"
+
+#: inc/customizer/fa-style.php:113
+msgid "Enable/Disable Slider"
+msgstr "Activar/desactivar el carrusel"
+
+#: inc/customizer/fa-style.php:101
+msgid "Featured Posts Slider"
+msgstr "Carrusel de entradas destacadas"
+
+#: inc/customizer/fa-style.php:94 inc/customizer/fa-style.php:185
+#: inc/customizer/fa-style.php:211 inc/customizer/theme-layout.php:46
+#: inc/customizer/theme-layout.php:113 inc/customizer/theme-layout.php:177
+#: inc/customizer/theme-layout.php:233 inc/customizer/theme-layout.php:298
+#: inc/metabox/page-options.php:32
+msgid "Wide Width"
+msgstr "Ancho amplio"
+
+#: inc/customizer/fa-style.php:93 inc/customizer/fa-style.php:184
+#: inc/customizer/fa-style.php:210
+msgid "Boxed Width"
+msgstr "Ancho de caja"
+
+#: inc/customizer/fa-style.php:92 inc/customizer/fa-style.php:183
+#: inc/customizer/fa-style.php:209 inc/customizer/theme-layout.php:45
+#: inc/customizer/theme-layout.php:112 inc/customizer/theme-layout.php:176
+#: inc/customizer/theme-layout.php:232 inc/customizer/theme-layout.php:297
+#: inc/metabox/page-options.php:33
+msgid "Full Width"
+msgstr "Ancho completo"
+
+#: inc/customizer/fa-style.php:87
+msgid "Featured Posts Width"
+msgstr "Ancho de entradas destacadas"
+
+#: inc/customizer/fa-style.php:60
+msgid "Select the category for the featured posts"
+msgstr "Selecciona la categoría para las entradas destacadas"
+
+#: inc/customizer/fa-style.php:59
+msgid "Featured Posts Category"
+msgstr "Categoría de entradas destacadas"
+
+#: inc/customizer/fa-style.php:40
+msgid "Featured Posts Area Title"
+msgstr "Título del área de entradas destacadas"
+
+#: inc/customizer/fa-style.php:26
+msgid "Show or hide the featured posts area from here."
+msgstr "Muestra u oculta el área de entradas destacadas aquí."
+
+#: inc/customizer/fa-style.php:25
+msgid "Featured Posts Area"
+msgstr "Área de entradas destacadas"
+
+#: inc/customizer/fa-style.php:6 inc/customizer/fa-style.php:13
+msgid "Featured Area"
+msgstr "Área destacada"
+
+#: inc/customizer/blog-style.php:34
+msgid "Cards"
+msgstr "Tarjetas"
+
+#: inc/customizer/blog-style.php:33
+msgid "Classic"
+msgstr "Clásico"
+
+#: inc/customizer/blog-style.php:14 inc/customizer/blog-style.php:27
+msgid "Blog Layout"
+msgstr "Diseño del blog"
+
+#: inc/customizer/blog-style.php:7
+msgid "Blog Style"
+msgstr "Estilo del blog"
+
+#: header.php:49 inc/customizer/header.php:134
+msgid "Youtube"
+msgstr "Youtube"
+
+#: header.php:48 inc/customizer/header.php:133
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: header.php:47 inc/customizer/header.php:132
+msgid "Instagram"
+msgstr "Instagram"
+
+#: header.php:46 inc/customizer/header.php:131
+msgid "Twitter"
+msgstr "Twitter"
+
+#: header.php:45 inc/customizer/header.php:130
+msgid "Facebook"
+msgstr "Facebook"
+
+#: header.php:26
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: functions.php:221
+msgid "Before Footer "
+msgstr "Antes del pie de página "
+
+#: functions.php:233
+msgid "Before Main Content "
+msgstr "Antes del contenido principal "
+
+#: functions.php:245
+msgid "After Header Content "
+msgstr "Después del contenido de la cabecera "
+
+#: functions.php:209
+msgid "Footer Widgets Area 4 "
+msgstr "Área de widgets del pie de página 4 "
+
+#: functions.php:197
+msgid "Footer Widgets Area 3 "
+msgstr "Área de widgets del pie de página 3 "
+
+#: functions.php:185
+msgid "Footer Widgets Area 2"
+msgstr "Área de widgets del pie de página 2"
+
+#: functions.php:173
+msgid "Footer Widgets Area 1"
+msgstr "Área de widgets del pie de página 1"
+
+#: functions.php:161
+msgid "Widget Area - Header"
+msgstr "Área de widget - cabecera"
+
+#: functions.php:149
+msgid "Sidebar - Left"
+msgstr "Barra lateral - izquierda"
+
+#: functions.php:139 functions.php:151 functions.php:175 functions.php:187
+#: functions.php:199 functions.php:211 functions.php:223 functions.php:235
+#: functions.php:247 functions.php:259 functions.php:271 functions.php:283
+msgid "Add widgets here."
+msgstr "Añade widgets aquí."
+
+#: functions.php:137
+msgid "Sidebar - Right"
+msgstr "Barra lateral - derecha"
+
+#: functions.php:63
+msgid "Primary"
+msgstr "Principal"
+
+#: footer.php:72
+msgid "Go to Top"
+msgstr "Ir arriba"
+
+#: footer.php:52 inc/modules/modules/nav-mobile.php:8
+#: inc/modules/nav-mobile.php:8
+msgid "Close Mobile Navigation"
+msgstr "Cerrar la navegación móvil"
+
+#: footer.php:36
+msgid "© "
+msgstr "© "
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s comentario en &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s comentarios en &ldquo;%2$s&rdquo;"
+
+#. translators: 1: title.
+#: comments.php:35
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr "Un comentario en &ldquo;%1$s&rdquo;"
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Parece que no se encontró nada aquí. ¿Quieres probar uno de los enlaces de abajo o una búsqueda?"
+
+#: 404.php:14
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "¡Vaya! No se ha podido encontrar esa página."
+
+#: inc/customizer/fa-style.php:114
+msgid "Show or hide the slider from here."
+msgstr "Muestra u oculta el carrusel aquí."
+
+#: inc/customizer/fa-style.php:41
+msgid "Modify Your Title From Here"
+msgstr "Edita tu título aquí"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "retirewithrohit.com"
+msgstr "retirewithrohit.com"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "RetireWithRohit"
+msgstr "RetireWithRohit"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://retirewithrohit.com/themes/indofinance/"
+msgstr "https://retirewithrohit.com/themes/indofinance/"

@@ -1,0 +1,345 @@
+/*--------------------------------
+Nucleo Web Font - Generated using nucleoapp.com
+-------------------------------- */
+@font-face {
+  font-family: 'Nucleo';
+  src: url('../../fonts/Nucleo.eot');
+  src: url('../../fonts/Nucleo.eot') format('embedded-opentype'), url('../../fonts/Nucleo.woff2') format('woff2'), url('../../fonts/Nucleo.woff') format('woff'), url('../../fonts/Nucleo.ttf') format('truetype'), url('../../fonts/Nucleo.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------------------
+  base class definition
+-------------------------*/
+[class*="norcon-"] {
+  display: inline-block;
+  font: normal normal normal 1em/1 'Nucleo';
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*------------------------
+  icons
+-------------------------*/
+
+.norcon-small-right::before {
+  content: "\ea05";
+}
+.norcon-small-left::before {
+  content: "\ea13";
+}
+.norcon-small-down::before {
+  content: "\ea0a";
+}
+.norcon-small-up::before {
+  content: "\ea11";
+}
+
+.norcon-arrow-right::before {
+  content: "\ea06";
+}
+.norcon-arrow-left::before {
+  content: "\ea14";
+}
+.norcon-arrow-down-2::before {
+  content: "\ea0d";
+}
+
+.norcon-triangle-right::before {
+  content: "\ea0e";
+}
+.norcon-triangle-left::before {
+  content: "\ea10";
+}
+.norcon-triangle-down::before {
+  content: "\ea0c";
+}
+.norcon-triangle-up::before {
+  content: "\ea0f";
+}
+.norcon-tail-top::before {
+  content: "\ea12";
+}
+
+.norcon-i-remove::before {
+  content: "\ea30";
+}
+.norcon-d-check::before {
+  content: "\ea31";
+}
+
+.norcon-pin-3::before {
+  content: "\ea42";
+}
+.norcon-phone::before {
+  content: "\ea40";
+}
+.norcon-mail::before {
+  content: "\ea9c";
+}
+.norcon-map::before {
+  content: "\ea80";
+}
+.norcon-flag-points-32::before {
+  content: "\ea7e";
+}
+.norcon-square-pin::before {
+  content: "\ea79";
+}
+
+.norcon-single-content-03::before {
+  content: "\ea32";
+}
+.norcon-receipt-list-43::before {
+  content: "\ea38";
+}
+
+.norcon-paper::before {
+  content: "\ea37";
+}
+.norcon-paper-diploma::before {
+  content: "\ea43";
+}
+.norcon-trophy::before {
+  content: "\ea44";
+}
+.norcon-single-03::before {
+  content: "\ea46";
+}
+.norcon-b-meeting::before {
+  content: "\ea3d";
+}
+.norcon-file-download-94::before {
+  content: "\ea3f";
+}
+.norcon-progress::before {
+  content: "\ea4e";
+}
+.norcon-bulb-63::before {
+  content: "\ea52";
+}
+.norcon-strategy::before {
+  content: "\ea5d";
+}
+.norcon-chess-knight::before {
+  content: "\ea5f";
+}
+.norcon-pen-tool-2::before {
+  content: "\ea69";
+}
+.norcon-ruler-pencil::before {
+  content: "\ea6a";
+}
+.norcon-thumb-down::before {
+  content: "\ea6f";
+}
+.norcon-thumb-up::before {
+  content: "\ea70";
+}
+.norcon-sun::before {
+  content: "\ea72";
+}
+.norcon-time-clock::before {
+  content: "\ea78";
+}
+.norcon-play-movie::before {
+  content: "\ea82";
+}
+.norcon-picture::before {
+  content: "\ea83";
+}
+.norcon-sound::before {
+  content: "\ea86";
+}
+.norcon-box-2::before {
+  content: "\ea8d";
+}
+.norcon-support::before {
+  content: "\ea8e";
+}
+.norcon-h-dashboard::before {
+  content: "\ea94";
+}
+.norcon-clock::before {
+  content: "\ea96";
+}
+.norcon-calendar-2::before {
+  content: "\ea9a";
+}
+.norcon-favorite::before {
+  content: "\ea9d";
+}
+.norcon-unlocked::before {
+  content: "\eaa0";
+}
+.norcon-lock::before {
+  content: "\eaa2";
+}
+.norcon-social-sharing::before {
+  content: "\eaa8";
+}
+.norcon-star-rate-1::before {
+  content: "\eaad";
+}
+.norcon-star-rate-2::before {
+  content: "\eaae";
+}
+
+/* construction icons */
+.norcon-factory::before {
+  content: "\ea4b";
+}
+.norcon-layout-25::before {
+  content: "\ea36";
+}
+.norcon-forest::before {
+  content: "\ea73";
+}
+.norcon-chart-bar-32::before {
+  content: "\ea49";
+}
+.norcon-chart-bar-33::before {
+  content: "\ea53";
+}
+.norcon-chart-pie-36::before {
+  content: "\ea4a";
+}
+.norcon-chart-growth::before {
+  content: "\ea54";
+}
+
+.norcon-radiation::before {
+  content: "\ea76";
+}
+.norcon-design::before {
+  content: "\ea61";
+}
+.norcon-stack::before {
+  content: "\ea63";
+}
+
+.norcon-measure-big::before {
+  content: "\ea65";
+}
+.norcon-pantone::before {
+  content: "\ea68";
+}
+.norcon-property-location::before {
+  content: "\ea81";
+}
+.norcon-new-construction::before {
+  content: "\ea89";
+}
+.norcon-construction-sign::before {
+  content: "\ea8a";
+}
+.norcon-barcode-qr::before {
+  content: "\ea8c";
+}
+.norcon-tag::before {
+  content: "\ea90";
+}
+.norcon-cogwheel::before {
+  content: "\eaa6";
+}
+.norcon-zoom::before {
+  content: "\ea04";
+}
+
+/*
+<!-- Icons -->
+    <section class="section-padding" style="background: pink;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-60">
+                    <div class="icon3"><i class="hank-new-construction"></i></div>
+                    <div class="icon3"><i class="hank-construction-sign"></i></div>
+                    <div class="icon3"><i class="hank-factory"></i></div>
+                    <div class="icon3"><i class="hank-pantone"></i></div>
+                    <div class="icon3"><i class="hank-cogwheel"></i></div>
+                    <div class="icon3"><i class="hank-property-location"></i></div>
+                    <div class="icon3"><i class="hank-radiation"></i></div>
+                    <div class="icon3"><i class="hank-layout-25"></i></div>
+                    <div class="icon3"><i class="hank-sun"></i></div>
+                    <div class="icon3"><i class="hank-forest"></i></div>
+                    <div class="icon3"><i class="hank-chart-bar-32"></i></div>
+                    <div class="icon3"><i class="hank-chart-bar-33"></i></div>
+                    <div class="icon3"><i class="hank-chart-pie-36"></i></div>
+                    <div class="icon3"><i class="hank-chart-growth"></i></div>
+                    <div class="icon3"><i class="hank-pen-tool-2"></i></div>
+                    <div class="icon3"><i class="hank-ruler-pencil"></i></div>
+                    <div class="icon3"><i class="hank-design"></i></div>
+                    <div class="icon3"><i class="hank-measure-big"></i></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-60">
+                    <div class="icon3"><i class="hank-small-right"></i></div>
+                    <div class="icon3"><i class="hank-small-left"></i></div>
+                    <div class="icon3"><i class="hank-small-down"></i></div>
+                    <div class="icon3"><i class="hank-small-up"></i></div>
+                    <div class="icon3"><i class="hank-arrow-right"></i></div>
+                    <div class="icon3"><i class="hank-arrow-left"></i></div>
+                    <div class="icon3"><i class="hank-arrow-down-2"></i></div>
+                    <div class="icon3"><i class="hank-tail-top"></i></div>
+                    <div class="icon3"><i class="hank-triangle-right"></i></div>
+                    <div class="icon3"><i class="hank-triangle-left"></i></div>
+                    <div class="icon3"><i class="hank-triangle-down"></i></div>
+                    <div class="icon3"><i class="hank-triangle-up"></i></div>
+                    <div class="icon3"><i class="hank-i-remove"></i></div>
+                    <div class="icon3"><i class="hank-d-check"></i></div>
+                    <div class="icon3"><i class="hank-pin-3"></i></div>
+                    <div class="icon3"><i class="hank-phone"></i></div>
+                    <div class="icon3"><i class="hank-mail"></i></div>
+                    <div class="icon3"><i class="hank-map"></i></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-60">
+                    <div class="icon3"><i class="hank-flag-points-32"></i></div>
+                    <div class="icon3"><i class="hank-square-pin"></i></div>
+                    <div class="icon3"><i class="hank-single-content-03"></i></div>
+                    <div class="icon3"><i class="hank-paper"></i></div>
+                    <div class="icon3"><i class="hank-paper-diploma"></i></div>
+                    <div class="icon3"><i class="hank-trophy"></i></div>
+                    <div class="icon3"><i class="hank-single-03"></i></div>
+                    <div class="icon3"><i class="hank-b-meeting"></i></div>
+                    <div class="icon3"><i class="hank-file-download-94"></i></div>
+                    <div class="icon3"><i class="hank-progress"></i></div>
+                    <div class="icon3"><i class="hank-bulb-63"></i></div>
+                    <div class="icon3"><i class="hank-strategy"></i></div>
+                    <div class="icon3"><i class="hank-chess-knight"></i></div>
+                    <div class="icon3"><i class="hank-thumb-down"></i></div>
+                    <div class="icon3"><i class="hank-thumb-up"></i></div>
+                    <div class="icon3"><i class="hank-zoom"></i></div>
+                    <div class="icon3"><i class="hank-tag"></i></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="icon3"><i class="hank-time-clock"></i></div>
+                    <div class="icon3"><i class="hank-play-movie"></i></div>
+                    <div class="icon3"><i class="hank-picture"></i></div>
+                    <div class="icon3"><i class="hank-sound"></i></div>
+                    <div class="icon3"><i class="hank-box-2"></i></div>
+                    <div class="icon3"><i class="hank-support"></i></div>
+                    <div class="icon3"><i class="hank-h-dashboard"></i></div>
+                    <div class="icon3"><i class="hank-clock"></i></div>
+                    <div class="icon3"><i class="hank-calendar-2"></i></div>
+                    <div class="icon3"><i class="hank-favorite"></i></div>
+                    <div class="icon3"><i class="hank-unlocked"></i></div>
+                    <div class="icon3"><i class="hank-lock"></i></div>
+                    <div class="icon3"><i class="hank-social-sharing"></i></div>
+                    <div class="icon3"><i class="hank-stack"></i></div>
+                    <div class="icon3"><i class="hank-star-rate-1"></i></div>
+                    <div class="icon3"><i class="hank-star-rate-2"></i></div>
+                    <div class="icon3"><i class="hank-barcode-qr"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+*/

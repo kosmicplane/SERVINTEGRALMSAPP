@@ -1,0 +1,2 @@
+[14-Jun-2025 20:06:30 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib/ErrorObject.php on line 4
+[26-Jun-2025 11:57:14 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib/Subscription.php on line 5

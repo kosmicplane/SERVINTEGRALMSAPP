@@ -1,0 +1,1112 @@
+# Copyright (C) 2025 Omega Themes
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kindergarten Toys 1.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/kindergarten-toys\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-05-13T06:54:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: kindergarten-toys\n"
+
+#. Theme Name of the theme
+#: style.css
+#: inc/custom-functions.php:378
+#: inc/customizer/customizer.php:133
+msgid "Kindergarten Toys"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://www.omegathemes.com/products/free-kindergarten-wordpress-theme"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "The Free Kindergarten WordPress Theme is a versatile, beautifully crafted theme tailored to meet the unique needs of kindergartens, preschools, and nursery schools. Designed with early childhood education in mind, this theme is perfect for showcasing all the essential elements a kindergarten has to offer. From the curriculum and daily activities to teacher profiles and learning programs, everything can be presented in an organised and engaging manner. Schools that want to build a strong online presence to attract parents and share key information, such as classroom activities and early learning resources, will find this theme especially beneficial. Being free, it provides a cost-effective solution for schools and educators who may be working with limited budgets but still want to maintain a professional and user-friendly website to promote their services. The clean and colourful design creates an inviting digital environment that appeals to parents seeking a safe, engaging, and nurturing space for their children."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Omega Themes"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://omegathemes.com/"
+msgstr ""
+
+#: 404.php:38
+msgid "Homepage"
+msgstr ""
+
+#. translators: %d: ID of a post.
+#: classes/class-walker-menu.php:76
+msgid "#%d (no title)"
+msgstr ""
+
+#: classes/class-walker-menu.php:120
+#: inc/custom-functions.php:46
+msgid "Show sub menu"
+msgstr ""
+
+#. translators: 1: title.
+#: comments.php:22
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:28
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:52
+msgid "Comments are closed."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Front Page Template"
+msgstr ""
+
+#: functions.php:173
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:222
+msgid "https://layout.omegathemes.com/steps/pro-kindergarten-toys/"
+msgstr ""
+
+#: functions.php:225
+msgid "https://www.omegathemes.com/products/kindergarten-playgroup-wordpress-theme"
+msgstr ""
+
+#: functions.php:228
+msgid "https://wordpress.org/support/theme/kindergarten-toys/"
+msgstr ""
+
+#: functions.php:231
+msgid "https://wordpress.org/support/theme/kindergarten-toys/reviews/#new-post/"
+msgstr ""
+
+#: functions.php:234
+msgid "https://layout.omegathemes.com/kindergarten-toys/"
+msgstr ""
+
+#: functions.php:237
+msgid "https://layout.omegathemes.com/steps/free-kindergarten-toys/"
+msgstr ""
+
+#: functions.php:240
+msgid "https://www.omegathemes.com/products/wp-theme-bundle"
+msgstr ""
+
+#: functions.php:291
+msgid "Welcome! Thank you for choosing Kindergarten Toys. Let’s Set Up Your Website!"
+msgstr ""
+
+#: functions.php:292
+msgid "Before you dive into customization, let’s go through a quick setup process to ensure everything runs smoothly. Click below to start setting up your website in minutes!"
+msgstr ""
+
+#: functions.php:294
+msgid "Get Started with Kindergarten Toys"
+msgstr ""
+
+#: functions.php:296
+msgid "Dismiss"
+msgstr ""
+
+#: header.php:36
+msgid "Skip to the content"
+msgstr ""
+
+#: inc/custom-functions.php:163
+msgid "-- Select Category --"
+msgstr ""
+
+#: inc/custom-functions.php:200
+msgid "Previous post:"
+msgstr ""
+
+#: inc/custom-functions.php:201
+msgid "Next post:"
+msgstr ""
+
+#: inc/custom-functions.php:237
+msgid "Close"
+msgstr ""
+
+#: inc/custom-functions.php:243
+#: template-parts/header/header-layout.php:91
+msgid "Horizontal"
+msgstr ""
+
+#: inc/custom-functions.php:315
+msgid "Footer Image"
+msgstr ""
+
+#: inc/custom-functions.php:320
+msgid "The Free Kindergarten WordPress Theme is a versatile, beautifully crafted theme tailored to meet the unique needs of kindergartens, preschools, and nursery schools. Designed with early childhood education in mind, this theme is perfect for showcasing all the essential elements a kindergarten has to offer."
+msgstr ""
+
+#: inc/custom-functions.php:327
+#: sidebar.php:55
+msgid "Calendar"
+msgstr ""
+
+#: inc/custom-functions.php:333
+msgid "Enter Keywords Here"
+msgstr ""
+
+#: inc/custom-functions.php:378
+msgid "Theme: "
+msgstr ""
+
+#: inc/custom-functions.php:378
+msgid "Kindergarten Toys "
+msgstr ""
+
+#: inc/custom-functions.php:378
+msgid " By "
+msgstr ""
+
+#: inc/custom-functions.php:378
+msgid "OMEGA "
+msgstr ""
+
+#: inc/custom-functions.php:379
+msgid "Powered by "
+msgstr ""
+
+#: inc/custom-functions.php:379
+msgid "WordPress"
+msgstr ""
+
+#: inc/custom-functions.php:379
+msgid "WordPress."
+msgstr ""
+
+#: inc/custom-functions.php:389
+msgid "To the Top"
+msgstr ""
+
+#: inc/custom-functions.php:593
+msgid "Video"
+msgstr ""
+
+#: inc/custom-functions.php:596
+msgid "Audio"
+msgstr ""
+
+#: inc/custom-functions.php:599
+msgid "Gallery"
+msgstr ""
+
+#: inc/custom-functions.php:602
+msgid "Quote"
+msgstr ""
+
+#: inc/custom-functions.php:605
+#: inc/metabox.php:59
+msgid "Image"
+msgstr ""
+
+#: inc/custom-functions.php:608
+msgid "Link"
+msgstr ""
+
+#: inc/custom-functions.php:611
+msgid "Status"
+msgstr ""
+
+#: inc/custom-functions.php:614
+msgid "Aside"
+msgstr ""
+
+#: inc/custom-functions.php:617
+msgid "Chat"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:12
+msgid "404 Page Settings"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:28
+msgid "404 Main Title"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:43
+msgid "404 Sub Title One"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:58
+msgid "404 Para Text One"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:73
+msgid "404 Sub Title Two"
+msgstr ""
+
+#: inc/customizer/404-page-settings.php:88
+msgid "404 Para Text Two"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:13
+msgid "Additional Woocommerce Options"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:29
+msgid "Products Per Column"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:49
+msgid "Products Per Page"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:69
+msgid "Enable Related Products"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:84
+msgid "Related Products Per Page"
+msgstr ""
+
+#: inc/customizer/additional-woocommerce.php:104
+msgid "Related Products Per Row"
+msgstr ""
+
+#: inc/customizer/colors.php:21
+msgid "Text Color"
+msgstr ""
+
+#: inc/customizer/colors.php:39
+msgid "Border Color"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:10
+msgid "Customizer Custom Settings"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:26
+msgid "Enable Preloader"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:45
+msgid "Enable Pagination"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:61
+msgid "Pagination Style"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:65
+msgid "Numeric (Page Numbers)"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:66
+msgid "Newer/Older (Previous/Next)"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:80
+msgid "Pagination Alignment"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:84
+#: inc/customizer/custom-addon.php:120
+#: inc/customizer/footer.php:68
+#: inc/customizer/post.php:109
+#: inc/customizer/post.php:129
+msgid "Center"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:85
+#: inc/customizer/custom-addon.php:121
+#: inc/customizer/footer.php:69
+#: inc/customizer/post.php:110
+#: inc/customizer/post.php:130
+msgid "Right"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:86
+#: inc/customizer/custom-addon.php:122
+#: inc/customizer/footer.php:67
+#: inc/customizer/post.php:108
+#: inc/customizer/post.php:128
+msgid "Left"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:100
+msgid "Enable Breadcrumb"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:116
+msgid "Breadcrumb Alignment"
+msgstr ""
+
+#: inc/customizer/custom-addon.php:136
+msgid "Breadcrumb Font Size"
+msgstr ""
+
+#: inc/customizer/customizer.php:33
+msgid "Color Options"
+msgstr ""
+
+#: inc/customizer/customizer.php:54
+msgid "General Settings"
+msgstr ""
+
+#: inc/customizer/customizer.php:62
+msgid "Color Settings"
+msgstr ""
+
+#: inc/customizer/customizer.php:71
+#: inc/customizer/footer.php:12
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/customizer/customizer.php:80
+msgid "Frontpage Settings"
+msgstr ""
+
+#: inc/customizer/customizer.php:89
+msgid "Theme Addons"
+msgstr ""
+
+#: inc/customizer/customizer.php:98
+msgid "Theme Options"
+msgstr ""
+
+#: inc/customizer/customizer.php:112
+msgid "Logo width"
+msgstr ""
+
+#: inc/customizer/customizer.php:113
+msgid "Specify the range for logo size with a minimum of 200px and a maximum of 700px, in increments of 20px."
+msgstr ""
+
+#: inc/customizer/customizer.php:134
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: inc/customizer/customizer.php:147
+msgid "Buy WP Theme Bundle"
+msgstr ""
+
+#: inc/customizer/customizer.php:148
+msgid "Get Bundle"
+msgstr ""
+
+#: inc/customizer/default.php:16
+msgid "+(0321)7528659"
+msgstr ""
+
+#: inc/customizer/default.php:17
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+msgstr ""
+
+#: inc/customizer/default.php:18
+msgid "Enrol Now"
+msgstr ""
+
+#: inc/customizer/default.php:20
+msgid "Waiting List"
+msgstr ""
+
+#: inc/customizer/default.php:41
+msgid "All rights reserved."
+msgstr ""
+
+#: inc/customizer/default.php:64
+msgid "To The Top"
+msgstr ""
+
+#: inc/customizer/default.php:79
+msgid "Join Us Now"
+msgstr ""
+
+#: inc/customizer/default.php:85
+msgid "Oops! That page can’t be found."
+msgstr ""
+
+#: inc/customizer/default.php:86
+msgid "Maybe it’s out there, somewhere..."
+msgstr ""
+
+#: inc/customizer/default.php:87
+msgid "You can always find insightful stories on our"
+msgstr ""
+
+#: inc/customizer/default.php:88
+msgid "Still feeling lost? You’re not alone."
+msgstr ""
+
+#: inc/customizer/default.php:89
+msgid "Enjoy these stories about getting lost, losing things, and finding what you never knew you were looking for."
+msgstr ""
+
+#: inc/customizer/footer.php:28
+msgid "Enable Footer"
+msgstr ""
+
+#: inc/customizer/footer.php:43
+msgid "Footer Column Layout"
+msgstr ""
+
+#: inc/customizer/footer.php:47
+msgid "One Column"
+msgstr ""
+
+#: inc/customizer/footer.php:48
+msgid "Two Column"
+msgstr ""
+
+#: inc/customizer/footer.php:49
+msgid "Three Column"
+msgstr ""
+
+#: inc/customizer/footer.php:63
+msgid "Footer Widget Title Alignment"
+msgstr ""
+
+#: inc/customizer/footer.php:83
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: inc/customizer/footer.php:98
+msgid "Copyright Font Size"
+msgstr ""
+
+#: inc/customizer/footer.php:116
+msgid "Copyright Section Alignment"
+msgstr ""
+
+#: inc/customizer/footer.php:120
+msgid "Default View"
+msgstr ""
+
+#: inc/customizer/footer.php:121
+msgid "Reverse View"
+msgstr ""
+
+#: inc/customizer/footer.php:122
+msgid "Centered Content"
+msgstr ""
+
+#: inc/customizer/footer.php:131
+msgid "Footer Widget Background Color"
+msgstr ""
+
+#: inc/customizer/footer.php:132
+msgid "It will change the complete footer widget background color."
+msgstr ""
+
+#: inc/customizer/footer.php:142
+msgid "Footer Widget Background Image"
+msgstr ""
+
+#: inc/customizer/footer.php:155
+msgid "Enable To The Top"
+msgstr ""
+
+#: inc/customizer/footer.php:170
+msgid "Edit Text Here"
+msgstr ""
+
+#: inc/customizer/global-color-setting.php:13
+msgid "Global Color Settings"
+msgstr ""
+
+#: inc/customizer/global-color-setting.php:32
+msgid "Global Color"
+msgstr ""
+
+#: inc/customizer/header-button.php:13
+msgid "Header Settings"
+msgstr ""
+
+#: inc/customizer/header-button.php:30
+msgid "Enable Sticky Header"
+msgstr ""
+
+#: inc/customizer/header-button.php:45
+msgid "Enable Search"
+msgstr ""
+
+#: inc/customizer/header-button.php:60
+msgid "Enable Toggle"
+msgstr ""
+
+#: inc/customizer/header-button.php:75
+msgid "Header Phone Number"
+msgstr ""
+
+#: inc/customizer/header-button.php:90
+msgid "Header Discount Text"
+msgstr ""
+
+#: inc/customizer/header-button.php:105
+msgid "Menu Font Size"
+msgstr ""
+
+#: inc/customizer/header-button.php:126
+msgid "Menu Text Transform"
+msgstr ""
+
+#: inc/customizer/header-button.php:130
+msgid "Capitalize"
+msgstr ""
+
+#: inc/customizer/header-button.php:131
+msgid "Uppercase"
+msgstr ""
+
+#: inc/customizer/header-button.php:132
+msgid "Lowercase"
+msgstr ""
+
+#: inc/customizer/header-button.php:146
+msgid "Header Button Text"
+msgstr ""
+
+#: inc/customizer/header-button.php:161
+msgid "Header Button Url"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:13
+msgid "Slider Settings"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:29
+msgid "Enable / Disable Tagline"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:44
+msgid "Enable Slider"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:59
+msgid "Slider Title"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:74
+msgid "Slider Post Category"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:85
+msgid "Courses Settings"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:101
+msgid "Courses Post Category"
+msgstr ""
+
+#: inc/customizer/homepage-content.php:119
+msgid "Starting Date "
+msgstr ""
+
+#: inc/customizer/homepage-content.php:134
+msgid "Course Price "
+msgstr ""
+
+#: inc/customizer/homepage-content.php:149
+msgid "Class Time "
+msgstr ""
+
+#: inc/customizer/homepage-content.php:164
+msgid "Student Age "
+msgstr ""
+
+#: inc/customizer/layout-setting.php:13
+msgid "Sidebar Settings"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:29
+msgid "Global Sidebar Layout"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:33
+#: inc/customizer/layout-setting.php:51
+#: inc/customizer/layout-setting.php:68
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:34
+#: inc/customizer/layout-setting.php:52
+#: inc/customizer/layout-setting.php:69
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:35
+#: inc/customizer/layout-setting.php:53
+#: inc/customizer/layout-setting.php:70
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:47
+msgid "Single Page Sidebar Layout"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:64
+msgid "Single Post Sidebar Layout"
+msgstr ""
+
+#: inc/customizer/layout-setting.php:83
+msgid "Enable/Disable Sticky Sidebar"
+msgstr ""
+
+#: inc/customizer/post.php:13
+msgid "Single Meta Information Settings"
+msgstr ""
+
+#: inc/customizer/post.php:29
+msgid "Enable Single Posts Image"
+msgstr ""
+
+#: inc/customizer/post.php:44
+msgid "Enable Posts Author"
+msgstr ""
+
+#: inc/customizer/post.php:59
+msgid "Enable Posts Date"
+msgstr ""
+
+#: inc/customizer/post.php:74
+#: inc/customizer/post.php:184
+msgid "Enable Posts Category"
+msgstr ""
+
+#: inc/customizer/post.php:89
+msgid "Enable Posts Tags"
+msgstr ""
+
+#: inc/customizer/post.php:104
+msgid "Single Page Content Alignment"
+msgstr ""
+
+#: inc/customizer/post.php:124
+msgid "Single Post Content Alignment"
+msgstr ""
+
+#: inc/customizer/post.php:138
+msgid "Archive Meta Information Settings"
+msgstr ""
+
+#: inc/customizer/post.php:154
+msgid "Enable Posts Format Icon"
+msgstr ""
+
+#: inc/customizer/post.php:169
+msgid "Enable Posts Image"
+msgstr ""
+
+#: inc/customizer/post.php:199
+msgid "Enable Posts Title"
+msgstr ""
+
+#: inc/customizer/post.php:214
+msgid "Enable Posts Content"
+msgstr ""
+
+#: inc/customizer/post.php:229
+msgid "Enable Posts Button"
+msgstr ""
+
+#: inc/customizer/post.php:244
+msgid "Blog Posts Excerpt limit"
+msgstr ""
+
+#: inc/customizer/post.php:264
+msgid "Blog Posts Image Size"
+msgstr ""
+
+#: inc/customizer/post.php:268
+msgid "Large Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:269
+msgid "Big Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:270
+msgid "Medium Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:271
+msgid "Small Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:272
+msgid "Extra Small Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:273
+msgid "Thumbnail Size Image"
+msgstr ""
+
+#: inc/customizer/post.php:287
+msgid "Blog Posts Per Column"
+msgstr ""
+
+#: inc/customizer/social-media.php:13
+msgid "Social Media Settings"
+msgstr ""
+
+#: inc/customizer/social-media.php:29
+msgid "Facebook Link"
+msgstr ""
+
+#: inc/customizer/social-media.php:44
+msgid "Twitter Link"
+msgstr ""
+
+#: inc/customizer/social-media.php:59
+msgid "Pintrest Link"
+msgstr ""
+
+#: inc/customizer/social-media.php:74
+msgid "Instagram Link"
+msgstr ""
+
+#: inc/customizer/social-media.php:89
+msgid "Youtube Link"
+msgstr ""
+
+#: inc/customizer/typography.php:13
+msgid "Typography Settings"
+msgstr ""
+
+#: inc/customizer/typography.php:22
+msgid "Default Font"
+msgstr ""
+
+#: inc/customizer/typography.php:45
+msgid "General Content Font"
+msgstr ""
+
+#: inc/customizer/typography.php:59
+msgid "General Heading Font"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:133
+msgid "WP Theme Bundle"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:140
+#: inc/homepage-setup/homepage-setup-contents.php:218
+msgid "Theme Bundle Image"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:144
+msgid "SHOP NOW"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:201
+msgid "Free Documentation"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:202
+msgid "Get Premium"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:203
+msgid "Premium Demo"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:204
+msgid "Support Forum"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:224
+msgid "Upgrade To Pro With Just $40"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:247
+#: inc/homepage-setup/homepage-setup-settings.php:29
+msgid "Setup Home Page"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:251
+#: inc/homepage-setup/homepage-setup-settings.php:31
+msgid "Start Home Page Setup"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:256
+#: inc/homepage-setup/homepage-setup-contents.php:304
+#: inc/homepage-setup/homepage-setup-settings.php:36
+msgid "Customize Your Site"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:301
+msgid "View Your Site"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:307
+msgid "Finsh"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:334
+#: lib/breadcrumbs/breadcrumbs.php:310
+msgid "Home"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:344
+msgid "About"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:355
+msgid "Services"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:367
+msgid "Shop"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:379
+msgid "Blog"
+msgstr ""
+
+#: inc/homepage-setup/homepage-setup-contents.php:390
+msgid "404 Page"
+msgstr ""
+
+#: inc/metabox.php:12
+msgid "Global sidebar"
+msgstr ""
+
+#: inc/metabox.php:17
+msgid "Right sidebar"
+msgstr ""
+
+#: inc/metabox.php:22
+msgid "Left sidebar"
+msgstr ""
+
+#: inc/metabox.php:27
+msgid "No sidebar"
+msgstr ""
+
+#: inc/metabox.php:36
+msgid "Category Image"
+msgstr ""
+
+#: inc/metabox.php:37
+#: inc/metabox.php:67
+#: inc/metabox.php:74
+msgid "Upload Image"
+msgstr ""
+
+#: inc/metabox.php:38
+#: inc/metabox.php:68
+#: inc/metabox.php:75
+msgid "Remove Image"
+msgstr ""
+
+#: inc/pagination.php:26
+msgid "&laquo; Newer"
+msgstr ""
+
+#: inc/pagination.php:27
+msgid "Older &raquo;"
+msgstr ""
+
+#: inc/pagination.php:28
+#: inc/pagination.php:38
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/pagination.php:35
+msgid "&laquo; Previous"
+msgstr ""
+
+#: inc/pagination.php:36
+msgid "Next &raquo;"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:276
+msgctxt "list item separator"
+msgid ", "
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:298
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/widgets/widgets.php:11
+msgid "Main Sidebar"
+msgstr ""
+
+#: inc/widgets/widgets.php:13
+#: inc/widgets/widgets.php:23
+#: inc/widgets/widgets.php:43
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/widgets/widgets.php:21
+msgid "Home Page Sidebar"
+msgstr ""
+
+#: inc/widgets/widgets.php:36
+msgid "One"
+msgstr ""
+
+#: inc/widgets/widgets.php:37
+msgid "Two"
+msgstr ""
+
+#: inc/widgets/widgets.php:38
+msgid "Three"
+msgstr ""
+
+#: inc/widgets/widgets.php:41
+msgid "Footer Widget "
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:308
+msgid "Browse:"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:309
+msgctxt "breadcrumbs aria label"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:311
+msgid "404 Not Found"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:312
+#: sidebar.php:24
+msgid "Archives"
+msgstr ""
+
+#. Translators: %s is the search query.
+#: lib/breadcrumbs/breadcrumbs.php:314
+msgid "Search results for: %s"
+msgstr ""
+
+#. Translators: %s is the page number.
+#: lib/breadcrumbs/breadcrumbs.php:316
+msgid "Page %s"
+msgstr ""
+
+#. Translators: %s is the page number.
+#: lib/breadcrumbs/breadcrumbs.php:318
+msgid "Comment Page %s"
+msgstr ""
+
+#. Translators: Minute archive title. %s is the minute time format.
+#: lib/breadcrumbs/breadcrumbs.php:320
+msgid "Minute %s"
+msgstr ""
+
+#. Translators: Weekly archive title. %s is the week date format.
+#: lib/breadcrumbs/breadcrumbs.php:322
+msgid "Week %s"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:782
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:799
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:816
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:832
+#: lib/breadcrumbs/breadcrumbs.php:861
+#: lib/breadcrumbs/breadcrumbs.php:888
+#: lib/breadcrumbs/breadcrumbs.php:915
+#: lib/breadcrumbs/breadcrumbs.php:1255
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:833
+#: lib/breadcrumbs/breadcrumbs.php:889
+#: lib/breadcrumbs/breadcrumbs.php:1259
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:834
+#: lib/breadcrumbs/breadcrumbs.php:1263
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: lib/breadcrumbs/breadcrumbs.php:862
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search..."
+msgstr ""
+
+#: sidebar.php:19
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:31
+msgid "Categories"
+msgstr ""
+
+#: sidebar.php:38
+msgid "Tags"
+msgstr ""
+
+#: sidebar.php:49
+msgid "No tags found."
+msgstr ""
+
+#: template-parts/content-none.php:11
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: %1$s: Link to create a new post.
+#: template-parts/content-none.php:22
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:33
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:40
+msgid "It seems we can’t find what you’re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/content-single.php:27
+msgid "Kindergarten Toys Default Image"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: template-parts/content-single.php:69
+msgid "Read More %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: template-parts/content-single.php:74
+#: template-parts/content.php:95
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content.php:102
+msgid "Read More"
+msgstr ""

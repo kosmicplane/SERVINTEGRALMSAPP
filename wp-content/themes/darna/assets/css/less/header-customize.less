@@ -1,0 +1,30 @@
+@media screen and (min-width: 992px){
+	header.main-header {
+		.header-logo {
+			height: @logo_max_height + @logo_padding * 2;
+			> a > img {
+				max-height: @logo_max_height + @logo_padding * 2;
+				padding-top: @logo_padding;
+				padding-bottom: @logo_padding;
+			}
+		}
+		.header-customize {
+			line-height: @logo_max_height + @logo_padding * 2;
+		}
+		.menu-wrapper {
+			.x-nav-menu {
+				> li.x-menu-item > a {
+					line-height: @main_menu_height;
+				}
+			}
+		}
+	}
+	header.header-5 {
+		.header-customize {
+			line-height: @main_menu_height;
+		}
+		.header-logo:after {
+			border-top-width:(@logo_max_height + @logo_padding * 2);
+		}
+	}
+}

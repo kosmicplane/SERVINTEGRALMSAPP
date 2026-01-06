@@ -1,0 +1,35 @@
+[30-Jul-2025 18:12:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:13:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:15:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:15:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:22:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:30:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[30-Jul-2025 18:30:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nocache_headers() in /home/izorlnspatmm/public_html/wp-admin/admin.php:37
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37

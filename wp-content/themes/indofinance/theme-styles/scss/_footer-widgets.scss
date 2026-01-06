@@ -1,0 +1,61 @@
+#footer-widgets {
+    background-attachment: fixed; // Enables parallax effect
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    z-index: 1;
+    padding: 2rem 0; // Adds padding to give it a more stocky feel
+    
+
+    .footer-widgets-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
+        z-index: 0;
+    }
+
+    .widgets-wrapper {
+        padding: 1.5rem;
+        display: flex;
+        gap: 1.5rem;
+        position: relative;
+        z-index: 2;
+        justify-content: space-between; // Evenly distribute widgets
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            display: block;
+
+            .footer-column {
+                width: 100%;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li a {
+                text-decoration: none;
+                color: var(--light-color);
+            }
+        }
+    }
+
+    &.has-bg-image {
+        color: white;
+        background-attachment: fixed; // Ensures parallax effect
+
+        .footer-widgets-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        a {
+            color: var(--light-color);
+        }
+    }
+}

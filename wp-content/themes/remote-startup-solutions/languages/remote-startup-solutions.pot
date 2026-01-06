@@ -1,0 +1,852 @@
+# Copyright (C) 2024 themeignite
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Remote Startup Solutions 1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/remote-startup-solutions\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-06T05:18:46+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: remote-startup-solutions\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Remote Startup Solutions"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://www.themeignite.com/products/free-startup-wordpress-theme"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Remote Startup Solutions is a versatile and comprehensive WordPress theme tailored for educational institutions, tutors, and online learning platforms. Designed to cater to the diverse needs of the education sector, this theme offers a user-friendly interface and robust features to create stunning and functional websites effortlessly. With its intuitive design and flexible layout options, the Remote Startup Solutions WordPress Theme is suitable for various educational purposes, including schools, colleges, universities, e-learning platforms, and individual educators. Its responsive design ensures optimal viewing experiences across all devices, making it accessible to students, parents, and educators alike. Visually, the Remote Startup Solutions WordPress Theme boasts a modern and professional aesthetic, with clean lines, crisp typography, and vibrant color schemes. The layout is thoughtfully organized to prioritize important information such as courses, schedules, faculty profiles, and contact details, facilitating easy navigation for visitors. One of the key benefits of the Remote Startup Solutions WordPress Theme is its customizable nature, allowing users to tailor the website to match their branding and preferences seamlessly. From customizing colors and fonts to choosing layout options and page templates, users have the flexibility to create a unique and visually appealing online presence. Moreover, the theme offers integration with popular plugins and tools, such as WooCommerce for selling courses or educational materials, and Learning Management System (LMS) plugins for creating and managing online courses."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "themeignite"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://www.themeignite.com/"
+msgstr ""
+
+#: 404.php:21
+#: inc/customizer.php:802
+msgid "404"
+msgstr ""
+
+#: 404.php:22
+#: inc/customizer.php:815
+msgid "Sorry, that page can't be found!"
+msgstr ""
+
+#: 404.php:25
+msgid "Homepage"
+msgstr ""
+
+#: comments.php:29
+msgid "Comments"
+msgstr ""
+
+#: comments.php:44
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:46
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:47
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:59
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:72
+#: sidebar.php:31
+msgid "secondsidebar"
+msgstr ""
+
+#: footer.php:73
+#: sidebar.php:32
+msgid "Archive List"
+msgstr ""
+
+#: footer.php:79
+#: sidebar.php:38
+msgid "thirdsidebar"
+msgstr ""
+
+#: footer.php:80
+#: sidebar.php:39
+msgid "Recent Posts"
+msgstr ""
+
+#: footer.php:97
+#: sidebar.php:56
+msgid "fourthsidebar"
+msgstr ""
+
+#: footer.php:98
+#: sidebar.php:57
+msgid "Categories"
+msgstr ""
+
+#: footer.php:110
+msgid "Tags"
+msgstr ""
+
+#: functions.php:63
+msgid "Primary"
+msgstr ""
+
+#: functions.php:128
+msgid "Right Sidebar"
+msgstr ""
+
+#: functions.php:137
+msgid "Footer One"
+msgstr ""
+
+#: functions.php:147
+msgid "Footer Two"
+msgstr ""
+
+#: functions.php:157
+msgid "Footer Three"
+msgstr ""
+
+#: functions.php:167
+msgid "Footer Four"
+msgstr ""
+
+#: functions.php:312
+#: inc/getting-started/getting-started.php:15
+#: inc/getting-started/getting-started.php:16
+#: inc/getting-started/getting-started.php:64
+msgid "Getting Started"
+msgstr ""
+
+#: functions.php:314
+msgid "Free Documentation"
+msgstr ""
+
+#: header.php:60
+msgid "Skip to content (Press Enter)"
+msgstr ""
+
+#: header.php:72
+msgid "Mobile"
+msgstr ""
+
+#: inc/controls/changeable-icon.php:24
+msgctxt "placeholder"
+msgid "Search Icon"
+msgstr ""
+
+#: inc/custom-header.php:35
+msgctxt "header image description"
+msgid "Default Banner"
+msgstr ""
+
+#: inc/customizer.php:21
+msgid "Static Front Page"
+msgstr ""
+
+#: inc/customizer.php:27
+msgid "Choose Post"
+msgstr ""
+
+#: inc/customizer.php:43
+msgid "Choose Category"
+msgstr ""
+
+#: inc/customizer.php:55
+msgid "Default Settings"
+msgstr ""
+
+#: inc/customizer.php:56
+msgid "Default section provided by wordpress customizer."
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Show / Hide Site Title"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "Show / Hide Tagline"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Logo Width"
+msgstr ""
+
+#: inc/customizer.php:134
+msgid "Site Title Font Size (px)"
+msgstr ""
+
+#: inc/customizer.php:145
+msgid "Post Settings"
+msgstr ""
+
+#: inc/customizer.php:163
+msgid "Show / Hide Post Heading"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Show / Hide Post Meta"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Show / Hide Post Image"
+msgstr ""
+
+#: inc/customizer.php:217
+msgid "Show / Hide Post Content"
+msgstr ""
+
+#: inc/customizer.php:231
+msgid "Display Read More Button"
+msgstr ""
+
+#: inc/customizer.php:244
+msgid "Header Image"
+msgstr ""
+
+#: inc/customizer.php:255
+msgid "Single Post Settings"
+msgstr ""
+
+#: inc/customizer.php:273
+msgid "Show / Hide Single Post Meta"
+msgstr ""
+
+#: inc/customizer.php:291
+msgid "Show / Hide Single Post Content"
+msgstr ""
+
+#: inc/customizer.php:303
+msgid "General Settings"
+msgstr ""
+
+#: inc/customizer.php:321
+msgid "Show Scroll To Top"
+msgstr ""
+
+#: inc/customizer.php:333
+msgid "Scroll Top Icon"
+msgstr ""
+
+#: inc/customizer.php:351
+msgid "Show Preloader"
+msgstr ""
+
+#: inc/customizer.php:364
+msgid "Preloader Layout"
+msgstr ""
+
+#: inc/customizer.php:369
+msgid "Preloader 1"
+msgstr ""
+
+#: inc/customizer.php:370
+msgid "Preloader 2"
+msgstr ""
+
+#: inc/customizer.php:371
+msgid "Preloader 3"
+msgstr ""
+
+#: inc/customizer.php:386
+msgid "Show Sticky Header"
+msgstr ""
+
+#: inc/customizer.php:400
+msgid "Menu Font Weight"
+msgstr ""
+
+#: inc/customizer.php:404
+msgid "100 - Thin"
+msgstr ""
+
+#: inc/customizer.php:405
+msgid "200 - Extra Light"
+msgstr ""
+
+#: inc/customizer.php:406
+msgid "300 - Light"
+msgstr ""
+
+#: inc/customizer.php:407
+msgid "400 - Normal"
+msgstr ""
+
+#: inc/customizer.php:408
+msgid "500 - Medium"
+msgstr ""
+
+#: inc/customizer.php:409
+msgid "600 - Semi Bold"
+msgstr ""
+
+#: inc/customizer.php:410
+msgid "700 - Bold"
+msgstr ""
+
+#: inc/customizer.php:411
+msgid "800 - Extra Bold"
+msgstr ""
+
+#: inc/customizer.php:412
+msgid "900 - Black"
+msgstr ""
+
+#: inc/customizer.php:424
+msgid "Menu Text Transform"
+msgstr ""
+
+#: inc/customizer.php:428
+msgid "None"
+msgstr ""
+
+#: inc/customizer.php:429
+msgid "Capitalize"
+msgstr ""
+
+#: inc/customizer.php:430
+msgid "Uppercase"
+msgstr ""
+
+#: inc/customizer.php:431
+msgid "Lowercase"
+msgstr ""
+
+#: inc/customizer.php:442
+msgid "Sidebar Heading Text Align"
+msgstr ""
+
+#: inc/customizer.php:447
+msgid "Left"
+msgstr ""
+
+#: inc/customizer.php:448
+msgid "Center"
+msgstr ""
+
+#: inc/customizer.php:456
+msgid "Header Section Settings"
+msgstr ""
+
+#: inc/customizer.php:473
+msgid "Show Search Icon"
+msgstr ""
+
+#: inc/customizer.php:484
+msgid "Search Icon"
+msgstr ""
+
+#: inc/customizer.php:496
+msgid "Social Media Section Settings"
+msgstr ""
+
+#: inc/customizer.php:508
+msgid "Home Page Settings"
+msgstr ""
+
+#: inc/customizer.php:509
+msgid "Customize Home Page Settings"
+msgstr ""
+
+#: inc/customizer.php:517
+msgid "Slider Section Settings"
+msgstr ""
+
+#: inc/customizer.php:536
+msgid "Show Slider"
+msgstr ""
+
+#: inc/customizer.php:566
+msgid "Select Category to display Latest Post"
+msgstr ""
+
+#: inc/customizer.php:583
+msgid "Slider Second Button URL"
+msgstr ""
+
+#: inc/customizer.php:595
+msgid "Project Section Settings"
+msgstr ""
+
+#: inc/customizer.php:614
+msgid "Show Project Section"
+msgstr ""
+
+#: inc/customizer.php:634
+msgid "Section Title"
+msgstr ""
+
+#: inc/customizer.php:655
+msgid "Section Text"
+msgstr ""
+
+#: inc/customizer.php:683
+msgid "Select Category to Display Projects"
+msgstr ""
+
+#: inc/customizer.php:696
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/customizer.php:713
+msgid "Show Footer Copyright"
+msgstr ""
+
+#: inc/customizer.php:731
+msgid "Copyright Info"
+msgstr ""
+
+#: inc/customizer.php:748
+msgid "Footer Background Image"
+msgstr ""
+
+#: inc/customizer.php:749
+msgid "Recommended Size %1$s px X %2$s px"
+msgstr ""
+
+#: inc/customizer.php:773
+msgid "Footer Widget Area Background Color"
+msgstr ""
+
+#: inc/customizer.php:784
+msgid "404 Page Settings"
+msgstr ""
+
+#: inc/customizer.php:796
+msgid "404 Page Image"
+msgstr ""
+
+#: inc/customizer.php:809
+#: inc/customizer.php:822
+msgid "Heading"
+msgstr ""
+
+#: inc/extra.php:94
+msgid "&copy; "
+msgstr ""
+
+#: inc/extra.php:94
+msgid "Y"
+msgstr ""
+
+#: inc/extra.php:95
+msgid ". All Rights Reserved."
+msgstr ""
+
+#: inc/extra.php:98
+msgid "By "
+msgstr ""
+
+#: inc/extra.php:98
+msgid "Themeignite"
+msgstr ""
+
+#: inc/extra.php:99
+msgid " Powered By %s"
+msgstr ""
+
+#: inc/extra.php:99
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: inc/extra.php:132
+msgid "Name*"
+msgstr ""
+
+#: inc/extra.php:132
+#: inc/extra.php:136
+msgid "Name"
+msgstr ""
+
+#: inc/extra.php:133
+msgid "Email*"
+msgstr ""
+
+#: inc/extra.php:133
+#: inc/extra.php:138
+msgid "Email"
+msgstr ""
+
+#: inc/extra.php:140
+msgid "Website"
+msgstr ""
+
+#: inc/extra.php:153
+msgid "Comment"
+msgstr ""
+
+#: inc/getting-started/getting-started.php:52
+msgid "You will find everything you need to get started with %1$s below."
+msgstr ""
+
+#: inc/getting-started/getting-started.php:73
+msgid "Free Vs Pro"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:15
+msgid "Theme Feature"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:16
+msgid "Basic Version"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:17
+msgid "Premium Version"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:23
+msgid "Header Background Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:28
+msgid "Custom Navigation Logo Or Text"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:33
+msgid "Hide Logo Text"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:39
+msgid "Premium Support"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:44
+msgid "Fully SEO Optimized"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:49
+msgid "Recent Posts Widget"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:55
+msgid "Easy Google Fonts"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:60
+msgid "Pagespeed Plugin"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:65
+msgid "Only Show Header Image On Front Page"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:70
+msgid "Show Header Everywhere"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:75
+msgid "Custom Text On Header Image"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:80
+msgid "Full Width (Hide Sidebar)"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:85
+msgid "Only Show Upper Widgets On Front Page"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:90
+msgid "Replace Copyright Text"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:95
+msgid "Customize Upper Widgets Colors"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:100
+msgid "Customize Navigation Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:105
+msgid "Customize Post/Page Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:110
+msgid "Customize Blog Feed Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:115
+msgid "Customize Footer Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:120
+msgid "Customize Sidebar Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:125
+msgid "Customize Background Color"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:130
+msgid "Importable Demo Content\t"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:137
+#: inc/getting-started/tabs/link-panel.php:24
+msgid "View Premium Version"
+msgstr ""
+
+#: inc/getting-started/tabs/free-vs-pro-panel.php:138
+msgid "View Pro"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:12
+msgid " VISIT FREE DOCUMENTATION"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:13
+msgid "Are you a newcomer to the WordPress universe? Our comprehensive and user-friendly documentation guide is designed to assist you in effortlessly building a captivating and interactive website, even if you lack any coding expertise or prior experience. Follow our step-by-step instructions to create a visually appealing and engaging online presence."
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:14
+msgid "Visit the Documentation"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:15
+msgid "FREE DOCUMENTATION"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:20
+msgid "Review"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:21
+msgid "If you are passionate about the Remote Startup Solutions theme, we would love to hear your thoughts and feedback regarding our theme. Your review will be highly valuable to us as we strive to enhance and improve our theme based on the needs and preferences of our users. Your opinion matters, and we sincerely appreciate your time and effort in sharing your experience with the Remote Startup Solutions theme."
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:22
+msgid "Visit the Review"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:23
+msgid "REVIEW"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:28
+#: inc/getting-started/tabs/help-panel.php:32
+msgid "CONTACT SUPPORT"
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:30
+msgid "Thank you for choosing Remote Startup Solutions! We appreciate your interest in our theme and are here to assist you with any support you may need."
+msgstr ""
+
+#: inc/getting-started/tabs/help-panel.php:31
+msgid "Visit the Support"
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:11
+msgid "THEME DEMO"
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:14
+msgid "GO PRO"
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:17
+msgid "PRO DOCUMENTATION "
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:21
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:22
+msgid ""
+"The Pro version of our theme offers a seamless website customization experience with its intuitive interface. With just a few clicks, you can effortlessly transform the look and feel of your website. Enjoy the freedom to personalize various elements such as colors, background images, patterns, and fonts, elevating your website s aesthetics and brand identity.In addition, the Pro theme goes beyond the basic features of the free version by providing an expanded selection of homepage sections. This enables you to effectively showcase your organizations services and offerings, empowering the growth of your business or cause. Moreover, the Pro version includes a wide range of professionally designed page templates, giving you a head start in creating impactful web pages with ease.\n"
+"            To ensure a top-notch experience, the Pro version receives regular updates, ensuring compatibility with the latest web technologies and maintaining optimal performance. Additionally, our dedicated support team is readily available to address any questions or concerns you may have, providing timely assistance when you need it most."
+msgstr ""
+
+#: inc/getting-started/tabs/link-panel.php:25
+msgid "Read more about the features here"
+msgstr ""
+
+#: inc/info.php:109
+msgid "Remote Startup Solutions PRO"
+msgstr ""
+
+#: inc/info.php:115
+msgid "For Reference"
+msgstr ""
+
+#: inc/info.php:128
+msgid "Pro Available"
+msgstr ""
+
+#: inc/info.php:138
+msgid "Lite Documentation"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:88
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:98
+msgid "Kindergartan Meta Feilds"
+msgstr ""
+
+#: inc/template-tags.php:116
+msgid "Age"
+msgstr ""
+
+#: inc/template-tags.php:124
+msgid "Size"
+msgstr ""
+
+#: inc/template-tags.php:132
+msgid "Price"
+msgstr ""
+
+#: inc/widget-social-links.php:26
+msgid "TI: Social Links"
+msgstr ""
+
+#: inc/widget-social-links.php:27
+msgid "A Social Links Widget"
+msgstr ""
+
+#: inc/widget-social-links.php:57
+#: inc/widget-social-links.php:103
+msgid "Facebook"
+msgstr ""
+
+#: inc/widget-social-links.php:59
+#: inc/widget-social-links.php:108
+msgid "Instagram"
+msgstr ""
+
+#: inc/widget-social-links.php:61
+#: inc/widget-social-links.php:113
+msgid "Twitter"
+msgstr ""
+
+#: inc/widget-social-links.php:63
+#: inc/widget-social-links.php:118
+msgid "Pinterest"
+msgstr ""
+
+#: inc/widget-social-links.php:65
+msgid "Linkedin"
+msgstr ""
+
+#: inc/widget-social-links.php:67
+#: inc/widget-social-links.php:128
+msgid "YouTube"
+msgstr ""
+
+#: inc/widget-social-links.php:69
+#: inc/widget-social-links.php:133
+msgid "Tiktok"
+msgstr ""
+
+#: inc/widget-social-links.php:98
+msgid "Title"
+msgstr ""
+
+#: inc/widget-social-links.php:123
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/woocommerce-functions.php:45
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/woocommerce-functions.php:47
+msgid "Sidebar displaying only in woocommerce pages."
+msgstr ""
+
+#: search.php:17
+msgid "Search Result"
+msgstr ""
+
+#: search.php:20
+msgid "Search Results for \"%s\""
+msgstr ""
+
+#: sections/section-featured-banner.php:40
+#: template-parts/content.php:14
+msgid "Read More"
+msgstr ""
+
+#: sections/section-featured-banner.php:44
+msgid "Request a Quote"
+msgstr ""
+
+#: sidebar.php:20
+msgid "firstsidebar"
+msgstr ""
+
+#: sidebar.php:21
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:24
+msgid "Search for:"
+msgstr ""
+
+#: sidebar.php:25
+msgid "Search..."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Home Page"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: template-parts/content-audio.php:73
+#: template-parts/content-gallery.php:52
+#: template-parts/content-image.php:43
+#: template-parts/content-single.php:35
+#: template-parts/content-video.php:73
+#: template-parts/content.php:51
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: template-parts/content-audio.php:80
+#: template-parts/content-gallery.php:59
+#: template-parts/content-image.php:50
+#: template-parts/content-page.php:21
+#: template-parts/content-single.php:42
+#: template-parts/content-video.php:80
+#: template-parts/content.php:58
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:21
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:31
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""

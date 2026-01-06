@@ -1,0 +1,74 @@
+
+---Subir archivos---
+El archivo de widget no se subió. Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+No se subió el archivo del personalizador.  Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+El archivo Redux no se subió. Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+¡Los archivos de importación se subieron correctamente!
+Tiempo de ejecución máximo inicial = 30
+Información de archivos:
+URL del sitio = https://servintegralms.com
+Archivo de datos = /home/izorlnspatmm/public_html/wp-content/uploads/2022/11/demo-data.xml
+Archivo de widget = ¡no definido!
+Archivo del personalizador = ¡no definido!
+Archivos de Redux:
+ ¡no definido!
+
+------
+¡Nueva llamada AJAX!
+[WARNING] Failed to import portfolio-category Architecture
+[WARNING] Failed to import pa_color Black
+[WARNING] Failed to import pa_color Blue
+[WARNING] Failed to import portfolio-category Construction
+[WARNING] Failed to import product_tag Drills
+[WARNING] Failed to import product_visibility exclude-from-catalog
+[WARNING] Failed to import product_visibility exclude-from-search
+[WARNING] Failed to import product_type external
+[WARNING] Failed to import product_visibility featured
+[WARNING] Failed to import pa_color Green
+[WARNING] Failed to import product_type grouped
+[WARNING] Failed to import product_tag Gun
+[WARNING] Failed to import product_tag Guns
+[WARNING] Failed to import product_tag Hammer
+[WARNING] Failed to import product_tag Hammers
+[WARNING] Failed to import product_cat Hand Tools
+[WARNING] Failed to import product_tag Hand Tools
+[WARNING] Failed to import product_tag Hands
+[WARNING] Failed to import portfolio-category Interior Design
+[WARNING] Failed to import product_cat Multi Tools
+[WARNING] Failed to import product_tag Multi Tools
+[WARNING] Failed to import product_visibility outofstock
+[WARNING] Failed to import product_tag Pilers
+[WARNING] Failed to import product_cat Pliers
+[WARNING] Failed to import product_cat Power Tools
+[WARNING] Failed to import product_tag Power Tools
+[WARNING] Failed to import product_visibility rated-1
+[WARNING] Failed to import product_visibility rated-2
+[WARNING] Failed to import product_visibility rated-3
+[WARNING] Failed to import product_visibility rated-4
+[WARNING] Failed to import product_visibility rated-5
+[WARNING] Failed to import product_cat Safety &amp; Security
+[WARNING] Failed to import product_cat Sanders
+[WARNING] Failed to import product_tag Sanders
+[WARNING] Failed to import product_tag Saw
+[WARNING] Failed to import product_tag Screw
+[WARNING] Failed to import product_type simple
+[WARNING] Failed to import product_tag Tacker
+[WARNING] Failed to import product_tag Tape Measure
+[WARNING] Failed to import product_cat Uncategorized
+[WARNING] Failed to import product_type variable
+[WARNING] Failed to import action-group wc_update_product_lookup_tables
+[WARNING] Failed to import action-group woocommerce-db-updates
+[WARNING] Failed to import product_cat Drills
+[WARNING] Failed to import product_cat Grinders
+[WARNING] Failed to import product_cat Hammers
+[WARNING] Failed to import product_cat Heat Guns
+[ERROR] Failed to import "port_thum_5" (Medios)
+[ERROR] Failed to import "port_thum_6" (Medios)
+[ERROR] Failed to import "port_thum_8" (Medios)
+

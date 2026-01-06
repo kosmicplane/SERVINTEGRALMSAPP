@@ -1,0 +1,664 @@
+/*
+theme-default.css
+*/
+
+
+/*--------------------------------------------------
+=>> Common - Begining Css
+--------------------------------------------------*/
+
+blockquote {
+	border-left: 3px solid #daa14c;
+}
+.wp-block-pullquote blockquote {
+	border-left: 0;
+    border-top: 3px solid #daa14c;
+}
+button,
+input[type="button"],
+input[type="submit"] {
+	background-color: #daa14c;
+}
+.btn-default { 
+	background: #daa14c; 
+}
+td a {
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Site Branding Text & Navar Brand
+--------------------------------------------------*/
+
+.site-branding-text .site-title a:focus { 
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Navbar
+--------------------------------------------------*/
+
+.navbar.navbar-header-wrap .nav .menu-item .btn-border:hover, 
+.navbar.navbar-header-wrap .nav .menu-item .btn-border:focus, 
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .btn-border:hover, 
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .btn-border:focus {
+    background: #daa14c;
+    border: 2px solid #daa14c;
+}
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .nav-link:hover, 
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .nav-link:focus {
+    color: #daa14c;
+}
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .btn-border {
+    border: 2px solid #daa14c;
+}
+.navbar .nav .menu-item:hover .nav-link,
+.navbar .nav .menu-item.active .nav-link,
+.navbar .nav .menu-item .nav-link:focus {
+   color: #daa14c;
+}
+.navbar .nav .dropdown-item:focus, 
+.navbar .nav .dropdown-item:hover {
+    color: #daa14c;
+}
+.navbar.navbar-header-wrap.classic-header .navbar-toggler:hover, 
+.navbar.navbar-header-wrap.classic-header .navbar-toggler:focus {
+    outline: 2px dotted #daa14c;
+}
+@media (min-width: 992px) {
+	.navbar .nav .dropdown-menu { 
+		border-bottom: 3px solid #daa14c !important; 
+	}
+	/*Navbar Classic Header*/
+	.navbar.navbar-header-wrap.classic-header .nav .menu-item.active .nav-link {
+		background-color: #daa14c;
+	}
+	.navbar.navbar-header-wrap.classic-header .nav .menu-item .nav-link:before {
+		background: #daa14c;
+	}
+}
+@media (max-width: 992px) {
+	.navbar.navbar-header-wrap.classic-header .nav .menu-item .nav-link:hover, 
+	.navbar.navbar-header-wrap.classic-header.header-fixed-top .nav .menu-item .nav-link:hover {
+		color: #daa14c !important;
+	}
+}
+@media (max-width: 500px) {
+	.navbar.navbar-header-wrap.classic-header .nav .menu-item .nav-link:hover,
+	.navbar.navbar-header-wrap.classic-header.header-fixed-top .nav .menu-item .nav-link:hover {
+		color: #007bff;
+	}
+}
+
+/*Multilevel Dropdown Active Colors*/
+.navbar .nav .dropdown-menu > .menu-item > ul.dropdown-menu > .menu-item > .dropdown-item:hover, 
+.navbar .nav .dropdown-menu > .menu-item > ul.dropdown-menu > .menu-item > .dropdown-item:focus {
+   color: #daa14c !important;
+}
+.navbar .nav .dropdown-menu .menu-item.active .dropdown-item {
+    color: #daa14c !important;
+}
+.navbar .nav .dropdown-menu > .menu-item > ul.dropdown-menu .menu-item.active .dropdown-item {
+    color: #daa14c !important;
+}
+
+/*Add Menu*/
+.navbar .nav .menu-item .nav-link.add-menu {
+    border: 2px solid #daa14c;
+}
+.navbar .nav .menu-item .nav-link.add-menu:hover, 
+.navbar .nav .menu-item .nav-link.add-menu:focus {
+	background-color: #daa14c;
+}
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .nav-link.add-menu {
+    border: 2px solid #daa14c;
+}
+.navbar.navbar-header-wrap .nav .menu-item .nav-link.add-menu:hover, 
+.navbar.navbar-header-wrap .nav .menu-item .nav-link.add-menu:focus, 
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .nav-link.add-menu:hover, 
+.navbar.navbar-header-wrap.header-fixed-top .nav .menu-item .nav-link.add-menu:focus {
+    background: #daa14c;
+    color: #ffffff;
+    border: 2px solid #daa14c;
+}
+
+
+/*--------------------------------------------------
+=>> Theme Combined Classes
+--------------------------------------------------*/
+
+.theme-bg-default { background-color: #daa14c !important; }
+.text-default { color: #daa14c !important; }
+
+.entry-header .entry-title a:hover, 
+.entry-header .entry-title a:focus { 
+	color: #daa14c !important; 
+}
+
+/*--------------------------------------------------
+=>> WooCommerce Menubar Cart Info  
+--------------------------------------------------*/
+
+.woo-cart-block > a .cart-total {
+	background: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Main Slider
+--------------------------------------------------*/
+
+.divider-sm-left{
+	border-top: 6px solid #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Slider Next/Prev Button Styles
+--------------------------------------------------*/
+
+.owl-carousel .owl-prev:hover, 
+.owl-carousel .owl-prev:focus, 
+.owl-carousel .owl-next:hover, 
+.owl-carousel .owl-next:focus, 
+.theme-sponsors .owl-carousel .owl-prev:hover, 
+.theme-sponsors .owl-carousel .owl-next:hover { 
+	background-color: #daa14c;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+	border: 2px solid #daa14c;
+}
+
+
+/*--------------------------------------------------
+=>> Theme Page Header Area
+--------------------------------------------------*/
+
+.theme-page-header-area .overlay {
+    background-color: rgba(250 183 2, 1);
+}
+.page-breadcrumb > li a:focus {
+    color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Section Title & Subtitle
+--------------------------------------------------*/
+
+.theme-separator-line-horrizontal-full {
+	background-color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Info Area
+--------------------------------------------------*/	
+
+.theme-info-area .media:hover i.icon, 
+.theme-info-area .media i.icon.active { 
+	background: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Service Area
+--------------------------------------------------*/
+
+.theme-services .service-content-thumbnail a { color: #daa14c; }
+.theme-services .service-content-thumbnail i.fa { 
+	background: #daa14c;
+}
+.theme-services .service-content:hover .service-content-thumbnail i.fa { 
+	background: #daa14c;
+    box-shadow: 0px 0px 0px 1px #daa14c;
+}
+.theme-services .service-title a:hover, 
+.theme-services .service-title a:focus { 
+	color: #daa14c;
+}
+.service-links a { 
+    border: 1px solid #daa14c;
+}
+.theme-services .service-content:hover .service-links a, 
+.theme-services .service-content:focus .service-links a { 
+	background: #daa14c;
+    border: 1px solid #daa14c;
+}
+
+
+/*--------------------------------------------------
+=>> Theme Project Area
+--------------------------------------------------*/
+
+.theme-project .theme-project-content:hover { 
+	background-color: #daa14c; 
+}
+.theme-project .theme-project-content:hover .content-area:before {
+    border-color: transparent transparent #daa14c transparent;
+}
+.theme-project .theme-project-content .click-view a:hover, 
+.theme-project .theme-project-content .click-view a:hover {
+	background-color: #daa14c;
+}
+
+
+/*--------------------------------------------------
+=>> Theme Testimonial Area
+--------------------------------------------------*/
+
+.theme-testimonial-block, .theme-testimonial-block:hover {
+    border-top: 3px solid #daa14c !important;
+}
+.theme-testimonial-block::after, .testimonial-content.vrsn-two::before {
+    color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Contact Page Area
+--------------------------------------------------*/
+
+.theme-contact-widget i.fa { 
+	color: #daa14c;	
+}
+
+/*--------------------------------------------------
+=>> 404 Error Page Area
+--------------------------------------------------*/
+
+.theme-error-page .error-title b, 
+.theme-error-page .error-title i { 
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Blog Sidebar 
+--------------------------------------------------*/
+
+.entry-content a { 
+	color: #daa14c;  
+}
+
+/*--------------------------------------------------
+=>> Theme Blog Meta Info
+--------------------------------------------------*/
+
+.entry-meta a:hover, 
+.entry-meta a:focus { 
+	color: #daa14c !important; 
+}
+.entry-meta .cat-links a { 
+	color: #daa14c; 
+}
+.entry-meta .tag-links a:hover, 
+.entry-meta .tag-links a:focus {
+    background-color: #daa14c;
+    border: 1px solid #daa14c;
+}
+.more-link {
+	border: 2px solid #daa14c;
+}
+.more-link:hover, .more-link:focus {
+	border: 2px solid #daa14c;
+    background: #daa14c;
+	color: #fff !important;
+}
+
+.pagination a:hover, 
+.pagination a.active, 
+.page-links a:hover, 
+.post-nav-links a:hover, 
+.post-nav-links .post-page-numbers.current { 
+	background-color: #daa14c; 
+	border: 1px solid #daa14c !important; 
+}
+.pagination .nav-links .page-numbers.current {
+	background-color: #daa14c; 
+	border: 1px solid #daa14c; 
+}
+.comment-date a, .comment-detail p > a { color: #daa14c; }
+.comment-date a { color: #daa14c; }
+.pull-left-comment img { 
+	border: 3px solid #daa14c; 
+}
+.reply a {
+    border: 2px solid #daa14c;
+}
+.reply a:hover, .reply a:focus { 
+	border: 2px solid #daa14c;
+	background-color: #daa14c;
+}
+.logged-in-as a {
+	color: #daa14c;
+}
+.logged-in-color a {
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Widgets Area
+--------------------------------------------------*/
+
+.widget a:hover, 
+.widget a:focus { 
+	color: #daa14c; 
+}
+.sidebar .widget .widget-title,
+.sidebar .widget .wp-block-heading {
+    border-top: 3px solid #daa14c;
+}
+.widget button[type="submit"],
+.btn-success{
+    background-color: #daa14c;
+	border-color: #daa14c;
+}
+.widget .tagcloud a:hover, 
+.widget .tagcloud a:focus {
+    background-color: #daa14c;
+    border: 1px solid #daa14c;
+}
+address i { 
+	color: #daa14c;
+}
+.textwidget a {
+    color: #daa14c;
+}
+.footer-sidebar .textwidget a {
+	color: #daa14c !important;
+}
+.footer-sidebar .textwidget > address > a:hover, 
+.footer-sidebar .textwidget > address > a:focus { 
+	color: #daa14c !important;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+
+.wp-caption-text a { color: #daa14c; }
+
+
+/*--------------------------------------------------
+=>> Site Footer Area
+--------------------------------------------------*/
+
+.site-footer {
+	border-top: 3px solid #daa14c;
+	border-bottom: 3px solid #daa14c;
+}
+.footer-sidebar .widget a:hover, 
+.footer-sidebar .widget a:focus { 
+	color: #daa14c; 
+}
+/*wp-block-search*/
+.wp-block-search .wp-block-search__button {
+    background: #daa14c;
+    border: 1px solid #daa14c;
+}
+/*wp-calendar-nav widget*/
+.wp-calendar-nav .wp-calendar-nav-prev > a, 
+.wp-calendar-nav .wp-calendar-nav-next > a {
+	color: #daa14c;
+}
+.wp-calendar-nav .wp-calendar-nav-prev > a:hover, 
+.wp-calendar-nav .wp-calendar-nav-next > a:hover,
+.wp-calendar-nav .wp-calendar-nav-prev > a:focus, 
+.wp-calendar-nav .wp-calendar-nav-next > a:focus {
+	color: #daa14c;
+	box-shadow: 0 1px 0 0 currentColor;
+}
+/*wp-block-latest-comments*/
+.wp-block-latest-comments__comment-date {
+    color: #daa14c;
+}
+/*rsswidget title color*/
+.widget_rss ul li .rsswidget {
+	color: #daa14c;
+}
+/*Recent Comment list style color*/
+.widget_recent_comments .recentcomments {
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Theme Site Info Area
+--------------------------------------------------*/
+
+.site-info a, 
+.site-info a:hover, 
+.site-info a:focus { color: #daa14c; }
+
+/*--------------------------------------------------
+=>> Sidebar Widget Style Css According to WordPress 5.8
+--------------------------------------------------*/
+ 
+.sidebar .widget .wp-block-search .wp-block-search__label { 
+	border-top: 3px solid #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-tag-cloud a:hover, 
+.sidebar .widget .wp-block-group .wp-block-tag-cloud a:focus {
+    background-color: #daa14c;
+    border: 1px solid #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-media-text a {
+    color: #daa14c;
+}
+.sidebar .widget .wp-block-group .logged-in a,
+.sidebar .widget .wp-block-group .logged-out a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-pullquote cite a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group pre.wp-block-verse a {
+    color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-table figcaption a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-preformatted a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-code a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .is-nowrap a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .is-vertical a {
+	color: #daa14c;
+}
+.sidebar .widget.widget_block .wp-block-group p a {
+	color: #daa14c;
+}
+.theme-blog .post .entry-content .wp-block-file .wp-block-file__button {
+    background-color: #daa14c;
+}
+.comment-form .form-control:focus,
+.comment-form .form-control:hover {
+	box-shadow: 0 0 0 0.063rem rgb(218 161 76 / 50%) !important;
+	border-color: transparent;
+    background-clip: unset;
+}
+.theme-blog .post .wp-block-latest-comments .wp-block-latest-comments__comment-author:hover,
+.theme-blog .post .wp-block-latest-comments .wp-block-latest-comments__comment-link:hover {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-image figcaption a {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-quote cite a {
+	color: #daa14c;
+}
+.wp-block-cover.has-background-dim-60.has-background-dim .wp-block-cover-text a:hover {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-button .wp-block-button__link:hover,
+.sidebar .widget .wp-block-group .wp-block-button .wp-block-button__link:focus {
+	background: #daa14c;
+    border: 2px solid #daa14c;
+	color: #fff;
+}
+.theme-blog .post .entry-content ul.wp-block-page-list li.wp-block-navigation-item a:hover {
+	color: #daa14c;
+}
+.sidebar .widget .wp-block-group .wp-block-embed .wp-element-caption a {
+    color: #daa14c;
+}
+
+/*------------------------------------------------------------
+=>> Footer Sidebar Widget Style Css According to WordPress 5.8
+------------------------------------------------------------*/
+
+.footer-sidebar .widget .wp-block-group .wp-block-tag-cloud a:hover, 
+.footer-sidebar .widget .wp-block-group .wp-block-tag-cloud a:focus {
+    background-color: #daa14c;
+    border: 1px solid #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-media-text a {
+    color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .logged-in a,
+.footer-sidebar .widget .wp-block-group .logged-out a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-pullquote cite a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group pre.wp-block-verse a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-table figcaption a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-preformatted a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .is-vertical a {
+	color: #daa14c;
+}
+.footer-sidebar .widget.widget_block .wp-block-group p a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-image figcaption a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-calendar tbody a {
+	color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-quote cite a {
+    color: #daa14c;
+}
+.footer-sidebar .widget .wp-block-group .wp-block-button .wp-block-button__link:hover,
+.footer-sidebar .widget .wp-block-group .wp-block-button .wp-block-button__link:focus {
+	background: #daa14c;
+    border: 2px solid #daa14c;
+	color: #fff;
+}
+.footer-sidebar .widget .wp-block-table td a, 
+.footer-sidebar .widget .wp-block-read-more, 
+.footer-sidebar .widget dl a, 
+.footer-sidebar .wp-block-embed .wp-element-caption a {
+	color: #daa14c;
+}
+
+/*--------------------------------------------------
+=>> Page Scroll Up/Down Area
+--------------------------------------------------*/
+
+.page-scroll-up a, 
+.page-scroll-up a:hover,
+.page-scroll-up a:active {
+	background: #daa14c;
+}
+
+
+/*--------------------------------------------------
+=>> Shop Products 
+--------------------------------------------------*/
+
+/*Product Buttons*/	
+.woocommerce ul.products li.product .button.add_to_cart_button:hover, 
+.woocommerce ul.products li.product .button.product_type_grouped:hover, 
+.woocommerce ul.products li.product .button.product_type_simple:hover, 
+.woocommerce ul.products li.product .button.product_type_external:hover, 
+.woocommerce ul.products li.product .button.product_type_variable:hover {
+	color: #daa14c;
+	border-bottom: 2px solid #daa14c;
+}
+.woocommerce ul.products li.product a.added_to_cart {
+	color: #daa14c;
+	border-bottom: 2px solid #daa14c;
+}
+.woocommerce ul.products li.product a.added_to_cart:hover {
+	color: #daa14c;
+	border-bottom: 2px solid #daa14c;
+}
+
+/*Product Single View*/
+
+.woocommerce div.product form.cart .button:hover, 
+.woocommerce div.product form.cart .button:hover {
+	background: #daa14c;
+}
+.woocommerce table.shop_table td.product-name, 
+.woocommerce table.shop_table td.product-name a {
+	color: #daa14c;	
+}
+.product_meta .posted_in a:hover, 
+.product_meta .tagged_as a:hover {
+	color: #daa14c;
+}
+.woocommerce #review_form #respond .form-submit input:hover {
+    background: #daa14c;
+}
+
+/*Product Cart View*/
+.woocommerce .woocommerce-error .button, 
+.woocommerce .woocommerce-info .button, 
+.woocommerce .woocommerce-message .button, 
+.woocommerce-page .woocommerce-error .button, 
+.woocommerce-page .woocommerce-info .button, 
+.woocommerce-page .woocommerce-message .button {
+    background-color: #daa14c;
+}
+/*Product Cart Table*/
+.woocommerce table.shop_table td.product-name a:hover, 
+.woocommerce table.shop_table td.product-subtotal .woocommerce-Price-amount {
+	color: #daa14c;	
+}
+.woocommerce-cart table.cart td.actions .coupon button.button:hover {
+	background: #daa14c;
+    color: #fff;	
+}
+.woocommerce-cart table.cart td.actions button.button {
+	background: #daa14c;
+    color: #fff;
+}
+#add_payment_method .wc-proceed-to-checkout a.checkout-button, 
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button, 
+.woocommerce-checkout .wc-proceed-to-checkout a.checkout-button, 
+.woocommerce .woocommerce-form-login .woocommerce-form-login__submit, 
+.woocommerce button.button.woocommerce-Button {
+	background-color: #daa14c;
+}
+
+.checkout_coupon.woocommerce-form-coupon .form-row button.button:hover {
+	background-color: #daa14c;
+}
+.woocommerce #payment #place_order, 
+.woocommerce-page #payment #place_order {
+    background-color: #daa14c;
+}
+
+/*WooCommerce Widgets*/
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+    background-color: #daa14c;
+}
+.woocommerce .widget_price_filter .price_slider_amount .button {
+    background-color: #daa14c;
+}
+
+/*WooCommerce Pagination*/
+.woocommerce nav.woocommerce-pagination ul li a:focus, 
+.woocommerce nav.woocommerce-pagination ul li a:hover, 
+.woocommerce nav.woocommerce-pagination ul li span.current {
+	background-color: #daa14c;
+    border: 1px solid #daa14c;
+    color: #fff;
+}

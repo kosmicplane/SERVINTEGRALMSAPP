@@ -1,0 +1,4 @@
+[13-Jun-2025 16:06:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function esc_url() in /home/izorlnspatmm/public_html/wp-content/themes/remote-startup-solutions/functions.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/remote-startup-solutions/functions.php on line 10

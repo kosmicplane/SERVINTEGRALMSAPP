@@ -1,0 +1,13 @@
+.redux-container-image_select .redux-image-select {
+	max-width: 100%;
+}
+.redux-container .wp-picker-container {
+	display: inline-block;
+	vertical-align: middle;
+}
+.redux-container .wp-picker-holder {
+	position: absolute;
+}
+.redux-container-button_set .ui-icon-blank {
+	display: none;
+}

@@ -1,0 +1,13 @@
+# Excluir lo que NO quieres en el repo
+/drive/
+
+# Logs del hosting y de WP (no aportan al código y crecen)
+/error_log
+/error_log*
+/wp-content/debug.log
+/wp-content/debug.log.*
+/wp-content/cache/
+/wp-content/upgrade/
+
+# Opcional: zips sueltos (si no quieres versionarlos)
+*.zip

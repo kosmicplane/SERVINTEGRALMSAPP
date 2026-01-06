@@ -1,0 +1,1 @@
+[13-Jun-2025 11:18:12 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/elementor/core/editor/loader/v1/editor-v1-loader.php on line 3

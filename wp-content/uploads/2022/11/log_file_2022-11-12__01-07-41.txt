@@ -1,0 +1,23 @@
+
+---Subir archivos---
+El archivo de contenido no se subió. Error: Lo siento, no tienes permisos para subir este tipo de archivo.
+
+---Subir archivos---
+El archivo de widget no se subió. Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+No se subió el archivo del personalizador.  Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+El archivo Redux no se subió. Error: No se proporcionó ningún archivo.
+
+---Subir archivos---
+¡Los archivos de importación se subieron correctamente!
+Tiempo de ejecución máximo inicial = 30
+Información de archivos:
+URL del sitio = https://servintegralms.com
+Archivo de datos = ¡no definido!
+Archivo de widget = ¡no definido!
+Archivo del personalizador = ¡no definido!
+Archivos de Redux:
+ ¡no definido!

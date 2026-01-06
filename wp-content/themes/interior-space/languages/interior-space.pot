@@ -1,0 +1,68 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Interior Space\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-17 09:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.7; wp-6.6\n"
+"X-Domain: interior-space"
+
+#: footer.php:14 inc/customizer/interior-space-customizer-options.php:17
+msgid ""
+"Copyright &copy; 2024 | Powered by <a href=\"//wordpress.org/\">WordPress</a>"
+" <span class=\"sep\"> | </span> Interior Space theme by <a target=\"_blank\" "
+"href=\"//themearile.com/\">ThemeArile</a>"
+msgstr ""
+
+#: inc/customizer/interior-space-customizer-options.php:22
+msgid "Footer Copyright"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://themearile.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://themearile.com/interior-space-theme/"
+msgstr ""
+
+#. Name of the theme
+msgid "Interior Space"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Interior Space is a dark modern and feature-rich multipurpose business "
+"WordPress theme. Interior Space can be used to create a range of various "
+"websites with WordPress. The theme is perfectly suited for all modern "
+"architects and interior design studios such as interior design services, "
+"dining room, exterior design, kitchen designs, living room designs, master "
+"bedroom design, cottage, architecture, architect, architectural and "
+"furniture shops, and many other websites compatible. It has some exotic "
+"features like clean code, advanced typography, sticky menu, logo upload, "
+"header image, Bootstrap 4 framework, built with SEO in mind, and being "
+"Mobile-ready, translation ready (WPML, Polylang) and it's built to be "
+"beautiful on all screen sizes. This theme supports the best Elementor page "
+"builder to create, edit, and update page designs as per the requirement. "
+"Interior Space also supports popular free and premium WordPress plugins such "
+"as Elementor, Yoast SEO, WooCommerce, Contact Form 7, Jetpack, Google "
+"Analytics, and much more. Check the demo of Interior Space Pro https:"
+"//themearile.com/arilewp-pro-theme/."
+msgstr ""
+
+#. Author of the theme
+msgid "ThemeArile"
+msgstr ""
+
+#: template-parts/site-navbar.php:12
+msgid "Toggle navigation"
+msgstr ""

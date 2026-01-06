@@ -1,0 +1,25 @@
+#adminmenu #menu-posts-ourteam .menu-icon-post div.wp-menu-image:before {
+    content: "\f0c0";
+    font-family: FontAwesome;
+}
+
+#adminmenu #menu-posts-testimonial .menu-icon-post div.wp-menu-image:before {
+    content: "\f10d";
+    font-family: FontAwesome;
+}
+
+#adminmenu #menu-posts-services .menu-icon-post div.wp-menu-image:before {
+    content: "\f022";
+    font-family: FontAwesome;
+}
+.wpb_darna_slider_container .wpb_content_element,.wpb_darna_testimonial_ctn .wpb_content_element,.wpb_darna_services_ctn .wpb_content_element
+{
+    min-width: 250px;
+    display: inline-block;
+}
+.vc_element-icon.fa
+{
+    background-image: none;
+    color: #FCB42B;
+    font-size: 30px;
+}

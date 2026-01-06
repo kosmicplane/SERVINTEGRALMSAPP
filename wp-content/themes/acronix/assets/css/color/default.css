@@ -1,0 +1,21 @@
+:root {
+    --primary-color: #DF5D16;
+    --dark: #181818;
+    --white: #ffffff;
+    --dark-fix: #181818;
+    --dark2-fix: #22262a;
+    --white-fix: #ffffff;
+    --bg-color: #df5d160f;
+    --border-color: 0,0,0
+}
+
+[data-bs-theme="dark"]{
+    --primary-color: #DF5D16;
+    --dark: #ffffff;
+    --white: #181818;
+    --dark-fix: #181818;
+    --dark2-fix: #22262a;
+    --white-fix: #ffffff;
+    --bg-color: #22262a;
+    --border-color: 255,255,255
+}

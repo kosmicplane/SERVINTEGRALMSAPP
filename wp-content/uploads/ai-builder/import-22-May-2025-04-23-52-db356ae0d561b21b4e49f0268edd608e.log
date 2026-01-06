@@ -1,0 +1,26 @@
+
+Started Import Process
+# System Details: 
+Debug Mode 		: Activado
+Operating System 	: Linux
+Software 		: Apache
+MySQL version 		: 10.6.21
+XML Reader 		: Sí
+PHP Version 		: 8.3.19
+PHP Max Input Vars 	: 1000
+PHP Max Post Size 	: 32M
+PHP Extension GD 	: Sí
+PHP Max Execution Time 	: 30
+Max Upload Size 	: 32 MB
+Memory Limit 		: 256M
+Timezone 		: 0
+
+-----
+
+Importing Started! - 17:08:06 UTC
+---
+
+WHY IMPORT PROCESS CAN FAIL? READ THIS - 
+https://wpastra.com/docs/?p=1314&utm_source=demo-import-panel&utm_campaign=import-error&utm_medium=wp-dashboard
+
+---

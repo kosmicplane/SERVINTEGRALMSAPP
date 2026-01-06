@@ -1,0 +1,39 @@
+.indofinance-pagination{
+    margin: 1.5rem 0rem;
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem;
+        align-items: center;
+        justify-content: center;
+        margin: 0.5rem auto;
+
+        .page-numbers {
+            height: 2.75rem;
+            min-width: 2.75rem;
+            padding: 0 0.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        a:not(.next):not(.prev) {
+            text-decoration: none;
+            border: solid 1px var(--primary-color);
+            padding: 0.3125rem 0.625rem;
+            border-radius: 4px;
+
+            &:hover,
+            &:focus {
+                background-color: var(--primary-color);
+                color: white;
+            }
+        }
+
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+}

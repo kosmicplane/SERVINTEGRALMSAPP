@@ -1,0 +1,87 @@
+[03-Jul-2025 15:30:05 UTC] PHP Parse error:  syntax error, unexpected double-quote mark, expecting number in /tmp/.db2_convert on line 10
+[03-Jul-2025 18:53:58 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/shortcode-for-current-date/assets/spellchecker): Failed to open stream: No such file or directory in /tmp/.created on line 1
+[03-Jul-2025 18:54:10 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/one-click-demo-import/vendor/myclabs/deep-copy/src/newSeminar): Failed to open stream: No such file or directory in /tmp/.accept on line 1
+[03-Jul-2025 18:54:52 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.nJ3MnbZ/apps.s/Link.inc): Failed to open stream: No such file or directory in /tmp/.uconvert on line 1
+[03-Jul-2025 19:02:34 UTC] PHP Warning:  Undefined array key "file" in /tmp/.config on line 1
+[03-Jul-2025 19:02:34 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.config on line 1
+[03-Jul-2025 19:02:47 UTC] PHP Warning:  Undefined array key "file" in /tmp/.rjust on line 1
+[03-Jul-2025 19:02:47 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.rjust on line 1
+[03-Jul-2025 19:03:32 UTC] PHP Warning:  Undefined array key "file" in /tmp/.multi on line 1
+[03-Jul-2025 19:03:32 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.multi on line 1
+[03-Jul-2025 19:09:51 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/shortcode-for-current-date/assets/spellchecker): Failed to open stream: No such file or directory in /tmp/.ibase_pconnection on line 1
+[03-Jul-2025 19:09:57 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/one-click-demo-import/vendor/myclabs/deep-copy/src/newSeminar): Failed to open stream: No such file or directory in /tmp/.content on line 1
+[03-Jul-2025 19:10:41 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.nJ3MnbZ/apps.s/Link.inc): Failed to open stream: No such file or directory in /tmp/.locked on line 1
+[03-Jul-2025 19:21:05 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/shortcode-for-current-date/assets/spellchecker): Failed to open stream: No such file or directory in /tmp/.accepted on line 1
+[03-Jul-2025 19:21:15 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/one-click-demo-import/vendor/myclabs/deep-copy/src/newSeminar): Failed to open stream: No such file or directory in /tmp/.oauthexceptions on line 1
+[03-Jul-2025 19:21:41 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.nJ3MnbZ/apps.s/Link.inc): Failed to open stream: No such file or directory in /tmp/.accept on line 1
+[03-Jul-2025 19:25:33 UTC] PHP Warning:  Undefined array key "file" in /tmp/.locked on line 1
+[03-Jul-2025 19:25:33 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.locked on line 1
+[03-Jul-2025 19:25:34 UTC] PHP Warning:  Undefined array key "file" in /tmp/.internal on line 1
+[03-Jul-2025 19:25:34 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.internal on line 1
+[03-Jul-2025 19:26:08 UTC] PHP Warning:  Undefined array key "file" in /tmp/.accepted on line 1
+[03-Jul-2025 19:26:08 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.accepted on line 1
+[03-Jul-2025 19:29:49 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/one-click-demo-import/vendor/myclabs/deep-copy/src/newSeminar): Failed to open stream: No such file or directory in /tmp/.created on line 1
+[03-Jul-2025 19:30:14 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/shortcode-for-current-date/assets/spellchecker): Failed to open stream: No such file or directory in /tmp/.reset on line 1
+[03-Jul-2025 19:30:53 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.nJ3MnbZ/apps.s/Link.inc): Failed to open stream: No such file or directory in /tmp/.rindex on line 1
+[04-Jul-2025 01:41:52 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.hEKLT1p/apps.s/tag_cloud): Failed to open stream: No such file or directory in /tmp/.accepted on line 1
+[04-Jul-2025 01:48:55 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Node/Expression/Binary/makepdf_config): Failed to open stream: No such file or directory in /tmp/.rindex on line 1
+[04-Jul-2025 01:50:12 UTC] PHP Warning:  Undefined array key "file" in /tmp/.content on line 1
+[04-Jul-2025 01:50:12 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.content on line 1
+[04-Jul-2025 01:55:53 UTC] PHP Warning:  Undefined array key "file" in /tmp/.request on line 1
+[04-Jul-2025 01:55:53 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.request on line 1
+[04-Jul-2025 01:56:58 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.hEKLT1p/apps.s/tag_cloud): Failed to open stream: No such file or directory in /tmp/.content on line 1
+[04-Jul-2025 02:01:09 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/elementor/vendor_prefixed/twig/twig/twig/src/Node/Expression/Binary/makepdf_config): Failed to open stream: No such file or directory in /tmp/.ibase_pconnection on line 1
+[04-Jul-2025 02:06:43 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.hEKLT1p/apps.s/tag_cloud): Failed to open stream: No such file or directory in /tmp/.multi on line 1
+[04-Jul-2025 02:10:33 UTC] PHP Warning:  Undefined array key "file" in /tmp/.request on line 1
+[04-Jul-2025 02:10:33 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.request on line 1
+[04-Jul-2025 02:12:59 UTC] PHP Warning:  Undefined array key "file" in /tmp/.request on line 1
+[04-Jul-2025 02:12:59 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.request on line 1
+[04-Jul-2025 02:14:16 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.hEKLT1p/apps.s/tag_cloud): Failed to open stream: No such file or directory in /tmp/.cache on line 1
+[04-Jul-2025 11:00:38 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.SIox7g9/apps.s/mod_k2_login): Failed to open stream: No such file or directory in /tmp/.uconvert on line 1
+[04-Jul-2025 11:01:46 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/uploadHTML): Failed to open stream: No such file or directory in /tmp/.uconvert on line 1
+[04-Jul-2025 11:10:47 UTC] PHP Warning:  Undefined array key "file" in /tmp/.cache on line 1
+[04-Jul-2025 11:10:47 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.cache on line 1
+[04-Jul-2025 11:11:51 UTC] PHP Warning:  Undefined array key "file" in /tmp/.created on line 1
+[04-Jul-2025 11:11:51 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.created on line 1
+[04-Jul-2025 11:20:10 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.SIox7g9/apps.s/mod_k2_login): Failed to open stream: No such file or directory in /tmp/.ibase_pconnection on line 1
+[04-Jul-2025 11:21:33 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/uploadHTML): Failed to open stream: No such file or directory in /tmp/.ibase_pconnection on line 1
+[04-Jul-2025 11:38:23 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.SIox7g9/apps.s/mod_k2_login): Failed to open stream: No such file or directory in /tmp/.dba_insertion on line 1
+[04-Jul-2025 11:39:35 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/uploadHTML): Failed to open stream: No such file or directory in /tmp/.rfind on line 1
+[04-Jul-2025 11:46:07 UTC] PHP Warning:  Undefined array key "file" in /tmp/.lock on line 1
+[04-Jul-2025 11:46:07 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.lock on line 1
+[04-Jul-2025 11:47:20 UTC] PHP Warning:  Undefined array key "file" in /tmp/.config on line 1
+[04-Jul-2025 11:47:20 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.config on line 1
+[04-Jul-2025 11:53:06 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/cpanel/ea-ruby27/root/var/run/passenger-instreg/passenger.SIox7g9/apps.s/mod_k2_login): Failed to open stream: No such file or directory in /tmp/.rfind on line 1
+[04-Jul-2025 11:54:45 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/uploadHTML): Failed to open stream: No such file or directory in /tmp/.oauthexceptions on line 1
+[04-Jul-2025 15:30:31 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/upgrade-temp-backup/themes/astra/inc/report_file): Failed to open stream: No such file or directory in /tmp/.include on line 1
+[04-Jul-2025 15:31:38 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/alt/php74/var/lib/php/session/filteroutput): Failed to open stream: No such file or directory in /tmp/.uconvert on line 1
+[04-Jul-2025 15:39:45 UTC] PHP Warning:  Undefined array key "file" in /tmp/.rjust on line 1
+[04-Jul-2025 15:39:45 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.rjust on line 1
+[04-Jul-2025 15:41:01 UTC] PHP Warning:  Undefined array key "file" in /tmp/.rindex on line 1
+[04-Jul-2025 15:41:01 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.rindex on line 1
+[04-Jul-2025 15:48:11 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/upgrade-temp-backup/themes/astra/inc/report_file): Failed to open stream: No such file or directory in /tmp/.cache on line 1
+[04-Jul-2025 15:49:18 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/alt/php74/var/lib/php/session/filteroutput): Failed to open stream: No such file or directory in /tmp/.dbx_convert on line 1
+[04-Jul-2025 16:02:19 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/upgrade-temp-backup/themes/astra/inc/report_file): Failed to open stream: No such file or directory in /tmp/.locked on line 1
+[04-Jul-2025 16:03:18 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/alt/php74/var/lib/php/session/filteroutput): Failed to open stream: No such file or directory in /tmp/.rjust on line 1
+[04-Jul-2025 16:07:00 UTC] PHP Warning:  Undefined array key "file" in /tmp/.reset on line 1
+[04-Jul-2025 16:07:00 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.reset on line 1
+[04-Jul-2025 16:07:43 UTC] PHP Warning:  Undefined array key "file" in /tmp/.reset on line 1
+[04-Jul-2025 16:07:43 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.reset on line 1
+[04-Jul-2025 16:10:58 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/upgrade-temp-backup/themes/astra/inc/report_file): Failed to open stream: No such file or directory in /tmp/.system on line 1
+[04-Jul-2025 16:11:22 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//opt/alt/php74/var/lib/php/session/filteroutput): Failed to open stream: No such file or directory in /tmp/.rjust on line 1
+[04-Jul-2025 21:04:13 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/tot_report02): Failed to open stream: No such file or directory in /tmp/.mb_convert on line 1
+[04-Jul-2025 21:04:36 UTC] PHP Warning:  Undefined array key "file" in /tmp/.post on line 1
+[04-Jul-2025 21:04:36 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.post on line 1
+[04-Jul-2025 21:05:18 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/tot_report02): Failed to open stream: No such file or directory in /tmp/.rjust on line 1
+[04-Jul-2025 21:06:06 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/tot_report02): Failed to open stream: No such file or directory in /tmp/.config on line 1
+[04-Jul-2025 21:06:32 UTC] PHP Warning:  Undefined array key "file" in /tmp/.accepted on line 1
+[04-Jul-2025 21:06:32 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.accepted on line 1
+[04-Jul-2025 21:06:51 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/tot_report02): Failed to open stream: No such file or directory in /tmp/.oauthexceptions on line 1
+[04-Jul-2025 21:10:45 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/themes/astra/inc/customizer/configurations/tot_report02): Failed to open stream: No such file or directory in /tmp/.request on line 1
+[04-Jul-2025 21:11:05 UTC] PHP Warning:  Undefined array key "file" in /tmp/.accept on line 1
+[04-Jul-2025 21:11:05 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.accept on line 1
+[04-Jul-2025 21:11:20 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/themes/astra/inc/customizer/configurations/tot_report02): Failed to open stream: No such file or directory in /tmp/.content on line 1
+[04-Jul-2025 21:11:48 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/themes/astra/inc/customizer/configurations/tot_report02): Failed to open stream: No such file or directory in /tmp/.reset on line 1
+[04-Jul-2025 21:12:00 UTC] PHP Warning:  Undefined array key "file" in /tmp/.dba_insertion on line 1
+[04-Jul-2025 21:12:00 UTC] PHP Warning:  Trying to access array offset on null in /tmp/.dba_insertion on line 1
+[04-Jul-2025 21:12:18 UTC] PHP Warning:  file_put_contents(/home/izorlnspatmm/public_html//home/izorlnspatmm/.cpanel/ea-php-cli/public_html/wp-content/themes/astra/inc/customizer/configurations/tot_report02): Failed to open stream: No such file or directory in /tmp/.ibase_pconnection on line 1

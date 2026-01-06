@@ -1,0 +1,4 @@
+[25-Jun-2025 23:25:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/plugins/gutenberg/build/block-library/blocks/post-comments-link.php:76
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/plugins/gutenberg/build/block-library/blocks/post-comments-link.php on line 76

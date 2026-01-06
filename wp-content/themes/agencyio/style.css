@@ -1,0 +1,177 @@
+/*
+Theme Name: Agencyio  
+Theme URI: https://themeansar.com/free-themes/agencyio-free-wordpress-theme/
+Author: themeansar
+Author URI: https://themeansar.com
+Template: agencyup
+Description: Agencyio WordPress theme ideal for a business or perfect solutions for corporate, consulting, wedding planners, agency, law firms, finance, law travel, recipes, sport/medical shops, startups, online agencies, portfolios, freelancers, E-commerce. The theme is responsive, WPML, Retina ready, SEO friendly (Live preview : https://demos.themeansar.com/agencyup/agencyio/)
+Version: 0.3
+Tested up to: 6.5.2
+Requires PHP: 7.0
+Tags: two-columns, three-columns, left-sidebar, right-sidebar, translation-ready, custom-background, custom-logo, featured-images, footer-widgets, full-width-template, blog, e-commerce, entertainment
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl.html
+Text Domain: agencyio
+*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+.bs-head-detail .info_widget {
+    display: flex;
+    font-size: 13px;
+}
+    
+.bs-headwidget.white .bs-head-detail {
+  border-bottom: 1px solid #eee;
+}
+.bs-head-detail .info_widget i {
+    display: inline-flex;
+    position: relative;
+    margin-right: 0;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.bs-head-detail .info_widget strong {
+    display: flex;
+    margin-bottom: -5px;
+    font-weight: 400;
+}
+.bs-head-detail.two {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}.desk-header {
+	display: flex;
+}
+.desk-header .btn-theme{
+	padding: 6px 22px;
+	line-height: 20px;
+    margin-left: 10px;
+}
+.desk-header .msearch {
+	padding: 8px;
+}
+.bs-headwidget .desk-header .msearch {
+	padding: 8px 10px;
+}
+.desk-header .msearch.dropdown-toggle::after {
+	content: inherit;
+}
+.top-cart {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+}
+span.close.fa.fa-times {
+    opacity: 1;
+}
+.bs-default.cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+.admin-bar .bs-default.cont {
+    top: 30px !important; 
+}
+.bs-default.cont .bs-head-detail {
+    padding: 5px 0;
+    position: relative;
+    z-index: 1;
+}
+.bs-default.cont .bs-head-detail::after {
+	content: unset;
+}
+.bs-default.cont .bs-head-detail .info-right {
+    align-items: center;
+}
+.bs-head-detail ul{
+    column-gap: 15px;
+}
+.bs-default.cont .head_widget .ta-header-box-icon {
+    color: #fff;
+    background: #0055FF;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    position: relative;
+    text-align: center;
+    width: 38px;
+    line-height: 38px;
+}
+.bs-default.cont .head_widget {
+    align-items: center;
+    column-gap: 10px;
+}
+.bs-default.cont .head_widget h5 {
+    font-weight: 700;
+}
+
+
+.btn-themes::after,
+.btn-themes > span {
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+#bs-slider .slide-caption h2 {
+    font-size: 75px;
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .bs-heading h2, #product .bs-heading h2 {
+    font-family: "Urbanist", sans-serif;
+    font-weight: 800;
+}
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+.desk-header { 
+    gap: 10px;
+}
+#bs-slider .bs-slide,
+.bs-slider .bs-slide {
+    height: 750px !important;
+    padding-top: 5%;
+}
+
+.top-ct-section .feature_widget{
+	box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+}
+#bs-slider .slide-subtitle {
+    background: #0055FF;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    padding: 5px 10px 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+#bs-slider .slide-caption h2 {
+    text-shadow: unset;
+}
+p a {
+	text-decoration: underline;
+}
+
+.bs-breadcrumb-section .overlay
+{
+    padding: 150px 0 100px 0;
+}
+
+ span.close.fa.fa-times,
+ .navbar-toggler .close {
+    display: none; 
+} 
+
+.navbar-toggler.collapsed>.close, .navbar-toggler:not(.collapsed)>.navbar-toggler-icon {
+    display: block;
+}

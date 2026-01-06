@@ -1,0 +1,60 @@
+.darna-feature.style1
+{
+  margin-bottom: 30px !important;
+  .darna-feature-thumb
+  {
+    position: relative;
+    span{
+      position: absolute;
+      display: block;
+      right: 20px;
+      top: 20px;
+      i{
+        color: #FFFFFF;
+        font-size: 30px;
+      }
+    }
+    img{
+      width: 100%;
+      height: auto;
+    }
+    &:hover{
+      i{
+        color: @primary_color;
+      }
+    }
+  }
+  .darna-feature-content
+  {
+    h4
+    {
+      margin: 21px 0 20px 0;
+      font-family: @secondary_font;
+      font-size: 21px;
+      font-weight: 400;
+      i{
+        color: @primary_color;
+        font-size: 26px;
+        margin-right: 9px;
+      }
+      a{
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: @heading_color;
+        text-transform: uppercase;
+        &:hover{
+          color: @primary_color;
+          text-decoration: none;
+        }
+      }
+    }
+
+    p{
+      font-size: 14px;
+      font-weight: 400;
+      color: @text_color;
+      margin: 0 0 20px;
+    }
+  }
+}

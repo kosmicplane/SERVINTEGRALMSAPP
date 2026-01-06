@@ -1,0 +1,1506 @@
+# Translation of Themes - Inspiro in Spanish (Colombia)
+# This file is distributed under the same license as the Themes - Inspiro package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-08-18 23:16:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es_CO\n"
+"Project-Id-Version: Themes - Inspiro\n"
+
+#. Theme Name of the theme
+#: style.css inc/classes/class-inspiro-custom-wp-admin-menu.php:146
+#: inc/classes/class-inspiro-notice-review.php:83 patterns/awards.php:14
+#: patterns/contact-card-with-social-links.php:14
+#: patterns/fullscreen-hero.php:14 patterns/hero-with-video-lightbox.php:14
+#: patterns/list-of-posts.php:14 patterns/portfolio.php:14
+#: patterns/pricing-table.php:14 patterns/section-with-3-columns.php:14
+#: patterns/section-with-number.php:14
+#: patterns/section-with-text-and-numbers.php:14
+#: patterns/section-with-video-background.php:14 patterns/services.php:14
+#: patterns/team.php:14 patterns/testimonials.php:14
+#, gp-priority: high
+msgid "Inspiro"
+msgstr "Inspiro"
+
+#: inc/customizer/configs/colors/class-inspiro-color-footer-config.php:136
+msgid "👉 Unlock all customizations"
+msgstr "👉 Desbloquea todas las personalizaciones"
+
+#: inc/customizer/configs/colors/class-inspiro-color-footer-config.php:135
+msgid "Unlock all customization options by upgrading to the Premium version of the theme. Customize colors, fonts, header, footer & much more!"
+msgstr "Desbloquea todas las opciones de personalización actualizando a la versión Premium del tema. ¡Personaliza colores, fuentes, la cabecera, el pie de página y mucho más!"
+
+#: inc/customizer/configs/colors/class-inspiro-color-footer-config.php:134
+msgid "🎨 There are 68 more color & font options in Inspiro Premium!"
+msgstr "🎨 ¡Hay 68 opciones más de colores y fuentes en Inspiro Premium!"
+
+#: inc/customizer/configs/colors/class-inspiro-color-footer-config.php:106
+msgid "Footer Background"
+msgstr "Fondo del pie de página"
+
+#: inc/customizer/configs/colors/class-inspiro-color-header-config.php:197
+msgid "Menu Background on Scroll"
+msgstr "Fondo del menú al hacer scroll"
+
+#: inc/customizer/configs/colors/class-inspiro-color-header-config.php:187
+msgid "Menu Background"
+msgstr "Fondo del menú"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:60
+msgid "Footer Layout"
+msgstr "Diseño del pie de página"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:115
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:183
+msgid "PRO"
+msgstr "PRO"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:119
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:123
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:127
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:131
+msgid "Footer Pro"
+msgstr "Pie de página Pro"
+
+#: inc/customizer/configs/colors/class-inspiro-color-header-config.php:118
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:43
+msgid "Header"
+msgstr "Cabecera"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:138
+msgid "Header Layout"
+msgstr "Diseño de la cabecera"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:154
+msgid "Select the header layout. The hamburger icon appears on the desktop if the Sidebar has at least one widget. On mobile devices, the main menu is displayed in the sidebar."
+msgstr "Selecciona el diseño de la cabecera. El icono de hamburguesa aparece en dispositivos de escritorio si la barra lateral tiene al menos un widget. En dispositivos móviles, el menú principal se muestra en la barra lateral."
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:158
+msgid "Default Style"
+msgstr "Estilo por defecto"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:162
+msgid "Menu on left side"
+msgstr "Menú a la izquierda"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:166
+msgid "Menu on center"
+msgstr "Menú en el centro"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:170
+msgid "Hidden menu"
+msgstr "Menú oculto"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:187
+msgid "Left menu with Logo Center"
+msgstr "Menú izquierdo con logotipo en el centro"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:191
+msgid "Center menu with Logo Center"
+msgstr "Menú y logotipo en el centro"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:218
+msgid "Header Menu Width"
+msgstr "Anchura del menú de la cabecera"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:222
+msgid "Narrow"
+msgstr "Estrecho"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:223
+msgid "Full-width"
+msgstr "Ancho completo"
+
+#: inc/customizer/configs/header/class-inspiro-header-area-config.php:247
+msgid "Show search icon and search form in the header"
+msgstr "Mostrar el icono y el formulario de búsqueda en la cabecera"
+
+#: inc/admin/pages/sidebar.php:93
+msgid "Subscribe for Tips & Tricks"
+msgstr "Suscríbete a consejos y trucos"
+
+#: inc/admin/pages/sidebar.php:96
+msgid "To ease up the journey you’re starting with Inspiro, we’re sending you some useful tips & tricks to have the best experience building your website."
+msgstr "Para facilitar el viaje que estás iniciando con Inspiro, te enviamos algunos útiles consejos y trucos para que tengas la mejor experiencia creando tu web."
+
+#: inc/starter-content.php:595
+msgid "\"Best Film\""
+msgstr "«Mejor película»"
+
+#: inc/starter-content.php:595 inc/starter-content.php:613
+#: inc/starter-content.php:631
+msgid "Winner"
+msgstr "Ganador"
+
+#: inc/starter-content.php:613
+msgid "\"New Film Festival\""
+msgstr "«Nuevo festival de cine»"
+
+#: inc/starter-content.php:631
+msgid "\"Best Short\""
+msgstr "«Mejor corto»"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:69
+msgid "Enable Hero Area on the Homepage"
+msgstr "Activar el área a pantalla completa en la página de inicio"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:102
+msgid "Show Dark Overlay"
+msgstr "Mostrar una superposición oscura"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-panel-config.php:32
+msgid "Homepage Hero Area"
+msgstr "Área a pantalla completa de la página de inicio"
+
+#: inc/starter-content.php:517
+msgctxt "Theme starter content"
+msgid "About"
+msgstr "Acerca de"
+
+#: inc/admin/pages/admin.php:438
+msgid "View Demo &rarr;"
+msgstr "Ver la demostración &rarr;"
+
+#. Template Name of the theme
+msgid "Homepage (Without Hero Area)"
+msgstr "Página de inicio (sin área a pantalla completa)"
+
+#: inc/admin/pages/admin.php:267
+msgid "Importing demo data (post, pages, images, etc.) is the quickest and easiest way to set up your new theme, and it allows you to simply edit everything instead of creating content and layouts from scratch."
+msgstr "Importar los datos de la demostración (entradas, páginas, imágenes, etc.) es la forma más rápida y sencilla de configurar tu nuevo tema y te permite simplemente editar todo, en lugar de crear contenido y diseños desde cero."
+
+#: inc/customizer/class-inspiro-customizer.php:279
+msgid "Upgrade to Inspiro Premium"
+msgstr "Actualizar a Inspiro Premium"
+
+#: inc/customizer/class-inspiro-customizer.php:281
+msgid "View Inspiro Premium"
+msgstr "Ver Inspiro Premium"
+
+#: inc/admin/pages/admin.php:690
+msgid "Elementor Integration"
+msgstr "Integración de Elementor"
+
+#. translators: Hidden accessibility text.
+#: inc/admin/pages/upgrade.php:82
+msgid "Theme zip file"
+msgstr "Archivo ZIP"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:33
+msgid "Logo"
+msgstr "Logotipo"
+
+#: inc/classes/class-inspiro-theme-upgrader.php:193
+msgid "Able to migrate"
+msgstr "Capaz de migrar"
+
+#: inc/classes/class-inspiro-theme-upgrader.php:193
+msgid "Site URL"
+msgstr "URL del sitio"
+
+#: inc/classes/class-inspiro-theme-upgrader.php:193
+msgid "Blogname"
+msgstr "Nombre del sitio"
+
+#: inc/classes/class-inspiro-theme-upgrader.php:191
+msgid "Migrate settings for following blog site:"
+msgstr "Migrar la configuración del siguiente sitio del blog:"
+
+#. translators: %1$s: Documentation URL. %2$s: Link title.
+#: inc/classes/class-inspiro-theme-upgrader.php:160
+msgid "Note:"
+msgstr "Nota:"
+
+#: inc/classes/class-inspiro-theme-upgrader.php:127
+msgid "Create temporary custom post type Slider"
+msgstr "Crear un tipo de contenido personalizado temporal «Slider»"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:96
+msgid "Mobile Menu"
+msgstr "Menú móvil"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:32
+msgid "Heading 2"
+msgstr "Encabezado 2"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:33
+msgid "Body"
+msgstr "Cuerpo"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:32
+msgid "Heading 4"
+msgstr "Encabezado 4"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:32
+msgid "Heading 6"
+msgstr "Encabezado 6"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:32
+msgid "Heading 1"
+msgstr "Encabezado 1"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-panel-config.php:33
+msgid "Typography"
+msgstr "Tipografía"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:33
+msgid "Menu"
+msgstr "Menú"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:116
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:116
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:123
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:124
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:117
+msgid "Only selected Font Variants will be loaded from Google Fonts."
+msgstr "Solo se cargarán desde Google Fonts las variantes de fuentes seleccionadas."
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:94
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:115
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:115
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:123
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:116
+msgid "Variants"
+msgstr "Variantes"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:92
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:84
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:105
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:105
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:112
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:92
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:113
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:106
+msgid "Font Family"
+msgstr "Familia de Fuente"
+
+#: inc/customizer/configs/colors/class-inspiro-color-general-config.php:251
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:33
+msgid "Headings"
+msgstr "Encabezados"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:32
+msgid "Heading 3"
+msgstr "Encabezado 3"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:32
+msgid "Heading 5"
+msgstr "Encabezado 5"
+
+#: inc/customizer/custom-controls/font-presets/class-inspiro-customize-font-presets-control.php:41
+msgid "View Presets"
+msgstr "Ver los preajustes"
+
+#: inc/customizer/custom-controls/font-presets/class-inspiro-customize-font-presets-control.php:36
+msgid "Choosing a preset will override all the font settings."
+msgstr "La elección de un preajuste sobrescribirá todos los ajustes de las fuentes."
+
+#: inc/customizer/custom-controls/font-presets/class-inspiro-customize-font-presets-control.php:35
+msgid "Presets"
+msgstr "Preajustes"
+
+#: inc/customizer/class-inspiro-customizer.php:473
+msgid "System Fonts"
+msgstr "Fuentes de sistema"
+
+#: inc/customizer/class-inspiro-customizer.php:472
+msgid "Default System Font"
+msgstr "Fuete del sistema por defecto"
+
+#: inc/classes/class-inspiro-font-family-manager.php:251
+#: inc/customizer/class-inspiro-customizer.php:453
+#: inc/customizer/custom-controls/font-variant/class-inspiro-customize-font-variant-control.php:88
+#: inc/customizer/custom-controls/typography/class-inspiro-customize-typography-control.php:104
+msgid "Inherit"
+msgstr "Heredar"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:153
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:132
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:166
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:166
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:173
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:153
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:174
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:167
+msgid "Line Height"
+msgstr "Altura de la línea"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:145
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:124
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:158
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:158
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:165
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:145
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:166
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:159
+msgid "Lowercase"
+msgstr "Minúsculas"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:144
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:102
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:123
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:157
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:157
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:164
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:144
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:165
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:158
+msgid "Uppercase"
+msgstr "Mayúsculas"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:143
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:101
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:122
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:156
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:156
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:163
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:143
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:164
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:157
+msgid "Capitalize"
+msgstr "Capitalizar"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:142
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:100
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:121
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:155
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:155
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:162
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:142
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:163
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:156
+msgctxt "text transform"
+msgid "None"
+msgstr "Ninguno"
+
+#: inc/classes/class-inspiro-font-family-manager.php:235
+msgid "900 Italic"
+msgstr "900 Italica"
+
+#: inc/classes/class-inspiro-font-family-manager.php:234
+msgid "Ultra-Bold 900"
+msgstr "Ultra-Bold 900"
+
+#: inc/classes/class-inspiro-font-family-manager.php:233
+msgid "800 Italic"
+msgstr "800 Italica"
+
+#: inc/classes/class-inspiro-font-family-manager.php:232
+msgid "Extra-Bold 800"
+msgstr "Extra-Bold 800"
+
+#: inc/classes/class-inspiro-font-family-manager.php:231
+msgid "700 Italic"
+msgstr "700 Italica"
+
+#: inc/classes/class-inspiro-font-family-manager.php:230
+msgid "Bold 700"
+msgstr "Bold 700"
+
+#: inc/classes/class-inspiro-font-family-manager.php:229
+msgid "600 Italic"
+msgstr "600 Itálica"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:141
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:99
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:120
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:154
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:154
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:161
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:141
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:162
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:155
+msgctxt "text transform"
+msgid "Inherit"
+msgstr "Heredar"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:137
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:95
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:116
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:150
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:150
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:157
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:137
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:158
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:151
+msgid "Text Transform"
+msgstr "Transformación de texto"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:124
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:76
+#: inc/customizer/configs/typography/class-inspiro-typo-headings-config.php:103
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:137
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:137
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:144
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:124
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:145
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:138
+msgid "Font Weight"
+msgstr "Grosor del Tipo Letra"
+
+#: inc/customizer/configs/typography/class-inspiro-typo-body-config.php:112
+#: inc/customizer/configs/typography/class-inspiro-typo-h1-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-h2-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-h3-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-h4-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-h5-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-h6-config.php:53
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-button-config.php:125
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-desc-config.php:125
+#: inc/customizer/configs/typography/class-inspiro-typo-hero-header-title-config.php:132
+#: inc/customizer/configs/typography/class-inspiro-typo-logo-config.php:112
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:133
+#: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:126
+msgid "Font Size (px)"
+msgstr "Tamaño de fuente (px)"
+
+#: inc/classes/class-inspiro-font-family-manager.php:228
+msgid "Semi-Bold 600"
+msgstr "Semi-Bold 600"
+
+#: inc/classes/class-inspiro-font-family-manager.php:227
+msgid "500 Italic"
+msgstr "500 cursiva"
+
+#: inc/classes/class-inspiro-font-family-manager.php:226
+msgid "Medium 500"
+msgstr "Medium 500"
+
+#: inc/classes/class-inspiro-font-family-manager.php:225
+msgid "400 Italic"
+msgstr "400 cursiva"
+
+#: inc/classes/class-inspiro-font-family-manager.php:224
+msgid "Normal 400"
+msgstr "Normal 400"
+
+#: inc/classes/class-inspiro-font-family-manager.php:223
+msgid "300 Italic"
+msgstr "300 cursiva"
+
+#: inc/classes/class-inspiro-font-family-manager.php:222
+msgid "Light 300"
+msgstr "Delgada 300"
+
+#: inc/classes/class-inspiro-font-family-manager.php:221
+msgid "200 Italic"
+msgstr "200 cursiva"
+
+#: inc/classes/class-inspiro-font-family-manager.php:220
+msgid "Extra-Light 200"
+msgstr "Extra-Light 200"
+
+#: inc/classes/class-inspiro-font-family-manager.php:219
+msgid "100 Italic"
+msgstr "100 cursiva"
+
+#: inc/classes/class-inspiro-font-family-manager.php:218
+msgid "Thin 100"
+msgstr "Fina 100"
+
+#. translators: %1$s: Comment date %2$s: Comment time
+#: inc/common-functions.php:313
+msgid "%1$s @ %2$s"
+msgstr "%1$s @ %2$s"
+
+#. translators: %s: WordPress Version.
+#: inc/back-compat.php:42 inc/back-compat.php:61 inc/back-compat.php:86
+msgid "This theme requires WordPress 5.3 or newer. You are running version %s. Please upgrade."
+msgstr "Este tema necesita WordPress 5.3 o superior. Estás ejecutando la versión %s. Por favor, actualiza."
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-content-config.php:129
+msgid "Open link on new tab"
+msgstr "Abrir enlace en una nueva pestaña"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:31
+msgid "Media"
+msgstr "Media"
+
+#: inc/customizer/configs/colors/class-inspiro-color-hero-config.php:128
+msgid "Hero Button Text Color"
+msgstr "Color del texto del botón de la sección a pantalla completa"
+
+#: inc/classes/class-inspiro-notice-review.php:108
+msgid "Hide this notice"
+msgstr "Esconder esta notificación"
+
+#: inc/classes/class-inspiro-notices.php:130
+msgid "Cheatin&#8217; huh?"
+msgstr "Haciendo trampa ¿eh?"
+
+#: inc/admin-notice.php:75
+msgid "Dismiss this notice."
+msgstr "Descartar este aviso."
+
+#: inc/admin-notice.php:54
+msgid "You do not have the necessary permission to perform this action."
+msgstr "No tienes los permisos necesarios para realizar esta acción."
+
+#: inc/admin-notice.php:50 inc/classes/class-inspiro-notices.php:126
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Error en la acción. Por favor, recarga la página y vuelve a intentarlo."
+
+#: inc/admin/pages/admin.php:777
+msgid "Support"
+msgstr "Soporte"
+
+#: inc/admin/pages/admin.php:772
+msgid "Typography Options"
+msgstr "Opciones de tipografía"
+
+#: inc/admin/pages/admin.php:761
+msgid "Theme Options"
+msgstr "Opciones del Tema"
+
+#: inc/admin/pages/admin.php:749
+msgid "Video & Image Lightbox for Portfolio Posts"
+msgstr "Caja de luz para vídeos e imágenes en las publicaciones del porfolio"
+
+#: inc/admin/pages/admin.php:742
+msgid "Video Headers in Pages & Posts"
+msgstr "Cabeceras de vídeo en páginas y entradas"
+
+#: inc/admin/pages/admin.php:730
+msgid "Video Backgrounds"
+msgstr "Fondos de vídeo"
+
+#: inc/admin/pages/admin.php:725
+msgid "Predefined Style Kits"
+msgstr "Kits de estilo predefinidos"
+
+#: inc/admin/pages/admin.php:720
+msgid "Video Features"
+msgstr "Características de vídeo"
+
+#: inc/admin/pages/admin.php:702
+msgid "Demo Content Importer"
+msgstr "Contenido actualizado correctamente"
+
+#: inc/admin/pages/admin.php:684
+msgid "Advanced WooCommerce Integration"
+msgstr "Integración avanzada de WooCommerce"
+
+#: inc/admin/pages/admin.php:677
+msgid "Fullscreen Slideshow on Homepage"
+msgstr "Presentación de diapositivas a pantalla completa en la página de inicio"
+
+#: inc/admin/pages/admin.php:671
+msgid "Live Customizer"
+msgstr "Personalizador en vivo"
+
+#: inc/admin/pages/admin.php:666
+msgid "Responsive Layout"
+msgstr "Diseño adaptable"
+
+#: inc/admin-notice.php:80 inc/admin/pages/admin.php:661
+#: inc/admin/pages/sidebar.php:33 inc/admin/pages/upgrade.php:133
+msgid "Inspiro Premium"
+msgstr "Inspiro Premium"
+
+#: inc/admin/pages/admin.php:660
+msgid "Inspiro Lite"
+msgstr "Inspiro Lite"
+
+#: inc/admin/pages/admin.php:650
+msgid "Inspiro Lite vs. Inspiro Premium"
+msgstr "Inspiro Lite vs. Inspiro Premium"
+
+#: inc/admin/pages/admin.php:778
+msgid "Support Forum"
+msgstr "Foro de soporte"
+
+#: inc/admin/pages/sidebar.php:57
+msgid "Documentation"
+msgstr "Documentación"
+
+#: inc/admin/pages/admin.php:87 inc/admin/pages/admin.php:434
+msgid "Get Inspiro Premium &rarr;"
+msgstr "Obtener Inspiro Premium &rarr;"
+
+#: inc/customizer/class-inspiro-customizer.php:280
+msgid "Unlock premium features: 7 Style Kits, Video Backgrounds, Portfolio Integration, Premium Support and much more..."
+msgstr "Desbloquea las características premium: 7 kits de estilo, fondos de vídeo, integración de carteras, soporte premium y mucho más..."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3545
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Instalando Plugin %1$s (%2$d/%3$d)"
+
+#: inc/classes/class-tgm-plugin-activation.php:3543
+msgid "All installations have been completed."
+msgstr "Todas las instalaciones se han completado."
+
+#. translators: 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:3534
+#: inc/classes/class-tgm-plugin-activation.php:3542
+msgid "%1$s installed successfully."
+msgstr "%1$s instalado correctamente."
+
+#: inc/classes/class-tgm-plugin-activation.php:3540
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "El proceso de instalación está comenzando. Este proceso puede tardar un poco en algunos alojamientos, así que, por favor, sé paciente."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3537
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Instalando y activando el plugin %1$s (%2$d/%3$d)"
+
+#: inc/classes/class-tgm-plugin-activation.php:3535
+msgid "All installations and activations have been completed."
+msgstr "Todas las instalaciones y activaciones han sido completadas."
+
+#: inc/classes/class-tgm-plugin-activation.php:3532
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "El proceso de instalación y activación ha comenzado. Este proceso puede tomar un rato en algunos servidores, así que, por favor, se paciente."
+
+#. translators: 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:3528
+msgid "The installation of %1$s failed."
+msgstr "La instalación de %1$s ha fallado."
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/classes/class-tgm-plugin-activation.php:3526
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "Se produjo un error durante la instalación de %1$s: <strong>%2$s</strong>."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3523
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Actualizando el plugin %1$s (%2$d/%3$d)"
+
+#: inc/classes/class-tgm-plugin-activation.php:3180
+msgid "Plugin activation failed."
+msgstr "La activación del plugin ha fallado."
+
+#: inc/classes/class-tgm-plugin-activation.php:2956
+msgid "No plugins are available to be activated at this time."
+msgstr "No hay plugins disponibles para ser activados en este momento."
+
+#: inc/classes/class-tgm-plugin-activation.php:2930
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Ningún plugin seleccionado para ser activado. Ninguna acción a realizar."
+
+#: inc/classes/class-tgm-plugin-activation.php:2825
+msgid "No plugins are available to be updated at this time."
+msgstr "No hay plugins disponibles para ser actualizados en este momento."
+
+#: inc/classes/class-tgm-plugin-activation.php:2823
+msgid "No plugins are available to be installed at this time."
+msgstr "No hay plugins disponibles para ser instalados en este momento."
+
+#: inc/classes/class-tgm-plugin-activation.php:2782
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "No se seleccionaron complementos para actualizarse. Ninguna acción tomada."
+
+#: inc/classes/class-tgm-plugin-activation.php:2780
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Ningún plugin seleccionado para ser instalado. Ninguna acción a realizar."
+
+#: inc/classes/class-tgm-plugin-activation.php:2750
+msgid "Activate"
+msgstr "Activar"
+
+#: inc/classes/class-tgm-plugin-activation.php:2747
+msgid "Update"
+msgstr "Actualizar"
+
+#: inc/classes/class-tgm-plugin-activation.php:2741
+msgid "Install"
+msgstr "Instalar"
+
+#: inc/classes/class-tgm-plugin-activation.php:2709
+msgid "Upgrade message from the plugin author:"
+msgstr "Mensaje de actualización del autor del plugin:"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2639
+msgid "Activate %2$s"
+msgstr "Activar %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2633
+msgid "Update %2$s"
+msgstr "Actualizar %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2628
+msgid "Install %2$s"
+msgstr "Instalar %2$s"
+
+#: inc/classes/class-tgm-plugin-activation.php:2579
+msgid "Status"
+msgstr "Estado"
+
+#: inc/classes/class-tgm-plugin-activation.php:2578
+msgid "Version"
+msgstr "Versión"
+
+#: inc/classes/class-tgm-plugin-activation.php:2574
+msgid "Type"
+msgstr "Tipo"
+
+#: inc/classes/class-tgm-plugin-activation.php:2573
+msgid "Source"
+msgstr "Fuente"
+
+#: inc/classes/class-tgm-plugin-activation.php:2572
+msgid "Plugin"
+msgstr "Plugin"
+
+#: inc/classes/class-tgm-plugin-activation.php:2558
+msgid "No plugins to install, update or activate."
+msgstr "No hay plugins para instalar, actualizar o activar."
+
+#: inc/classes/class-tgm-plugin-activation.php:2535
+msgid "Available version:"
+msgstr "Versión disponible:"
+
+#: inc/classes/class-tgm-plugin-activation.php:2523
+msgid "Minimum required version:"
+msgstr "Versión mínima obligatoria:"
+
+#: inc/classes/class-tgm-plugin-activation.php:2515
+msgid "Installed version:"
+msgstr "Versión instalada:"
+
+#: inc/classes/class-tgm-plugin-activation.php:2507
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "desconocido"
+
+#. translators: 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2426
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "Para activar <span class=\"count\">(%s)</span>"
+msgstr[1] "Para activar <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2422
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "Actualización disponible <span class=\"count\">(%s)</span>"
+msgstr[1] "Actualizaciones disponibles <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2418
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "Para instalar <span class=\"count\">(%s)</span>"
+msgstr[1] "Para instalar <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2414
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Todo <span class=\"count\">(%s)</span>"
+msgstr[1] "Todo <span class=\"count\">(%s)</span>"
+
+#. translators: 1: install status, 2: update status
+#: inc/classes/class-tgm-plugin-activation.php:2368
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#: inc/classes/class-tgm-plugin-activation.php:2359
+msgid "Update recommended"
+msgstr "Actualización recomendada"
+
+#: inc/classes/class-tgm-plugin-activation.php:2357
+msgid "Requires Update"
+msgstr "Requiere actualización"
+
+#: inc/classes/class-tgm-plugin-activation.php:2355
+msgid "Required Update not Available"
+msgstr "Actualización requerida no disponible"
+
+#: inc/classes/class-tgm-plugin-activation.php:2349
+msgid "Active"
+msgstr "Activo"
+
+#: inc/classes/class-tgm-plugin-activation.php:2347
+msgid "Installed But Not Activated"
+msgstr "Instalado pero no activado"
+
+#: inc/classes/class-tgm-plugin-activation.php:2343
+msgid "Not Installed"
+msgstr "No instalado"
+
+#: inc/classes/class-tgm-plugin-activation.php:2326
+msgid "Pre-Packaged"
+msgstr "Pre-Empaquetado"
+
+#: inc/classes/class-tgm-plugin-activation.php:2323
+msgid "External Source"
+msgstr "Fuente externa"
+
+#: inc/classes/class-tgm-plugin-activation.php:2320
+msgid "WordPress Repository"
+msgstr "Repositorio de WordPress"
+
+#: inc/classes/class-tgm-plugin-activation.php:2304
+msgid "Recommended"
+msgstr "Recomendado"
+
+#: inc/classes/class-tgm-plugin-activation.php:2301
+msgid "Required"
+msgstr "Requerido"
+
+#. translators: %s: version number
+#: inc/classes/class-tgm-plugin-activation.php:2010
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: inc/classes/class-tgm-plugin-activation.php:1144
+#: inc/classes/class-tgm-plugin-activation.php:2970
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "y"
+
+#: inc/classes/class-tgm-plugin-activation.php:956
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr "El paquete remoto de plugin consiste en más de un archivo, pero los mismos no fueron empaquetados en una carpeta."
+
+#: inc/classes/class-tgm-plugin-activation.php:946
+#: inc/classes/class-tgm-plugin-activation.php:956
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr "Por favor, contacta con el proveedor del plugin y pídele que empaquete su plugin de acuerdo con las directrices de WordPress."
+
+#: inc/classes/class-tgm-plugin-activation.php:946
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr "El paquete del plugin externo no contiene una carpeta con el slug deseado y el renombrado no ha funcionado."
+
+#: inc/classes/class-tgm-plugin-activation.php:523
+msgid "Update Required"
+msgstr "Actualización necesaria"
+
+#: inc/classes/class-tgm-plugin-activation.php:522
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr "Este plugin debe actualizarse para que sea compatible con tu tema."
+
+#: inc/classes/class-tgm-plugin-activation.php:397
+msgid "Please contact the administrator of this site for help."
+msgstr "Por favor, contacta con el administrador de este sitio para obtener ayuda."
+
+#: inc/classes/class-tgm-plugin-activation.php:396
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr "Hay uno o más plugins necesarios o recomendados para instalar, actualizar o activar."
+
+#: inc/classes/class-tgm-plugin-activation.php:395
+msgid "Dismiss this notice"
+msgstr "Descartar este aviso"
+
+#. translators: 1: dashboard link.
+#: inc/classes/class-tgm-plugin-activation.php:394
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Todos los plugins han sido instalados y activados correctamente. %1$s"
+
+#. translators: 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:392
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr "El plugin no se ha activado. Este tema necesita una versión superior de %s. Por favor, actualiza el plugin."
+
+#. translators: 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:390
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "No se realizó ninguna acción. El plugin %1$s ya estaba activado."
+
+#: inc/classes/class-tgm-plugin-activation.php:388
+#: inc/classes/class-tgm-plugin-activation.php:2974
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "El siguiente plugin se ha activado correctamente:"
+msgstr[1] "Los siguientes plugins se han activado correctamente:"
+
+#: inc/classes/class-tgm-plugin-activation.php:387
+#: inc/classes/class-tgm-plugin-activation.php:3181
+msgid "Plugin activated successfully."
+msgstr "Plugin activado correctamente."
+
+#: inc/classes/class-tgm-plugin-activation.php:386
+#: inc/classes/class-tgm-plugin-activation.php:837
+#: inc/classes/class-tgm-plugin-activation.php:2558
+#: inc/classes/class-tgm-plugin-activation.php:3605
+msgid "Return to the Dashboard"
+msgstr "Volver al escritorio"
+
+#: inc/classes/class-tgm-plugin-activation.php:385
+msgid "Return to Required Plugins Installer"
+msgstr "Volver al instalador de plugins necesarios"
+
+#: inc/classes/class-tgm-plugin-activation.php:380
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Comenzar a activar el plugin"
+msgstr[1] "Comenzar a activar plugins"
+
+#: inc/classes/class-tgm-plugin-activation.php:375
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "Comenzar a actualizar el plugin"
+msgstr[1] "Comenzar la actualización de los plugins"
+
+#: inc/classes/class-tgm-plugin-activation.php:370
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Comenzar a instalar el plugin"
+msgstr[1] "Comenzar a instalar los plugins"
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:364
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "El siguiente plugin recomendado esta actualmente inactivo: %1$s."
+msgstr[1] "El siguiente plugin recomendado está inactivo: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:358
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "El siguiente plugin necesario está actualmente desactivado: %1$s."
+msgstr[1] "Los siguientes plugins necesarios están actualmente desactivados: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:352
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "Hay una actualización disponible para: %1$s."
+msgstr[1] "Hay actualizaciones disponibles para los siguientes plugins: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:346
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] "El siguiente plugin debe actualizarse a su última versión para garantizar la máxima compatibilidad con este tema: %1$s."
+msgstr[1] "Los siguientes plugins necesitan actualizarse a la versión más reciente para asegurar la máxima compatibilidad con este tema: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:340
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "Este tema recomienda el siguiente complemento: %1$s."
+msgstr[1] "Este tema recomienda los siguientes plugins: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/classes/class-tgm-plugin-activation.php:334
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Este tema necesita el siguiente plugin: %1$s."
+msgstr[1] "Este tema necesita los siguientes plugins: %1$s."
+
+#: inc/classes/class-tgm-plugin-activation.php:333
+msgid "Something went wrong with the plugin API."
+msgstr "Algo salió mal con la API del plugin."
+
+#. translators: %s: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:332
+msgid "Updating Plugin: %s"
+msgstr "Actualizando el plugin: %s"
+
+#. translators: %s: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:330
+msgid "Installing Plugin: %s"
+msgstr "Instalando el plugin: %s"
+
+#: inc/classes/class-tgm-plugin-activation.php:328
+msgid "Install Plugins"
+msgstr "Instalar los plugins"
+
+#: inc/classes/class-tgm-plugin-activation.php:327
+msgid "Install Required Plugins"
+msgstr "Instalar plugins obligatorios"
+
+#: index.php:27
+msgid "Latest Posts"
+msgstr "Últimas entradas"
+
+#: header.php:27
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: inc/custom-header.php:440
+msgid "Pause background video"
+msgstr "Pausar el vídeo de fondo"
+
+#: inc/custom-header.php:439
+msgid "Play background video"
+msgstr "Reproducir el vídeo de fondo"
+
+#: inc/custom-header.php:55
+msgid "Default Header Image"
+msgstr "Imagen por defecto de la cabecera"
+
+#: inc/starter-content.php:803
+msgctxt "Theme starter content"
+msgid "Aerial Land"
+msgstr "Terreno aéreo"
+
+#. translators: %s: Post title.
+#: inc/template-tags.php:226
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Editar<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: inc/template-tags.php:201
+msgid "Written by"
+msgstr "Escrito por"
+
+#: inc/template-tags.php:199
+msgid "Post author"
+msgstr "Autor de la publicación"
+
+#: inc/template-tags.php:192
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. translators: %s: Post date.
+#: inc/template-tags.php:168 inc/template-tags.php:176
+msgid "<span class=\"screen-reader-text\">Posted on</span> %s"
+msgstr "<span class=\"screen-reader-text\">Publicado el</span> %s"
+
+#: inc/template-tags.php:138
+msgid "Comments are Disabled"
+msgstr "Los comentarios están desactivados"
+
+#: inc/template-tags.php:120 template-parts/footer/site-info.php:30
+msgid "by"
+msgstr "por"
+
+#: inc/template-tags.php:37
+msgid "on"
+msgstr "en"
+
+#: inc/template-tags.php:28
+msgid "in"
+msgstr "en"
+
+#. translators: Used between list items, there is a space after the comma.
+#: inc/template-tags.php:20 inc/template-tags.php:70
+msgid ", "
+msgstr ", "
+
+#: inc/customizer/configs/blog-post/class-inspiro-post-options-config.php:72
+msgid "None"
+msgstr "Ninguno"
+
+#: inc/customizer/configs/blog-post/class-inspiro-post-options-config.php:71
+msgid "Full Content"
+msgstr "Contenido completo"
+
+#: inc/customizer/configs/blog-post/class-inspiro-post-options-config.php:70
+msgid "Excerpt"
+msgstr "Extracto"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-content-config.php:31
+msgid "Content"
+msgstr "Contenido"
+
+#: inc/customizer/configs/blog-post/class-inspiro-post-options-config.php:32
+msgid "Post Options"
+msgstr "Opciones de la entrada"
+
+#: inc/customizer/configs/blog-post/class-inspiro-blog-post-panel-config.php:33
+msgid "Blog Post Options"
+msgstr "Opciones de la entrada de blog"
+
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:72
+msgid "Single Post Layout"
+msgstr "Ajustes de las entradas individuales"
+
+#: inc/customizer-functions.php:17
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:64
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:77
+msgid "Sidebar on the right"
+msgstr "Barra lateral a la derecha"
+
+#: inc/customizer-functions.php:16
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:63
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:76
+msgid "Full width"
+msgstr "Ancho completo"
+
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:59
+msgid "Blog Layout"
+msgstr "Diseño del blog"
+
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:31
+msgid "Theme Layout"
+msgstr "Diseño del tema"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:94
+msgid "Four Columns"
+msgstr "Cuatro columnas"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:90
+msgid "Three Columns"
+msgstr "Tres columnas"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:86
+msgid "Two Columns"
+msgstr "Dos columnas"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:82
+msgid "One Column"
+msgstr "Una columna"
+
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:78
+msgid "Don't display Widgets"
+msgstr "No mostrar widgets"
+
+#: inc/customizer/configs/colors/class-inspiro-color-scheme-config.php:63
+msgid "Custom"
+msgstr "Personalizado"
+
+#: inc/customizer/configs/colors/class-inspiro-color-scheme-config.php:62
+msgid "Dark"
+msgstr "Oscuro"
+
+#: inc/customizer/configs/colors/class-inspiro-color-scheme-config.php:61
+msgid "Light"
+msgstr "Claro"
+
+#: inc/customizer/configs/colors/class-inspiro-color-scheme-config.php:59
+msgid "Color Scheme"
+msgstr "Esquema de color"
+
+#: inc/customizer/configs/colors/class-inspiro-color-header-config.php:130
+#: inc/customizer/configs/logo/class-inspiro-custom-logo-text-config.php:40
+msgid "Custom Logo Text"
+msgstr "Texto personalizado del logotipo"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:79
+msgid "Enter a YouTube or Vimeo URL:"
+msgstr "Introduce la URL de YouTube o Vimeo:"
+
+#: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:78
+msgid "External Header Video"
+msgstr "Vídeo de la cabecera externa"
+
+#: inc/classes/class-inspiro-after-setup-theme.php:112
+#: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:103
+#: inc/starter-content.php:823
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: inc/common-functions.php:351
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: inc/common-functions.php:351
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/common-functions.php:337
+msgid "Your comment is awaiting moderation."
+msgstr "Tu comentario está esperando ser moderado."
+
+#: inc/common-functions.php:329
+msgid "Edit"
+msgstr "Editar"
+
+#: inc/common-functions.php:323
+msgid "Reply"
+msgstr "Responder"
+
+#: inc/common-functions.php:157
+msgid "Widget area for \"Instagram widget by WPZOOM\"."
+msgstr "Área de widget para «Instagram widget by WPZOOM»."
+
+#: inc/common-functions.php:155
+msgid "Footer Instagram Bar"
+msgstr "Barra de Instagram a pie de página"
+
+#: inc/common-functions.php:144
+msgid "Widget area in the header. Install the \"Social Icons Widget by WPZOOM\" plugin and add the widget here."
+msgstr "Área de widgets en la cabecera. Instala el plugin «Social Icons Widget by WPZOOM» y añade el widget aquí."
+
+#: inc/common-functions.php:142
+msgid "Header Social Icons"
+msgstr "Iconos sociales en la cabecera"
+
+#: inc/common-functions.php:130
+msgid "Footer 4"
+msgstr "Pie de página 4"
+
+#: inc/common-functions.php:118
+msgid "Footer 3"
+msgstr "Pie de página 3"
+
+#: inc/common-functions.php:106
+msgid "Footer 2"
+msgstr "Pie de página 2"
+
+#: inc/common-functions.php:96 inc/common-functions.php:108
+#: inc/common-functions.php:120 inc/common-functions.php:132
+msgid "Add widgets here to appear in your footer."
+msgstr "Añade aquí los widgets que quieres que aparezcan en tu pie de página."
+
+#: inc/common-functions.php:94
+msgid "Footer 1"
+msgstr "Pie de página 1"
+
+#: inc/common-functions.php:84
+msgid "Add widgets here to appear in your sidebar on blog posts and archive pages."
+msgstr "Añade widgets aquí para que aparezcan en tu barra lateral en las entradas del blog y en las páginas de archivo."
+
+#: inc/common-functions.php:82
+#: inc/customizer/configs/theme-layout/class-inspiro-theme-layout-config.php:32
+msgid "Blog Sidebar"
+msgstr "Barra lateral del blog"
+
+#: inc/common-functions.php:72
+msgid "Main sidebar that is displayed on the right and can be toggled by clicking on the menu icon."
+msgstr "Barra lateral principal que se muestra a la derecha y que se puede alternar haciendo clic en el icono del menú."
+
+#: inc/common-functions.php:70
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+#: comments.php:114
+msgid "Post Comment"
+msgstr "Publicar comentario"
+
+#: comments.php:113
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: comments.php:112
+msgid "Leave a Comment"
+msgstr "Deja un comentario"
+
+#. translators: %1$s: admin url to profile %2$s: User identity %3$s: logout URL
+#: comments.php:111
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\">Log out?</a>"
+msgstr "Conectado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\">¿Salir?</a>"
+
+#: comments.php:107
+msgid "Message:"
+msgstr "Mensaje:"
+
+#: comments.php:103
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "Guardar mi nombre, correo electrónico y web en este navegador para la próxima vez que haga un comentario."
+
+#: comments.php:99
+msgid "Website:"
+msgstr "Web:"
+
+#: comments.php:94
+msgid "Email Address:"
+msgstr "Dirección de correo electrónico:"
+
+#: comments.php:88
+msgid "Name:"
+msgstr "Nombre:"
+
+#: comments.php:71
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: comments.php:51
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Comentarios más recientes <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:50
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> Comentarios antiguos"
+
+#: comments.php:30 inc/template-tags.php:136
+msgid "% Comments"
+msgstr "% comentarios"
+
+#: comments.php:30 inc/template-tags.php:135
+msgid "One Comment"
+msgstr "Un comentario"
+
+#: comments.php:30 inc/template-tags.php:134
+msgid "No Comments"
+msgstr "Sin comentarios"
+
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Parece que ho hay nada en esta dirección. ¿Quieres probar con una búsqueda?"
+
+#: 404.php:21
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "¡Vaya! No se puede encontrar esa página."
+
+#. Template Name of the theme
+msgid "Homepage (Page Builder)"
+msgstr "Página de inicio (maquetador de páginas)"
+
+#. Template Name of the theme
+msgid "Page Builder (Transparent Header, Without Title)"
+msgstr "Maquetador de páginas (cabecera transparente, sin título)"
+
+#. Template Name of the theme
+msgid "Full-width (Page Builder)"
+msgstr "Ancho completo (maquetador de páginas)"
+
+#. Template Name of the theme
+msgid "Page Builder (Without Page Title)"
+msgstr "Maquetador de páginas (sin título de la página)"
+
+#: search.php:55
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Lo siento, pero no hay nada que coincida con tus términos de búsqueda. Por favor, inténtalo de nuevo con algunas palabras clave diferentes."
+
+#. translators: Search query.
+#: search.php:22
+msgid "Search Results for: %s"
+msgstr "Resultados de búsqueda para: %s"
+
+#: sidebar.php:27
+msgctxt "menu"
+msgid "Mobile Menu"
+msgstr "Menú móvil"
+
+#: sidebar.php:20
+msgid "Toggle navigation"
+msgstr "Alternar la navegación"
+
+#: searchform.php:20
+msgctxt "submit button"
+msgid "Search"
+msgstr "Buscar"
+
+#: searchform.php:19
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Buscar &hellip;"
+
+#: searchform.php:17
+msgctxt "label"
+msgid "Search for:"
+msgstr "Buscar:"
+
+#: template-parts/header/search-form.php:16
+msgid "Type your keywords and hit Enter..."
+msgstr "Escribe tus palabras clave y presiona Enter..."
+
+#: template-parts/header/search-form.php:15
+msgid "Search for:"
+msgstr "Buscar:"
+
+#: template-parts/header/header-image.php:24
+#: template-parts/header/header-image.php:25
+msgid "Scroll down to content"
+msgstr "Scroll abajo para ver el contenido"
+
+#: template-parts/header/site-branding.php:29
+msgid "[Edit]"
+msgstr "[Editar]"
+
+#. translators: %s: Post title.
+#: inc/common-functions.php:185 template-parts/post/content-audio.php:49
+#: template-parts/post/content-gallery.php:36
+#: template-parts/post/content-image.php:28
+#: template-parts/post/content-video.php:49 template-parts/post/content.php:37
+msgid "Read more<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Leer más<span class=\"screen-reader-text\"> «%s»</span>"
+
+#: template-parts/post/content-none.php:35
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Parece que no encontramos lo que estás buscando. Puede que una búsqueda te ayude."
+
+#. translators: %s: Post editor URL.
+#: template-parts/post/content-none.php:29
+msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
+msgstr "¿Listo para publicar tu primera entrada? <a href=\"%s\">Empieza aquí</a>."
+
+#: search.php:26 template-parts/post/content-none.php:18
+msgid "Nothing Found"
+msgstr "No se ha encontrado nada"
+
+#: template-parts/navigation/navigation-primary.php:58
+msgid "Toggle sidebar &amp; navigation"
+msgstr "Alternar la barra lateral y la navegación"
+
+#: template-parts/navigation/navigation-primary.php:29
+msgctxt "menu"
+msgid "Top Horizontal Menu"
+msgstr "Menú horizontal superior"
+
+#: template-parts/page/content-page.php:61
+#: template-parts/post/content-audio.php:56
+#: template-parts/post/content-gallery.php:43
+#: template-parts/post/content-image.php:35
+#: template-parts/post/content-video.php:56 template-parts/post/content.php:44
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: inc/customizer/configs/colors/class-inspiro-color-footer-config.php:95
+#: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:40
+#: template-parts/footer/footer-widgets.php:26
+msgid "Footer"
+msgstr "Pie de página"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.wpzoom.com/"
+msgstr "https://www.wpzoom.com/"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "WPZOOM"
+msgstr "WPZOOM"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.wpzoom.com/free-wordpress-themes/inspiro-lite/"
+msgstr "https://www.wpzoom.com/free-wordpress-themes/inspiro-lite/"

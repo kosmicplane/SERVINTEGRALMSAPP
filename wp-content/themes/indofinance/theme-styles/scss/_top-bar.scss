@@ -1,0 +1,62 @@
+// Top Bar Styling
+
+.top-bar {
+    background: black;
+    padding: 0.25rem 0;
+    display: none;
+
+    @media (min-width: 60rem) {
+        display: block;
+    }
+    
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+    
+    > .container {
+
+        @media (min-width: 60rem) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        } 
+    }
+
+    div.menu-top {
+
+        > ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            @media (min-width: 48rem) {
+                gap: 1.25rem;
+            }
+            
+            li {
+                margin: 0;
+                font-size: 0.875rem;
+            }
+        }
+    }
+
+    &__social-icons {
+        justify-self: flex-end;
+        display: flex;
+        gap: 0.75rem;
+
+        span {
+            line-height: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

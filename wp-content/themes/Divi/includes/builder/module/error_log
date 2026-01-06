@@ -1,0 +1,76 @@
+[24-Jun-2025 09:58:07 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[24-Jun-2025 09:58:41 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[24-Jun-2025 13:11:38 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Jul-2025 06:11:19 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Aug-2025 13:25:29 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Aug-2025 13:25:30 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Aug-2025 13:29:04 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Aug-2025 13:29:34 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[20-Aug-2025 13:29:37 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[05-Oct-2025 19:55:26 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[05-Oct-2025 19:56:09 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[09-Oct-2025 19:53:57 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[15-Oct-2025 12:59:45 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[21-Oct-2025 18:03:01 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[21-Oct-2025 18:03:14 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[24-Oct-2025 22:42:29 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[26-Nov-2025 18:06:09 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[26-Nov-2025 18:07:15 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1
+[26-Nov-2025 18:07:27 UTC] PHP Fatal error:  Uncaught Error: Class "ET_Builder_Module" not found in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/Divi/includes/builder/module/FullwidthPostTitle.php on line 1

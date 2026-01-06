@@ -1,0 +1,775 @@
+# Translation of Themes - Corpex in Spanish (Spain)
+# This file is distributed under the same license as the Themes - Corpex package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-06-22 17:37:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es\n"
+"Project-Id-Version: Themes - Corpex\n"
+
+#. Description of the theme
+#: style.css
+#, gp-priority: high
+msgid "Corpex: A sleek and modern WordPress theme designed for corporate websites. With its intuitive interface, customizable options, and responsive design, Corpex is perfect for showcasing your business's professionalism and innovation. View the demo of Corpex Pro https://www.nayrathemes.com/demo/pro/?theme=corpex"
+msgstr "Corpex: Un tema de WordPress elegante y moderno diseñado para sitios web corporativos. Con su interfaz intuitiva, opciones personalizables y diseño adaptable, Corpex es perfecto para mostrar la profesionalidad e innovación de tu empresa. Ver la demo de Corpex Pro https://www.nayrathemes.com/demo/pro/?theme=corpex"
+
+#. Theme Name of the theme
+#: style.css
+#, gp-priority: high
+msgid "Corpex"
+msgstr "Corpex"
+
+#: inc/customizer/corpex-premium.php:32
+msgid "Free Vs Pro"
+msgstr "Gratis frente a Pro"
+
+#: inc/customizer/corpex-premium.php:30
+msgid "Get Support"
+msgstr "Obtener soporte"
+
+#: inc/customizer/corpex-premium.php:36
+msgid "Show Some Love"
+msgstr "Danos un poco de cariño"
+
+#: inc/customizer/corpex-premium.php:28
+msgid "View Documentation"
+msgstr "Ver la documentación"
+
+#: template-parts/sections/section-breadcrumb.php:65
+msgid "Author: %s"
+msgstr "Autor: %s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:48 inc/template-tags.php:54
+msgid ", "
+msgstr ", "
+
+#: inc/extras.php:96 inc/extras.php:159
+msgid "0"
+msgstr "0"
+
+#: inc/breadcrumb/breadcrumb.php:4 inc/breadcrumb/breadcrumb.php:7
+msgid "1"
+msgstr "1"
+
+#: inc/extras.php:306
+msgid "<a href=\"#\">Corpex</a>"
+msgstr "<a href=\"#\">Corpex</a>"
+
+#: inc/customizer/customizer_recommended_plugin.php:21
+msgid "Activate"
+msgstr "Activar"
+
+#: inc/customizer-notify/corpex-customizer-notify.php:114
+msgid "Activating"
+msgstr "Activando"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:826
+#: inc/customizer-repeater/class/customizer-repeater-control.php:859
+msgid "Add Icon"
+msgstr "Añadir icono"
+
+#: inc/customizer/corpex-footer.php:309
+msgid "Add New Client"
+msgstr "Añadir nuevo cliente"
+
+#: inc/class-wp-bootstrap-navwalker.php:385
+msgid "Add a menu"
+msgstr "Añadir un menú"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:40
+msgid "Add new field"
+msgstr "Añadir un campo nuevo"
+
+#: inc/customizer/corpex-footer.php:436
+msgid "American Express Link"
+msgstr "Enlace a American Express"
+
+#: inc/breadcrumb/breadcrumb.php:28
+msgid "Archive by category"
+msgstr "Archivo por categoría"
+
+#: inc/breadcrumb/breadcrumb.php:133
+msgid "Articles posted by "
+msgstr "Artículos publicados por "
+
+#: 404.php:19
+msgid "Back To Home"
+msgstr "Volver al inicio"
+
+#: inc/customizer/corpex-general.php:148
+msgid "Background"
+msgstr "Fondo"
+
+#: inc/customizer/corpex-footer.php:575
+msgid "Background Color"
+msgstr "Color de fondo"
+
+#: inc/customizer/corpex-footer.php:594 inc/customizer/corpex-general.php:166
+msgid "Background Image"
+msgstr "Imagen de fondo"
+
+#: inc/customizer/corpex-footer.php:346 inc/customizer/corpex-footer.php:521
+msgid "Below Footer"
+msgstr "Bajo el pie de página"
+
+#: inc/breadcrumb/breadcrumb.php:6
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer/corpex-blog.php:9
+msgid "Blog Section"
+msgstr "Sección del blog"
+
+#: inc/customizer/corpex-general.php:47
+msgid "Breadcrumb"
+msgstr "Migas de pan"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:390
+#: inc/customizer-repeater/class/customizer-repeater-control.php:598
+msgid "Button Label"
+msgstr "Etiqueta del botón"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:405
+#: inc/customizer-repeater/class/customizer-repeater-control.php:612
+msgid "Button Text"
+msgstr "Texto del botón"
+
+#: inc/customizer/corpex-header.php:122
+msgid "Cart"
+msgstr "Carrito"
+
+#: template-parts/sections/section-breadcrumb.php:53
+msgid "Category Archives: %s"
+msgstr "Archivos de la categoría %s"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:769
+msgid "Center"
+msgstr "Centrada"
+
+#: woocommerce/cart/mini-cart.php:111 woocommerce/cart/mini-cart.php:226
+msgid "Checkout"
+msgstr "Finalizar compra"
+
+#: inc/customizer/corpex-footer.php:307 inc/customizer/corpex-footer.php:310
+msgid "Client"
+msgstr "Cliente"
+
+#: inc/customizer/corpex-footer.php:266
+msgid "Client Section"
+msgstr "Sección de clientes"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:463
+#: inc/customizer-repeater/class/customizer-repeater-control.php:534
+msgid "Color"
+msgstr "Color"
+
+#: template-parts/content/content-search.php:32
+msgid "Comment"
+msgstr "Comentario"
+
+#: comments.php:41 comments.php:62
+msgid "Comment navigation"
+msgstr "Navegación de comentarios"
+
+#: comments.php:77
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: inc/customizer/corpex-general.php:229
+msgid "Container"
+msgstr "Contenedor"
+
+#: inc/customizer/corpex-general.php:249
+msgid "Container Width"
+msgstr "Ancho del contenedor"
+
+#: inc/customizer/corpex-blog.php:130
+msgid "Content"
+msgstr "Contenido"
+
+#. translators: %s: Name of current post.
+#: template-parts/content/content.php:31
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Seguir leyendo %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/customizer/corpex-footer.php:483
+msgid "Copyright &copy; [current_year] [site_title] | Powered by [theme_author]"
+msgstr "Copyright &copy; [current_year] [site_title] | Funciona gracias a [theme_author]"
+
+#: inc/customizer/corpex-footer.php:496
+msgid "Copyright Text"
+msgstr "Texto de copyright"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:45
+msgid "Customizer Repeater"
+msgstr "Repetidor del personalizador"
+
+#: template-parts/sections/section-breadcrumb.php:41
+msgid "Daily Archives: %s"
+msgstr "Archivos diarios: %s"
+
+#: inc/customizer/customizer_recommended_plugin.php:22
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:497
+msgid "Delete %s"
+msgstr "Borrar %s"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:661
+msgid "Delete field"
+msgstr "Borrar campo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:383
+#: inc/customizer-repeater/class/customizer-repeater-control.php:591
+#: inc/customizer/corpex-blog.php:109
+msgid "Description"
+msgstr "Descripción"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:481
+#: inc/customizer-repeater/class/customizer-repeater-control.php:650
+msgid "Designation"
+msgstr "Denominación"
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:70
+msgid "Edit %s"
+msgstr "Editar %s"
+
+#: inc/customizer/corpex-general.php:107
+msgid "Enable Blur Effect on Breadcrumb?"
+msgstr "¿Activar el efecto de desenfoque en las migas de pan?"
+
+#: inc/customizer/corpex-general.php:139
+msgid "Enable Page Title on Breadcrumb?"
+msgstr "¿Activar el título de la página en las migas de pan?"
+
+#: template-parts/sections/section-breadcrumb.php:61
+msgid "Error 404"
+msgstr "Error 404"
+
+#: inc/breadcrumb/breadcrumb.php:137
+msgid "Error 404 "
+msgstr "Error 404 "
+
+#: inc/customizer/corpex-footer.php:10 inc/sidebar/sidebar.php:29
+msgid "Footer"
+msgstr "Pie de página"
+
+#: inc/customizer/corpex-footer.php:20
+msgid "Footer Above"
+msgstr "Pie de página superior"
+
+#: inc/customizer/corpex-footer.php:53 inc/customizer/corpex-footer.php:475
+msgid "Footer Above Documentation Link"
+msgstr "Enlace a la documentación de la parte superior del pie de página"
+
+#: inc/customizer/corpex-footer.php:508
+msgid "Footer Background"
+msgstr "Fondo del pie de página"
+
+#: inc/customizer/corpex-footer.php:554
+msgid "Footer Background Documentation Link"
+msgstr "Enlace a la documentación de fondo del pie de página"
+
+#: inc/extras.php:341
+msgid "Footer Clients Image"
+msgstr "Imagen de clientes del pie de página"
+
+#: inc/customizer/corpex-footer.php:93
+msgid "Footer Info"
+msgstr "Información del pie de página"
+
+#: inc/customizer/corpex-footer.php:168
+msgid "Footer Left Background Image"
+msgstr "Imagen de fondo del pie de página de la izquierda"
+
+#: inc/customizer/corpex-footer.php:245
+msgid "Footer Right Background Image"
+msgstr "Imagen de fondo del pie de página de la derecha"
+
+#. Template Name of the theme
+msgid "Fullwidth Page"
+msgstr "Página de ancho completo"
+
+#: inc/customizer/corpex-general.php:7
+msgid "General"
+msgstr "General"
+
+#: inc/extras.php:223
+msgid "Get started with %s"
+msgstr "Primeros pasos con %s"
+
+#: inc/customizer/corpex-blog.php:68 inc/customizer/corpex-header.php:12
+msgid "Header"
+msgstr "Cabecera"
+
+#: inc/customizer/corpex-header.php:205 inc/customizer/corpex-header.php:208
+msgid "Header Sticky Documentation Link"
+msgstr "Enlace a la documentación de la cabecera fija"
+
+#: inc/customizer/corpex-blog.php:49
+msgid "Hide / Show"
+msgstr "Ocultar / Mostrar"
+
+#: inc/customizer/corpex-general.php:36
+msgid "Hide / Show Scroller"
+msgstr "Ocultar / Mostrar desplazador"
+
+#: inc/customizer/corpex-general.php:86
+msgid "Hide / Show Section"
+msgstr "Ocultar/mostrar sección"
+
+#: inc/customizer/corpex-footer.php:74 inc/customizer/corpex-footer.php:285
+#: inc/customizer/corpex-header.php:100 inc/customizer/corpex-header.php:139
+#: inc/customizer/corpex-header.php:225
+msgid "Hide/Show"
+msgstr "Ocultar/mostrar"
+
+#. Template Name of the theme
+msgid "Homepage"
+msgstr "Página de inicio"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:709
+#: inc/customizer-repeater/class/customizer-repeater-control.php:783
+msgid "Icon"
+msgstr "Icono"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:733
+#: inc/customizer-repeater/class/customizer-repeater-control.php:784
+#: inc/customizer-repeater/class/customizer-repeater-control.php:795
+msgid "Image"
+msgstr "Imagen"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:780
+msgid "Image type"
+msgstr "Tipo de imagen"
+
+#: inc/customizer/customizer_recommended_plugin.php:20
+msgid "Install and Activate"
+msgstr "Instalar y activar"
+
+#: inc/extras.php:218
+msgid "Install and activate %1$sClever Fox%2$s plugin for taking full advantage of all the features this theme has to offer."
+msgstr "Instala y activa el plugin %1$sClever Fox%2$s para aprovechar al máximo todas las características que ofrece este tema."
+
+#: inc/customizer/customizer_recommended_plugin.php:10
+msgid "Install and activate <strong>Classic Widget</strong> plugin for taking full advantage of all the features this theme has to offer."
+msgstr "Instala y activa el plugin <strong>Classic Widget</strong> para aprovechar al máximo todas las características que ofrece este tema."
+
+#: inc/customizer/customizer_recommended_plugin.php:14
+msgid "Install and activate <strong>Cleverfox</strong> plugin for taking full advantage of all the features this theme has to offer."
+msgstr "Instala y activa el plugin <strong>Cleverfox</strong> para aprovechar al máximo todas las características que ofrece este tema."
+
+#: template-parts/content/content-none.php:17
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Parece que no encontramos lo que estás buscando. Quizá pueda ayudarte una búsqueda."
+
+#: inc/customizer/corpex-footer.php:455
+msgid "JCB Link"
+msgstr "Enlace a JCB"
+
+#. translators: %s: post title
+#: inc/template-tags.php:63
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Deja un comentario<span class=\"screen-reader-text\"> en %s</span>"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:761
+msgid "Left"
+msgstr "Izquierda"
+
+#: inc/customizer/corpex-footer.php:148
+msgid "Left Icon"
+msgstr "Icono de la izquierda"
+
+#: inc/customizer/corpex-footer.php:128
+msgid "Left Subtitle"
+msgstr "Subtítulo de la izquierda"
+
+#: inc/customizer/corpex-footer.php:110
+msgid "Left Title"
+msgstr "Título de la izquierda"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:416
+#: inc/customizer-repeater/class/customizer-repeater-control.php:622
+#: inc/customizer-repeater/class/customizer-repeater-control.php:818
+#: inc/customizer-repeater/class/customizer-repeater-control.php:840
+msgid "Link"
+msgstr "Enlace"
+
+#: inc/customizer/corpex-footer.php:417
+msgid "Mastercard Link"
+msgstr "Enlace a Mastercard"
+
+#: template-parts/sections/section-breadcrumb.php:45
+msgid "Monthly Archives: %s"
+msgstr "Archivos mensuales: %s"
+
+#: comments.php:45 comments.php:65
+msgid "Newer Comments"
+msgstr "Comentarios más recientes"
+
+#: inc/customizer/corpex-blog.php:149
+msgid "No of Posts Display"
+msgstr "Nº entradas a mostar"
+
+#: woocommerce/cart/mini-cart.php:117 woocommerce/cart/mini-cart.php:232
+msgid "No products in the cart."
+msgstr "No hay productos en el carrito."
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:785
+#: inc/customizer-repeater/class/customizer-repeater-control.php:796
+msgid "None"
+msgstr "Ninguno"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:715
+msgid "Note: Some icons may not be displayed here. You can see the full list of icons at %1$s."
+msgstr "Nota: Puede que algunos iconos no se muestren aquí. Puedes ver la lista completa de iconos en %1$s."
+
+#: comments.php:44 comments.php:64
+msgid "Older Comments"
+msgstr "Comentarios más antiguos"
+
+#: inc/customizer/corpex-footer.php:613 inc/customizer/corpex-general.php:205
+msgid "Opacity"
+msgstr "Opacidad"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:698
+msgid "Open link in new tab:"
+msgstr "Abrir enlace en una nueva pestaña:"
+
+#: inc/customizer/corpex-blog.php:77
+msgid "Our <span>Blog</span>"
+msgstr "Nuestro <span>blog</span>"
+
+#: inc/customizer/corpex-general.php:185
+msgid "Overlay Color"
+msgstr "Color de superposición"
+
+#: inc/breadcrumb/breadcrumb.php:142
+msgid "Page"
+msgstr "Página"
+
+#: page.php:50 template-parts/content/content.php:36
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: inc/customizer/corpex-footer.php:398
+msgid "Paypal Link"
+msgstr "Enlace a Paypal"
+
+#: template-parts/sections/section-breadcrumb.php:69
+msgid "Portfolio Categories: %s"
+msgstr "Categorías de porfolio: %s"
+
+#: inc/template-tags.php:50
+msgid "Posted in %1$s"
+msgstr "Publicado en %1$s"
+
+#: inc/breadcrumb/breadcrumb.php:127
+msgid "Posts tagged "
+msgstr "Entradas con la etiqueta "
+
+#: template-parts/sections/section-breadcrumb.php:73
+msgid "Pricing Categories: %s"
+msgstr "Categorías de precios: %s"
+
+#: functions.php:43
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#: woocommerce/content-product.php:44
+msgid "Rated %s out of 5"
+msgstr "Valorado con %s de 5"
+
+#: template-parts/content/content-page.php:43
+msgid "Read Blog"
+msgstr "Leer blog"
+
+#: template-parts/content/content-search.php:49
+msgid "Read Blogs"
+msgstr "Leer blogs"
+
+#: template-parts/content/content-none.php:13
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "¿Listo para publicar tu primera entrada? <a href=\"%1$s\">Empieza aquí</a>."
+
+#: inc/customizer/customizer_recommended_plugin.php:18
+msgid "Recommended Actions"
+msgstr "Acciones recomendadas"
+
+#: inc/customizer/customizer_recommended_plugin.php:19
+msgid "Recommended Plugin"
+msgstr "Plugin recomendado"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:821
+#: inc/customizer-repeater/class/customizer-repeater-control.php:851
+msgid "Remove Icon"
+msgstr "Quitar icono"
+
+#: woocommerce/cart/mini-cart.php:70 woocommerce/cart/mini-cart.php:185
+msgid "Remove this item"
+msgstr "Quitar este artículo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:765
+msgid "Right"
+msgstr "Derecha"
+
+#: inc/customizer/corpex-footer.php:225
+msgid "Right Icon"
+msgstr "Icono de la derecha"
+
+#: inc/customizer/corpex-footer.php:205
+msgid "Right Subtitle"
+msgstr "Subtítulo de la derecha"
+
+#: inc/customizer/corpex-footer.php:187
+msgid "Right Title"
+msgstr "Título de la derecha"
+
+#: woocommerce/content-product.php:38
+msgid "Sale"
+msgstr "Oferta"
+
+#: inc/customizer/corpex-general.php:17
+msgid "Scroller"
+msgstr "Desplazador"
+
+#: inc/customizer/corpex-header.php:83
+msgid "Search"
+msgstr "Buscar"
+
+#: inc/breadcrumb/breadcrumb.php:34
+msgid "Search results for "
+msgstr "Resultados de búsqueda para "
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:881
+msgid "Service 1"
+msgstr "Servicio 1"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:885
+msgid "Service 2"
+msgstr "Servicio 2"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:889
+msgid "Service 3"
+msgstr "Servicio 3"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:893
+msgid "Service 4"
+msgstr "Servicio 4"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:897
+msgid "Service 5"
+msgstr "Servicio 5"
+
+#: inc/customizer/corpex-blog.php:29
+msgid "Setting"
+msgstr "Ajuste"
+
+#: inc/customizer/corpex-general.php:67
+msgid "Settings"
+msgstr "Ajustes"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:473
+#: inc/customizer-repeater/class/customizer-repeater-control.php:641
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: inc/customizer/corpex-footer.php:56
+msgid "Sidebar Documentation Link"
+msgstr "Enlace a la documentación de la barra lateral"
+
+#: inc/sidebar/sidebar.php:19
+msgid "Sidebar Widget Area"
+msgstr "Área de widgets de la barra lateral"
+
+#: inc/customizer/corpex-header.php:24
+msgid "Site Identity"
+msgstr "Identidad del sitio"
+
+#: inc/customizer/corpex-header.php:56 inc/customizer/corpex-header.php:59
+msgid "Site identity Documentation Link"
+msgstr "Enlace a la documentación de la identidad del sitio"
+
+#: header.php:18
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:757
+msgid "Slide Align"
+msgstr "Alineación de la diapositiva"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:804
+msgid "Social icons"
+msgstr "Iconos sociales"
+
+#: template-parts/content/content-none.php:15
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Lo siento, pero no hay nada que coincida con tus términos de búsqueda. Por favor, inténtalo de nuevo con algunas palabras clave diferentes."
+
+#: inc/customizer/corpex-header.php:154 inc/customizer/corpex-header.php:173
+msgid "Sticky Header"
+msgstr "Cabecera fija"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:343
+#: inc/customizer-repeater/class/customizer-repeater-control.php:550
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:351
+#: inc/customizer-repeater/class/customizer-repeater-control.php:559
+msgid "Subtitle 2"
+msgstr "Subtítulo 2"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:359
+#: inc/customizer-repeater/class/customizer-repeater-control.php:567
+msgid "Subtitle 3"
+msgstr "Subtítulo 3"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:367
+#: inc/customizer-repeater/class/customizer-repeater-control.php:575
+msgid "Subtitle 4"
+msgstr "Subtítulo 4"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:375
+#: inc/customizer-repeater/class/customizer-repeater-control.php:583
+msgid "Subtitle 5"
+msgstr "Subtítulo 5"
+
+#: template-parts/sections/section-breadcrumb.php:57
+msgid "Tag Archives: %s"
+msgstr "Archivos de la etiqueta: %s"
+
+#: inc/template-tags.php:56
+msgid "Tagged %1$s"
+msgstr "Etiquetado como %1$s"
+
+#: inc/sidebar/sidebar.php:31
+msgid "The Footer Widget Area"
+msgstr "El área de widgets del pie de página"
+
+#: inc/sidebar/sidebar.php:21
+msgid "The Primary Widget Area"
+msgstr "El área de widgets principal"
+
+#: inc/extras.php:207
+msgid "Theme Screenshot"
+msgstr "Captura de pantalla del tema"
+
+#: inc/customizer/corpex-blog.php:98
+msgid "There are many variations of passages of Lorem Ipsum available"
+msgstr "Hay muchas variaciones de pasajes de Lorem Ipsum disponibles"
+
+#: inc/sidebar/sidebar.php:41
+msgid "This Widget Area For WooCommerce Widget"
+msgstr "Esta área de widgets es para el widget de WooCommerce"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:335
+#: inc/customizer-repeater/class/customizer-repeater-control.php:542
+#: inc/customizer/corpex-blog.php:88
+msgid "Title"
+msgstr "Título"
+
+#: woocommerce/cart/mini-cart.php:45 woocommerce/cart/mini-cart.php:160
+msgid "Total:"
+msgstr "Total:"
+
+#: inc/customizer/corpex-footer.php:323 inc/customizer/corpex-premium.php:12
+#: inc/customizer/corpex-premium.php:34
+msgid "Upgrade to Pro"
+msgstr "Mejorar a Pro"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:736
+#: inc/customizer-repeater/class/customizer-repeater-control.php:748
+msgid "Upload Image"
+msgstr "Subir imagen"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:452
+msgid "Video Url"
+msgstr "URL del vídeo"
+
+#: inc/extras.php:150
+msgid "View your shopping cart"
+msgstr "Ver tu carrito de la compra"
+
+#: inc/customizer/corpex-footer.php:379
+msgid "Visa Link"
+msgstr "Enlace a Visa"
+
+#. translators: 1: welcome page link starting html tag, 2: welcome page link
+#. ending html tag.
+#: inc/extras.php:214
+msgid "Welcome! Thank you for choosing %1$s!"
+msgstr "¡Bienvenido! ¡Gracias por elegir %1$s!"
+
+#: inc/sidebar/sidebar.php:39
+msgid "WooCommerce Widget Area"
+msgstr "Área de widgets de WooCommerce"
+
+#. translators: %1$s opening anchor tag, %2$s closing anchor tag
+#: comments.php:84
+msgid "Write a comment&hellip;"
+msgstr "Escribe un comentario…"
+
+#: template-parts/sections/section-breadcrumb.php:49
+msgid "Yearly Archives: %s"
+msgstr "Archivos anuales: %s"
+
+#: inc/customizer/corpex-footer.php:557
+msgid "footer background Documentation Link"
+msgstr "Enlace a la documentación de fondo del pie de página"
+
+#: inc/customizer/corpex-footer.php:478
+msgid "footer copy Section Documentation Link"
+msgstr "Enlace a la documentación de la sección de copyright del pie de página"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:716
+msgid "http://fontawesome.io/icons/"
+msgstr "http://fontawesome.io/icons/"
+
+#: inc/extras.php:232
+msgid "or %1$sCustomize theme%2$s</a></span>"
+msgstr "o %1$spersonalizar tema%2$s</a></span>"
+
+#: woocommerce/content-product.php:44
+msgid "out of 5"
+msgstr "de 5"
+
+#: inc/template-tags.php:33
+msgctxt "post author"
+msgid "by %s"
+msgstr "por %s"
+
+#: inc/template-tags.php:28
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Publicado el %s"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:397
+#: inc/customizer-repeater/class/customizer-repeater-control.php:605
+msgid "skills"
+msgstr "habilidades"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.nayrathemes.com/corpex-free/"
+msgstr "https://www.nayrathemes.com/corpex-free/"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "Nayra Themes"
+msgstr "Nayra Themes"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.nayrathemes.com/"
+msgstr "https://www.nayrathemes.com/"

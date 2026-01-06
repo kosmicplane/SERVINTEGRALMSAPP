@@ -1,0 +1,1 @@
+[15-Aug-2025 18:20:41 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wpforms-lite/vendor_prefixed/symfony/css-selector/Parser/Tokenizer/TokenizerEscaping.php on line 12

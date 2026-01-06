@@ -1,0 +1,118 @@
+.darna-process.style1
+{
+  text-align: center;
+  h3{
+    font-family: @secondary_font;
+    font-size: 30px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1;
+    i{
+      font-size: 30px;
+    }
+  }
+  h2{
+    font-family: @secondary_font;
+    font-size: 32px;
+    font-weight: 400;
+    color: @primary_color;
+    line-height: 1;
+    a{
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+  }
+  p{
+    font-family: @primary_font;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.71;
+    padding-top: 12px;
+  }
+}
+.darna-process.style2
+{
+	background-color: #F7F7F7;
+	min-height: 350px;
+	padding: 20px;
+	position: relative;
+	z-index: 1;
+	h3{
+		font-family: @secondary_font;
+		font-size: 60px;
+		font-weight: bold;
+		color: #DDDDDD;
+		line-height: 1;
+		padding-top: 30px;
+		text-align: center;
+	}
+	h2{
+		font-family: @secondary_font;
+		font-size: 21px;
+		font-weight: 400;
+		color: @bold_color;
+		line-height: 1;
+		padding-top: 6px;
+		text-align: center;
+		a{
+			font-family: inherit;
+			font-weight: inherit;
+			font-size: inherit;
+			color: inherit;
+			letter-spacing: 0.02em;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+	}
+	p{
+		font-family: @primary_font;
+		font-size: 14px;
+		font-weight: 400;
+		color: #8F8F8F;
+		line-height: 1.71;
+		padding-top: 12px;
+		text-align: center;
+	}
+	i{
+		text-align: left;
+		font-size: 135px;
+		color: #F2F2F2;
+		position: absolute;
+		left: 20px;
+		bottom: 10px;
+		z-index: -1;
+	}
+	&:hover{
+		background-color: @primary_color;
+		h2,h3,p{
+			color: #ffffff;
+		}
+		i{
+			color: #000000;
+			opacity: 0.1;
+		}
+	}
+}
+@media (max-width: 991px) {
+  .darna-process.style1
+  {
+    position: relative;
+    padding-bottom: 80px;
+    i{
+      position: absolute;
+      bottom: 35px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      &:before{
+        content: "\f175";
+      }
+    }
+  }
+}

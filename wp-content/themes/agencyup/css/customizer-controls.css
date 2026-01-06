@@ -1,0 +1,56 @@
+#customize-control-theme_color  input , #customize-control-front_page_data input, #customize-control-front_page_data span{display:none !important;}
+.customize-control-radio label {margin-right: 20px;}
+.bizoh-time {font-family:'Lato';}
+
+
+#accordion-panel-quality_slider_setting .accordion-section-title::after{ content: "\f023"; float: right; font-family: FontAwesome; font-size: 17px; color: #555; }
+.customize-control-radio label { display: inline-block !important;}
+
+#accordion-section-agencyup_pro_section .accordion-section-title {
+  background: #00a63f;
+  color: #fff;
+}
+
+#accordion-section-agencyup_pro_section .accordion-section-title:after {
+  content: "\f07a";
+  font-family: FontAwesome;
+  color: #fff;
+}
+
+#customize-control-agencyup_theme_color input, #customize-control-agencyup_default_bg_image input{display:none;}
+
+#customize-control-agencyup_default_bg_image img {height:40px; width:40px; }
+
+.agencyup-notice-content{ padding: 20px 10px; }
+
+.agencyup-notice-content h3{text-align: center;}
+
+.panel-column-6 {
+    float: left;
+    padding: 10px 20px 20px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 40%;
+    border-right: 3px solid;
+
+}
+
+.panel-column-7 {
+    padding: 10px 20px 20px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.panel-column-6 p, .panel-column-7 p{font-weight: 500;}
+#customize-control-agencyup_content_layout img, #customize-control-agencyup_single_page_layout img, #customize-control-agencyup_page_layout img {
+  width: 30%;
+  margin-right: 2px;
+}
+#customize-controls img {
+  border: 1px solid #2271b1;
+}
+#customize-controls .ui-checkboxradio-checked img {
+  border: 3px solid #0025ff;
+}

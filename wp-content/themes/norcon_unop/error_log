@@ -1,0 +1,20 @@
+[25-Apr-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_option() in /home/izorlnspatmm/public_html/wp-content/themes/norcon/footer.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/norcon/footer.php on line 1
+[25-Apr-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_option() in /home/izorlnspatmm/public_html/wp-content/themes/norcon/404.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/norcon/404.php on line 5
+[25-Apr-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_option() in /home/izorlnspatmm/public_html/wp-content/themes/norcon/archive.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/norcon/archive.php on line 2
+[25-Apr-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_option() in /home/izorlnspatmm/public_html/wp-content/themes/norcon/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/norcon/index.php on line 6
+[25-Apr-2023 13:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_option() in /home/izorlnspatmm/public_html/wp-content/themes/norcon/search.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/norcon/search.php on line 2

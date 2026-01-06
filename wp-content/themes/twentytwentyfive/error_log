@@ -1,0 +1,8 @@
+[21-Jul-2025 08:07:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/twentytwentyfive/functions.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/twentytwentyfive/functions.php on line 25
+[22-Aug-2025 15:51:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/izorlnspatmm/public_html/wp-content/themes/twentytwentyfive/functions.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/twentytwentyfive/functions.php on line 25

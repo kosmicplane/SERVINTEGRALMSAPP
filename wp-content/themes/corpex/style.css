@@ -1,0 +1,264 @@
+/*
+Theme Name: Corpex
+Theme URI: https://www.nayrathemes.com/corpex-free/
+Author: Nayra Themes
+Author URI: https://www.nayrathemes.com/
+Description: Corpex: A sleek and modern WordPress theme designed for corporate websites. With its intuitive interface, customizable options, and responsive design, Corpex is perfect for showcasing your business's professionalism and innovation. View the demo of Corpex Pro https://www.nayrathemes.com/demo/pro/?theme=corpex 
+Version: 8.2
+Tested up to: 6.8
+Requires PHP: 5.6
+Requires at Least: 4.7
+License: GPLv3 or later
+License URI:  https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: corpex
+Tags: one-column, two-columns, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu,  custom-logo, featured-image-header, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce, portfolio, editor-style, grid-layout
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+*/
+
+.wc-block-components-product-title a.wc-block-components-product-name:hover,
+.wc-block-components-product-title a.wc-block-components-product-name:focus {
+	color: inherit;
+}
+
+.wp-block-code.has-text-color code {
+    color: inherit;
+}
+
+.wc-block-grid__products .wc-block-components-product-button__button {
+    border-radius: 0;
+}
+
+.widget .wp-block-heading:before {
+	left: 0;
+	top: 0;
+}
+
+div.wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__totals-title {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.wc-block-components-checkout-place-order-button{
+	background: inherit;
+}
+
+.widget .wp-block-social-links {
+    margin-bottom: 0;
+}
+
+.wp-block-latest-comments article{
+	margin-bottom: 0px;
+}
+
+.sidebar .widget .wp-block-group .wp-block-button .wp-block-button__link {
+	color: #fff;
+}
+
+button.wp-block-search__button.wp-element-button:hover,
+button.wp-block-search__button.wp-element-button:focus{
+    border: 2px solid;
+}
+
+.sidebar .widget .wp-block-group .wp-block-media-text .wp-block-media-text__content a {
+    color: inherit;
+}
+
+.wc-block-components-totals-coupon__content button.components-button {
+	border-radius: 4px;
+}
+
+.wp-block-code code img {
+	padding: 10px;
+}
+
+.wp-block-latest-posts__list .wp-block-latest-posts__post-author,
+.wp-block-latest-posts__list .wp-block-latest-posts__post-date {
+	text-decoration: none;
+}
+
+.wc-block-cart-items td {
+	color: inherit;
+}
+
+.wc-block-components-totals-coupon__content button.components-button {
+	border-radius: 0;
+}
+
+ul.wp-block-page-list a {
+	text-decoration: none;
+}
+
+.wc-block-featured-category__link .wp-block-button__link:focus {
+	color: #fff;
+}
+
+.wc-block-featured-product__price .woocommerce-Price-amount.amount {
+	color: inherit;
+}
+
+.wp-block-post-comments-form .comment-reply-title {
+	margin-bottom: 1.4rem;
+}
+
+.wp-block-group .wp-block-details p {
+	margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.woocommerce table.shop_attributes td {
+	text-decoration: none;
+}
+
+.wc-block-cart-items th {
+	color: inherit;
+}
+
+.wp-block-latest-posts__post-author {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.post .entry-content ul.wp-block-post-template li.wp-block-post .wp-block-post-date {
+	padding-bottom: 1.2rem;
+}
+
+.wc-block-mini-cart__empty-cart-wrapper .wc-block-mini-cart__shopping-button:focus {
+	color: #fff;
+}
+
+.wc-block-featured-product__price .woocommerce-Price-amount.amount {
+	text-decoration: none;
+}
+
+.widget .wp-block-group pre.wp-block-preformatted {
+	background: rgba(26, 26, 26, 0.8);
+	color: #ddd;
+}
+
+.sidebar .widget .wp-block-file .wp-block-file__button {
+	background-color: #1b8415;
+}
+
+.wp-block-social-links .wp-social-link:last-child {
+    margin-bottom: 8px;
+}
+
+.wp-block-code.has-background code {
+	background: inherit;
+}
+
+.wc-block-mini-cart__footer-checkout:focus {
+    background-color: inherit;
+    color: #fff;
+}
+
+.wc-block-cart__submit-button,
+.wc-block-cart__submit-button:hover,
+.wc-block-cart__submit-button:focus {
+	text-decoration: none;
+}
+
+.wc-block-mini-cart__badge {
+	color: inherit;
+}
+
+table.wc-block-cart-items .wc-block-cart-items__row .wc-block-components-product-name {
+    line-height: 16px;
+}
+
+.wc-block-mini-cart__footer .wc-block-mini-cart__footer-actions a {
+	font-size: 1.2rem;
+	text-decoration: none;
+}
+
+.wc-block-mini-cart__footer span.wc-block-components-totals-item__label {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.wp-block-file.has-background {
+	padding: 0.5rem;
+}
+
+.wc-block-cart-item__remove-link {
+	text-decoration: none !important;
+}
+
+a.wp-block-latest-posts__post-title {
+	text-decoration: none;
+}
+
+.wp-block-latest-comments__comment a {
+	text-decoration: none;
+}
+
+.has-background.wp-block-read-more {
+	padding: 0.25em 1.375em;
+}
+
+.wc-block-components-product-badge {
+    font-size: 1rem !important;
+}
+
+.wc-block-components-totals-coupon-link {
+	text-decoration: none;
+}
+
+.wc-block-grid__product-price.price ins {
+	line-height: 18px;
+}
+
+.wc-block-components-product-badge {
+    text-decoration: none;
+}
+
+.wp-block-latest-comments__comment a {
+    text-decoration: none;
+}
+
+.wp-block-file a {
+	line-height: 18px;
+}
+
+.wp-block-file.has-background {
+	margin: 0.5rem;
+}
+
+.wc-block-components-product-badge {
+	line-height: 18px;
+}
+
+.wc-block-components-totals-coupon-link {
+    line-height: 18px;
+}
+
+.wp-block-comment-date a {
+	color: inherit;
+}
+
+.wp-block-comment-author-name a {
+    color: inherit;
+}
+
+.widget .wp-block-heading:after {
+	background: inherit;
+}
+
+.wp-block-comment-date span a {
+    color: inherit;
+}
+
+.wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+	text-decoration: none;
+}
+
+.wc-block-components-product-metadata .wc-block-components-product-metadata__description>p	{
+	font-size: 1.2rem;
+}
+
+.wc-block-mini-cart__empty-cart-wrapper .wc-block-mini-cart__shopping-button:hover	{
+	color: #fff;
+}

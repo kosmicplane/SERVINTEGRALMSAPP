@@ -1,0 +1,4 @@
+[02-Jul-2025 18:09:40 UTC] PHP Fatal error:  Uncaught Error: Class "CronExpression_AbstractField" not found in /home/izorlnspatmm/public_html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/lib/cron-expression/CronExpression_MinutesField.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/lib/cron-expression/CronExpression_MinutesField.php on line 9

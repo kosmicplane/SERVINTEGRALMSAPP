@@ -1,0 +1,56 @@
+
+---Archivos descargados---
+Los archivos de importación para Import Home ¡han sido descargados correctamente!
+Tiempo de ejecución máximo inicial = 30
+Información de archivos:
+URL del sitio = https://servintegralms.com
+Archivo de datos = /home/izorlnspatmm/public_html/wp-content/themes/norcon/sample-data/contents-demo.xml
+Archivo de widget = /home/izorlnspatmm/public_html/wp-content/themes/norcon/sample-data/widget-settings.json
+Archivo del personalizador = /home/izorlnspatmm/public_html/wp-content/themes/norcon/sample-data/customizer-data.dat
+Archivos de Redux:
+ ¡no definido!
+
+---Importando los widgets---
+Primary Sidebar : 
+
+norcon Search - Sin título - El widget ya existe
+norcon Recent Posts - Sin título - El widget ya existe
+Categorías - Sin título - El widget ya existe
+Nube de etiquetas - Sin título - El widget ya existe
+
+Sidebar Services : 
+
+Bloque - Sin título - Importado
+Bloque - Sin título - Importado
+
+Footer One Widget : 
+
+HTML personalizado - Sin título - Importado
+
+Footer Two Widget : 
+
+HTML personalizado - Sin título - Importado
+
+Footer Three Widget : 
+
+HTML personalizado - Sin título - Importado
+
+Footer Four Widget : 
+
+HTML personalizado - Sin título - Importado
+
+Footer Five Widget : 
+
+HTML personalizado - Sin título - Importado
+
+Footer Six Widget : 
+
+Texto - Sin título - Importado
+
+
+
+---Importación de los ajustes del personalizador---
+Error: el archivo de importación del personalizador no tiene el formato correcto.  Asegúrate de utilizar el archivo de importación del personalizador correcto.
+
+---ocdi/after_import---
+
