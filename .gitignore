@@ -6,8 +6,34 @@
 /error_log*
 /wp-content/debug.log
 /wp-content/debug.log.*
+/wp-content/debug_log
+/wp-content/debug_log.*
 /wp-content/cache/
 /wp-content/upgrade/
 
 # Opcional: zips sueltos (si no quieres versionarlos)
 *.zip
+
+# Secretos y configuraciones locales
+/.env
+/.env.*
+/wp-config.php
+
+# Logs y caches comunes
+*.log
+*.log.*
+*error_log*
+*.cache
+*.tmp
+*.bak
+*.old
+
+# Backups
+*.sql
+*.sql.gz
+*.tar.gz
+*.tgz
+*.gz
+/wp-content/ai1wm-backups/
+/wp-content/backups/
+/backups/
