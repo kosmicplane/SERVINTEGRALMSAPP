@@ -1,11 +1,13 @@
-<!DOCTYPE html><html><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+	<head>
 
 		<title>Servintegral - Aplicativo de Control</title>
 		<meta property="og:title" content="App Control de Mantenimiento">
 		<meta name="description" content="App Control de Mantenimiento">
 		<meta name="keywords" content="">
 		<meta name="author" content="Incocrea Innovación Colaborativa S.A.S">
-		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                 
 		<link href="bs/css/bootstrap.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
@@ -13,12 +15,12 @@
 		<script src="js/jquery-1.12.0.min.js"></script>
                 
                 <meta name="viewport" content="user-scalable=0">
-                <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0">
+                <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0"/>
 
-                <script src="bs/js/bootstrap.js"></script>
-		<link href="libs/dp/jquery.datetimepicker.css" rel="stylesheet">
+                <script src = "bs/js/bootstrap.js"></script>
+		<link href="libs/dp/jquery.datetimepicker.css" rel="stylesheet"/>
 		<script src="libs/dp/build/jquery.datetimepicker.full.min.js"></script>
-		<link href="libs/modal/modal.css" rel="stylesheet">
+		<link href="libs/modal/modal.css" rel="stylesheet"/>
 		<script src="libs/modal/modal.js"></script>
                 <script src="js/typeahead.js"></script>
                 <script src="js/permissions.js"></script>
@@ -27,17 +29,17 @@
                 <script src="js/live.js"></script>
         
 	</head>
-	<body contenteditable="true" dir="ltr" spellcheck="false" style="direction: ltr; min-height: 901px;">
+	<body>
 
 		<div id="mainContainerWeb" class="mainContainerWeb">
 			
 			<div class="mainHead"> 
 				<div id="headerArea" class="containerMine">
-					<img src="irsc/mainLogo.png" id="homeLogo" class="homeLogo">
-					
+					<img src="irsc/mainLogo.png" id="homeLogo" class="homeLogo"/>
+					<span id="userTypeInfo" class="userTypeInfo"></span>
 				</div>
-				
-				<img src="irsc/exit.png" id="exitIcon" class="exitIcon" onclick="logout()">
+				<img src="irsc/msgIcon.png" id="msgIcon" class="msgIcon" onclick="contactOpen()"/>
+				<img src="irsc/exit.png" id="exitIcon" class="exitIcon" onclick="logout()"/>
 				
 			</div>
 
@@ -45,42 +47,42 @@
 				<div id="middleArea" class="containerMine">
 					<div id="mainMiddleContent" class="mainMiddleContent">
 						<div id="loginArea" class="mainArea">
-							<div id="loginBox" class="col-md-12 col-lg-12">
+							<div  id="loginBox" class="col-md-12 col-lg-12" >
 								<div class="loginBox">
 										
 									<div id="loginScreen" class="loginScreen">
-										<div id="loginTitle1" class="loginTitle1"><br></div>
+										<div id="loginTitle1" class="loginTitle1"></div>
 										
-										<div id="loginTitle2" class="loginTitle2"><br></div>
+										<div id="loginTitle2" class="loginTitle2"></div>
 
 										<div id="accessBox" class="centField fields">
 												<select type="text" class="" id="userTypeBox">
-													<option value="">Tipo de usuario</option> 
-													<option value="A">Administrador</option> 
-													<option value="CO">Coordinador</option> 
-													<option value="JZ">Jefe de Zona</option> 
+													<option value = "">Tipo de usuario</option> 
+													<option value = "A">Administrador</option> 
+													<option value = "CO">Coordinador</option> 
+													<option value = "JZ">Jefe de Zona</option> 
 													<!-- <option value = "C">Empresa Cliente</option>  -->
-													<option value="T">Técnico</option> 
+													<option value = "T">Técnico</option> 
 												</select>
 												
-												<input type="text" class="centField" id="userLoginBox" value="">
-												<input type="password" class="centField" id="userPassBox" value="">
+												<input type="text" class = "centField" id="userLoginBox" value=""/>
+												<input type="password" class = "centField" id="userPassBox" value=""/>
 												<div id="loginButton" class="loginButton" onclick="login()">Ingresar</div>
 												<br>
-												
+												<span id="pssRecoverLink" onclick="pssRec()" class="pssRecLink"></span>
 
-												
+												<span id="backHome" onclick="backHome()" class="backHome"></span>
 												
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<ul id="mymenu" class="topnav"><br></ul>
+						<ul id="mymenu" class="topnav"></ul>
                                                 <div id="workArea" class="mainArea">
 
-                                                        <div id="wa" class="workarea"><br></div>
-                                                <br></div>
+                                                        <div id="wa" class="workarea"></div>
+                                                </div>
 
                                         </div>
                                 </div>
@@ -88,74 +90,74 @@
 			
 			<div class="mainBottom"> 
 					<!--<a href="http://www.incocrea.com/" target="blank"><span id="copyright"></span></a>-->
-					
-			<br></div>
+					<a><span id="copyright"></span></a>
+			</div>
 		</div>
 		
-		<div id="hidden" class="hiddenT">
+		<div id = "hidden" class = "hiddenT">
                         
-			<li class="icon" id="respIcon"><a href="https://javascript:void(0);" onclick="respMenu()">☰</a></li>
+			<li class="icon" id= "respIcon"><a href="javascript:void(0);" onclick="respMenu()">&#9776;</a></li>
                         
-			<div id="box" class="modalCoverHidden">
-				<div id="modalBox" class="modalT">
-					<div id="boxHeader" class="modalHeader">
-						<span id="boxTitle" class="modalTitle"></span>
-					<br></div>
-					<div id="boxContent" class="modalContent"><br></div>
-				<br></div>
-			<br></div>
-			
-			<div id="modalCover" class="modalCoverHidden">
-				  <div id="modal" class="modalForm">
-					<div id="modalHeader" class="modalHeader">
-						
-					<br></div>
-					<div id="modalContent" class="modalContentForm"><br></div>
-				  <br></div>
-			<br></div>
-			
-                <div id="loaderDiv" class="loaderDiv">
-				<img src="irsc/loader.GIF">
+			<div id = "box" class = "modalCoverHidden">
+				<div id = "modalBox" class = "modalT">
+					<div id = "boxHeader" class = "modalHeader">
+						<span id = "boxTitle" class = "modalTitle"></span>
+					</div>
+					<div id = "boxContent" class = "modalContent"></div>
+				</div>
 			</div>
 			
-			<div id="conditionsBox" class="legalBox">
-				<div id="conditionsTextBox" class="legalAdviseBox"><br></div>
+			<div id = "modalCover" class = "modalCoverHidden">
+				  <div id = "modal" class = "modalForm">
+					<div id = "modalHeader" class = "modalHeader">
+						<span id = "modalTitle" class = "modalTitle"></span>
+					</div>
+					<div id = "modalContent" class = "modalContentForm"></div>
+				  </div>
+			</div>
+			
+                <div id = "loaderDiv" class="loaderDiv">
+				<img src = "irsc/loader.GIF"/>
+			</div>
+			
+			<div id = "conditionsBox" class="legalBox">
+				<div id="conditionsTextBox" class="legalAdviseBox"></div>
 				<div class="dualButtonsDiv">
 					<button id="closeConditionsButton" class="singleButtonPop" onclick="hideConds()"></button>
-				<br></div>
-			<br></div>
+				</div>
+			</div>
 			
-			<div id="instructionsBox" class="legalBox">
+			<div id = "instructionsBox" class="legalBox">
 				<div id="platInstrucctions" class="legalAdviseBox">
-				<br></div>
+				</div>
 				<div class="dualButtonsDiv">
 					<button id="closeInstrButton" class="singleButtonPop" onclick="hide_pop_form()"></button>
-				<br></div>
-			<br></div>
+				</div>
+			</div>
 			
-			<div id="passCheckDiv"><br></div>
+			<div id = "passCheckDiv"></div>
 			
-			<div id="pssRecBox"><br></div>
+			<div id = "pssRecBox"></div>
                         
-			<div id="pssChangeBox"><br></div>
+			<div id = "pssChangeBox"></div>
 			
-			<div id="addActType"><br></div>
+			<div id = "addActType"></div>
 			
-			<div id="addInvQty"><br></div>
+			<div id = "addInvQty"></div>
 			
-			<div id="maquiManage"><br></div>
+			<div id = "maquiManage"></div>
 			
-			<div id="actPriceEdit"><br></div>
+			<div id = "actPriceEdit"></div>
 			
-			<div id="partPriceEdit"><br></div>
+			<div id = "partPriceEdit"></div>
 			
-			<div id="otherPriceEdit"><br></div>
+			<div id = "otherPriceEdit"></div>
 			
-			<div id="modalPicBox"><br></div>
+			<div id = "modalPicBox"></div>
 			
-			<div id="asignTechBox"><br></div>
+			<div id = "asignTechBox"></div>
 			
-			<div id="preFactBox">
+			<div id = "preFactBox">
                                 
 				<div id="factResumeTable" class="table popTableShort">
 					<div class="table-head">
@@ -170,37 +172,37 @@
 						<div class="column" data-label="Total orden">Total orden</div>
 					</div>
 				</div>
-				<div class="totalLine ">
+				<div class = "totalLine ">
 					<span>Actividades:</span>
-					
+					<span id="totaLineAct" class="black"></span>
 					<span>Repuestos:</span>
-					
+					<span id="totaLineRep" class="black"></span>
 					<span>Otros:</span>
-					
+					<span id="totaLineOth" class="black"></span>
 					<span>IVA:</span>
-					
+					<span id="totaLineIva" class="black"></span>
 					<span>Retención 4%:</span>
-					
+					<span id="totaLineRe4" class="black"></span>
 					<span>Retención 2.5%:</span>
-					
+					<span id="totaLineRe2" class="black"></span>
 					<span>Total:</span>
-					
+					<span id="totaLineFull" class="black"></span>
 				 </div>
 				<div class="dualButtonsDiv">
-					<input type="text" id="recLife" class="vigencyfield" placeholder="Vigencia">
+					<input type="text" id="recLife" class="vigencyfield" placeholder="Vigencia"></input>
 										
 					<button id="sendPrefacButton" class="singleButtonPop" onclick="generateRecepit()"></button>
 					<button id="closePrefacButton" class="singleButtonPop" onclick="hide_pop_form()"></button>
 					<span class="retCheckLabel">Retencion</span>
-					<input type="checkbox" id="retCheck" onchange="refreshOtotals()">
+					<input type="checkbox" id="retCheck" onchange = "refreshOtotals()"></input>
 										
 				</div>
                         
 			</div>
 							
-			
+			<a href id="downframe" download></a>
                         
-			<div id="maquiStoryBox">
+			<div id = "maquiStoryBox">
 				<div id="maquiStoryTable" class="table popTable">
 					<div class="table-head">
 						<div class="column" data-label="Fecha">Fecha</div>
@@ -211,33 +213,33 @@
 				</div>
 				<div class="dualButtonsDiv">
 					<button id="closeStoryButton" class="singleButtonPop" onclick="hide_pop_form()"></button>
-				<br></div>
+				</div>
 			</div>
 
-			<div id="helpBox" class="regBox">
+			<div id = "helpBox" class="regBox">
 				<div class="manualPicker">
-					<div id="manualGButton" class="dualButtonPopS" onclick="helpVideoStart('0')"><br></div>
-					<div id="manualEButton" class="dualButtonPopS" onclick="helpVideoStart('1')"><br></div>
-					<div id="manualCButton" class="dualButtonPopS" onclick="helpVideoStart('2')"><br></div>
-				<br></div>
+					<div id="manualGButton" class="dualButtonPopS" onclick="helpVideoStart('0')"></div>
+					<div id="manualEButton" class="dualButtonPopS" onclick="helpVideoStart('1')"></div>
+					<div id="manualCButton" class="dualButtonPopS" onclick="helpVideoStart('2')"></div>
+				</div>
 				
 				<div id="helpVid" class="helpVid">
 				
-				<br></div>
+				</div>
 				
 				<div class="dualButtonsDiv">
 					<button id="closeHelpButton" class="singleButtonPop" onclick="hideHelpBox()"></button>
-				<br></div>
+				</div>
 				
-			<br></div>
+			</div>
 			
-			<div id="ifPassRec">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
+			<div id = "ifPassRec">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
                                                 
 						<div class="row fLabel fields panelButtFull centereDiv">
 							<span>Nueva Contraseña</span>
-							<input id="newUpass" type="text">
+							<input id="newUpass" type="text"/>
 							<button id="clientSaveButton" value="Crear" onclick="setNewPass()">Establecer</button>
 						</div>
                                                 
@@ -245,56 +247,56 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterC">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-8">
-						<div id="clientAdminBS">
+			<div id = "ifMasterC">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-8" >
+						<div id = "clientAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 										<span>Nombre Cliente</span>
-										<input id="a-clientName" type="text">
+										<input id="a-clientName" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 										<span>Contacto</span>
-										<input id="a-clientManager" type="text">
+										<input id="a-clientManager" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>NIT/ID</span>
-										<input id="a-clientNit" type="text">
+										<input id="a-clientNit" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>Naturaleza</span>
 										<select id="a-clientNature">
-												<option value=""></option>
-												<option value="1">Simplificado</option>
-												<option value="2">Común Jurídica</option>
-												<option value="3">Común Natural</option>
-												<option value="4">Gran Contribuyente</option>
-												<option value="5">Gran Contribuyente Autoretenedor</option>
+												<option value = ""></option>
+												<option value = "1">Simplificado</option>
+												<option value = "2">Común Jurídica</option>
+												<option value = "3">Común Natural</option>
+												<option value = "4">Gran Contribuyente</option>
+												<option value = "5">Gran Contribuyente Autoretenedor</option>
 										</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 										<span>Ciudad y Depto</span>
-										<input id="a-clientLocation" type="text">
+										<input id="a-clientLocation" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
 										<span>Dirección</span>
-										<input id="a-clientAddress" type="text">
+										<input id="a-clientAddress" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
 										<span>Email</span>
-										<input id="a-clientEmail" type="text">
+										<input id="a-clientEmail" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 										<span>Teléfonos</span>
-										<input id="a-clientPhone" type="text">
+										<input id="a-clientPhone" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="clientSaveButton" value="Crear" onclick="clientsSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="a-clearerClients" value="Limpiar">Limpiar</button>
@@ -302,27 +304,27 @@
 							</div>
 						</div>
 				</div>
-					<div class="col-md-12 col-lg-4">
-							<div id="clientSearchBS">
+					<div class="col-md-12 col-lg-4" >
+							<div id = "clientSearchBS">
 									<div class="row fLabel fields panelButtFull">
-											 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+											 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 													<span>Nombre Cliente</span>
-													<input id="f-clientName" type="text">
+													<input id="f-clientName" type="text"/>
 											</div>
-											<div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
+											<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
 													<span>NIT/ID</span>
-													<input id="f-clientNit" type="text">
+													<input  id="f-clientNit" type="text"/>
 											</div>
-											<div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+											<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 													<span>Email</span>
-													<input id="f-clientEmail" type="text">
+													<input  id="f-clientEmail" type="text"/>
 											</div>
-											<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+											<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 													<br class="hidden-xs">
 													
-													<button value="Buscar" onclick="clientsGet()">Buscar</button>
+													<button value="Buscar" onclick="clientsGet()" >Buscar</button>
 											</div>
-											<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+											<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 													<br class="hidden-xs">
 													
 													<button id="f-clearerClients" value="Limpiar">Limpiar</button>
@@ -330,7 +332,7 @@
 									</div>
 							</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 							<div id="clientesTable" class="table">
 									<div class="table-head">
 											<div class="column" data-label="Nombre Cliente">Nombre Cliente</div>
@@ -347,56 +349,56 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterS">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-8">
-						<div id="sucuAdminBS">
+			<div id = "ifMasterS">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-8" >
+						<div id = "sucuAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 										<span>Cliente</span>
 										<select id="a-sucuParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
 										<span>Código</span>
-										<input id="a-sucuCode" type="text">
+										<input id="a-sucuCode" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
 										<span>Nombre Sucursal</span>
-										<input id="a-sucuName" type="text">
+										<input id="a-sucuName" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 										<span>Dirección</span>
-										<input id="a-sucuAddress" type="text">
+										<input id="a-sucuAddress" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 										<span>Teléfonos</span>
-										<input id="a-sucuPhone" type="text">
+										<input id="a-sucuPhone" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>País</span>
 									<select id="a-sucuCountry" onchange="a_sucuPickedCountry(this.value)">
 											<option value="" id="a-sucuPickCountryBlank"></option>
 											<option value="Colombia">Colombia</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Departamento</span>
 									<select id="a-sucuDepto" onchange="a_sucuPickedDepto(this.value)">
 											<option value="" id="a-sucuPickDeptoBlank"></option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Ciudad/Municipio</span>
-									<select id="a-sucuCity" onchange="selectNull()">
+									<select id="a-sucuCity" onchange = "selectNull()">
 											<option value="" id="a-sucuPickCityBlank"></option>
 									</select>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="sucuSaveButton" value="Crear" onclick="sucuSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="s-clearerSucus" value="Limpiar">Limpiar</button>
@@ -404,27 +406,27 @@
 							</div>
 						</div>
                                         </div>
-                                        <div class="col-md-12 col-lg-4">
-											<div id="sucuSearchBS">
+                                        <div class="col-md-12 col-lg-4" >
+											<div id = "sucuSearchBS">
 												<div class="row fLabel fields panelButtFull">
-													 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+													 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 															<span>Cliente</span>
 															<select id="f-sucuParent" onchange="sucuGet()"></select>
 													</div>
-													<div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
+													<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
 															<span>Código</span>
-															<input id="f-sucuCode" type="text">
+															<input  id="f-sucuCode" type="text"/>
 													</div>
-													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+													<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 															<span>Nombre Sucursal</span>
-															<input id="f-sucuName" type="text">
+															<input  id="f-sucuName" type="text"/>
 													</div>
-													<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+													<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 															<br class="hidden-xs">
 															
-															<button value="Buscar" onclick="sucuGet()">Buscar</button>
+															<button value="Buscar" onclick="sucuGet()" >Buscar</button>
 													</div>
-													<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+													<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 															<br class="hidden-xs">
 															
 															<button id="f-clearerSucus" value="Limpiar">Limpiar</button>
@@ -432,7 +434,7 @@
 												</div>
 											</div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 											<div id="sucusTable" class="table">
 												<div class="table-head">
 													<div class="column" data-label="Cliente">Cliente</div>
@@ -450,61 +452,61 @@
 				</div>
 			</div>
                         
-			<div id="ifMasterM">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-8">
-						<div id="maquiAdminBS">
+			<div id = "ifMasterM">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-8" >
+						<div id = "maquiAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Cliente</span>
 									<select id="a-maquiParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Sucursal</span>
 									<select id="a-maquiSucu"></select>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Placa</span>
-									<input id="a-maquiPlate" type="text">
+									<input id="a-maquiPlate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
 									<span>Nombre</span>
-									<input id="a-maquiName" type="text">
+									<input id="a-maquiName" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-1 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-1 col-lg-2 ">
 									<span>Modelo</span>
-									<input id="a-maquiModel" type="text">
+									<input id="a-maquiModel" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Serial</span>
-									<input id="a-maquiSerial" type="text">
+									<input id="a-maquiSerial" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
 									<span>Voltaje</span>
-									<input id="a-maquiVolt" type="text">
+									<input id="a-maquiVolt" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
 									<span>Corriente</span>
-									<input id="a-maquiCurrent" type="text">
+									<input id="a-maquiCurrent" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
 									<span>Potencia</span>
-									<input id="a-maquiPower" type="text">
+									<input id="a-maquiPower" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-1 col-lg-1 ">
 									<span>Fases</span>
-									<input id="a-maquiPhase" type="text">
+									<input id="a-maquiPhase" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+								<div class = "col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
 									<span>Observaciones</span>
-									<input id="a-maquiDetails" type="text">
+									<input id="a-maquiDetails" type="text"/>
 								</div>
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+							<div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="maquiSaveButton" value="Crear" onclick="maquiSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="s-clearerMaquis" value="Limpiar">Limpiar</button>
@@ -512,27 +514,27 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-4">
-						<div id="maquiSearchBS">
+					<div class="col-md-12 col-lg-4" >
+						<div id = "maquiSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+								 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 									<span>Cliente</span>
 									<select id="f-maquiParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
 									<span>Sucursal</span>
 									<select id="f-maquiSucu" onchange="maquiGet()"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 									<span>Placa</span>
-									<input id="f-maquiPlate" type="text">
+									<input  id="f-maquiPlate" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="maquiGet()">Buscar</button>
+									<button value="Buscar" onclick="maquiGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerMaquis" value="Limpiar">Limpiar</button>
@@ -540,7 +542,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="maquisTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Placa">Placa</div>
@@ -561,92 +563,92 @@
 				</div>
 			</div>
                         
-			<div id="ifMasterT">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="techiAdminBS">
+			<div id = "ifMasterT">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "techiAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Tipo usuario</span>
 									<select id="a-techiCat">
-										<option value="T">Técnico</option>
-										<option value="CO">Coordinador</option>
-										<option value="JZ">Jefe de Zona</option>
+										<option value = "T">Técnico</option>
+										<option value = "CO">Coordinador</option>
+										<option value = "JZ">Jefe de Zona</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Identificación</span>
-									<input id="a-techiId" type="text">
+									<input id="a-techiId" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 									<span>Nombre</span>
-									<input id="a-techiName" type="text">
+									<input id="a-techiName" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Especialidad</span>
-									<input id="a-techiMastery" type="text">
+									<input id="a-techiMastery" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
 									<span>Email</span>
-									<input id="a-techiEmail" type="text">
+									<input id="a-techiEmail" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
 									<span>Ciudad - Departamento</span>
-									<input id="a-techiCity" type="text">
+									<input id="a-techiCity" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
 									<span>Dirección</span>
-									<input id="a-techiAddress" type="text">
+									<input id="a-techiAddress" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
 									<span>Teléfonos</span>
-									<input id="a-techiPhone" type="text">
+									<input id="a-techiPhone" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Observaciones</span>
-									<input id="a-techiDetails" type="text">
+									<input id="a-techiDetails" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="techiSaveButton" value="Crear" onclick="techisSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="s-clearerTechis" value="Limpiar">Limpiar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-12">
-						<div id="techiSearchBS">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "techiSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								 <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								 <div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 										<span>Tipo usuario</span>
                                                                                 <select id="f-techiCat">
-                                                                                <option value="">Todos</option>
-                                                                                <option value="T">Técnico</option>
-                                                                                <option value="CO">Coordinador</option>
-                                                                                <option value="JZ">Jefe de Zona</option>
+                                                                                <option value = "">Todos</option>
+                                                                                <option value = "T">Técnico</option>
+                                                                                <option value = "CO">Coordinador</option>
+                                                                                <option value = "JZ">Jefe de Zona</option>
                                                                         </select>
                                                                 </div>
-								 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>Identificación</span>
-										<input id="f-techiId" type="text">
+										<input id="f-techiId" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>Nombre</span>
-										<input id="f-techiName" type="text">
+										<input  id="f-techiName" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 										<span>Ubicación</span>
-										<input id="f-techiLocation" type="text">
+										<input  id="f-techiLocation" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
-										<button value="Buscar" onclick="techisGet()">Buscar</button>
+										<button value="Buscar" onclick="techisGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="f-clearerTechis" value="Limpiar">Limpiar</button>
@@ -654,7 +656,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="techisTable" class="table">
 							<div class="table-head">
 									<div class="column" data-label="Identificación">Identificación</div>
@@ -673,38 +675,38 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterA">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-8">
-						<div id="actiAdminBS">
+			<div id = "ifMasterA">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-8" >
+						<div id = "actiAdminBS" >
 								<div class="row fLabel fields panelButtFull">
-									<div class="col-xs-9 col-sm-4 col-md-3 col-lg-3 ">
+									<div class = "col-xs-9 col-sm-4 col-md-3 col-lg-3 ">
 										<span>Tipo</span>
 										<select id="a-actiType"></select>
 									</div>
-									<div class="col-xs-3 col-sm-2 col-md-1 col-lg-1 optIcon">
+									<div class = "col-xs-3 col-sm-2 col-md-1 col-lg-1 optIcon">
 										<br>
-										<img src="irsc/addIconSelect.png" onclick="addActType()">
-										<img src="irsc/delIconSelect.png" onclick="delActTypeConfirm()">
+										<img src="irsc/addIconSelect.png" onclick="addActType()"/>
+										<img src="irsc/delIconSelect.png" onclick="delActTypeConfirm()"/>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 ">
+									<div class = "col-xs-12 col-sm-6 col-md-8 col-lg-8 ">
 										<span>Descripción</span>
-										<input id="a-actiDesc" type="text" maxlength="75">
+										<input id="a-actiDesc" type="text" maxlength="75"/>
 									</div>
-									<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
+									<div class = "col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
 										<span>Duración</span>
-										<input id="a-actiTime" type="text" placeholder="minutos">
+										<input id="a-actiTime" type="text" placeholder="minutos"/>
 									</div>
-									<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
+									<div class = "col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
 										<span>Valor</span>
-										<input id="a-actiValue" type="text">
+										<input id="a-actiValue" type="text"/>
 									</div>
-									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+									<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="actiSaveButton" value="Crear" onclick="actisSave(this)">Crear</button>
 									</div>
-									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+									<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="s-clearerActis" value="Limpiar">Limpiar</button>
@@ -712,27 +714,27 @@
 								</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-4">
-						<div id="actiSearchBS">
+					<div class="col-md-12 col-lg-4" >
+						<div id = "actiSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 									<span>Tipo</span>
 									<select id="f-actiType" onchange="actisGet()"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
 									<span>Código</span>
-									<input id="f-actiCode" type="text">
+									<input  id="f-actiCode" type="text"/>
 								</div>                                                                
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 									<span>Descripción</span>
-									<input id="f-actiDesc" type="text">
+									<input  id="f-actiDesc" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="actisGet()">Buscar</button>
+									<button value="Buscar" onclick="actisGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerActis" value="Limpiar">Limpiar</button>
@@ -740,7 +742,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="actisTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Código">Código</div>
@@ -755,60 +757,60 @@
 				</div>
 			</div>
                         
-			<div id="ifMasterI">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-7">
-						<div id="inveAdminBS">
+			<div id = "ifMasterI">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-7" >
+						<div id = "inveAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Código</span>
-									<input id="a-inveCode" type="text">
+									<input id="a-inveCode" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-10 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-10 ">
 									<span>Descripción</span>
-									<input id="a-inveDesc" type="text">
+									<input id="a-inveDesc" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
 									<span>Costo</span>
-									<input id="a-inveCost" type="text" placeholder="$">
+									<input id="a-inveCost" type="text" placeholder="$"/>
 								</div>
-								<div class="col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
 									<span>Margen</span>
-									<input id="a-inveMargin" type="text" placeholder="%">
+									<input id="a-inveMargin" type="text" placeholder="%"/>
 								</div>
-								<div class="col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-1 col-md-1 col-lg-2 ">
 									<span>Existencia</span>
-									<input id="a-inveAmount" type="text">
+									<input id="a-inveAmount" type="text" />
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="inveSaveButton" value="Crear" onclick="inveSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="s-clearerInve" value="Limpiar">Limpiar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-5">
-						<div id="inveSearchBS">
+					<div class="col-md-12 col-lg-5" >
+						<div id = "inveSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-4 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-4 ">
 										<span>Código</span>
-										<input id="f-inveCode" type="text">
+										<input  id="f-inveCode" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-8 ">
+								<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-8 ">
 										<span>Descripción</span>
-										<input id="f-inveDesc" type="text">
+										<input  id="f-inveDesc" type="text"/>
 								</div>                                                                
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-6 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-6 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
-										<button value="Buscar" onclick="inveGet()">Buscar</button>
+										<button value="Buscar" onclick="inveGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-6 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-6 col-lg-offset-0 col-md-offset-0 ">
 										<br class="hidden-xs">
 										
 										<button id="f-clearerInve" value="Limpiar">Limpiar</button>
@@ -816,7 +818,7 @@
 							</div>
 						</div>
 					</div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div id="inveTable" class="table">
                                                         <div class="table-head">
                                                                 <div class="column" data-label="Código">Código</div>
@@ -831,24 +833,24 @@
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <button id="inventoryExportBtn" onclick="inventoryExport()">Exportar inventario</button>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div class="row fLabel fields panelButtFull">
-                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
                                                                 <h4>Importar / comparar inventario</h4>
-                                                                <input type="file" id="inventoryImportFile" accept=".xlsx,.xls,.csv">
+                                                                <input type="file" id="inventoryImportFile" accept=".xlsx,.xls,.csv" />
                                                                 <button id="inventoryImportBtn" onclick="inventoryImportCompare()">Importar / Comparar inventario</button>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 ">
-                                                                <div id="inventoryImportResults" class="table"><br></div>
-                                                        <br></div>
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-8 ">
+                                                                <div id="inventoryImportResults" class="table"></div>
+                                                        </div>
                                                 </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div class="row fLabel fields panelButtFull">
-                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                                 <h4>Entrada de inventario</h4>
                                                                 <span>Ítem</span>
                                                                 <select id="inv-entry-item"></select>
@@ -859,17 +861,17 @@
                                                                         <option value="OC">Orden de compra</option>
                                                                 </select>
                                                                 <span>Cantidad</span>
-                                                                <input id="inv-entry-qty" type="text">
+                                                                <input id="inv-entry-qty" type="text"/>
                                                                 <span>Costo unitario</span>
-                                                                <input id="inv-entry-cost" type="text">
+                                                                <input id="inv-entry-cost" type="text"/>
                                                                 <span>OC / OT (opcional)</span>
-                                                                <input id="inv-entry-oc" type="text" placeholder="OC">
-                                                                <input id="inv-entry-ot" type="text" placeholder="OT">
+                                                                <input id="inv-entry-oc" type="text" placeholder="OC"/>
+                                                                <input id="inv-entry-ot" type="text" placeholder="OT"/>
                                                                 <span>Observaciones</span>
                                                                 <textarea id="inv-entry-obs"></textarea>
                                                                 <button id="inventoryEntryBtn" onclick="inventoryRegisterEntry()">Registrar entrada</button>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                                 <h4>Salida de inventario</h4>
                                                                 <span>Ítem</span>
                                                                 <select id="inv-exit-item"></select>
@@ -879,50 +881,50 @@
                                                                         <option value="AJUSTE">Ajuste</option>
                                                                 </select>
                                                                 <span>Cantidad</span>
-                                                                <input id="inv-exit-qty" type="text">
+                                                                <input id="inv-exit-qty" type="text"/>
                                                                 <span>OT asociada (para RQ)</span>
-                                                                <input id="inv-exit-ot" type="text">
+                                                                <input id="inv-exit-ot" type="text"/>
                                                                 <span>Observaciones</span>
                                                                 <textarea id="inv-exit-obs"></textarea>
                                                                 <button id="inventoryExitBtn" onclick="inventoryRegisterExit()">Registrar salida</button>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                                                                 <h4>Conteo físico y ajustes</h4>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
                                                                 <span>Ítem</span>
                                                                 <select id="inv-count-item"></select>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
                                                                 <span>Conteo físico</span>
-                                                                <input id="inv-count-qty" type="text">
+                                                                <input id="inv-count-qty" type="text"/>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                                                        <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
                                                                 <span>Costo ajuste (solo admin)</span>
-                                                                <input id="inv-count-cost" type="text">
+                                                                <input id="inv-count-cost" type="text"/>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                                                                 <span>Observaciones</span>
                                                                 <textarea id="inv-count-obs"></textarea>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                                 <button id="inventoryCountBtn" onclick="inventoryRecordPhysical()">Guardar conteo</button>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                                 <button id="inventoryAdjustBtn" onclick="inventoryApplyAdjustment()">Generar ajuste</button>
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div class="row fLabel fields panelButtFull">
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                        <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                                                                 <h4>Movimientos de inventario</h4>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <span>Ítem</span>
                                                                 <select id="inv-mov-item"></select>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <span>Tipo</span>
                                                                 <select id="inv-mov-type">
                                                                         <option value="">Todos</option>
@@ -930,40 +932,40 @@
                                                                         <option value="SALIDA">Salida</option>
                                                                 </select>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <span>Desde</span>
-                                                                <input id="inv-mov-from" type="text">
+                                                                <input id="inv-mov-from" type="text"/>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <span>Hasta</span>
-                                                                <input id="inv-mov-to" type="text">
+                                                                <input id="inv-mov-to" type="text"/>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <span>OT</span>
-                                                                <input id="inv-mov-ot" type="text">
+                                                                <input id="inv-mov-ot" type="text"/>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+                                                        <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
                                                                 <br class="hidden-xs">
                                                                 <button onclick="inventoryMovementsGet()">Buscar</button>
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                                                 <div class="table-responsive">
-                                                        <table id="inventoryMovementsTable" class="table table-striped table-bordered" style="border-collapse: collapse; width: 100%; border: 1px solid rgb(221, 221, 221);">
+                                                        <table id="inventoryMovementsTable" class="table table-striped table-bordered">
                                                                 <thead>
                                                                         <tr>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Fecha</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Item</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Tipo</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Subtipo</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Cantidad</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Costo unitario</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Costo total</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">OT</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">OC</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Usuario</th>
-                                                                                <th style="border: 1px solid rgb(221, 221, 221); padding: 8px; background-color: rgb(245, 245, 245); font-weight: bold;">Observaciones</th>
+                                                                                <th>Fecha</th>
+                                                                                <th>Item</th>
+                                                                                <th>Tipo</th>
+                                                                                <th>Subtipo</th>
+                                                                                <th>Cantidad</th>
+                                                                                <th>Costo unitario</th>
+                                                                                <th>Costo total</th>
+                                                                                <th>OT</th>
+                                                                                <th>OC</th>
+                                                                                <th>Usuario</th>
+                                                                                <th>Observaciones</th>
                                                                         </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
@@ -973,24 +975,24 @@
                                 </div>
                         </div>
                         
-			<div id="ifMasterL">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="logSearchBS">
+			<div id = "ifMasterL">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "logSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Responsable</span>
-									<input id="f-logResp" type="text">
+									<input id="f-logResp" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Fecha Inicial</span>
-									<input id="f-logInidate" type="text">
+									<input id="f-logInidate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Fecha Final</span>
-									<input id="f-logEndate" type="text">
+									<input id="f-logEndate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
 									<span>Tipo</span>
 									<select id="f-logType">
 										<option value="">Tipo</option>
@@ -1003,11 +1005,11 @@
 										<option value="T">Técnico</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Objetivo</span>
-									<input id="f-logTarget" type="text">
+									<input id="f-logTarget" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-1 ">
 									<span>Movimiento</span>
 									<select id="f-logMove">
 										<option value="">Tipo</option>
@@ -1019,12 +1021,12 @@
 
 									</select>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="logGet()">Buscar</button>
+									<button value="Buscar" onclick="logGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerLog" value="Limpiar">Limpiar</button>
@@ -1032,7 +1034,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="logTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Responsable">Responsable</div>
@@ -1046,64 +1048,64 @@
 				</div>
 			</div>
                         
-			<div id="ifMasterO">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
+			<div id = "ifMasterO">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
 							<div class="row fLabel fields panelButtFull onTop">
-									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-lg-offset-9">
+									<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-3 col-lg-offset-9">
 											<button id="" value="Crear" onclick="getFactPick()">Facturar Selección</button>
 											<br class="hidden-xs">
 											<br class="hidden-xs">
 									</div>
 							</div>
 					</div>
-					<div class="col-md-12 col-lg-12">
-						<div id="ocreateAdminBS">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "ocreateAdminBS" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Cliente</span>
 									<select id="a-orderParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Sucursal</span>
 									<select id="a-orderSucu"></select>
 								</div>
-								<div class="col-xs-3 col-sm-1 col-md-1 col-lg-1 optIcon">
+								<div class = "col-xs-3 col-sm-1 col-md-1 col-lg-1 optIcon">
 									<br>
-									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')">
+									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')"/>
 								</div>
-								<div class="col-xs-9 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-9 col-sm-3 col-md-3 col-lg-3 ">
 									<span>Equipos de orden</span>
 									<select id="a-orderMaquis">
 											<option value="">Equipos</option>
 									</select>
 								</div>
 								
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Fecha/Hora inicio</span>
-									<input id="a-orderPriority" type="text">
+									<input id="a-orderPriority" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Fecha/Hora fin</span>
-									<input id="a-orderPriority2" type="text">
+									<input id="a-orderPriority2" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 									<span>Detalle</span>
-									<input id="a-orderDesc" type="text">
+									<input id="a-orderDesc" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-2 ">
 									<span>Contacto</span>
-									<input id="a-orderContact" type="text">
+									<input id="a-orderContact" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Orden-Cliente</span>
-									<input id="a-orderOrderClient" type="text">
+									<input id="a-orderOrderClient" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="orderSaveButton" value="Crear" onclick="orderSave(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="s-clearerOrders" value="Limpiar">Limpiar</button>
 								</div>
@@ -1111,33 +1113,33 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-12">
-						<div id="orderSearchBS">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "orderSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Cliente</span>
-									<select id="f-orderParent"></select>
+									<select id="f-orderParent" ></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Sucursal</span>
 									<select id="f-orderSucu" onchange="ordeGet()"></select>
 								</div>
 								
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Ubicación</span>
-									<input id="f-orderLocation" type="text">
+									<input  id="f-orderLocation" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>Autor</span>
-									<input id="f-orderAuthor" type="text">
+									<input  id="f-orderAuthor" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>OTT</span>
-									<input id="f-orderNum" type="text">
+									<input  id="f-orderNum" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-1 ">
 									<span>Estado</span>
-									<select id="f-orderState" onchange="ordeGet()">
+									<select id="f-orderState"  onchange="ordeGet()">
 											<option value=""></option>
 											<option value="1">Nueva</option>
 											<option value="6">Previsita</option>
@@ -1148,12 +1150,12 @@
 											<option value="5">Facturada</option>
 									</select>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="ordeGet()">Buscar</button>
+									<button value="Buscar" onclick="ordeGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerOrders" value="Limpiar">Limpiar</button>
@@ -1161,7 +1163,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="ordersTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Cliente">Cliente</div>
@@ -1183,30 +1185,30 @@
 				</div>
 			</div>
                         
-			<div id="ifMasterCL">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-8">
-						<div id="ocreateAdminBSCL">
+			<div id = "ifMasterCL">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-8" >
+						<div id = "ocreateAdminBSCL" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
 									<span>Cliente</span>
 									<select id="a-orderParentCL"></select>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
 									<span>Sucursal</span>
 									<select id="a-orderSucuCL"></select>
 								</div>
-								<div class="col-xs-9 col-sm-3 col-md-3 col-lg-3 ">
+								<div class = "col-xs-9 col-sm-3 col-md-3 col-lg-3 ">
 									<span>Equipos de orden</span>
 									<select id="a-orderMaquisCL">
 											<option value="">Equipos</option>
 									</select>
 								</div>
-								<div class="col-xs-3 col-sm-1 col-md-1 col-lg-1 optIcon">
+								<div class = "col-xs-3 col-sm-1 col-md-1 col-lg-1 optIcon">
 									<br>
-									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')">
+									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Prioridad</span>
 									<select id="a-orderPriorityCL">
 											<option value=""></option>
@@ -1215,20 +1217,20 @@
 											<option value="Urgente">Urgente</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 									<span>Detalle</span>
-									<input id="a-orderDescCL" type="text">
+									<input id="a-orderDescCL" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Orden-Cliente</span>
-									<input id="a-orderOrderClientCL" type="text">
+									<input id="a-orderOrderClientCL" type="text"/>
 								</div>
-							<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+							<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="orderSaveButtonCL" value="Crear" onclick="orderSaveCL(this)">Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-2 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 		
 									<button id="s-clearerOrdersCL" value="Limpiar">Limpiar</button>
@@ -1236,24 +1238,24 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-lg-4">
-						<div id="orderSearchBSCL">
+					<div class="col-md-12 col-lg-4" >
+						<div id = "orderSearchBSCL">
 							<div class="row fLabel fields panelButtFull">
-								 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
+								 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-6 ">
 									<span>Cliente</span>
-									<select id="f-orderParentCL"></select>
+									<select id="f-orderParentCL" ></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-6 ">
 									<span>Sucursal</span>
 									<select id="f-orderSucuCL" onchange="ordeGet()"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 									<span>OTT</span>
-									<input id="f-orderNumCL" type="text">
+									<input  id="f-orderNumCL" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 									<span>Estado</span>
-									<select id="f-orderStateCL" onchange="ordeGetCL()">
+									<select id="f-orderStateCL"  onchange="ordeGetCL()">
 											<option value=""></option>
 											<option value="1">Nueva</option>
 											<option value="2">Proceso</option>
@@ -1262,12 +1264,12 @@
 											<option value="5">Facturada</option>
 									</select>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="ordeGetCL()">Buscar</button>
+									<button value="Buscar" onclick="ordeGetCL()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-3 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerOrdersCL" value="Limpiar">Limpiar</button>
@@ -1275,7 +1277,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="ordersTableCL" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Sucursal">Sucursal</div>
@@ -1293,82 +1295,82 @@
 				</div>
 			</div>
 
-			<div id="iforderMain">
-				<div class="ifBoxShort">
-					<div class="col-sm-12 col-md-12 col-lg-12">
-						<div id="oResumeSection">
+			<div id = "iforderMain">
+				<div class = "ifBoxShort">
+					<div class="col-sm-12 col-md-12 col-lg-12" >
+						<div id = "oResumeSection" >
 							<div class="row fLabel fields panelButtFull">
 								<div class="fuLine">
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>OTT</span>
 										<br>
-										
+										<span id="oResNum" class="resSpan"></span>
 									</div>
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Cliente</span>
 										<br>
-										
+										<span id="oResClient" class="resSpan"></span>
 									</div>
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Sucursal</span>
 										<br>
-										
+										<span id="oResSucu" class="resSpan"></span>
 									</div>
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Fecha solicitud</span>
 										<br>
-										
+										<span id="oResDate" class="resSpan"></span>
 									</div>
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Fecha/Hora Inicio</span>
 										<br>
-										
+										<span id="oResPriority" class="resSpan"></span>
 									</div>
-									<div class="col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-9 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Fecha/Hora Fin</span>
 										<br>
-										
+										<span id="ostartTime" class="resSpan"></span>
 									</div>
 								</div>
 								<div>
-									<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Responsable</span>
 										<br>
-										
+										<span id="oResTech" class="resSpan"></span>
 									</div>
-									<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
+									<div class = "col-xs-12 col-sm-3 col-md-2 col-lg-2 ">
 										<span>Estado</span>
 										<br>
-										
+										<span id="oResState" class="resSpan"></span>
 									</div>
-									<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 ">
+									<div class = "col-xs-12 col-sm-10 col-md-6 col-lg-6 ">
 										<span>Detalle</span>
 										<br>
-										
+										<span id="oResDetail" class="resSpan"></span>
 									</div>
-									<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+									<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 										<span>Orden Cliente</span>
 										<br>
-										
+										<span id="oResIcode" class="resSpan"></span>
 									</div>
 								</div>
 									
 							</div>
 						</div>
-						<div id="oActisSection">
+						<div id = "oActisSection" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 optIcon">
+								<div class = "col-xs-2 col-sm-1 col-md-1 col-lg-1 optIcon">
 									<br>
-									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')">
+									<img src="irsc/maquiPicker.png" onclick="maquiManage('1')"/>
 								</div>
-								<div class="col-xs-10 col-sm-2 col-md-2 col-lg-1 ">
+								<div class = "col-xs-10 col-sm-2 col-md-2 col-lg-1 ">
 									<span>Equipos</span>
 									<select id="a-orderDetailMaquis">
 											<option value="">Equipos</option>
 									</select>
 								</div>
 								
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button onclick="showMaquiDetail()">Info</button>
 								</div>
@@ -1381,32 +1383,32 @@
 											<!-- </div> -->
 									<!-- </div> -->
 								<!-- </div> -->
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-4 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-4 ">
 									<span>Actividad</span>
 									<input id="a-orderActiPicker" type="text" class="form-control" placeholder="Actividad" onblur="setActFields()">
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
 									<span>Cantidad</span>
 									<input id="a-orderActQtyPicker" type="text" class="form-control" placeholder="Cantidad" onblur="setActPrice()">
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
 									<span>Precio</span>
 									<input id="a-orderActPricePicker" type="text" class="form-control" placeholder="Precio" onblur="setActPrice()">
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
 									<span>Duración</span>
-									<input id="a-orderActDurationPicker" type="text" class="form-control" placeholder="Duración">
+									<input id="a-orderActDurationPicker" type="text" class="form-control" placeholder="Duración" >
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-1 ">
 									<span>Subtotal</span>
-									<input id="a-orderActSubtotalPicker" type="text" class="form-control" placeholder="Subtotal" disabled="">
+									<input id="a-orderActSubtotalPicker" type="text" class="form-control" placeholder="Subtotal" disabled>
 								</div>
-								<div class="col-xs-12 col-sm-2 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-12 col-sm-2 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="addActButton" onclick="addAct()">Agregar </button>
 								</div>
 								
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 									<div id="oActsTable" class="table" style="min-height: 200px;">
 										<div class="table-head">
 											<div class="column" data-label="Placa">Placa</div>
@@ -1421,9 +1423,9 @@
 							</div>
 										
 						</div>
-						<div id="oPartsSection">
+						<div id = "oPartsSection" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<span>Filtro</span>
 									<div class="input-group">
 											<input id="prePartFilter" type="text" class="form-control" placeholder="Repuesto">
@@ -1432,15 +1434,15 @@
 											</div>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
 									<span>Repuesto</span>
 									<select id="a-orderPartPicker" onchange="setPartForm(this.value)"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 										<span>Descripción</span>
-										<input type="text" id="a-oPartDesc" disabled="">
+										<input type="text" id="a-oPartDesc" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Cantidad</span>
 									<select id="a-orderQtyPicker">
 										<option value="1">1</option>
@@ -1546,19 +1548,19 @@
 												
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Costo</span>
-									<input type="text" id="a-oPartCost" disabled="">
+									<input type="text" id="a-oPartCost" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Factura</span>
-									<input type="text" id="a-oPartDoc" disabled="">
+									<input type="text" id="a-oPartDoc" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="addPartButton" onclick="addPart()">Agregar repuesto</button>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 									<div id="oPartsTable" class="table">
 										<div class="table-head">
 											<div class="column" data-label="Código">Código</div>
@@ -1574,9 +1576,9 @@
 							
 							</div>
 						</div>
-						<div id="oOthersSection">
+						<div id = "oOthersSection" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 ">
 									<span>Tipo</span>
 									<select id="a-orderOtherType" onchange="setOthersForm(this)">
 										<option value=""></option>
@@ -1586,11 +1588,11 @@
 										<option value="Otros">Otros</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-5 ">
+								<div class = "col-xs-12 col-sm-6 col-md-4 col-lg-5 ">
 									<span>Descripción</span>
-									<input type="text" id="a-oOtherDesc" disabled="">
+									<input type="text" id="a-oOtherDesc" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Cantidad</span>
 									<select id="a-otherQtyPicker">
 										<option value="1">1</option>
@@ -1695,20 +1697,20 @@
 										<option value="100">100</option>
 									</select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Costo</span>
-									<input type="text" id="a-oOtherCost" disabled="">
+									<input type="text" id="a-oOtherCost" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-1 col-lg-1 ">
 									<span>Factura</span>
-									<input type="text" id="a-oOtherDoc" disabled="">
+									<input type="text" id="a-oOtherDoc" disabled></input>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
-									<button id="addOtherButton" onclick="addOther()">Agregar concepto</button>
+									<button id="addOtherButton"  onclick="addOther()">Agregar concepto</button>
 								</div>
 									
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 									<div id="oOthersTable" class="table">
 										<div class="table-head">
 											<div class="column" data-label="Descripción">Descripción</div>
@@ -1723,9 +1725,9 @@
 							
 							</div>
 						</div>
-						<div id="oDetailsSection">
+						<div id = "oDetailsSection" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<span>Observaciones</span>
 									<textarea placeholder="Máximo 1000 carácteres" id="a-oDetailsText" maxlength="1000" onblur="updateOdetails()"></textarea>
 								</div>
@@ -1739,64 +1741,64 @@
 								<!-- </div> -->
 							</div>
 						</div>
-						<div id="opicsAdminBS">
+						<div id = "opicsAdminBS" >
 								<div class="row fLabel fields panelButtFull">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
-										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+									<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+										<div class = "col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 											<span>Fotos iniciales</span>
-                                                                                        <form action="loadIni.php" method="post" enctype="multipart/form-data" target="upload_target">
+                                                                                        <form action="loadIni.php" method="post" enctype="multipart/form-data" target="upload_target" >
 												<!-- <p id="Ini_upload_process"><img src="https://incocrea.com/servintegral/irsc/loader2.gif" /></p> -->
-												<input id="picSelectorIni" name="myfile" type="file" placeholder="Imagen" multiple="" class="fileBox">
-												<input type="submit" id="upButtonIni" name="submitBtn" value="Upload" class="hiddenSubmit">
+												<input id="picSelectorIni" name="myfile" type="file" placeholder="Imagen" multiple class="fileBox"/>
+												<input type="submit" id="upButtonIni" name="submitBtn" value="Upload" class="hiddenSubmit" />
 											</form>
 											<iframe id="upload_target" name="upload_target" src="" style="display: none; background: #ebebeb; width:100%;height:200;border:0px solid #fff;"></iframe>    
 										</div>
-										<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 ">
-											<div id="picturesBoxIni" class="picturesBox"><br></div>
-										<br></div>
-										<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 ">
+										<div class = "col-xs-12 col-sm-12 col-md-5 col-lg-5 ">
+											<div id="picturesBoxIni" class="picturesBox"></div>
+										</div>
+										<div class = "col-xs-12 col-sm-12 col-md-3 col-lg-2 ">
 												<br class="visible-md visible-lg">
-												<button onclick="loadPics('Ini')">▲</button>
+												<button onclick="loadPics('Ini')" >&#x25B2</button>
 												<br class="visible-sm visible-xs">
 												<br class="visible-sm visible-xs">
 										</div>
 									</div>
 									
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+									<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
+										<div class = "col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 											<span>Fotos finales</span>
-                                                                                        <form action="loadEnd.php" method="post" enctype="multipart/form-data" target="upload_target">
+                                                                                        <form action="loadEnd.php" method="post" enctype="multipart/form-data" target="upload_target" >
 													<!-- <p id="End_upload_process"><img src="https://incocrea.com/servintegral/irsc/loader2.gif" /></p> -->
-													<input id="picSelectorEnd" name="myfile" type="file" placeholder="Imagen" multiple="" class="fileBox">
-													<input type="submit" id="upButtonEnd" name="submitBtn" value="Upload" class="hiddenSubmit">
+													<input id="picSelectorEnd" name="myfile" type="file" placeholder="Imagen" multiple class="fileBox"/>
+													<input type="submit" id="upButtonEnd" name="submitBtn" value="Upload" class="hiddenSubmit" />
 											</form>
 										</div>
-										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
-											<div id="picturesBoxEnd" class="picturesBox"><br></div>
-										<br></div>
-										<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
+										<div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+											<div id="picturesBoxEnd" class="picturesBox"></div>
+										</div>
+										<div class = "col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
 											<br class="visible-md visible-lg">
-											<button onclick="loadPics('End')">▲</button>
+											<button onclick="loadPics('End')" >&#x25B2</button>
 											<br class="visible-sm visible-xs">
 											<br class="visible-sm visible-xs">
 										</div>
 									</div>
 									
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+									<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
+										<div class = "col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 											<span>Orden de trabajo</span>
-                                                                                        <form action="loadOrder.php" method="POST" enctype="multipart/form-data" target="upload_target">
+                                                                                        <form action="loadOrder.php" method="POST" enctype="multipart/form-data" target="upload_target" >
 													<!-- <p id="End_upload_process"><img src="https://incocrea.com/servintegral/irsc/loader2.gif" /></p> -->
-													<input id="picSelectorOrder" name="myfile" type="file" placeholder="Imagen" multiple="" class="fileBox">
-													<input type="submit" id="upButtonOrder" name="submitBtn" value="Upload" class="hiddenSubmit">
+													<input id="picSelectorOrder" name="myfile" type="file" placeholder="Imagen" multiple class="fileBox"/>
+													<input type="submit" id="upButtonOrder" name="submitBtn" value="Upload" class="hiddenSubmit" />
 											</form>
 										</div>
-										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
-											<div id="picturesBoxOrder" class="picturesBox"><br></div>
-										<br></div>
-										<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
+										<div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+											<div id="picturesBoxOrder" class="picturesBox"></div>
+										</div>
+										<div class = "col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
 											<br class="visible-md visible-lg">
-											<button onclick="loadPics('Order')">▲</button>
+											<button onclick="loadPics('Order')" >&#x25B2</button>
 											<br class="visible-sm visible-xs">
 											<br class="visible-sm visible-xs">
 										</div>
@@ -1804,59 +1806,59 @@
 									
 							</div>
 						</div>
-						<div id="oTimesSection">
+						<div id = "oTimesSection" >
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>T-Estimado</span>
 									<br>
-									
+									<span id="oEstimated" class="resSpan"></span>
 								</div>
 								<!-- <div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 "> -->
 									<!-- <span>T-Reportado</span> -->
 									<!-- <br> -->
 									<!-- <span id="oReported" class="resSpan"></span> -->
 								<!-- </div> -->
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>Actividades</span>
 									<br>
-									
+									<span id="oActotal" class="resSpan"></span>
 								</div>
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>Repuestos</span>
 									<br>
-									
+									<span id="oReptotal" class="resSpan"></span>
 								</div>
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>Otros</span>
 									<br>
-									
+									<span id="oOtherstotal" class="resSpan"></span>
 								</div>
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>Subtotal</span>
 									<br>
-									
+									<span id="oSubtotal" class="resSpan"></span>
 								</div>
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>IVA</span>
 									<br>
-									
+									<span id="oIVA" class="resSpan"></span>
 								</div>
-								<div class="col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
+								<div class = "col-xs-9 col-sm-4 col-md-2 col-lg-1 ">
 									<span>Total</span>
 									<br>
-									
+									<span id="oTotal" class="resSpan"></span>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0">
 									<br class="">
 									<button id="parcialReport" onclick="oPartialRep()">Reporte parcial</button>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-0">
 									<br class="">
-									<button id="oCloseButton" onclick="oClose()">Cierre Técnico</button>
+									<button id="oCloseButton"onclick="oClose()">Cierre Técnico</button>
 								</div>
 								
 								
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-1 ">
 									<br class="">
 									<button id="oAprobeButton" onclick="oAprobe()">Aprobar</button>
 								</div>
@@ -1866,43 +1868,43 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterR">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="repSearchBS">
+			<div id = "ifMasterR">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "repSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Cliente</span>
 									<select id="f-repParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Sucursal</span>
 									<select id="f-repSucu"></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>OTT</span>
-									<input id="f-repNumber" type="text">
+									<input id="f-repNumber" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Fecha Inicial</span>
-									<input id="f-repInidate" type="text">
+									<input id="f-repInidate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Fecha Final</span>
-									<input id="f-repEndate" type="text">
+									<input id="f-repEndate" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
-									<button value="Buscar" onclick="repGet()">Buscar</button>
+									<button value="Buscar" onclick="repGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="f-clearerRep" value="Limpiar">Limpiar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="repTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Cliente">Cliente</div>
@@ -1917,105 +1919,105 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterLeg">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="legBS">
+			<div id = "ifMasterLeg">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "legBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Legalización</span>
-									<input id="legCode" type="text" onblur="getLeg()">
+									<input id="legCode" type="text" onblur="getLeg()"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Cliente</span>
 									<select id="legItemParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Zona</span>
-									<input id="legItemZone" type="text" onblur="shootFilter()">
+									<input id="legItemZone" type="text" onblur="shootFilter()"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Orden</span>
 									<select id="legItemOrder"></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Fecha Factura</span>
-									<input id="legItemDate" type="text">
+									<input id="legItemDate" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>No. Factura</span>
-									<input id="legItemNumber" type="text">
+									<input id="legItemNumber" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Concepto</span>
-									<select id="legItemConcept"></select>
+									<select id="legItemConcept" /></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
 									<span>Detalle</span>
-									<input id="legItemDetail" type="text">
+									<input id="legItemDetail" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Razón Social</span>
-									<input id="legItemCname" type="text">
+									<input id="legItemCname" type="text" />
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Identificación</span>
-									<input id="legItemId" type="text">
+									<input id="legItemId" type="text"  />
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Base Factura</span>
-									<input id="legItemBase" type="text" onblur="calcIVA(this)">
+									<input id="legItemBase" type="text" onblur="calcIVA(this)"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>IVA</span>
-									<input id="legItemTax" type="text" onblur="calcIVA2(this)">
+									<input id="legItemTax" type="text" onblur="calcIVA2(this)"/>
 								</div>
 								<!-- <div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 "> -->
 									<!-- <span>Calcular IVA</span> -->
 									<!-- <input type="checkbox" onchange="setIVA()"/> -->
 								<!-- </div> -->
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Total Factura</span>
-									<input id="legItemTotal" type="text">
+									<input id="legItemTotal" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Retefuente</span>
-									<input id="legItemRetFont" type="text" onblur="calcrts()">
+									<input id="legItemRetFont" type="text" onblur="calcrts()"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>ReteICA</span>
-									<input id="legItemRetICA" type="text" onblur="calcrts()">
+									<input id="legItemRetICA" type="text" onblur="calcrts()"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-1 ">
 									<span>Total Pagado</span>
-									<input id="legItemPayment" type="text">
+									<input id="legItemPayment" type="text"/>
 								</div>
 								
 
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
-									<button value="Buscar" onclick="legCreate()">Crear</button>
+									<button value="Buscar" onclick="legCreate()" >Crear</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="f-clearerLeg" value="Limpiar">Limpiar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="" value="Exportar y cerrar" onclick="legExportBox('0')">Exportar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="" value="Exportar y cerrar" onclick="legExportBox('1')">Exportar y cerrar</button>
 								</div>
-								<div id="restoreLegButton" class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div id="restoreLegButton" class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="" value="Exportar y cerrar" onclick="getUserLegs()">Restaurar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="legTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Cliente">Cliente</div>
@@ -2038,39 +2040,39 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterF">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="recAdminBS">
+			<div id = "ifMasterF">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "recAdminBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Número de Resolución</span>
-									<input id="a-resoNumber" type="text">
+									<input id="a-resoNumber" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Fecha de Resolución</span>
-									<input id="a-resoDate" type="text">
+									<input id="a-resoDate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Número Inicial</span>
-									<input id="a-resoIninum" type="text">
+									<input id="a-resoIninum" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Número Final</span>
-									<input id="a-resoEndnum" type="text">
+									<input id="a-resoEndnum" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Iniciar en Número (opcional)</span>
-									<input id="a-resoActualnum" type="text">
+									<input id="a-resoActualnum" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="a-setReso" value="Establecer">Establecer</button>
 								</div>
 							</div>
 								
 								
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 								<div id="resoTable" class="table">
 									<div class="table-head">
 											
@@ -2086,41 +2088,41 @@
 								
 						</div>
 									
-						<div id="recSearchBS">
+						<div id = "recSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Número de Factura</span>
-									<input id="f-recNumber" type="text">
+									<input id="f-recNumber" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Cliente</span>
 									<select id="f-recParent"></select>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2 ">
 									<span>Número de Orden</span>
-									<input id="f-repOnum" type="text">
+									<input id="f-repOnum" type="text"/>
 								</div>
 								
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Fecha Inicial</span>
-									<input id="f-recInidate" type="text">
+									<input id="f-recInidate" type="text"/>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-3 col-md-3 col-lg-2 ">
 									<span>Fecha Final</span>
-									<input id="f-recEndate" type="text">
+									<input id="f-recEndate" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
-									<button value="Buscar" onclick="recGet()">Buscar</button>
+									<button value="Buscar" onclick="recGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									<button id="f-clearerRec" value="Limpiar">Limpiar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="recTable" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Número">Número</div>
@@ -2137,29 +2139,29 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterTO">
-				<div class="ifBox">
-					<div class="col-md-12 col-lg-12">
-						<div id="orderTSearchBS">
+			<div id = "ifMasterTO">
+				<div class = "ifBox">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "orderTSearchBS">
 							<div class="row fLabel fields panelButtFull">
-								 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+								 <div class = "col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
 									<span>Cliente</span>
-									<select id="f-orderParentT"></select>
+									<select id="f-orderParentT" ></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
+								<div class = "col-xs-12 col-sm-6 col-md-2 col-lg-3 ">
 									<span>Sucursal</span>
 									<select id="f-orderSucuT" onchange="ordeGet()"></select>
 								</div>
-								<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
+								<div class = "col-xs-12 col-sm-6 col-md-3 col-lg-2 ">
 									<span>OTT</span>
-									<input id="f-orderNumT" type="text">
+									<input  id="f-orderNumT" type="text"/>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
-									<button value="Buscar" onclick="ordeGetT()">Buscar</button>
+									<button value="Buscar" onclick="ordeGetT()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
+								<div class = "col-xs-6 col-sm-3 col-md-2 col-lg-2 col-lg-offset-0 col-md-offset-0 ">
 									<br class="hidden-xs">
 									
 									<button id="f-clearerOrdersT" value="Limpiar">Limpiar</button>
@@ -2167,7 +2169,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 						<div id="ordersTableT" class="table">
 							<div class="table-head">
 								<div class="column" data-label="Cliente">Cliente</div>
@@ -2186,27 +2188,27 @@
 				</div>
 			</div>
 			
-			<div id="ifMasterREP">
-				<div class="ifBox">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 onTop">
+			<div id = "ifMasterREP">
+				<div class = "ifBox">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 onTop" >
 						<select id="reportSelector" onchange="reportPick(this.value)" class="reporPicker">
 
 						</select>
 						<br>
 						<br>
 					</div>
-					<div class="col-md-12 col-lg-12">
-						<div id="reportsSearchBS">
+					<div class="col-md-12 col-lg-12" >
+						<div id = "reportsSearchBS">
 							<div id="repFilterBox" class="row fLabel fields panelButtFull">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
+								<div class = "col-xs-12 col-sm-4 col-md-4 col-lg-2">
 									<span>Cliente</span>
 									<select id="f-repParent-2"></select>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1">
 									<br class="hidden-xs">
-									<button value="Buscar" onclick="repGet()">Buscar</button>
+									<button value="Buscar" onclick="repGet()" >Buscar</button>
 								</div>
-								<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1">
+								<div class = "col-xs-6 col-sm-3 col-md-3 col-lg-1">
 									<br class="hidden-xs">
 									<button id="f-clearerRep" value="Limpiar">Limpiar</button>
 								</div>
@@ -2371,57 +2373,58 @@
                                         </div>
                         </div>
 
-<div id="ifMasterP" class="hiddenTab">
-<div class="ifBox">
+<div id = "ifMasterP" class="hiddenTab">
+<div class = "ifBox">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-4 purchase-suppliers-column">
 <div class="panel panel-default">
-<div class="panel-heading"><br></div>
+<div class="panel-heading"><span class="ifTitle" id="purchaseSuppliers"></span></div>
 <div class="panel-body">
-<input id="p-supplier-id" type="hidden">
+<input id="p-supplier-id" type="hidden" />
 <div class="row fLabel fields panelButtFull">
 <div class="col-xs-12">
 <label id="purchaseSupplierName"></label>
-<input id="p-supplier-name" type="text" class="form-control">
+<input id="p-supplier-name" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierNit"></label>
-<input id="p-supplier-nit" type="text" class="form-control">
+<input id="p-supplier-nit" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierContact"></label>
-<input id="p-supplier-contact" type="text" class="form-control">
+<input id="p-supplier-contact" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierEmail"></label>
-<input id="p-supplier-email" type="text" class="form-control">
+<input id="p-supplier-email" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierPhone"></label>
-<input id="p-supplier-phone" type="text" class="form-control">
+<input id="p-supplier-phone" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierAddress"></label>
-<input id="p-supplier-address" type="text" class="form-control">
+<input id="p-supplier-address" type="text" class="form-control" />
 </div>
 <div class="col-xs-12">
 <label id="purchaseSupplierCity"></label>
-<input id="p-supplier-city" type="text" class="form-control">
+<input id="p-supplier-city" type="text" class="form-control" />
 </div>
 </div>
 <div class="row" style="margin-top:10px;">
 <div class="col-xs-6">
 <button id="purchaseSupplierSave" class="btn btn-primary btn-block" onclick="saveSupplier()"></button>
-<br></div>
+</div>
 <div class="col-xs-6">
 <button id="purchaseSupplierClear" class="btn btn-default btn-block" onclick="clearSupplierForm()"></button>
-<br></div>
-<br></div>
+</div>
+</div>
 </div>
 </div>
 <div class="panel panel-default supplier-list-panel">
-<div class="panel-heading"><br></div>
-<div class="panel-body supplier-table-wrapper">
+<div class="panel-heading"><span class="ifTitle" id="purchaseSuppliersList"></span></div>
+<div class="panel-body">
+<div class="supplier-table-wrapper">
 <div id="purchaseSuppliersTable" class="table">
 <div class="table-head">
 <div class="column" data-label="Proveedor">Proveedor</div>
@@ -2434,19 +2437,20 @@
 </div>
 </div>
 </div>
+</div>
 <div class="col-md-8">
 <div class="panel panel-default">
-<div class="panel-heading"><br></div>
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrderTitle"></span></div>
 <div class="panel-body">
 <div class="row fLabel fields panelButtFull">
 <div class="col-sm-6 col-md-4">
 <label id="purchaseOrderRq"></label>
-<input id="p-order-rq" type="text" class="form-control">
+<input id="p-order-rq" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-4">
 <label id="purchaseOrderSupplier"></label>
 <select id="p-order-supplier" class="form-control"></select>
-<br></div>
+</div>
 <div class="col-sm-6 col-md-2">
 <label id="purchaseOrderCurrency"></label>
 <select id="p-order-currency" class="form-control">
@@ -2462,31 +2466,31 @@
 <div class="row fLabel fields panelButtFull" style="margin-top:10px;">
 <div class="col-sm-6 col-md-4">
 <label id="purchaseOrderDescription"></label>
-<input id="p-order-item-desc" type="text" class="form-control">
+<input id="p-order-item-desc" type="text" class="form-control" />
 </div>
 <div class="col-sm-3 col-md-2">
 <label id="purchaseOrderQty"></label>
-<input id="p-order-item-qty" type="number" class="form-control">
+<input id="p-order-item-qty" type="number" class="form-control" />
 </div>
 <div class="col-sm-3 col-md-2">
 <label id="purchaseOrderCost"></label>
-<input id="p-order-item-cost" type="number" class="form-control">
+<input id="p-order-item-cost" type="number" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-2" style="margin-top:24px;">
 <button id="purchaseOrderAddItem" class="btn btn-default btn-block" onclick="addPoItem()"></button>
-<br></div>
+</div>
 <div class="col-sm-6 col-md-2" style="margin-top:24px;">
 <button id="purchaseOrderCreate" class="btn btn-primary btn-block" onclick="createPoFromRq()"></button>
-<br></div>
+</div>
 </div>
 <div class="row fLabel fields panelButtFull" style="margin-top:10px;">
 <div class="col-sm-6 col-md-4">
 <label id="purchaseOrderCode"></label>
-<input id="p-order-code" type="text" class="form-control">
+<input id="p-order-code" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-3" style="margin-top:24px;">
 <button id="purchaseOrderUpdate" class="btn btn-info btn-block" onclick="updateNegotiatedCosts()"></button>
-<br></div>
+</div>
 </div>
 <div class="row" style="margin-top:15px;">
 <div class="col-xs-12">
@@ -2504,52 +2508,52 @@
 </div>
 </div>
 <div class="panel panel-default">
-<div class="panel-heading"><br></div>
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrderReceiveTitle"></span></div>
 <div class="panel-body">
 <div class="row fLabel fields panelButtFull">
 <div class="col-sm-6 col-md-3">
 <label id="purchaseReceiptSku"></label>
-<input id="p-receipt-sku" type="text" class="form-control">
+<input id="p-receipt-sku" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-4">
 <label id="purchaseReceiptDesc"></label>
-<input id="p-receipt-desc" type="text" class="form-control">
+<input id="p-receipt-desc" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-2">
 <label id="purchaseReceiptQty"></label>
-<input id="p-receipt-qty" type="number" class="form-control">
+<input id="p-receipt-qty" type="number" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-2">
 <label id="purchaseReceiptCost"></label>
-<input id="p-receipt-cost" type="number" class="form-control">
+<input id="p-receipt-cost" type="number" class="form-control" />
 </div>
 </div>
 <div class="row fLabel fields panelButtFull" style="margin-top:10px;">
 <div class="col-sm-6 col-md-3">
 <label id="purchaseReceiptOt"></label>
-<input id="p-receipt-ot" type="text" class="form-control">
+<input id="p-receipt-ot" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-3">
 <label id="purchaseReceiptRq"></label>
-<input id="p-receipt-rq" type="text" class="form-control">
+<input id="p-receipt-rq" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-3">
 <label id="purchaseOrderCode"></label>
-<input id="p-receipt-po" type="text" class="form-control">
+<input id="p-receipt-po" type="text" class="form-control" />
 </div>
 <div class="col-sm-6 col-md-3">
 <label>Código Item OC</label>
-<input id="p-receipt-item" type="text" class="form-control">
+<input id="p-receipt-item" type="text" class="form-control" />
 </div>
 </div>
 <div class="row" style="margin-top:10px;">
 <div class="col-sm-6 col-md-3">
 <button id="purchaseReceiptAdd" class="btn btn-default btn-block" onclick="addReceiptItem()"></button>
-<br></div>
+</div>
 <div class="col-sm-6 col-md-3">
 <button id="purchaseReceiptSubmit" class="btn btn-success btn-block" onclick="registerReceipt()"></button>
-<br></div>
-<br></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2557,7 +2561,7 @@
 <div class="row" style="margin-top:20px;">
 <div class="col-xs-12">
 <div class="panel panel-default">
-<div class="panel-heading"><br></div>
+<div class="panel-heading"><span class="ifTitle" id="purchaseOrdersList"></span></div>
 <div class="panel-body">
 <div id="purchaseOrdersTable" class="table">
 <div class="table-head">
@@ -2578,39 +2582,40 @@
                         <div id="contactDiv" class="abuseReportDiv">
 				
 				<div class="contactBox">
-					<img id="contactIcon" src="irsc/mainLogo2.png" class="contactIcon">
+					<img id="contactIcon" src='irsc/mainLogo2.png' class="contactIcon"/>
 					<br>
-					<input type="text" id="contactName" class="contactField1">
-					<input type="text" id="contactMail" class="contactField2">
+					<input type="text" id="contactName" class="contactField1"/>
+					<input type="text" id="contactMail" class="contactField2"/>
 					<textarea type="text" id="contactMessage" class="abuseBox"></textarea>
 				</div>
 				
 				<div class="dualButtonsDiv">
-					<div id="sendContactButton" class="dualButtonPop" onclick="sendContact()"><br></div>
-					<div id="closeContactButton" class="dualButtonPop" onclick="hide_pop_form()"><br></div>
-				<br></div>
+					<div id="sendContactButton" class="dualButtonPop" onclick="sendContact()"></div>
+					<div id="closeContactButton" class="dualButtonPop" onclick="hide_pop_form()"></div>
+				</div>
 				
 			</div>
 			
                         <div id="budgetFileLoad">
 
-                        <form action="loadBudget.php" method="post" enctype="multipart/form-data" target="upload_target">
+                        <form action="loadBudget.php" method="post" enctype="multipart/form-data" target="upload_target" >
 				<!-- <p id="End_upload_process"><img src="https://incocrea.com/servintegral/irsc/loader2.gif" /></p> -->
-				<input id="budgetSelectorOrder" name="myfile" type="file" placeholder="Imagen" class="fileBox">
-				<input type="submit" id="upButtonBudget" name="submitBtn" value="Upload" class="hiddenSubmit">
+				<input id="budgetSelectorOrder" name="myfile" type="file" placeholder="Imagen" class="fileBox"/>
+				<input type="submit" id="upButtonBudget" name="submitBtn" value="Upload" class="hiddenSubmit" />
 			</form>
 			
 			
-                        <img src="irsc/mainLogo.png">
-                        <img src="irsc/mainLogo2.png">
-                        <img src="irsc/infoGeneral.png">
-                        <img src="irsc/exit.png">
+                        <img src="irsc/mainLogo.png"/>
+                        <img src="irsc/mainLogo2.png"/>
+                        <img src="irsc/infoGeneral.png"/>
+                        <img src="irsc/exit.png"/>
                 </div>
 
                 <div id="ifMasterQ" class="hiddenTab">
-                        <div id="quoteModule" class="workarea"><br></div>
-                <br></div>
+                        <div class="ifBox">
+                                <div id="quoteModule" class="workarea quote-module"></div>
+                        </div>
+                </div>
 
-        
-
-</div></body></html>
+        </body>
+</html>

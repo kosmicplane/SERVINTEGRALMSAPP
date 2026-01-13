@@ -742,6 +742,11 @@ function ifLoad(code)
         var box = document.getElementById("wa");
         var limbo = document.getElementById("hidden");
         if(!ifc){return;}
+
+        if(activeInterface === "ifMasterQ" && code !== "ifMasterQ" && typeof deactivateQuotes === "function")
+        {
+                deactivateQuotes();
+        }
         if(box.children.length > 0)
         {
                 var currentTab = box.children[0];
@@ -9284,6 +9289,11 @@ function fillSupplierForm(supplier)
         document.getElementById("p-supplier-phone").value = supplier.PHONE || "";
         document.getElementById("p-supplier-address").value = supplier.ADDRESS || "";
         document.getElementById("p-supplier-city").value = supplier.CITY || "";
+
+        var saveBtn = document.getElementById("purchaseSupplierSave");
+        if(saveBtn){
+                saveBtn.innerHTML = "Actualizar proveedor";
+        }
 }
 function renderSupplierPicker()
 {
