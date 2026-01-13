@@ -1,3 +1,36 @@
+v1.1.24 - 30-December-2025
+- Improvement: Implemented mechanism to prevent duplicate WXR import requests, ensuring data integrity and avoiding content duplication.
+- Improvement: Enhanced error handling for site content import.
+- Improvement: Added support for SureCart checkout form block ID replacement during batch processing.
+
+v1.1.23 - 05-December-2025
+- Improvement: Enhanced the SureCart product creation flow to use template products when available, providing a smoother setup experience.
+- Improvement: Skip irrelevant site-specific meta keys during import.
+- Improvement: Added WPForms plugin compatibility for Elementor templates.
+
+v1.1.22 - 13-November-2025
+- Security: Enhanced file upload validation to prevent double extension attacks.
+- Fix: Prevented potential fatal errors when updating the site options if an exception occurs from Elementor.
+
+v1.1.21 - 18-September-2025
+- Improvement: Added multisite import compatibility for classic templates.
+- Improvement: Enhanced import error handling to minimize failure rates.
+
+v1.1.20 - 21-August-2025
+- Improvement: Added headers to improve sse import over http2 protocol.
+
+v1.1.19 - 13-August-2025
+- Fix: Resolved an issue where the email address was not being passed during SureCart account creation.
+
+v1.1.18 - 16-July-2025
+- Fix: Resolved the “No Kit Found” error message when editing with Elementor after successful import.
+
+v1.1.17 - 03-July-2025
+- Fix: Addressed missing alt text when importing Spectra images.
+
+v1.1.16 - 26-June-2025
+- Fix: Resolved an issue where Gutenberg batches of Elementor templates were not processed correctly.
+
 v1.1.15 - 19-May-2025
 - Improvement: Added compatibility with Spectra Popup Builder post types.
 

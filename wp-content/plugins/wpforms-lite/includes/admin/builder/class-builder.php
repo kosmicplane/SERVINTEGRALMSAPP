@@ -119,7 +119,7 @@ class WPForms_Builder {
 	 *
 	 * @since 1.0.0
 	 */
-	public function init() { // phpcs:ignore WPForms.PHP.HooksMethod.InvalidPlaceForAddingHooks, Generic.Metrics.CyclomaticComplexity.MaxExceeded
+	public function init() { // phpcs:ignore WPForms.PHP.HooksMethod.InvalidPlaceForAddingHooks, Generic.Metrics.CyclomaticComplexity.TooHigh
 
 		// Only load if we are actually on the builder.
 		if ( ! wpforms_is_admin_page( 'builder' ) ) {
@@ -304,7 +304,7 @@ class WPForms_Builder {
 	 * @param int    $form_id Form ID.
 	 * @param string $action  Action name.
 	 */
-	private function process_action( int $form_id, string $action ) { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+	private function process_action( int $form_id, string $action ) {
 
 		$form_handler = wpforms()->obj( 'form' );
 
@@ -489,7 +489,15 @@ class WPForms_Builder {
 		 */
 		wp_enqueue_style(
 			'wpforms-font-awesome',
-			WPFORMS_PLUGIN_URL . 'assets/lib/font-awesome/font-awesome.min.css',
+			WPFORMS_PLUGIN_URL . 'assets/lib/font-awesome/css/all.min.css',
+			null,
+			'7.0.1'
+		);
+
+		// FontAwesome v4 compatibility shims.
+		wp_enqueue_style(
+			'wpforms-font-awesome-v4-shim',
+			WPFORMS_PLUGIN_URL . 'assets/lib/font-awesome/css/v4-shims.min.css',
 			null,
 			'4.7.0'
 		);
@@ -588,7 +596,7 @@ class WPForms_Builder {
 			'dom-purify',
 			WPFORMS_PLUGIN_URL . 'assets/lib/purify.min.js',
 			[],
-			'3.2.6',
+			'3.2.7',
 			false
 		);
 
@@ -669,6 +677,22 @@ class WPForms_Builder {
 			true
 		);
 
+		wp_register_script(
+			'wpforms-builder-choices-list',
+			WPFORMS_PLUGIN_URL . "assets/js/admin/builder/choices-list{$min}.js",
+			[ 'jquery' ],
+			WPFORMS_VERSION,
+			true
+		);
+
+		wp_register_script(
+			'wpforms-builder-chocolate-choices',
+			WPFORMS_PLUGIN_URL . "assets/js/admin/builder/chocolate-choices{$min}.js",
+			[ 'jquery' ],
+			WPFORMS_VERSION,
+			true
+		);
+
 		wp_localize_script(
 			'wpforms-builder',
 			'wpforms_builder',
@@ -711,7 +735,7 @@ class WPForms_Builder {
 	 * @return array
 	 * @noinspection HtmlUnknownTarget
 	 */
-	private function get_localized_strings(): array { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+	private function get_localized_strings(): array {
 
 		$image_extensions = wpforms_chain( get_allowed_mime_types() )
 			->map(
@@ -737,6 +761,7 @@ class WPForms_Builder {
 			'bulk_add_presets_hide'                   => esc_html__( 'Hide presets', 'wpforms-lite' ),
 			'date_select_day'                         => 'DD',
 			'date_select_month'                       => 'MM',
+			'date_select_year'                        => 'YYYY',
 			'debug'                                   => wpforms_debug(),
 			'dynamic_choices'                         => [
 				'limit_message' => sprintf( /* translators: %1$s - data source name (e.g. Categories, Posts), %2$s - data source type (e.g. post type, taxonomy), %3$s - display limit, %4$s - total number of items. */
@@ -863,7 +888,7 @@ class WPForms_Builder {
 				'{number}'
 			),
 			'error_save_form'                         => esc_html__( 'Something went wrong while saving the form. Please reload the page and try again.', 'wpforms-lite' ),
-			'error_contact_support'                   => esc_html__( 'Please contact the plugin support team if this behavior persists.', 'wpforms-lite' ),
+			'error_contact_support'                   => esc_html__( 'Please contact support if this behavior persists.', 'wpforms-lite' ),
 			'error_select_template'                   => esc_html__( 'Something went wrong while applying the form template. Please try again. If the error persists, contact our support team.', 'wpforms-lite' ),
 			'error_load_templates'                    => esc_html__( "Couldn't load the Setup panel.", 'wpforms-lite' ),
 			'blank_form'                              => esc_html__( 'Blank Form', 'wpforms-lite' ),
@@ -980,6 +1005,20 @@ class WPForms_Builder {
 			)
 		);
 
+		$strings['error_save_form_forbidden'] = sprintf(
+			wp_kses( /* translators: %1$s - Documentation page URL. */
+				__( 'The form cannot be saved due to a <a href="%1$s" target="_blank" rel="noopener noreferrer">403 error</a>.', 'wpforms-lite' ),
+				[
+					'a' => [
+						'href'   => [],
+						'target' => [],
+						'rel'    => [],
+					],
+				]
+			),
+			wpforms_utm_link( 'https://wpforms.com/docs/troubleshooting-403-forbidden-errors/', 'Builder - Settings', '403 Form Errors' )
+		);
+
 		/**
 		 * Form Builder localized strings filter.
 		 *
@@ -1081,7 +1120,7 @@ class WPForms_Builder {
 	 *
 	 * @since 1.0.0
 	 */
-	public function output() { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.MaxExceeded
+	public function output() { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
 
 		if ( $this->abort ) {
 			return;
@@ -1127,8 +1166,8 @@ class WPForms_Builder {
 		 *
 		 * @since 1.7.9
 		 *
-		 * @param array $classes   List of classes.
-		 * @param array $form_data Form data and settings.
+		 * @param array      $classes   List of classes.
+		 * @param array|bool $form_data Form data and settings or false when form isn't created.
 		 */
 		$builder_classes = (array) apply_filters( 'wpforms_builder_output_classes', $builder_classes, $this->form_data );
 
@@ -1205,7 +1244,7 @@ class WPForms_Builder {
 					<div class="wpforms-right">
 
 						<button id="wpforms-help"
-							class="wpforms-btn wpforms-btn-toolbar wpforms-btn-light-grey"
+							class="js-wpforms-help wpforms-btn wpforms-btn-toolbar wpforms-btn-light-grey"
 							title="<?php esc_attr_e( 'Help Ctrl+H', 'wpforms-lite' ); ?>">
 								<i class="fa fa-question-circle-o"></i>
 								<span<?php echo $this->form ? ' class="screen-reader-text"' : ''; ?>>
@@ -1384,7 +1423,6 @@ class WPForms_Builder {
 			'form_id'          => $this->form->ID,
 			'is_form_template' => $this->form->post_type === 'wpforms-template',
 			'has_payments'     => wpforms()->obj( 'payment' )->get_by( 'form_id', $this->form->ID ) !== null,
-			'show_whats_new'   => wpforms()->obj( 'splash_screen' )->is_available_for_display(),
 		];
 
 		if ( wpforms()->is_pro() ) {

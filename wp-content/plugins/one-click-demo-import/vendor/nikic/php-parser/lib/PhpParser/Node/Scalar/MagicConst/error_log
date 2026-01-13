@@ -1,1 +1,0 @@
-[14-Jun-2025 20:08:00 UTC] PHP Fatal error:  strict_types declaration must be the very first statement in the script in /home/izorlnspatmm/public_html/wp-content/plugins/one-click-demo-import/vendor/nikic/php-parser/lib/PhpParser/Node/Scalar/MagicConst/Dir.php on line 2

@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { ActionBarConfig, blockAttributes, BunnyConfig, ButtonLinkObject, CTA, DynamicOverlay, EmailCollection, i18nConfig, MutedOverlay, PlaylistItem, presetAttributes, prestoBranding, prestoChapters, PrestoConfig, SearchBarConfig, YoutubeConfig } from "./interfaces";
-export { ActionBarConfig, blockAttributes, BunnyConfig, ButtonLinkObject, CTA, DynamicOverlay, EmailCollection, i18nConfig, MutedOverlay, PlaylistItem, presetAttributes, prestoBranding, prestoChapters, PrestoConfig, SearchBarConfig, YoutubeConfig } from "./interfaces";
+import { ActionBarConfig, ButtonLinkObject, CTA, DynamicOverlay, EmailCollection, i18nConfig, MutedOverlay, PlaylistItem, presetAttributes, YoutubeConfig } from "./interfaces";
+export { ActionBarConfig, ButtonLinkObject, CTA, DynamicOverlay, EmailCollection, i18nConfig, MutedOverlay, PlaylistItem, presetAttributes, YoutubeConfig } from "./interfaces";
 export namespace Components {
     interface PrestoActionBar {
         "config": ActionBarConfig;
@@ -45,10 +45,8 @@ export namespace Components {
         "playsinline": boolean;
         "poster": string;
         "preload": string;
-        "previewUrl": string;
         "provider": string;
         "src": string;
-        "thumbnail": string;
         "tracks": { label: string; src: string; srcLang: string }[];
         "videoAttributes": object;
     }
@@ -97,6 +95,9 @@ export namespace Components {
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
         "href": string;
+        /**
+          * @default 'top-right'
+         */
         "position": 'top-left' | 'top-right';
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
@@ -156,17 +157,31 @@ export namespace Components {
         "preset": presetAttributes;
     }
     interface PrestoPlayer {
-        "actionBar": ActionBarConfig;
+        /**
+          * @default {}
+         */
+        "actionBar": any;
         "analytics": boolean;
         "audioAttributes": object;
         "automations": boolean;
         "autoplay": boolean;
-        "blockAttributes": blockAttributes;
-        "branding": prestoBranding;
-        "bunny": BunnyConfig;
-        "chapters": prestoChapters;
+        /**
+          * @default {}
+         */
+        "blockAttributes": any;
+        /**
+          * @default {}
+         */
+        "branding": any;
+        /**
+          * @default []
+         */
+        "chapters": any;
         "classes": string;
-        "config": PrestoConfig;
+        /**
+          * @default {}
+         */
+        "config": any;
         "css"?: string;
         "currentTime": number;
         "direction"?: 'rtl';
@@ -180,8 +195,16 @@ export namespace Components {
           * @param time number
          */
         "goToAndPlay": (time: number) => Promise<void>;
+        /**
+          * @default {}
+         */
+        "i18n": any;
         "iconUrl": string;
+        /**
+          * @default false
+         */
         "isAdmin": boolean;
+        "lazyLoadYoutube": boolean;
         "markers": any;
         "mediaTitle": string;
         /**
@@ -205,7 +228,10 @@ export namespace Components {
           * @returns Plyr
          */
         "once": (event: string, func: Function) => Promise<any>;
-        "overlays": Array<DynamicOverlay>;
+        /**
+          * @default {}
+         */
+        "overlays": any;
         /**
           * Pause video
           * @returns Plyr
@@ -219,30 +245,43 @@ export namespace Components {
         "playsinline": boolean;
         "poster": string;
         "preload": 'metadata' | 'none' | 'auto';
-        "preset": presetAttributes;
+        /**
+          * @default {}
+         */
+        "preset": any;
         "provider": string;
-        "provider_video_id": string;
+        "providerVideoId": string;
         /**
           * Play video
           * @returns Plyr
          */
         "restart": () => Promise<any>;
-        "search": SearchBarConfig;
+        /**
+          * @default {}
+         */
+        "search": any;
         "src": string;
         /**
           * Pause video
           * @returns Plyr
          */
         "stop": () => Promise<any>;
-        "tracks": { label: string; src: string; srcLang: string }[];
+        /**
+          * @default []
+         */
+        "tracks": any;
         "type": string;
         "videoAttributes": object;
-        "video_id": number;
-        "youtube": YoutubeConfig;
+        "videoId": number;
+        /**
+          * @default {}
+         */
+        "youtube": any;
     }
     interface PrestoPlayerButton {
         /**
           * Disables the button.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -251,6 +290,7 @@ export namespace Components {
         "download": string;
         /**
           * Draws the button with a caret for use with dropdowns, popovers, etc.
+          * @default false
          */
         "full"?: boolean;
         /**
@@ -263,10 +303,12 @@ export namespace Components {
         "name": string;
         /**
           * The button's size.
+          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
+          * @default false
          */
         "submit"?: boolean;
         /**
@@ -275,6 +317,7 @@ export namespace Components {
         "target": '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
+          * @default 'default'
          */
         "type": 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text';
         /**
@@ -283,6 +326,9 @@ export namespace Components {
         "value": string;
     }
     interface PrestoPlayerSkeleton {
+        /**
+          * @default 'sheen'
+         */
         "effect": 'pulse' | 'sheen' | 'none';
     }
     interface PrestoPlayerSpinner {
@@ -306,22 +352,26 @@ export namespace Components {
         "listTextSingular": string;
         /**
           * Transition duration for next video.
+          * @default 5
          */
         "transitionDuration": number;
     }
     interface PrestoPlaylistItem {
         /**
           * Active status
+          * @default false
          */
         "active": boolean;
         /**
           * Playing status
+          * @default false
          */
         "playing": boolean;
     }
     interface PrestoPlaylistOverlay {
         /**
           * Flag to handle if this item is the last item in the list.
+          * @default false
          */
         "isLastItem": boolean;
         /**
@@ -334,10 +384,12 @@ export namespace Components {
         "nextItemTitle": string;
         /**
           * Visibility flag for the Overlay
+          * @default false
          */
         "show": boolean;
         /**
           * Transition duration for next video.
+          * @default 5
          */
         "transitionDuration": number;
     }
@@ -402,6 +454,9 @@ export namespace Components {
     }
     interface PrestoYoutubeSubscribeButton {
         "channel": string;
+        /**
+          * @default 'default'
+         */
         "layout": string;
         "showCount": boolean;
     }
@@ -920,10 +975,8 @@ declare namespace LocalJSX {
         "playsinline"?: boolean;
         "poster"?: string;
         "preload"?: string;
-        "previewUrl"?: string;
         "provider"?: string;
         "src"?: string;
-        "thumbnail"?: string;
         "tracks"?: { label: string; src: string; srcLang: string }[];
         "videoAttributes"?: object;
     }
@@ -981,6 +1034,9 @@ declare namespace LocalJSX {
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
         "href"?: string;
+        /**
+          * @default 'top-right'
+         */
         "position"?: 'top-left' | 'top-right';
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
@@ -1051,22 +1107,44 @@ declare namespace LocalJSX {
         "preset"?: presetAttributes;
     }
     interface PrestoPlayer {
-        "actionBar"?: ActionBarConfig;
+        /**
+          * @default {}
+         */
+        "actionBar"?: any;
         "analytics"?: boolean;
         "audioAttributes"?: object;
         "automations"?: boolean;
         "autoplay"?: boolean;
-        "blockAttributes"?: blockAttributes;
-        "branding"?: prestoBranding;
-        "bunny"?: BunnyConfig;
-        "chapters"?: prestoChapters;
+        /**
+          * @default {}
+         */
+        "blockAttributes"?: any;
+        /**
+          * @default {}
+         */
+        "branding"?: any;
+        /**
+          * @default []
+         */
+        "chapters"?: any;
         "classes"?: string;
-        "config"?: PrestoConfig;
+        /**
+          * @default {}
+         */
+        "config"?: any;
         "css"?: string;
         "currentTime"?: number;
         "direction"?: 'rtl';
+        /**
+          * @default {}
+         */
+        "i18n"?: any;
         "iconUrl"?: string;
+        /**
+          * @default false
+         */
         "isAdmin"?: boolean;
+        "lazyLoadYoutube"?: boolean;
         "markers"?: any;
         "mediaTitle"?: string;
         "onCurrentMediaPlayer"?: (event: PrestoPlayerCustomEvent<object>) => void;
@@ -1078,24 +1156,40 @@ declare namespace LocalJSX {
         "onPausedMedia"?: (event: PrestoPlayerCustomEvent<object>) => void;
         "onPlayedMedia"?: (event: PrestoPlayerCustomEvent<object>) => void;
         "onPlayerReady"?: (event: PrestoPlayerCustomEvent<object>) => void;
-        "overlays"?: Array<DynamicOverlay>;
+        /**
+          * @default {}
+         */
+        "overlays"?: any;
         "playsinline"?: boolean;
         "poster"?: string;
         "preload"?: 'metadata' | 'none' | 'auto';
-        "preset"?: presetAttributes;
+        /**
+          * @default {}
+         */
+        "preset"?: any;
         "provider"?: string;
-        "provider_video_id"?: string;
-        "search"?: SearchBarConfig;
+        "providerVideoId"?: string;
+        /**
+          * @default {}
+         */
+        "search"?: any;
         "src"?: string;
-        "tracks"?: { label: string; src: string; srcLang: string }[];
+        /**
+          * @default []
+         */
+        "tracks"?: any;
         "type"?: string;
         "videoAttributes"?: object;
-        "video_id"?: number;
-        "youtube"?: YoutubeConfig;
+        "videoId"?: number;
+        /**
+          * @default {}
+         */
+        "youtube"?: any;
     }
     interface PrestoPlayerButton {
         /**
           * Disables the button.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1104,6 +1198,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Draws the button with a caret for use with dropdowns, popovers, etc.
+          * @default false
          */
         "full"?: boolean;
         /**
@@ -1124,10 +1219,12 @@ declare namespace LocalJSX {
         "onPrestoFocus"?: (event: PrestoPlayerButtonCustomEvent<void>) => void;
         /**
           * The button's size.
+          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
+          * @default false
          */
         "submit"?: boolean;
         /**
@@ -1136,6 +1233,7 @@ declare namespace LocalJSX {
         "target"?: '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
+          * @default 'default'
          */
         "type"?: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text';
         /**
@@ -1144,6 +1242,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PrestoPlayerSkeleton {
+        /**
+          * @default 'sheen'
+         */
         "effect"?: 'pulse' | 'sheen' | 'none';
     }
     interface PrestoPlayerSpinner {
@@ -1167,12 +1268,14 @@ declare namespace LocalJSX {
         "listTextSingular"?: string;
         /**
           * Transition duration for next video.
+          * @default 5
          */
         "transitionDuration"?: number;
     }
     interface PrestoPlaylistItem {
         /**
           * Active status
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -1185,12 +1288,14 @@ declare namespace LocalJSX {
         "onTriggerPlay"?: (event: PrestoPlaylistItemCustomEvent<void>) => void;
         /**
           * Playing status
+          * @default false
          */
         "playing"?: boolean;
     }
     interface PrestoPlaylistOverlay {
         /**
           * Flag to handle if this item is the last item in the list.
+          * @default false
          */
         "isLastItem"?: boolean;
         /**
@@ -1211,10 +1316,12 @@ declare namespace LocalJSX {
         "onRewatch"?: (event: PrestoPlaylistOverlayCustomEvent<void>) => void;
         /**
           * Visibility flag for the Overlay
+          * @default false
          */
         "show"?: boolean;
         /**
           * Transition duration for next video.
+          * @default 5
          */
         "transitionDuration"?: number;
     }
@@ -1299,6 +1406,9 @@ declare namespace LocalJSX {
     }
     interface PrestoYoutubeSubscribeButton {
         "channel"?: string;
+        /**
+          * @default 'default'
+         */
         "layout"?: string;
         "showCount"?: boolean;
     }

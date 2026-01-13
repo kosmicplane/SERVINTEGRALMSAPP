@@ -26,3 +26,11 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/izorlnspatmm/public_html/wp-content/themes/twentytwenty/404.php on line 10
+[09-Jan-2026 11:42:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/izorlnspatmm/public_html/wp-content/themes/twentytwenty/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/twentytwenty/index.php on line 17
+[12-Jan-2026 16:12:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/izorlnspatmm/public_html/wp-content/themes/twentytwenty/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-content/themes/twentytwenty/index.php on line 17

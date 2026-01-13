@@ -44,10 +44,15 @@ class Enqueues {
 	 */
 	public function javascript_strings( $strings, $form = [] ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
-		$strings['stripe_recurring_heading']  = esc_html__( 'Missing Required Fields', 'wpforms-lite' );
-		$strings['stripe_recurring_email']    = esc_html__( 'When recurring subscription payments are enabled, the Customer Email is required.', 'wpforms-lite' );
-		$strings['stripe_recurring_settings'] = wp_kses(
-			__( 'Please go to the <a href="#" class="wpforms-stripe-settings-redirect">Stripe payment settings</a> and select a Customer Email.', 'wpforms-lite' ),
+		$strings = (array) $strings;
+
+		$strings['stripe_recurring_heading']         = esc_html__( 'Missing Required Fields', 'wpforms-lite' );
+		$strings['stripe_recurring_email']           = esc_html__( 'When recurring subscription payments are enabled, the Customer Email is required.', 'wpforms-lite' );
+		$strings['stripe_required_one_time_fields']  = esc_html__( 'In order to complete your form\'s Stripe One-Time Payments, please check that all required (*) fields have been filled out.', 'wpforms-lite' );
+		$strings['stripe_required_recurring_fields'] = esc_html__( 'In order to complete your form\'s Stripe Recurring Subscription Payments, please check that all required (*) fields have been filled out.', 'wpforms-lite' );
+		$strings['stripe_required_both_fields']      = esc_html__( 'In order to complete your form\'s Stripe One-Time Payments and Recurring Subscription Payments, please check that all required (*) fields have been filled out.', 'wpforms-lite' );
+		$strings['stripe_recurring_settings']        = wp_kses(
+			__( 'Please go to the <a href="#" class="wpforms-stripe-settings-redirect">Stripe payment settings</a> and fill out the required field(s).', 'wpforms-lite' ),
 			[
 				'a' => [
 					'href'  => [],
@@ -69,6 +74,15 @@ class Enqueues {
 	public function enqueues( $view = null ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 
 		$min = wpforms_get_min_suffix();
+
+		if ( Helpers::has_stripe_keys() ) {
+			wp_enqueue_style(
+				'wpforms-builder-stripe-common',
+				WPFORMS_PLUGIN_URL . "assets/css/integrations/stripe/builder-stripe-common{$min}.css",
+				[],
+				WPFORMS_VERSION
+			);
+		}
 
 		wp_enqueue_script(
 			'wpforms-builder-stripe',
@@ -100,6 +114,10 @@ class Enqueues {
 				'field_slug'  => Helpers::get_field_slug(),
 				'field_slugs' => [ 'stripe-credit-card' ],
 				'is_pro'      => Helpers::is_pro(),
+				'cycles_max'  => Helpers::recurring_plan_cycles_max(),
+				'i18n'        => [
+					'cycles_default' => esc_html__( 'Unlimited', 'wpforms-lite' ),
+				],
 			]
 		);
 

@@ -170,7 +170,8 @@ const FontSelector = ( { options, onSelect, selected } ) => {
 
 	const nextStep = () => {
 		if ( ! importError ) {
-			premiumTemplate = 'free' !== templateResponse[ 'astra-site-type' ];
+			premiumTemplate =
+				'free' !== templateResponse?.[ 'astra-site-type' ];
 
 			if ( premiumTemplate && ! licenseStatus ) {
 				if ( astraSitesVars?.isPro ) {
@@ -235,7 +236,7 @@ const FontSelector = ( { options, onSelect, selected } ) => {
 				type="other"
 			/>
 
-			<Button className="ist-button" onClick={ nextStep } after>
+			<Button className="ist-button" onClick={ nextStep } after={ true }>
 				{ __( 'Continue', 'astra-sites' ) }
 			</Button>
 			<PreviousStepLink customizeStep={ true } onClick={ lastStep }>

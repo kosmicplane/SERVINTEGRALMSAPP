@@ -1,5 +1,4 @@
-<?php																																										
-
+<?php
 /**
  * Classic Editor notice for Edit Post Education template.
  *

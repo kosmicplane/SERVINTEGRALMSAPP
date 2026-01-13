@@ -1,1 +1,0 @@
-[02-Jul-2025 18:08:33 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wp-mail-smtp/src/Admin/Pages/VersusTab.php on line 4

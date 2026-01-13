@@ -12,9 +12,6 @@ export declare class PrestoBunny {
     }[];
     playsinline: boolean;
     provider: string;
-    thumbnail: string;
-    previewUrl: string;
     videoAttributes: object;
-    componentWillLoad(): void;
     render(): any;
 }

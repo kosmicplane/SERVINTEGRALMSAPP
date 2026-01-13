@@ -289,6 +289,48 @@ if ( ! class_exists( 'Astra_Sites_Helper' ) ) :
 			return $ipaddress;
 		}
 
+		/**
+		 * Send error response for both WP_CLI and AJAX contexts.
+		 *
+		 * @param string|array<string, mixed>|mixed|null $data Error message or data to display.
+		 *
+		 * @since 4.4.43
+		 * @return void
+		 */
+		public static function error_response( $data = null ) {
+			if ( defined( 'WP_CLI' ) ) {
+				$error = is_array( $data ) && isset( $data['error'] ) ? $data['error'] : $data;
+				$error = is_array( $error ) ? wp_json_encode( $error ) : $error;
+
+				\WP_CLI::error( $error );
+			} elseif ( wp_doing_ajax() ) {
+				wp_send_json_error( $data );
+			}
+		}
+
+		/**
+		 * Send success response for both WP_CLI and AJAX contexts.
+		 *
+		 * @param string|array<string|int, mixed>|null $data Success message or data to send.
+		 *
+		 * @since 4.4.43
+		 * @return void
+		 */
+		public static function success_response( $data = null ) {
+			if ( defined( 'WP_CLI' ) ) {
+				$message = is_array( $data ) && isset( $data['message'] ) ? $data['message'] : $data;
+				$message = is_array( $message ) ? wp_json_encode( $message ) : $message;
+
+				\WP_CLI::line( $message );
+				return;
+			}
+
+			if ( wp_doing_ajax() ) {
+				$response = empty( $data ) ? array() : $data;
+				wp_send_json_success( $response );
+			}
+		}
+
 	}
 
 	/**

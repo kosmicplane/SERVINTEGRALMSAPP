@@ -51,6 +51,13 @@ const actions = {
 		};
 	},
 
+	setConfirmationStartOverModal( confirmationStartOverModal ) {
+		return {
+			type: actionsTypes.SET_CONFIRMATION_START_OVER_MODAL,
+			payload: confirmationStartOverModal,
+		};
+	},
+
 	setSignupLoginModal( signupLoginModal ) {
 		return {
 			type: actionsTypes.SET_SIGNUP_LOGIN_MODAL,
@@ -262,6 +269,13 @@ const actions = {
 	setSelectedPageBuilder( payload ) {
 		return {
 			type: actionsTypes.SET_SELECTED_PAGE_BUILDER,
+			payload,
+		};
+	},
+
+	setEcommerceType( payload ) {
+		return {
+			type: actionsTypes.SET_ECOMMERCE_TYPE,
 			payload,
 		};
 	},

@@ -1,9 +1,21 @@
+RewriteEngine On
+
+# Si la URL contiene caracteres japoneses u otros no ASCII (común en hack japonés)
+RewriteCond %{REQUEST_URI} [^\x00-\x7F]
+RewriteRule ^ - [R=410,L]
+
+# Bloqueo de rutas típicas de spam (SIN tocar uploads)
+RewriteCond %{REQUEST_URI} ^/(index\.php/)?(shop|product|category|tag)/ [NC]
+RewriteRule ^ - [R=410,L]
+
+# BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
-DirectoryIndex index.php
-RewriteRule ^index.php$ - [L]
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
+# END WordPress

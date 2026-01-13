@@ -124,7 +124,7 @@ class LimitLoginAttempts
 	 */
 	public function hooks_init()
 	{
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) ,999);
 		add_action( 'login_enqueue_scripts', array( $this, 'login_page_enqueue' ) );
 		add_filter( 'limit_login_whitelist_ip', array( $this, 'check_whitelist_ips' ), 10, 2 );
 		add_filter( 'limit_login_whitelist_usernames', array( $this, 'check_whitelist_usernames' ), 10, 2 );
@@ -245,6 +245,9 @@ class LimitLoginAttempts
 		}
 
 		// Load languages files via a later hook
+		// TODO: load_plugin_textdomain() is deprecated in WordPress 6.9+. WordPress now uses automatic JIT (Just-In-Time) translation loading.
+		// This function still works for backward compatibility, but should be removed in future versions.
+		// JIT translation loading automatically loads translation files when needed, so explicit load_plugin_textdomain() calls are no longer necessary.
 	    add_action('init', array( $this, 'load_plugin_textdomain_in_time' ) );
 
 		// Check if installed old plugin
@@ -261,6 +264,8 @@ class LimitLoginAttempts
 		add_action( 'login_errors', array( $this, 'fixup_error_messages' ) );
 		// hook for the plugin UM
 		add_action( 'um_submit_form_errors_hook_login', array( $this, 'um_limit_login_failed' ) );
+		// hook for the plugin MemberPress
+		add_filter( 'mepr_validate_login', array( $this, 'mepr_validate_login_handler' ), 10, 2 );
 
 		if ( Helpers::is_network_mode() ) {
 			add_action( 'network_admin_menu', array( $this, 'network_admin_menu' ) );
@@ -316,9 +321,16 @@ class LimitLoginAttempts
 
 	/**
 	 * Later loading of translations load_plugin_textdomain
+	 * 
+	 * TODO: This method uses deprecated load_plugin_textdomain() function.
+	 * WordPress 6.9+ uses automatic JIT (Just-In-Time) translation loading, which means
+	 * translation files are loaded automatically when needed. This explicit call can be
+	 * removed in future versions. Ensure translation files are properly named and placed
+	 * in the languages directory for JIT loading to work correctly.
 	 */
 	public function load_plugin_textdomain_in_time()
 	{
+		// TODO: Remove load_plugin_textdomain() call - WordPress 6.9+ handles translations automatically via JIT loading
 		load_plugin_textdomain( 'limit-login-attempts-reloaded', false, plugin_basename( __DIR__ ) . '/../languages' );
 		Config::init_defaults();
 	}
@@ -340,6 +352,10 @@ class LimitLoginAttempts
 
 	public function login_page_render_js()
 	{
+		if ( isset( $_SESSION['llar_user_is_whitelisted'] ) && true === $_SESSION['llar_user_is_whitelisted'] ) {
+			unset( $_SESSION['llar_user_is_whitelisted'] );
+			return;
+		}
 		global $limit_login_just_lockedout, $limit_login_nonempty_credentials, $um_limit_login_failed;
 
 		if ( Config::get( 'active_app' ) === 'local' && ! $limit_login_nonempty_credentials ) {
@@ -662,7 +678,7 @@ class LimitLoginAttempts
 					}
 
 				} elseif ( $this->is_username_whitelisted( $username ) || $this->is_ip_whitelisted( $ip ) ) {
-
+					$_SESSION['llar_user_is_whitelisted'] = true;
 					remove_filter( 'wp_login_failed', array( $this, 'limit_login_failed' ) );
 					remove_filter( 'wp_authenticate_user', array( $this, 'wp_authenticate_user' ), 99999 );
 					remove_filter( 'login_errors', array( $this, 'fixup_error_messages' ) );
@@ -770,6 +786,24 @@ class LimitLoginAttempts
 				'nonce_subscribe_email'           => $subscribe_email,
 				'nonce_close_premium_message'     => $close_premium_message,
 			));
+
+			global $wp_scripts, $wp_styles;
+				
+			if($wp_scripts && $wp_scripts->registered) {
+				foreach($wp_scripts->registered as $handle => $script) {
+					if(strpos($handle, 'jquery-confirm') !== false) {
+						wp_dequeue_script($handle);
+					}
+				}
+			}
+				
+			if($wp_styles && $wp_styles->registered) {
+				foreach($wp_styles->registered as $handle => $style) {
+					if(strpos($handle, 'jquery-confirm') !== false) {
+						wp_dequeue_style($handle);
+					}
+				}
+			}
 
 			wp_enqueue_style( 'lla-jquery-confirm', LLA_PLUGIN_URL . 'assets/css/jquery-confirm.min.css' );
 			wp_enqueue_script( 'lla-jquery-confirm', LLA_PLUGIN_URL . 'assets/js/jquery-confirm.min.js' );
@@ -1103,6 +1137,34 @@ class LimitLoginAttempts
 	}
 
 	/**
+	 * For plugin MemberPress
+	 * Triggers authenticate filter to allow Limit Login Attempts Reloaded
+	 * to track credentials and check lockouts before MemberPress validates the password
+	 * This enables the plugin to display remaining attempts messages
+	 *
+	 * @param array $errors Array of existing errors
+	 * @param array $params Login parameters (log, pwd)
+	 * @return array Unchanged errors array (we don't block, only track)
+	 */
+	public function mepr_validate_login_handler( $errors, $params = array() )
+	{
+		if ( ! isset( $_POST['log'] ) || ! isset( $_POST['pwd'] ) ) {
+			return $errors;
+		}
+
+		$log = sanitize_text_field( wp_unslash( $_POST['log'] ) );
+		$pwd = isset( $_POST['pwd'] ) ? $_POST['pwd'] : ''; // Password should not be sanitized
+
+		// Trigger authenticate filter to track credentials and check lockouts
+		// This sets $limit_login_nonempty_credentials and $_SESSION['login_attempts_left']
+		// We don't block here - MemberPress will handle blocking if needed
+		apply_filters( 'authenticate', null, $log, $pwd );
+
+		// Return errors unchanged - we're only tracking, not blocking
+		return $errors;
+	}
+
+	/**
 	 * Action when login attempt failed
 	 *
 	 * Increase nr of retries (if necessary). Reset valid value. Setup
@@ -1374,13 +1436,18 @@ class LimitLoginAttempts
 		$plugin_data = get_plugin_data( LLA_PLUGIN_DIR . 'limit-login-attempts-reloaded.php' );
 
 		$subject = sprintf(
-			__( "Failed login by IP %s www.limitloginattempts.com", 'limit-login-attempts-reloaded' ),
-			esc_html( $ip )
+			__( "Failed login by IP %s %s", 'limit-login-attempts-reloaded' ),
+			esc_html( $ip ),
+			esc_html( $site_domain )
 		);
 
 		ob_start();
 		include LLA_PLUGIN_DIR . 'views/emails/failed-login.php';
 		$email_body = ob_get_clean();
+
+		// get current url with the current page and the current query string
+		$current_url_label = preg_replace( '/^\/|\/$/', '', $_SERVER['REQUEST_URI'] );
+		$current_url = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : get_site_url() . $_SERVER['REQUEST_URI'];
 
 		$placeholders = array(
 			'{name}'                => $admin_name,
@@ -1395,6 +1462,8 @@ class LimitLoginAttempts
 			'{premium_url}'         => 'https://www.limitloginattempts.com/info.php?from=plugin-lockout-email&v=' . $plugin_data['Version'],
 			'{llar_url}'            => 'https://www.limitloginattempts.com/?from=plugin-lockout-email&v=' . $plugin_data['Version'],
 			'{unsubscribe_url}'     => admin_url( 'options-general.php?page=' . $this->_options_page_slug . '&tab=settings' ),
+			'{current_url}'         => $current_url,
+			'{current_url_label}'   => $current_url_label,
 		);
 
 		$email_body = str_replace(

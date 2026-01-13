@@ -29,13 +29,6 @@ class Block {
 	protected $name = '';
 
 	/**
-	 * The translated block title
-	 *
-	 * @var string
-	 */
-	protected $title = 'Video';
-
-	/**
 	 * The template name
 	 *
 	 * @var string
@@ -108,30 +101,6 @@ class Block {
 	);
 
 	/**
-	 * Attributes to pass to web component
-	 *
-	 * @var array
-	 */
-	protected $component_attributes = array(
-		'preset',
-		'chapters',
-		'overlays',
-		'tracks',
-		'branding',
-		'blockAttributes',
-		'config',
-		'skin',
-		'analytics',
-		'automations',
-		'provider',
-		'video_id',
-		'videoAttributes',
-		'audioAttributes',
-		'provider_video_id',
-		'youtube',
-	);
-
-	/**
 	 * Default attributes for the block.
 	 *
 	 * @var array
@@ -156,7 +125,7 @@ class Block {
 	 * @return void
 	 */
 	public function register() {
-		$this->registerBlockType();
+		add_action( 'init', array( $this, 'registerBlockType' ) );
 	}
 
 	/**
@@ -166,6 +135,20 @@ class Block {
 	 */
 	public function additionalAttributes() {
 		return array();
+	}
+
+	/**
+	 * Get the block title from block.json
+	 *
+	 * @return string
+	 */
+	public function getBlockTitle() {
+		// Try to get the title from block.json metadata.
+		$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( "presto-player/{$this->name}" );
+		if ( $block_type && ! empty( $block_type->title ) ) {
+			return $block_type->title;
+		}
+		return '';
 	}
 
 	/**
@@ -236,8 +219,10 @@ class Block {
 			$preset       = $this->getAudioPreset( ! empty( $attributes['preset'] ) ? $attributes['preset'] : 0 );
 			$preset->type = 'audio';
 		} else {
-			$preset = $this->getPreset( ! empty( $attributes['preset'] ) ? $attributes['preset'] : 0 );
+			$preset = $this->getPreset( ! empty( $attributes['preset'] ) ? $attributes['preset'] : 0, $attributes );
 		}
+
+		// Apply server-side overrides that depend on block attributes.
 		$branding     = $this->getBranding( $preset );
 		$class        = $this->getClasses( $attributes );
 		$player_class = $this->getPlayerClasses( $id, $preset, $attributes );
@@ -256,7 +241,7 @@ class Block {
 			'presto_player/block/default_attributes',
 			array(
 				'type'            => $this->name,
-				'name'            => $this->title,
+				'name'            => $this->getBlockTitle(),
 				'css'             => wp_kses_post( $css ),
 				'class'           => $class,
 				'is_hls'          => $this->isHls( $src ),
@@ -329,7 +314,7 @@ class Block {
 	 * @param  integer $id Preset ID.
 	 * @return \PrestoPlayer\Models\Preset
 	 */
-	public function getPreset( $id ) {
+	public function getPreset( $id, $attributes = array() ) {
 		$preset    = new Preset( ! empty( $id ) ? $id : 0 );
 		$preset_id = $preset->id;
 
@@ -344,6 +329,13 @@ class Block {
 			);
 
 			$preset->watermark = wp_parse_args( $watermark_text, $preset->watermark );
+		}
+
+		// If lazy load is enabled, disable it if muted preview or autoplay is enabled.
+		if ( $preset->lazy_load_youtube ) {
+			$has_muted_preview         = isset( $attributes['mutedPreview']['enabled'] ) && ! empty( $attributes['mutedPreview']['enabled'] );
+			$has_autoplay              = ! empty( $attributes['autoplay'] );
+			$preset->lazy_load_youtube = ! ( $has_muted_preview || $has_autoplay );
 		}
 
 		return apply_filters( 'presto_player/presto_player_presets/data', $preset, 'video' );
@@ -433,7 +425,7 @@ class Block {
 	 * @param  array                       $attributes the block attributes.
 	 * @return string
 	 */
-	public function getPlayerStyles( $preset, $branding, $attributes ) {
+	public function getPlayerStyles( $preset, $branding, $attributes = array() ) {
 
 		// Set brand color.
 		$background_color = ( ! empty( $preset->background_color ) ? sanitize_hex_color( $preset->background_color ) : 'var(--presto-player-highlight-color, ' . sanitize_hex_color( $branding['color'] ) . ')' );
@@ -574,7 +566,6 @@ class Block {
 			include PRESTO_PLAYER_PLUGIN_DIR . "templates/{$this->template_name}.php";
 		}
 
-		$this->initComponentScript( $data['id'], $data, $presto_player_instance );
 		$this->iframeFallback( $data );
 
 		// output schema markup for optimized seo.
@@ -651,38 +642,6 @@ class Block {
 			<?php
 			echo wp_json_encode( $data );
 			?>
-		</script>
-		<?php
-	}
-
-	/**
-	 * Dynamically initialize component via script tag.
-	 *
-	 * We have to do this because we cannot send arrays or objects in plain HTML.
-	 * This function generates a script tag that sets up the player attributes.
-	 *
-	 * @param int   $id       The video ID. Default is 0.
-	 * @param array $data     An array of data to be passed to the component. Default is an empty array.
-	 * @param int   $instance The instance number of the player on the page. Default is 1.
-	 *
-	 * @return void This function outputs HTML directly and doesn't return a value.
-	 */
-	public function initComponentScript( $id = 0, $data = array(), $instance = 1 ) {
-		if ( ! $id ) {
-			return;
-		}
-		?>
-		<script>
-			var player = document.querySelector('presto-player#presto-player-<?php echo (int) $instance; ?>');
-			player.video_id = <?php echo (int) $id; ?>;
-			<?php
-			$attributes = apply_filters( 'presto_player/component/attributes', $this->component_attributes, $data );
-			foreach ( $attributes as $attribute ) {
-				?>
-				<?php if ( isset( $data[ $attribute ] ) ) { ?>
-					player.<?php echo esc_js( sanitize_text_field( $attribute ) ); ?> = <?php echo wp_json_encode( $data[ $attribute ] ); ?>;
-				<?php } ?>
-			<?php } ?>
 		</script>
 		<?php
 	}

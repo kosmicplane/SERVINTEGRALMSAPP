@@ -1,4 +1,5 @@
-<?php																																										/**
+<?php
+/**
  * BSF analytics loader file.
  *
  * @version 1.0.0

@@ -1,1 +1,0 @@
-[16-Jun-2025 20:03:56 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/wp-mail-smtp/src/Admin/DebugEvents/EventsCollection.php on line 4

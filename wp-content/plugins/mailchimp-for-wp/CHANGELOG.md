@@ -1,6 +1,36 @@
 Changelog
 =========
 
+#### 4.10.9 - Nov 28, 2025
+
+- Specify `apiVersion` in call to `registerBlockType` so that WordPress 6.9 knows it can use the new iframe based editor.
+- Add new setting to send an email for critical errors, like API errors returned by Mailchimp.
+
+
+#### 4.10.8 - Oct 21, 2025
+
+- Show warning to administrators if a form is showing but Mailchimp API key is not set.
+- Update third-party JS dependencies.
+
+
+#### 4.10.7 - Sep 05, 2025
+
+- Handle renewing lists through server-side redirect instead of JS component.
+
+
+#### 4.10.6 - Jul 23, 2025
+
+- [WooCommerce Checkout] Fix checkbox from showing up in order confirmation email if using Checkout Block.
+- [Forms] Fix `{response}` tag being escaped.
+
+
+#### 4.10.5 - Jun 25, 2025
+
+- [Ninja Forms] Always show at least one list option so that onchange event fires properly (to load Audience fields).
+- Update third-party JS dependencies.
+- Optimize SVG icons for reduced file sizes.
+
+
 #### 4.10.4 - May 26, 2025
 
 - Improved context-dependent escaping in dynamic content tags. 

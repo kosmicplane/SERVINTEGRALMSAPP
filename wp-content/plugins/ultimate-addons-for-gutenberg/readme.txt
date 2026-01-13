@@ -4,8 +4,9 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.8
-Stable tag: 2.19.9
+Tested up to: 6.9
+Stable tag: 2.19.17
+Beta tag: 3.0.0-beta.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,52 +216,39 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/).
+
 == Credits ==
 
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
 
-= 2.19.9 - Thursday, 1st May 2025 =
-* Improvement: Added a WP-CLI command for regenerate the assets.
+= 2.19.17 - Thursday, 4th December 2025 =
+* Improvement: Added compatibility with WordPress v6.9.
 
-= 2.19.8 - Monday, 28th April 2025 =
-* Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
-* Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
+= 2.19.16 - Wednesday, 12th November 2025 =
+* Improvement: Added Dashboard section to stay updated with Beta releases.
+* Fix: Slider - Resolved an issue wherein slider background image not applying in small devices when overlay color is set
+* Fix: Global - Resolved recursive pattern insertion issue that was causing a page getting slow error due to an infinite loop.
 
-= 2.19.7 - Wednesdays, 16th April 2025 =
-* Improvement: Added compatibility with WordPress v6.8.
-* Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
-* Global: Removed the Spectra banner from the editor based on user feedback to provide a cleaner editing experience.
+= 2.19.15 - Friday, 3rd October 2025 =
+* This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team.
+Please make sure you are using the latest version on your website.
 
-= 2.19.6 - Thursday, 10th April 2025 =
-* Updated the Zip AI Library.
-
-= 2.19.5 - Monday, 31st March 2025 =
-* Improvement: Improved code quality.
-* Fix: Image Gallery - Resolved an issue wherein lightbox functionality was broken when Imagify's Next-Gen format option enabled.
-* Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
-* Fix: Global - Resolved an issue where custom CSS for background images was not applying correctly on the frontend.
-* Fix: Global - Resolved an issue wherein assets were not loading in SureCart's template parts.
-
-= 2.19.4 - Tuesday, 18th March 2025 =
-* Updated the Astra Notices Library.
-* Fix: Popup Builder - Resolved an issue wherein the Popup Builder pattern was giving block encountered error message.
-
-= 2.19.3 - Tuesday, 11th March 2025 =
-* This update addressed a security bug. Please make sure you are using the latest version on your website.
-* Fix: Resolved the asset loading conflict in the SureForms editor.
-
-= 2.19.2 - Monday, 10th March 2025 =
-* Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
-* Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
-* Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
-* Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
-* Fix: Global - Resolved an issue where the Pro installation was not detected when WPML CMS was active.
+= 2.19.14 - Wednesday, 17th September 2025 =
+* Fix: Removed unused dependencies from the Block Stats Processor.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==
+
+= 3.0.0-beta.1 =
+This is a beta release. Please backup your website before updating. We recommend testing on a staging site first and not using this version on a live production website.
 
 = 2.18.2 =
 The Google Fonts library in Spectra has been updated in this version. Please check your font selections to replace any deprecated fonts and explore the new additions.

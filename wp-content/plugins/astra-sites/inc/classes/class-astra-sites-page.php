@@ -60,6 +60,7 @@ if ( ! class_exists( 'Astra_Sites_Page' ) ) {
 			add_action( 'wp_ajax_astra-sites-change-page-builder', array( $this, 'save_page_builder_on_ajax' ) );
 			add_action( 'wp_ajax_astra-sites-dismiss-ai-promotion', array( $this, 'dismiss_ai_promotion' ) );
 			add_action( 'admin_init', array( $this, 'getting_started' ) );
+			add_filter( 'getting_started_menu_priority', array( $this, 'get_gs_menu_priority' ) );
 		}
 
 		/**
@@ -117,11 +118,8 @@ if ( ! class_exists( 'Astra_Sites_Page' ) ) {
 					return;
 				}
 
-				$arguments = array(
-					'page' => 'starter-templates',
-				);
-
-				$url = add_query_arg( $arguments, admin_url( 'themes.php' ) );
+				// Get the starter templates URL.
+				$url = esc_url( Astra_Sites::get_starter_templates_url() );
 
 				?>
 				<div class="notice notice-info is-dismissible astra-sites-notice astra-sites-getting-started-notice">
@@ -131,6 +129,17 @@ if ( ! class_exists( 'Astra_Sites_Page' ) ) {
 				<?php
 			}
 
+		}
+
+		/**
+		 * Getting Started Menu Priority
+		 *
+		 * @since 4.4.35
+		 * @param float $default_priority Default menu priority.
+		 * @return float Menu priority.
+		 */
+		public function get_gs_menu_priority( $default_priority ) {
+			return 2.00001;
 		}
 
 		/**

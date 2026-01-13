@@ -1,1 +1,0 @@
-[16-Jun-2025 08:21:55 UTC] PHP Fatal error:  strict_types declaration must be the very first statement in the script in /home/izorlnspatmm/public_html/wp-content/plugins/one-click-demo-import/vendor/nikic/php-parser/lib/PhpParser/Comment/Doc.php on line 2

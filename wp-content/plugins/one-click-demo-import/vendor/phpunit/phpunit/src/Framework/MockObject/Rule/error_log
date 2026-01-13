@@ -1,1 +1,0 @@
-[25-Jun-2025 23:25:36 UTC] PHP Fatal error:  strict_types declaration must be the very first statement in the script in /home/izorlnspatmm/public_html/wp-content/plugins/one-click-demo-import/vendor/phpunit/phpunit/src/Framework/MockObject/Rule/InvokedAtIndex.php on line 2

@@ -1,5 +1,5 @@
 // External Dependencies.
-import React, { useEffect, useState, useReducer, useRef } from 'react';
+import React, { useEffect, useState, useReducer, useRef, useMemo } from 'react';
 import { sortBy } from 'underscore';
 import {
 	SiteType,
@@ -20,6 +20,7 @@ import {
 	whiteLabelEnabled,
 	storeCurrentState,
 	getAllSites,
+	trackOnboardingStep,
 } from '../../utils/functions';
 import { setURLParmsValue } from '../../utils/url-params';
 import SiteListSkeleton from './site-list-skeleton';
@@ -35,61 +36,88 @@ import {
 	isSyncUptoDate,
 	fetchSitesPageCount,
 	fetchPagedSites,
+	fetchAllSites,
 } from './header/sync-library/utils';
+import SpectraBlocksVersionSelector from './spectra-blocks-version-selector';
 
 export const useFilteredSites = () => {
-	const [ { builder, siteType, siteOrder, allSitesData } ] = useStateValue();
-	let allSites =
-		allSitesData && !! Object.keys( allSitesData ).length
-			? allSitesData
-			: getAllSites();
-	let sites = [];
+	const [
+		{ builder, siteType, spectraBlocksVersion, siteOrder, allSitesData },
+	] = useStateValue();
 
-	// Fallback array check for Chrome browser.
-	if ( allSitesData && Array.isArray( allSites ) ) {
-		allSites = allSitesData.reduce( ( acc, site ) => {
-			if ( site.id ) {
-				acc[ `id-${ site.id }` ] = site;
-			}
-			return acc;
-		}, {} );
-	}
+	const filteredSites = useMemo( () => {
+		// Step 1: fallback for all sites
+		let allSites =
+			allSitesData && Object.keys( allSitesData ).length
+				? allSitesData
+				: getAllSites();
 
-	if ( builder ) {
-		for ( const siteId in allSites ) {
-			if ( builder === allSites[ siteId ][ 'astra-site-page-builder' ] ) {
-				sites[ siteId ] = allSites[ siteId ];
-			}
+		// Step 2: ensure object format (fallback for Chrome)
+		if ( Array.isArray( allSites ) ) {
+			allSites = allSites.reduce( ( acc, site ) => {
+				if ( site.id ) {
+					acc[ `id-${ site.id }` ] = site;
+				}
+				return acc;
+			}, {} );
 		}
-	}
 
-	if ( siteType ) {
-		for ( const siteId in sites ) {
-			const currentSiteType =
-				sites[ siteId ]?.[ 'astra-sites-type' ] || '';
+		// Step 3: filter by builder
+		let sites =
+			builder && builder !== 'custom-templates'
+				? Object.fromEntries(
+						Object.entries( allSites ).filter(
+							( [ , site ] ) =>
+								site[ 'astra-site-page-builder' ] === builder
+						)
+				  )
+				: { ...allSites };
 
-			switch ( siteType ) {
-				case 'signature':
-					if ( currentSiteType !== siteType ) {
-						delete sites[ siteId ];
-					}
-					break;
-				case 'agency-mini':
-					if ( 'agency-mini' !== currentSiteType ) {
-						delete sites[ siteId ];
-					}
-					break;
-				default:
-					break;
-			}
+		// Step 4: filter by site type
+		if ( siteType ) {
+			sites = Object.fromEntries(
+				Object.entries( sites ).filter( ( [ , site ] ) => {
+					const currentSiteType = site?.[ 'astra-sites-type' ] || '';
+					return siteType === currentSiteType;
+				} )
+			);
 		}
-	}
 
-	if ( 'latest' === siteOrder && Object.keys( sites ).length ) {
-		sites = sortBy( Object.values( sites ), 'publish-date' ).reverse();
-	}
+		// Step 5: filter by Spectra Blocks version (only for Gutenberg)
+		if ( builder === 'gutenberg' && spectraBlocksVersion ) {
+			const version = astraSitesVars?.spectraBlocks?.selectorEnabled
+				? spectraBlocksVersion
+				: astraSitesVars?.spectraBlocks?.version || 'v2';
 
-	return sites;
+			sites = Object.fromEntries(
+				Object.entries( sites ).filter( ( [ , site ] ) => {
+					let siteVersion = site?.[ 'spectra-ver' ] || 'v2';
+					if ( ! siteVersion?.length ) {
+						siteVersion = 'v2';
+					}
+					return siteVersion === version;
+				} )
+			);
+		}
+
+		// Step 6: Filter custom templates builder sites to only include those with custom templates.
+		if ( builder === 'custom-templates' ) {
+			sites = Object.fromEntries(
+				Object.entries( sites ).filter(
+					( [ , site ] ) => site?.[ 'astra-sites-custom-template' ]
+				)
+			);
+		}
+
+		// Step 7: sort if latest
+		if ( siteOrder === 'latest' && Object.keys( sites ).length ) {
+			sites = sortBy( Object.values( sites ), 'publish-date' ).reverse();
+		}
+
+		return sites;
+	}, [ allSitesData, builder, siteType, spectraBlocksVersion, siteOrder ] );
+
+	return filteredSites;
 };
 
 const SiteList = () => {
@@ -115,6 +143,7 @@ const SiteList = () => {
 		selectedMegaMenu,
 		allSitesData,
 		bgSyncInProgress,
+		spectraBlocksVersion,
 	} = storedState;
 
 	useEffect( () => {
@@ -138,7 +167,12 @@ const SiteList = () => {
 		setSiteData( {
 			sites: allFilteredSites,
 		} );
-	}, [ builder, siteType, siteOrder, allSitesData ] );
+	}, [ builder, siteType, spectraBlocksVersion, siteOrder, allSitesData ] );
+
+	useEffect( () => {
+		// Track template listing step when component mounts
+		trackOnboardingStep( 'template-listing' );
+	}, [] );
 
 	storeCurrentState( storedState );
 
@@ -239,15 +273,16 @@ const SiteList = () => {
 
 	const syncSites = async () => {
 		// const newData = await SyncStart();
-		const pageCount = await fetchSitesPageCount();
+		const { totalPages, currentPage } = await fetchSitesPageCount();
 
 		dispatch( {
 			type: 'set',
-			syncPageCount: pageCount,
+			syncPageCount: totalPages,
+			syncPageInProgress: currentPage,
 		} );
 
 		const sites = [];
-		for ( let i = 0; i < pageCount; i++ ) {
+		for ( let i = currentPage; i < totalPages; i++ ) {
 			const sitesData = await fetchPagedSites( i + 1 );
 			sitesData.forEach( ( siteItem ) => {
 				sites.push( siteItem );
@@ -258,22 +293,24 @@ const SiteList = () => {
 			} );
 		}
 
-		if ( sites.length > 0 ) {
+		if ( currentPage <= 1 && sites.length > 0 ) {
 			return sites;
 		}
-		return null;
+
+		// Fetch all sites if the current page is greater than 1 (means we were in the middle of fetching all the sites).
+		return Object.values( await fetchAllSites() );
 	};
 
 	const fetchSitesAndCategories = async () => {
 		try {
-			const syncUptoDate = await isSyncUptoDate();
-
 			dispatch( {
 				type: 'set',
 				syncPageInProgress: 0,
 				syncPageCount: 0,
+				bgSyncInProgress: !! astraSitesVars?.bgSyncInProgress,
 			} );
 
+			const syncUptoDate = await isSyncUptoDate();
 			if ( syncUptoDate ) {
 				dispatch( {
 					type: 'set',
@@ -286,26 +323,17 @@ const SiteList = () => {
 			const categories = await SyncAndGetAllCategories();
 			const categoriesAndTags = await SyncAndGetAllCategoriesAndTags();
 
-			const updatedState = {
+			dispatch( {
 				type: 'set',
 				bgSyncInProgress: false,
 				syncPageInProgress: 0,
 				syncPageCount: 0,
-			};
+				allSitesData: sites ?? null,
+				categories: categories ?? null,
+				categoriesAndTags: categoriesAndTags ?? null,
+			} );
 
-			if ( ! sites || ! categories || ! categoriesAndTags ) {
-				updatedState.allSitesData = sites ?? null;
-				updatedState.categories = categories ?? null;
-				updatedState.categoriesAndTags = categoriesAndTags ?? null;
-			} else {
-				updatedState.allSitesData = sites;
-				updatedState.categories = categories;
-				updatedState.categoriesAndTags = categories;
-			}
-			dispatch( updatedState );
 			astraSitesVars.bgSyncInProgress = false;
-
-			// await fetchSitesAndCategories();
 		} catch ( error ) {
 			console.error( error );
 		}
@@ -388,6 +416,8 @@ const SiteList = () => {
 											/>
 										</div>
 										<div className="st-type-and-order-filters">
+											<SpectraBlocksVersionSelector />
+
 											<SiteType
 												value={ siteType }
 												onClick={ ( event, type ) => {
@@ -479,7 +509,7 @@ const SiteList = () => {
 						{ /* Back to the top */ }
 						<div
 							ref={ backToTopBtn }
-							className="hidden absolute right-20 bottom-28 ml-auto"
+							className="hidden absolute right-20 bottom-40 ml-auto"
 						>
 							<button
 								type="button"
@@ -514,7 +544,7 @@ const SiteList = () => {
 									)
 								}
 							>
-								{ __( 'Get Essential Toolkit', 'astra-sites' ) }
+								{ __( 'Get Premium Templates', 'astra-sites' ) }
 							</Button>
 						</div>
 					) }

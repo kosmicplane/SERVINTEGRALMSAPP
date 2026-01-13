@@ -4,13 +4,13 @@
  * Plugin Name: Shortcode For Current Date
  * Plugin URI: http://wordpress.org/plugins/shortcode-for-current-date
  * Description: Insert current Date, Month or Year anywhere with a simple shortcode.
- * Version: 2.2.1
- * Author: DotCamp
+ * Version: 2.2.2
+ * Author: Imtiaz Rayhan
  * Author URI: http://dotcamp.com/
  * License: GPLv2 or later
  * Text Domain: sfcd
  * @package sfcd_plugin
- * @author DotCamp
+ * @author Imtiaz Rayhan
  */
 
 // If accessed directly, exit
@@ -143,3 +143,19 @@ add_action( 'init', 'Shortcode_For_Current_Date_Block_Register' );
 require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 $default_promotions = \DotCamp\Promoter\Promoter::generate_default_promotions(__FILE__, 'Shortcode For Current Date', 'shortcode-for-current-date/shortcode-for-current-date.php');
 \DotCamp\Promoter\Promoter::add_promotions($default_promotions, __FILE__);
+\DotCamp\Promoter\Promoter::add_promotions([
+    new \DotCamp\Promoter\Promotion(
+        'Shortcode For Current Date',
+        'shortcode-for-current-date/shortcode-for-current-date.php',
+        'Galleryberg',
+        'galleryberg-gallery-block/galleryberg-gallery-block.php',
+        'Gallery Block by Galleryberg: Lightbox with Tiles, Masonry, Square, and Justified Layouts',
+        [
+            'core/gallery',
+			'core/image',
+			'core/media-text',
+        ],
+        'https://galleryberg.com/',
+        'Learn More'
+    )
+], __FILE__);

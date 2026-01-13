@@ -262,6 +262,12 @@ class Ai_Builder_Importer_Log {
 			$existing_data = self::get_filesystem()->get_contents( $log_file );
 		}
 
+		// Bail early to avoid potential Fatal errors during CLI imports.
+		if ( ! $log_file ) {
+			astra_sites_error_log( 'Import log file does not exist.' );
+			return;
+		}
+
 		// Style separator.
 		$separator = PHP_EOL;
 

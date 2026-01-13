@@ -11,6 +11,11 @@ if ( astraSitesVars?.default_page_builder ) {
 		astraSitesVars?.default_page_builder === 'brizy'
 			? 'gutenberg'
 			: astraSitesVars?.default_page_builder;
+
+	// If AI builder is disabled but set as default, fallback to gutenberg
+	if ( builderKey === 'ai-builder' && ! astraSitesVars?.showAiBuilder ) {
+		builderKey = 'gutenberg';
+	}
 }
 
 export const siteLogoDefault = {
@@ -62,7 +67,43 @@ export const initialState = {
 			enabled: false,
 			compulsory: false,
 			icon: 'ecommerce',
+			plugins: [ 'woocommerce', 'surecart' ],
 		},
+		{
+			title: __( 'SEO & Search Visibility', 'astra-sites' ),
+			id: 'seo',
+			description: __(
+				'Optimize your website for search engines',
+				'astra-sites'
+			),
+			enabled: true,
+			compulsory: false,
+			icon: 'arrow-trending-up',
+			plugins: [ 'surerank' ],
+		},
+		// Will be added back.
+		// {
+		// 	title: __( 'Automation & Integrations', 'astra-sites' ),
+		// 	id: 'automation-integrations',
+		// 	description: __( 'Automate your website & tasks', 'astra-sites' ),
+		// 	enabled: false,
+		// 	compulsory: false,
+		// 	icon: 'squares-plus',
+		// 	plugins: [ 'suretriggers' ],
+		// },
+		// Removing
+		// {
+		// 	title: __( 'Appointment & Bookings', 'astra-sites' ),
+		// 	id: 'appointment-bookings',
+		// 	description: __(
+		// 		'Easily manage bookings for your services',
+		// 		'astra-sites'
+		// 	),
+		// 	enabled: false,
+		// 	compulsory: false,
+		// 	icon: 'calendar',
+		// 	plugins: [ 'latepoint' ],
+		// },
 		{
 			title: __( 'Website Emails & SMTP', 'astra-sites' ),
 			id: 'smtp',
@@ -70,28 +111,10 @@ export const initialState = {
 				'Get emails from your website (forms, etc)',
 				'astra-sites'
 			),
-			enabled: true,
+			enabled: false,
 			compulsory: false,
 			icon: 'envelope',
-		},
-		{
-			title: __( 'Automation & Integrations', 'astra-sites' ),
-			id: 'automation-integrations',
-			description: __( 'Automate your website & tasks', 'astra-sites' ),
-			enabled: false,
-			compulsory: false,
-			icon: 'squares-plus',
-		},
-		{
-			title: __( 'Appointment & Bookings', 'astra-sites' ),
-			id: 'appointment-bookings',
-			description: __(
-				'Easily manage bookings for your services',
-				'astra-sites'
-			),
-			enabled: false,
-			compulsory: false,
-			icon: 'calendar',
+			plugins: [ 'suremail' ],
 		},
 		{
 			title: __( 'Free Live Chat', 'astra-sites' ),
@@ -103,13 +126,12 @@ export const initialState = {
 			enabled: false,
 			compulsory: false,
 			icon: 'live-chat',
+			plugins: [ 'wp-live-chat-support' ],
 		},
 	],
 	formDetails: {
 		first_name: '',
-		email: '',
-		wp_user_type: '',
-		build_website_for: '',
+		email: astraSitesVars?.userDetails?.email || '',
 		opt_in: true,
 	},
 	selectedEcommercePlugin: '',
@@ -152,7 +174,7 @@ export const initialState = {
 
 	// Import statuses.
 	reset: 'yes' === starterTemplates.firstImportStatus ? true : false,
-	allowResetSite: false,
+	allowResetSite: true,
 	themeStatus: false,
 	importStatusLog: '',
 	importStatus: '',
@@ -217,6 +239,14 @@ export const initialState = {
 	limitExceedModal: {
 		open: false,
 	},
+
+	// Page builder API loading state and cache
+	pageBuilderCache: {
+		timestamp: null,
+	},
+
+	// Spectra Blocks Version
+	spectraBlocksVersion: astraSitesVars?.spectraBlocks?.version || 'v2',
 };
 
 const reducer = ( state = initialState, { type, ...rest } ) => {

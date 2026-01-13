@@ -59,6 +59,9 @@ export const defaultOnboardingAIState = {
 	continueProgressModal: {
 		open: false,
 	},
+	confirmationStartOverModal: {
+		open: false,
+	},
 	signupLoginModal: {
 		open: false,
 	},
@@ -207,6 +210,11 @@ const reducer = ( state = initialState, action ) => {
 			return {
 				...state,
 				continueProgressModal: action.payload,
+			};
+		case actionTypes.SET_CONFIRMATION_START_OVER_MODAL:
+			return {
+				...state,
+				confirmationStartOverModal: action.payload,
 			};
 		case actionTypes.SET_SIGNUP_LOGIN_MODAL:
 			return {
@@ -395,9 +403,9 @@ const reducer = ( state = initialState, action ) => {
 								templateData?.features?.[ feature.id ] ===
 								'yes';
 							return {
-								...feature,
 								enabled: defaultValue,
 								compulsory: defaultValue,
+								...feature,
 							};
 						} )
 					),
@@ -419,6 +427,17 @@ const reducer = ( state = initialState, action ) => {
 							return item;
 						}
 					),
+				},
+			};
+		case actionTypes.SET_ECOMMERCE_TYPE:
+			return {
+				...state,
+				stepData: {
+					...state.stepData,
+					siteFeaturesData: {
+						...state.stepData.siteFeaturesData,
+						ecommerce_type: action.payload,
+					},
 				},
 			};
 		case actionTypes.SET_WEBSITE_TEMPLATE_KEYWORDS:

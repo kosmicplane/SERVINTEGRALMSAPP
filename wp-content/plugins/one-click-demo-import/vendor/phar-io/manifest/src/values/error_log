@@ -1,1 +1,0 @@
-[01-Jul-2025 05:39:36 UTC] PHP Fatal error:  strict_types declaration must be the very first statement in the script in /home/izorlnspatmm/public_html/wp-content/plugins/one-click-demo-import/vendor/phar-io/manifest/src/values/Author.php on line 2

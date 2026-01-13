@@ -143,7 +143,7 @@ class Plugin extends AjaxBase {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => 'You do not have permission to do this action.',
+					'data'   => __( 'You do not have permission to do this action.', 'astra-sites' ),
 					'status' => false,
 
 				)
@@ -156,7 +156,7 @@ class Plugin extends AjaxBase {
 		if ( empty( $images ) || ! is_array( $images ) ) {
 			wp_send_json_success(
 				array(
-					'data'   => 'No images selected to download!',
+					'data'   => __( 'No images selected to download!', 'astra-sites' ),
 					'status' => true,
 				)
 			);
@@ -167,7 +167,7 @@ class Plugin extends AjaxBase {
 		if ( empty( $image ) || ! is_array( $image ) ) {
 			wp_send_json_success(
 				array(
-					'data'   => 'No image to download!',
+					'data'   => __( 'No image to download!', 'astra-sites' ),
 					'status' => true,
 				)
 			);
@@ -183,7 +183,7 @@ class Plugin extends AjaxBase {
 
 		wp_send_json_success(
 			array(
-				'data'   => 'Image downloaded successfully!',
+				'data'   => __( 'Image downloaded successfully!', 'astra-sites' ),
 				'status' => true,
 			)
 		);
@@ -202,7 +202,7 @@ class Plugin extends AjaxBase {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => 'You do not have permission to do this action.',
+					'data'   => __( 'You do not have permission to do this action.', 'astra-sites' ),
 					'status' => false,
 
 				)
@@ -284,7 +284,7 @@ class Plugin extends AjaxBase {
 			$failed_sites
 		);
 
-		if ( is_array( $last_import_site ) && ! in_array( $last_import_site['uuid'], $uuids, true ) ) {
+		if ( is_array( $last_import_site ) && isset( $last_import_site['uuid'] ) && ! in_array( $last_import_site['uuid'], $uuids, true ) ) {
 			$last_import_site['template_id']   = $id;
 			$last_import_site['local_storage'] = $local_storage;
 			$failed_sites[]                    = $last_import_site;

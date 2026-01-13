@@ -23,6 +23,7 @@ import PreviewWebsite from '../../pages/preview';
 import { STORE_KEY } from '../../store';
 import LimitExceedModal from '../limit-exceeded-modal';
 import ContinueProgressModal from '../continue-progress-modal';
+import ConfirmationStartOverModal from '../confimation-start-over-modal';
 import AiBuilderExitButton from '../ai-builder-exit-button';
 import { AnimatePresence } from 'framer-motion';
 import { useNavigateSteps, steps, useValidateStep } from '../../router';
@@ -33,6 +34,7 @@ import ApiErrorModel from '../api-error-model';
 import PlanInformationModal from '../plan-information-modal';
 import PlanUpgradePromoModal from '../plan-upgrade-promo';
 import SignupLoginModal from '../signup-login-modal';
+import SaleInfobar from '../sale-infobar';
 
 const { logoUrlLight } = aiBuilderVars;
 
@@ -55,7 +57,8 @@ const OnboardingAI = () => {
 		! urlParams.get( 'should_resume' )
 	).current;
 
-	const { setContinueProgressModal } = useDispatch( STORE_KEY );
+	const { setContinueProgressModal, setConfirmationStartOverModal } =
+		useDispatch( STORE_KEY );
 	const { continueProgressModal } = useSelect( ( select ) => {
 		const { getContinueProgressModalInfo } = select( STORE_KEY );
 		return {
@@ -95,6 +98,7 @@ const OnboardingAI = () => {
 			} );
 			if ( showContinueProgressModal ) {
 				setContinueProgressModal( { open: true } );
+				setConfirmationStartOverModal( { open: false } );
 			}
 		} else if ( ! urlParams.get( 'skip_redirect_last_step' ) ) {
 			navigateTo( {
@@ -133,6 +137,7 @@ const OnboardingAI = () => {
 			setContinueProgressModal( {
 				open: true,
 			} );
+			setConfirmationStartOverModal( { open: false } );
 		}
 
 		const handleResize = () => {
@@ -172,7 +177,8 @@ const OnboardingAI = () => {
 
 	useLayoutEffect( () => {
 		const token = urlParams.get( 'token' );
-		if ( token ) {
+		const shouldResume = urlParams.get( 'should_resume' );
+		if ( token || shouldResume ) {
 			const url = removeQueryArgs(
 				window.location.href,
 				'token',
@@ -240,21 +246,23 @@ const OnboardingAI = () => {
 			<div
 				id="spectra-onboarding-ai"
 				className={ classNames(
-					'font-figtree h-screen grid grid-cols-1 shadow-medium grid-rows-[4rem_1fr]',
+					'font-figtree h-screen flex flex-col shadow-medium',
 					isAuthScreen && 'grid-rows-1'
 				) }
 			>
+				<SaleInfobar />
+
 				{ ! isAuthScreen && (
 					<header
 						className={ classNames(
-							'w-full h-full grid grid-cols-[5rem_1fr_8rem] sm:grid-cols-[8rem_1fr_8rem] items-center justify-between md:justify-start z-[5] relative bg-white shadow pl-3',
+							'w-full h-16 grid grid-cols-[5rem_1fr_8rem] sm:grid-cols-[6.75rem_1fr_8rem] items-center justify-between md:justify-start z-[5] relative bg-white shadow pl-3 sm:pl-5',
 							steps[ currentStep ]?.layoutConfig?.hideHeader &&
 								'justify-center md:justify-between'
 						) }
 					>
 						{ /* Brand logo */ }
 						<img
-							className="h-10"
+							className="max-h-10"
 							src={ logoUrlLight }
 							alt={ __( 'Build with AI', 'ai-builder' ) }
 						/>
@@ -305,7 +313,7 @@ const OnboardingAI = () => {
 													>
 														<div
 															className={ classNames(
-																'rounded-full border border-border-primary text-xs font-semibold flex items-center justify-center w-5 h-5',
+																'rounded-full border border-border-primary text-xs font-medium flex items-center justify-center w-5 h-5',
 																dynamicStepClassNames(
 																	currentStep,
 																	stepIdx
@@ -323,7 +331,7 @@ const OnboardingAI = () => {
 														</div>
 														<div
 															className={ classNames(
-																'hidden md:block text-sm font-medium text-secondary-text md:text-xs lg:text-sm',
+																'hidden md:block text-sm font-normal text-secondary-text md:text-xs lg:text-sm',
 																currentStep ===
 																	stepIdx &&
 																	'text-accent-st'
@@ -410,6 +418,7 @@ const OnboardingAI = () => {
 				</main>
 				<LimitExceedModal />
 				<ContinueProgressModal />
+				<ConfirmationStartOverModal />
 				<SignupLoginModal />
 				<ApiErrorModel />
 				<PlanInformationModal />

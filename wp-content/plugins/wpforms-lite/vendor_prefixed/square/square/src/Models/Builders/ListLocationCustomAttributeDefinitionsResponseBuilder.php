@@ -1,4 +1,6 @@
-<?php																																										declare (strict_types=1);
+<?php
+
+declare (strict_types=1);
 namespace WPForms\Vendor\Square\Models\Builders;
 
 use WPForms\Vendor\Core\Utils\CoreHelper;

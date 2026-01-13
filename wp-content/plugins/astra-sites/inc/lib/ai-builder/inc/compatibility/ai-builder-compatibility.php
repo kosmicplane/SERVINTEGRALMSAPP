@@ -36,14 +36,14 @@ if ( ! class_exists( 'Ai_Builder_Compatibility' ) ) {
 			// Plugin - WooCommerce.
 			require_once AI_BUILDER_DIR . 'inc/compatibility/surecart/ai-builder-compatibility-surecart.php';
 
+			// Plugin - Elementor.
+			require_once AI_BUILDER_DIR . 'inc/compatibility/elementor/ai-builder-compatibility-elementor.php';
+
 			// Plugin - Cartflows.
 			require_once AI_BUILDER_DIR . 'inc/compatibility/cartflows/ai-builder-compatibility-cartflows.php';
 
 			// Plugin - Suretriggers.
 			require_once AI_BUILDER_DIR . 'inc/compatibility/suretriggers/ai-builder-compatibility-suretriggers.php';
-
-			// Plugin - CPSW.
-			require_once AI_BUILDER_DIR . 'inc/compatibility/checkout-plugins-stripe-woo/ai-builder-compatibility-cpsw.php';
 
 			// Plugin - SureForms.
 			require_once AI_BUILDER_DIR . 'inc/compatibility/sureforms/ai-builder-compatibility-sureforms.php';
@@ -62,6 +62,9 @@ if ( ! class_exists( 'Ai_Builder_Compatibility' ) ) {
 
 			// Plugin - WooCommerce Payments.
 			require_once AI_BUILDER_DIR . 'inc/compatibility/woocommerce-payments/ai-builder-compatibility-woocommerce-payments.php';
+
+			// Plugin - SureRank.
+			require_once AI_BUILDER_DIR . 'inc/compatibility/surerank/ai-builder-compatibility-surerank.php';
 		}
 
 		/**

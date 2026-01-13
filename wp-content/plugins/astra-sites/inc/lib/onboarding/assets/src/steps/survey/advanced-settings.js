@@ -5,7 +5,8 @@ import { __ } from '@wordpress/i18n';
 import { useStateValue } from '../../store/store';
 import ICONS from '../../../icons';
 import { whiteLabelEnabled } from '../../utils/functions';
-const { themeStatus, firstImportStatus, analytics } = starterTemplates;
+const { themeStatus, firstImportStatus, analytics, isWPFreshSite } =
+	starterTemplates;
 import ToggleSwitch from '../../components/toggle-switch';
 import FilesAndFolderImg from '../../../images/files-folder.png';
 import { Checkbox, Field, Label } from '@headlessui/react';
@@ -47,6 +48,12 @@ const AdvancedSettings = () => {
 		( ! whiteLabelEnabled() && analytics !== 'yes' ) ||
 		'installed-and-active' !== themeStatus;
 
+	const showConfirmation = ! isWPFreshSite || ! allowResetSite;
+
+	if ( ! showAdvancedOption && ! showConfirmation ) {
+		return null;
+	}
+
 	return (
 		<div className="survey-form-advanced-wrapper show-section">
 			<p className="label-text row-label !mb-2" role="presentation">
@@ -54,17 +61,16 @@ const AdvancedSettings = () => {
 			</p>
 			{ showAdvancedOption && (
 				<div className="survey-advanced-section mb-6">
-					<div className="border border-solid border-border-primary rounded-md grid grid-cols-1 !divide-y !divide-border-primary divide-solid divide-x-0">
+					<div className="rounded-md grid grid-cols-1">
 						{ 'installed-and-active' !== themeStatus && (
-							<div className="items-center py-3 px-4 grid grid-cols-[1fr_min-content] !gap-2">
+							<div className="items-center p-1 grid grid-cols-[1fr_min-content] !gap-2">
 								<div className="flex-1 flex items-center space-x-2">
-									<h6 className="text-sm !leading-6 text-zip-app-heading">
-										{ ' ' }
+									<p className="text-sm !leading-6">
 										{ __(
 											'Install & Activate Astra Theme',
 											'astra-sites'
 										) }
-									</h6>
+									</p>
 									<Tooltip
 										content={ __(
 											'To import the site in the original format, you would need the Astra theme activated. You can import it with any other theme, but the site might lose some of the design settings and look a bit different.',
@@ -88,27 +94,27 @@ const AdvancedSettings = () => {
 							</div>
 						) }
 						{ ! whiteLabelEnabled() && analytics !== 'yes' && (
-							<div className="items-center py-3 px-4 grid grid-cols-[1fr_min-content] gap-4">
+							<div className="items-center p-1 grid grid-cols-[1fr_min-content] gap-4">
 								<div className="flex-1 flex items-center space-x-2">
-									<h6 className="text-sm !leading-6 text-zip-app-heading">
-										{ ' ' }
+									<p className="text-sm !leading-6">
 										{ __(
-											'Share Non-Sensitive Data',
+											'Help Us Improve Your Experience',
 											'astra-sites'
 										) }
-									</h6>
+									</p>
 									<Tooltip
 										interactive={ true }
 										content={
 											<div>
 												{ __(
-													'Help our developers build better templates and products for you by sharing anonymous and non-sensitive data about your website.',
+													'Collect non-sensitive information from your website, such as the PHP version and features used, to help us fix bugs faster, make smarter decisions, and build features that actually matter to you.',
 													'astra-sites'
 												) }{ ' ' }
 												<a
 													href="https://store.brainstormforce.com/usage-tracking/?utm_source=wp_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking"
 													target="_blank"
 													rel="noreferrer noopener"
+													className="!text-[color-mix(in_srgb,var(--st-color-accent),white_50%)]"
 												>
 													{ __(
 														'Learn More',
@@ -137,8 +143,8 @@ const AdvancedSettings = () => {
 					</div>
 				</div>
 			) }
-			{ 'yes' === firstImportStatus ? (
-				<div className="flex items-center rounded-md p-4 border-solid border gap-6 border-[#FB7E0A1F] bg-[#FB7E0A0F] max-sm:flex-col">
+			{ 'yes' === firstImportStatus && (
+				<div className="flex items-center rounded-md p-4 border-solid border gap-6 bg-st-background-secondary border-button-disabled max-sm:flex-col">
 					<div className="mb-1">
 						<p className="text-sm text-body-text !leading-6 max-sm:text-center">
 							{ __(
@@ -182,12 +188,14 @@ const AdvancedSettings = () => {
 						/>
 					</div>
 				</div>
-			) : (
-				<div className="flex items-center rounded-md p-4 border-solid border gap-6 border-[#FB7E0A1F] bg-[#FB7E0A0F] max-sm:flex-col">
+			) }
+
+			{ 'yes' !== firstImportStatus && showConfirmation && (
+				<div className="flex items-center rounded-md p-4 border-solid border gap-6 bg-st-background-secondary border-button-disabled max-sm:flex-col">
 					<div className="mb-1">
 						<p className="text-sm text-body-text !leading-6 max-sm:text-center">
 							{ __(
-								'This will overwrite your site settings and add new content. You might want to backup your site before proceeding.',
+								'Your current site will be updated with the selected layout, design, content, and pages.',
 								'astra-sites'
 							) }
 						</p>

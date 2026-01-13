@@ -2242,6 +2242,9 @@ body.suremails-onboarding-page #wpadminbar {
 :is(#suremails-root-app, #suremails-admin-notice) .uppercase{
   text-transform: uppercase;
 }
+:is(#suremails-root-app, #suremails-admin-notice) .lowercase{
+  text-transform: lowercase;
+}
 :is(#suremails-root-app, #suremails-admin-notice) .capitalize{
   text-transform: capitalize;
 }

@@ -33,3 +33,42 @@ Stack trace:
 #0 /home/izorlnspatmm/public_html/wp-admin/index.php(10): require_once()
 #1 {main}
   thrown in /home/izorlnspatmm/public_html/wp-admin/admin.php on line 37
+[07-Jan-2026 09:33:18 UTC] PHP Warning:  require(/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/wp-settings.php:339
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/setup-config.php(33): require()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:18 UTC] PHP Warning:  require(/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/wp-settings.php:339
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/setup-config.php(33): require()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:21 UTC] PHP Warning:  require(/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/wp-settings.php:339
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/setup-config.php(33): require()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:22 UTC] PHP Warning:  require(/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/wp-settings.php:339
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/setup-config.php(33): require()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:22 UTC] PHP Warning:  require(/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php): Failed to open stream: No such file or directory in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[07-Jan-2026 09:33:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/izorlnspatmm/public_html/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-categories-controller.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/izorlnspatmm/public_html/wp-settings.php:339
+Stack trace:
+#0 /home/izorlnspatmm/public_html/wp-admin/setup-config.php(33): require()
+#1 {main}
+  thrown in /home/izorlnspatmm/public_html/wp-settings.php on line 339
+[12-Jan-2026 06:17:30 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Core\Components\Migrations->run_migration(): The migration `fix_optimized_size_keys` successfully executed.
+[12-Jan-2026 06:17:30 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Core\Components\Migrations->run_migration(): The migration `fix_mime_type` successfully executed.
+[12-Jan-2026 06:17:30 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Core\Components\Migrations->run_migration(): The migration `fix_avif_with_zero_dimensions` successfully executed.
+[12-Jan-2026 06:17:30 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Optimization\Components\Actions_Cleanup->cleanup_stuck_operations(): No stuck optimization operations found for cleanup.
+[12-Jan-2026 06:18:27 UTC] PHP Warning:  Trying to access array offset on null in /home/izorlnspatmm/public_html/wp-content/plugins/integration-for-szamlazzhu-woocommerce/uninstall.php on line 12
+[12-Jan-2026 10:16:06 UTC] [Image Optimizer]: error in ImageOptimization\Modules\Optimization\Components\Upload_Optimization->optimize_image_on_upload(): Optimization error. Reason: cURL error 28: Operation timed out after 100006 milliseconds with 0 bytes received
+[12-Jan-2026 10:17:55 UTC] [Image Optimizer]: error in ImageOptimization\Modules\Optimization\Components\Upload_Optimization->optimize_image_on_upload(): Optimization error. Reason: cURL error 28: Operation timed out after 100000 milliseconds with 0 bytes received
+[12-Jan-2026 10:24:24 UTC] [Image Optimizer]: error in ImageOptimization\Modules\Optimization\Components\Upload_Optimization->optimize_image_on_upload(): Optimization error. Reason: cURL error 28: Operation timed out after 100002 milliseconds with 0 bytes received
+[12-Jan-2026 10:26:16 UTC] [Image Optimizer]: error in ImageOptimization\Modules\Optimization\Components\Upload_Optimization->optimize_image_on_upload(): Optimization error. Reason: cURL error 28: Operation timed out after 100004 milliseconds with 0 bytes received

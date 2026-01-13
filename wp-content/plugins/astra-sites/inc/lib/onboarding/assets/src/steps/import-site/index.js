@@ -5,6 +5,7 @@ import PreviousStepLink from '../../components/util/previous-step-link/index';
 import DefaultStep from '../../components/default-step/index';
 import ImportLoader from '../../components/import-steps/import-loader';
 import ErrorScreen from '../../components/error/index';
+import { trackOnboardingStep } from '../../utils/functions';
 import { useStateValue } from '../../store/store';
 import lottieJson from '../../../images/website-building.json';
 import ICONS from '../../../icons';
@@ -109,12 +110,23 @@ const ImportSite = () => {
 		solution = '',
 		stack = ''
 	) => {
+		const error = JSON.stringify( {
+			primaryText: primary,
+			secondaryText: secondary,
+			errorCode: code,
+			errorText: text,
+			solutionText: solution,
+			tryAgain: true,
+			stack,
+			tryAgainCount,
+		} );
+
 		if ( tryAgainCount >= 2 ) {
 			generateAnalyticsLead( tryAgainCount, false, {
 				id: templateId,
 				page_builder: builder,
 				template_type: selectedTemplateType,
-				failure_reason: primary,
+				error,
 			} );
 		}
 		if ( ! reportError ) {
@@ -127,19 +139,7 @@ const ImportSite = () => {
 		reportErr.append( 'page_builder', builder );
 		reportErr.append( 'template_type', selectedTemplateType );
 
-		reportErr.append(
-			'error',
-			JSON.stringify( {
-				primaryText: primary,
-				secondaryText: secondary,
-				errorCode: code,
-				errorText: text,
-				solutionText: solution,
-				tryAgain: true,
-				stack,
-				tryAgainCount,
-			} )
-		);
+		reportErr.append( 'error', error );
 		reportErr.append( 'id', templateResponse.id );
 		reportErr.append( 'plugins', JSON.stringify( requiredPlugins ) );
 		fetch( ajaxurl, {
@@ -154,18 +154,23 @@ const ImportSite = () => {
 	const importPart1 = async () => {
 		let resetStatus = false;
 		let cfStatus = false;
+		let wooCARStatus = false;
 		let latepointStatus = false;
 		let formsStatus = false;
 		let customizerStatus = false;
 		let spectraStatus = false;
-		let sureCartStatus = false;
 
 		resetStatus = await resetOldSite();
 
 		if ( resetStatus ) {
 			cfStatus = await importCartflowsFlows();
 		}
+
 		if ( cfStatus ) {
+			wooCARStatus = await importCartAbandonmentRecovery();
+		}
+
+		if ( wooCARStatus ) {
 			latepointStatus = await importLatepointTables();
 		}
 
@@ -182,10 +187,6 @@ const ImportSite = () => {
 		}
 
 		if ( spectraStatus ) {
-			sureCartStatus = await importSureCartSettings();
-		}
-
-		if ( sureCartStatus ) {
 			await importSiteContent();
 		}
 	};
@@ -194,12 +195,17 @@ const ImportSite = () => {
 	 * Start Import Part 2.
 	 */
 	const importPart2 = async () => {
+		let sureCartStatus = false;
 		let optionsStatus = false;
 		let widgetStatus = false;
 		let customizationsStatus = false;
 		let finalStepStatus = false;
 
-		optionsStatus = await importSiteOptions();
+		sureCartStatus = await importSureCartSettings();
+
+		if ( sureCartStatus ) {
+			optionsStatus = await importSiteOptions();
+		}
 
 		if ( optionsStatus ) {
 			widgetStatus = await importWidgets();
@@ -368,6 +374,37 @@ const ImportSite = () => {
 					const response = JSON.parse( text );
 					cloneResponse = response;
 					if ( response.success ) {
+						// Check if this is a deprioritization response
+						let deprioritizeStatus = false;
+						if (
+							response.data &&
+							response.data.status === 'deprioritize'
+						) {
+							deprioritizeStatus = true;
+
+							// Add to deferred queue
+							setDeferredPlugins( ( prev ) => {
+								const exists = prev.some(
+									( p ) => p.slug === plugin.slug
+								);
+								if ( ! exists ) {
+									return [
+										...prev,
+										{
+											...plugin,
+											deferReason: response.data.reason,
+											retryAfter:
+												response.data.retry_after,
+											dependency:
+												response.data.dependency,
+										},
+									];
+								}
+								return prev;
+							} );
+						}
+
+						// Remove from active processing list
 						const notActivatedPluginList = notActivatedList;
 						notActivatedPluginList.forEach(
 							( singlePlugin, index ) => {
@@ -380,16 +417,32 @@ const ImportSite = () => {
 							type: 'set',
 							notActivatedList: notActivatedPluginList,
 						} );
-						percentage += 2;
-						dispatch( {
-							type: 'set',
-							importStatus: sprintf(
-								// translators: Plugin Name.
-								__( '%1$s activated.', 'astra-sites' ),
-								plugin.name
-							),
-							importPercent: percentage,
-						} );
+
+						if ( deprioritizeStatus ) {
+							dispatch( {
+								type: 'set',
+								importStatus: sprintf(
+									// translators: Plugin Name.
+									__(
+										'%1$s deferred (requires WooCommerce).',
+										'astra-sites'
+									),
+									plugin.name
+								),
+								importPercent: percentage,
+							} );
+						} else {
+							percentage += 2;
+							dispatch( {
+								type: 'set',
+								importStatus: sprintf(
+									// translators: Plugin Name.
+									__( '%1$s activated.', 'astra-sites' ),
+									plugin.name
+								),
+								importPercent: percentage,
+							} );
+						}
 					}
 				} catch ( error ) {
 					report(
@@ -450,6 +503,21 @@ const ImportSite = () => {
 					error
 				);
 			} );
+	};
+
+	/**
+	 * Check if plugin is in the required plugins list.
+	 *
+	 * @param {string} slug - Plugin slug to check.
+	 * @return {boolean} - true if plugin is in required plugins
+	 */
+	const inRequiredPlugins = ( slug ) => {
+		const plugins = templateResponse?.[ 'required-plugins' ] || [];
+		if ( plugins?.find( ( plugin ) => plugin?.slug === slug ) ) {
+			return true;
+		}
+
+		return false;
 	};
 
 	/**
@@ -944,8 +1012,14 @@ const ImportSite = () => {
 	 * 2. Import CartFlows Flows.
 	 */
 	const importCartflowsFlows = async () => {
+		// Skip if CartFlows is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'cartflows' ) ) {
+			return true;
+		}
+
 		const cartflowsUrl =
-			encodeURI( templateResponse[ 'astra-site-cartflows-path' ] ) || '';
+			encodeURI( templateResponse?.[ 'astra-site-cartflows-path' ] ) ||
+			'';
 
 		if ( '' === cartflowsUrl || 'null' === cartflowsUrl ) {
 			return true;
@@ -1003,9 +1077,97 @@ const ImportSite = () => {
 		return status;
 	};
 
+	/**
+	 * 2. Import Cart Abandonment Recovery data.
+	 */
+	const importCartAbandonmentRecovery = async () => {
+		// Skip if Woo Cart Abandonment Recovery is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'woo-cart-abandonment-recovery' ) ) {
+			return true;
+		}
+
+		const wooCARUrl = encodeURI(
+			templateResponse?.[ 'astra-site-cart-abandonment-recovery-path' ] ||
+				''
+		);
+
+		if ( '' === wooCARUrl || 'null' === wooCARUrl ) {
+			return true;
+		}
+
+		dispatch( {
+			type: 'set',
+			importStatus: __(
+				'Importing Cart Abandonment Recovery data.',
+				'astra-sites'
+			),
+		} );
+
+		const bodyData = new FormData();
+		bodyData.append(
+			'action',
+			'astra-sites-import-cart-abandonment-recovery'
+		);
+		bodyData.append( '_ajax_nonce', astraSitesVars?._ajax_nonce );
+
+		const status = await fetch( ajaxurl, {
+			method: 'post',
+			body: bodyData,
+		} )
+			.then( ( response ) => response.text() )
+			.then( ( text ) => {
+				try {
+					const data = JSON.parse( text );
+					if ( data.success ) {
+						percentage += 2;
+						dispatch( {
+							type: 'set',
+							importPercent: percentage,
+						} );
+						return true;
+					}
+					throw data.data;
+				} catch ( error ) {
+					report(
+						__(
+							'Importing Cart Abandonment Recovery data failed due to parse JSON error.',
+							'astra-sites'
+						),
+						'',
+						error,
+						'',
+						'',
+						text
+					);
+					return false;
+				}
+			} )
+			.catch( ( error ) => {
+				report(
+					__(
+						'Importing Cart Abandonment Recovery data Failed.',
+						'astra-sites'
+					),
+					'',
+					error
+				);
+				return false;
+			} );
+		return status;
+	};
+
+	/**
+	 * 3. Import LatePoint Tables.
+	 */
 	const importLatepointTables = async () => {
+		// Skip if LatePoint is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'latepoint' ) ) {
+			return true;
+		}
+
 		const latepointUrl =
-			encodeURI( templateResponse[ 'astra-site-latepoint-path' ] ) || '';
+			encodeURI( templateResponse?.[ 'astra-site-latepoint-path' ] ) ||
+			'';
 
 		if ( '' === latepointUrl || 'null' === latepointUrl ) {
 			return true;
@@ -1067,8 +1229,13 @@ const ImportSite = () => {
 	 * 3. Import WPForms.
 	 */
 	const importForms = async () => {
+		// Skip if WPForms Lite is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'wpforms-lite' ) ) {
+			return true;
+		}
+
 		const wpformsUrl =
-			encodeURI( templateResponse[ 'astra-site-wpforms-path' ] ) || '';
+			encodeURI( templateResponse?.[ 'astra-site-wpforms-path' ] ) || '';
 
 		if ( '' === wpformsUrl || 'null' === wpformsUrl ) {
 			return true;
@@ -1206,7 +1373,7 @@ const ImportSite = () => {
 		}
 
 		const wxrUrl =
-			encodeURI( templateResponse[ 'astra-site-wxr-path' ] ) || '';
+			encodeURI( templateResponse?.[ 'astra-site-wxr-path' ] ) || '';
 		if ( 'null' === wxrUrl || '' === wxrUrl ) {
 			const errorTxt = __(
 				'The XML URL for the site content is empty.',
@@ -1247,31 +1414,87 @@ const ImportSite = () => {
 					} );
 					if ( false === data.success ) {
 						const errorMsg = data.data.error || data.data;
-						throw errorMsg;
-					} else {
-						importXML( data.data );
+						// Use the contextual error message from server
+						report(
+							errorMsg,
+							'',
+							'',
+							data.data?.code || '',
+							'',
+							''
+						);
+						return false;
 					}
+					importXML( data.data );
+
 					return true;
 				} catch ( error ) {
+					const secondaryMessage =
+						error.name === 'SyntaxError'
+							? __(
+									'The server returned an invalid response. This may be due to server configuration issues or plugin conflicts.',
+									'astra-sites'
+							  )
+							: '';
+
+					// Show preview of response for debugging
+					const responsePreview =
+						text.length > 200
+							? text.substring( 0, 200 ) + '...'
+							: text;
+
 					report(
 						__(
 							'Importing Site Content failed due to parse JSON error.',
 							'astra-sites'
 						),
+						secondaryMessage,
+						error.message,
 						'',
-						error,
 						'',
-						'',
-						text
+						responsePreview
 					);
 					return false;
 				}
 			} )
 			.catch( ( error ) => {
+				// Enhanced network error handling
+				let secondaryMessage = __(
+					'Unable to connect to the server. This could be due to internet connectivity issues.',
+					'astra-sites'
+				);
+				let solution = __(
+					'Please check your internet connection and try again.',
+					'astra-sites'
+				);
+
+				// Classify network errors
+				if (
+					error.name === 'TypeError' &&
+					error.message?.includes( 'fetch' )
+				) {
+					secondaryMessage = __(
+						'Connection failed: Failed to connect to the import server. This could be due to network issues or server problems.',
+						'astra-sites'
+					);
+				} else if ( error.message?.includes( 'timeout' ) ) {
+					secondaryMessage = __(
+						'Request timeout: The import request took too long to complete. This could be due to server load or network issues.',
+						'astra-sites'
+					);
+					solution = __(
+						'Please try again. If the problem persists, try a different template.',
+						'astra-sites'
+					);
+				}
+
 				report(
 					__( 'Importing Site Content Failed.', 'astra-sites' ),
-					'',
-					error
+					secondaryMessage,
+					error.message || error,
+					error.code || '',
+					solution,
+					''
 				);
 				return false;
 			} );
@@ -1283,8 +1506,13 @@ const ImportSite = () => {
 	 * 6. Import Spectra Settings.
 	 */
 	const importSpectraSettings = async () => {
+		// Skip if Spectra is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'ultimate-addons-for-gutenberg' ) ) {
+			return true;
+		}
+
 		const spectraSettings =
-			templateResponse[ 'astra-site-spectra-options' ] || '';
+			templateResponse?.[ 'astra-site-spectra-options' ] || '';
 
 		if ( '' === spectraSettings || 'null' === spectraSettings ) {
 			return true;
@@ -1315,15 +1543,25 @@ const ImportSite = () => {
 						} );
 						return true;
 					}
-					throw data.data;
+
+					// Extract meaningful error message
+					const errorMsg =
+						data.data?.error ||
+						data.data ||
+						__( 'Unknown error occurred.', 'astra-sites' );
+					throw errorMsg;
 				} catch ( error ) {
+					const errorText =
+						error?.message ||
+						error ||
+						__( 'Parse error occurred.', 'astra-sites' );
 					report(
 						__(
 							'Importing Spectra Settings failed due to parse JSON error.',
 							'astra-sites'
 						),
 						'',
-						error,
+						errorText,
 						'',
 						'',
 						text
@@ -1332,10 +1570,14 @@ const ImportSite = () => {
 				}
 			} )
 			.catch( ( error ) => {
+				const errorText =
+					error?.message ||
+					error ||
+					__( 'Network error occurred.', 'astra-sites' );
 				report(
 					__( 'Importing Spectra Settings Failed.', 'astra-sites' ),
 					'',
-					error
+					errorText
 				);
 				return false;
 			} );
@@ -1346,6 +1588,11 @@ const ImportSite = () => {
 	 * 7. Import Surecart Settings.
 	 */
 	const importSureCartSettings = async () => {
+		// Skip if SureCart is not in the required plugins list.
+		if ( ! inRequiredPlugins( 'surecart' ) ) {
+			return true;
+		}
+
 		const sourceID =
 			templateResponse?.[ 'astra-site-surecart-settings' ]?.id || '';
 		const sourceCurrency =
@@ -1422,19 +1669,25 @@ const ImportSite = () => {
 					break;
 
 				case 'complete':
+					evtSource.close();
 					if ( false === eventData.error ) {
-						evtSource.close();
 						dispatch( {
 							type: 'set',
 							xmlImportDone: true,
 						} );
 					} else {
+						const errorMsg =
+							eventData.error ||
+							astraSitesVars?.xml_import_interrupted_error;
+						const solutionMsg = eventData.error
+							? astraSitesVars?.process_failed_secondary
+							: astraSitesVars?.xml_import_interrupted_secondary;
 						report(
 							astraSitesVars?.xml_import_interrupted_primary,
 							'',
-							astraSitesVars?.xml_import_interrupted_error,
+							errorMsg,
 							'',
-							astraSitesVars?.xml_import_interrupted_secondary
+							solutionMsg
 						);
 					}
 					break;
@@ -1450,7 +1703,7 @@ const ImportSite = () => {
 						'astra-sites'
 					),
 					'',
-					error
+					astraSitesVars?.xml_import_interrupted_primary
 				);
 			}
 		};
@@ -1548,7 +1801,8 @@ const ImportSite = () => {
 			importStatus: __( 'Importing Widgets.', 'astra-sites' ),
 		} );
 
-		const widgetsData = templateResponse[ 'astra-site-widgets-data' ] || '';
+		const widgetsData =
+			templateResponse?.[ 'astra-site-widgets-data' ] || '';
 
 		const widgets = new FormData();
 		widgets.append( 'action', 'astra-sites-import_widgets' );
@@ -1691,6 +1945,11 @@ const ImportSite = () => {
 	};
 
 	useEffect( () => {
+		// Track template preview step when component mounts
+		trackOnboardingStep( 'import' );
+	}, [] );
+
+	useEffect( () => {
 		window.addEventListener( 'beforeunload', preventRefresh ); // eslint-disable-line
 		return () => {
 			window.removeEventListener( 'beforeunload', preventRefresh ); // eslint-disable-line
@@ -1770,17 +2029,55 @@ const ImportSite = () => {
 		}
 	}, [ xmlImportDone ] );
 
+	// State for deferred plugins (WooCommerce dependency handling)
+	const [ deferredPlugins, setDeferredPlugins ] = React.useState( [] );
+	const [ retryingDeferred, setRetryingDeferred ] = React.useState( false );
+
+	/**
+	 * Retry deferred plugins after WooCommerce is activated
+	 */
+	const retryDeferredPlugins = () => {
+		if ( deferredPlugins.length === 0 || retryingDeferred ) {
+			return;
+		}
+
+		setRetryingDeferred( true );
+
+		// Move deferred plugins back to activation queue
+		const pluginsToRetry = [ ...deferredPlugins ];
+		setDeferredPlugins( [] );
+
+		// Add them back to notActivatedList for retry
+		dispatch( {
+			type: 'set',
+			notActivatedList: [ ...notActivatedList, ...pluginsToRetry ],
+		} );
+
+		setRetryingDeferred( false );
+	};
+
 	// This checks if all the required plugins are installed and activated.
 	useEffect( () => {
 		if ( notActivatedList.length <= 0 && notInstalledList.length <= 0 ) {
+			// Check if we have deferred plugins to retry
+			if ( deferredPlugins.length > 0 && ! retryingDeferred ) {
+				retryDeferredPlugins();
+				return;
+			}
+
+			// All plugins are truly done
 			dispatch( {
 				type: 'set',
 				requiredPluginsDone: true,
 			} );
 		}
-	}, [ notActivatedList.length, notInstalledList.length ] );
+	}, [
+		notActivatedList.length,
+		notInstalledList.length,
+		deferredPlugins.length,
+	] );
 
-	// Whenever a plugin is installed, this code sends an activation request.
+	// Activate plugins one by one using the prioritized list
 	useEffect( () => {
 		// Installed all required plugins.
 		if ( notActivatedList.length > 0 ) {

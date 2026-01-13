@@ -1,1 +1,0 @@
-[16-Jun-2025 20:04:20 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/elementor/vendor_prefixed/dependency-injection/psr/container/src/ContainerExceptionInterface.php on line 4

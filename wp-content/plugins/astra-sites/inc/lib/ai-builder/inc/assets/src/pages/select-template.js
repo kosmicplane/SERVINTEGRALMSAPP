@@ -10,6 +10,7 @@ import { twMerge } from 'tailwind-merge';
 import { useSelect, useDispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import NavigationButtons from '../components/navigation-buttons';
+import { siteLogoDefault } from '../store/reducer';
 import { classNames, toastBody } from '../helpers';
 import { STORE_KEY } from '../store';
 import { ColumnItem } from '../components/column-item';
@@ -41,6 +42,14 @@ export const getRandomUniqueId = () =>
 
 const DESIGN_LOAD_BATCH_COUNT = 4; // how many templates to load at once
 
+// Determine default page builder
+const { supportedPageBuilders = [] } = aiBuilderVars;
+const defaultPageBuilder = ! [ 'block-editor', 'gutenberg' ].includes(
+	supportedPageBuilders?.[ 0 ]
+)
+	? supportedPageBuilders?.[ 0 ] // Could be 'elementor'
+	: 'spectra';
+
 const SelectTemplate = () => {
 	const { previousStep } = useNavigateSteps();
 
@@ -50,6 +59,10 @@ const SelectTemplate = () => {
 		setWebsiteTemplateSearchResultsAIStep,
 		setSelectedTemplateIsPremium,
 		setSelectedPageBuilder,
+		setWebsiteColorPalette,
+		setWebsiteTypography,
+		setWebsiteLogo,
+		setSiteTitleVisible,
 	} = useDispatch( STORE_KEY );
 
 	const {
@@ -94,7 +107,8 @@ const SelectTemplate = () => {
 
 	const [ isFetching, setIsFetching ] = useState( false );
 	const [ backToTop, setBackToTop ] = useState( false );
-	const [ selectedBuilder, setSelectedBuilder ] = useState( 'spectra' );
+	const [ selectedBuilder, setSelectedBuilder ] =
+		useState( defaultPageBuilder );
 
 	useEffect( () => {
 		setSelectedPageBuilder(
@@ -561,6 +575,26 @@ const SelectTemplate = () => {
 		fetchNewTemplates( false );
 	}, [ debouncedKeyword ] );
 
+	useEffect( () => {
+		// if there's a uuid in the query params, find the template
+		const urlParams = new URLSearchParams( window.location.search );
+		const templateUuid = urlParams.get( 'uuid' );
+
+		if ( templateUuid ) {
+			const selectedTemplateItem = allTemplates?.find(
+				( item ) => item?.uuid === templateUuid
+			);
+			if ( selectedTemplateItem ) {
+				setWebsiteSelectedTemplateAIStep( selectedTemplateItem.uuid );
+				setSelectedTemplateIsPremium( selectedTemplateItem.is_premium );
+				setWebsiteLogo( siteLogoDefault );
+				setWebsiteTypography( null );
+				setWebsiteColorPalette( null );
+				setSiteTitleVisible( true );
+			}
+		}
+	}, [] );
+
 	const handleSubmitKeyword = ( { keyword } ) => {
 		onChangeKeyword( keyword );
 	};
@@ -736,7 +770,7 @@ const SelectTemplate = () => {
 		>
 			<Heading
 				heading={ __( 'Choose the Design', 'ai-builder' ) }
-				className="px-5 md:px-10 lg:px-14 xl:px-15 pt-5 md:pt-10 lg:pt-8 xl:pt-8 max-w-fit mx-auto"
+				className="w-full px-5 md:px-10 lg:px-14 xl:px-15 pt-12 max-w-fit mx-auto text-[28px] font-semibold leading-9"
 			/>
 			<form
 				className="w-full pt-4 pb-4  max-w-[37.5rem] mx-auto"
@@ -760,9 +794,10 @@ const SelectTemplate = () => {
 							);
 						} }
 					/>
+					<span className="hidden xs:block h-6 w-px bg-gray-900/10"></span>
 					<Input
 						name="keyword"
-						inputClassName={ 'pr-11 pl-2' }
+						inputClassName={ 'pr-11 pl-2 !text-base' }
 						register={ register }
 						placeholder={ __( 'Add a keyword', 'ai-builder' ) }
 						height="12"
@@ -800,7 +835,7 @@ const SelectTemplate = () => {
 				<div
 					ref={ templatesContainer }
 					className={ classNames(
-						'grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-auto items-start justify-center gap-4 sm:gap-6 mb-10'
+						'grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-auto items-start justify-center gap-4 sm:gap-6 mb-10 mt-5'
 					) }
 				>
 					{ ! isFetching

@@ -11,6 +11,7 @@ namespace SureMails\Inc\Emails\Handler;
 
 use PHPMailer\PHPMailer\Exception;
 use SureMails\Inc\ConnectionManager;
+use SureMails\Inc\Emails\ProviderHelper;
 use SureMails\Inc\Traits\Instance;
 use SureMails\Inc\Utils\LogError;
 
@@ -160,7 +161,7 @@ class ProcessEmailData {
 
 			// Check if recipient is in the format "Name <email@example.com>".
 			if ( preg_match( '/^(.*)<(.+)>$/', $recipient, $matches ) ) {
-				$name  = trim( $matches[1], " \t\n\r\0\x0B\"" ); // Remove surrounding quotes and whitespace.
+				$name  = trim( $matches[1] ); // Remove surrounding quotes and whitespace.
 				$email = sanitize_email( trim( $matches[2] ) );
 			} else {
 				$name  = '';
@@ -265,7 +266,7 @@ class ProcessEmailData {
 				case 'from':
 					// Parse "From" header.
 					if ( preg_match( '/^(.*)<(.+)>$/', $content, $matches ) ) {
-						$name  = trim( $matches[1], " \t\n\r\0\x0B\"" ); // Remove surrounding quotes and whitespace.
+						$name  = trim( $matches[1] ); // Remove surrounding quotes and whitespace.
 						$email = sanitize_email( trim( $matches[2] ) );
 						if ( is_email( $email ) ) {
 							$processed_headers['from'] = [
@@ -595,11 +596,12 @@ class ProcessEmailData {
 			$phpmailer->Subject = $processed_data['subject'];
 
 			// Set Body.
-			if( strtolower( $processed_data['headers']['content_type'] ) === 'text/html' ) {
+			$is_html = ProviderHelper::is_html( $processed_data['headers']['content_type'] );
+			if( $is_html ) {
 				$phpmailer->Body = $processed_data['message'];
 				$phpmailer->AltBody = wp_strip_all_tags($processed_data['message']);
 			} else {
-				$phpmailer->Body    =  wp_strip_all_tags($processed_data['message']);
+				$phpmailer->Body = $processed_data['message'];
 			}
 
 			// Add Attachments.
@@ -611,7 +613,7 @@ class ProcessEmailData {
 			}
 
 			// Set Content-Type and Charset.
-			$phpmailer->isHTML( strtolower( $processed_data['headers']['content_type'] ) === 'text/html' );
+			$phpmailer->isHTML( $is_html );
 			$phpmailer->CharSet = $processed_data['headers']['charset'];
 			//phpcs:enable
 
@@ -638,7 +640,17 @@ class ProcessEmailData {
 		}
 
 		$base_name = basename( $attachment );
-		return substr( $base_name, strpos( $base_name, '-' ) + 1 );
+
+		// New format: {16-md5}-{12-random}-{name} = 30 char prefix.
+		// Old format: {16-md5}-{name} = 17 char prefix.
+		// Detection: check if position 29 is a dash (0-indexed: 16 + 1 + 12 = 29).
+		if ( strlen( $base_name ) > 29 && $base_name[29] === '-' ) {
+			return substr( $base_name, 30 );
+		}
+
+		// Backward compatibility: old format <= 1.9.0.
+		$dash_pos = strpos( $base_name, '-' );
+		return $dash_pos !== false ? substr( $base_name, $dash_pos + 1 ) : $base_name;
 	}
 
 	/**
@@ -927,7 +939,7 @@ class ProcessEmailData {
 
 			// Check if email is in "Name <email@example.com>" format.
 			if ( preg_match( '/^(.*)<(.+)>$/', $email, $matches ) ) {
-				$name  = trim( $matches[1], " \t\n\r\0\x0B\"" );
+				$name  = trim( $matches[1] );
 				$email = sanitize_email( trim( $matches[2] ) );
 			} else {
 				$name  = '';

@@ -31,6 +31,14 @@ class ST_WXR_Importer {
 	private static $instance = null;
 
 	/**
+	 * Transient key for WXR import progress.
+	 *
+	 * @since 1.1.24
+	 * @var string
+	 */
+	private $wxr_import_progress_key = 'st_wxr_importer_progress';
+
+	/**
 	 * Initiator of this class.
 	 *
 	 * @since 1.0.0
@@ -61,6 +69,9 @@ class ST_WXR_Importer {
 		}
 		add_action( 'wp_import_insert_post', array( $this, 'after_imported_post' ), 10, 4 );
 
+		// To handle the multiple WXR import requests.
+		add_action( 'import_start', array( $this, 'wxr_import_transient_start' ) );
+		add_action( 'import_end', array( $this, 'wxr_import_transient_cleanup' ) );
 	}
 
 	/**
@@ -124,6 +135,54 @@ class ST_WXR_Importer {
 	}
 
 	/**
+	 * WXR Import Transient Start
+	 *
+	 * @since 1.1.24
+	 */
+	public function wxr_import_transient_start() {
+		set_transient( $this->wxr_import_progress_key, 'ongoing', 300 ); // 5 minutes.
+	}
+
+	/**
+	 * WXR Import Transient Cleanup
+	 *
+	 * @since 1.1.24
+	 */
+	public function wxr_import_transient_cleanup() {
+		set_transient( $this->wxr_import_progress_key, 'completed', 30 ); // 30 seconds.
+	}
+
+	/**
+	 * Is WXR Import In Progress
+	 *
+	 * @since 1.1.24
+	 * @return bool True if in progress, false otherwise.
+	 */
+	public function is_wxr_import_in_progress() {
+		// Check existing progress.
+		$wxr_progress = get_transient( $this->wxr_import_progress_key );
+		if ( ! $wxr_progress ) {
+			return false;
+		}
+
+		if ( 'completed' === $wxr_progress ) {
+			$data = array(
+				'action' => 'complete',
+				'error'  => false,
+			);
+		} else {
+			$data = array(
+				'action' => 'updatedDelta',
+				'type'   => 'status',
+				'delta'  => 1,
+			);
+		}
+
+		$this->emit_sse_message( $data );
+		return true;
+	}
+
+	/**
 	 * Constructor.
 	 *
 	 * @since  1.1.0
@@ -141,17 +200,19 @@ class ST_WXR_Importer {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_send_json_error(
 					array(
-						'error' => __( 'Permission Denied!', 'astra-sites' ),
+						'error' => __( "Permission denied: You don't have sufficient permissions to perform this action. Please contact your site administrator.", 'astra-sites' ),
 					)
 				);
 			}
 
 			// Start the event stream.
 			header( 'Content-Type: text/event-stream, charset=UTF-8' );
+			header( 'Cache-Control: no-cache' );
+			header( 'Connection: keep-alive' );
 			// Turn off PHP output compression.
 			$previous = error_reporting( error_reporting() ^ E_WARNING ); //phpcs:ignore WordPress.PHP.DevelopmentFunctions, WordPress.PHP.DiscouragedPHPFunctions -- 3rd party library.
-			ini_set( 'output_buffering', 'off' ); //phpcs:ignore WordPress.PHP.IniSet.Risky -- 3rd party library.
-			ini_set( 'zlib.output_compression', false ); //phpcs:ignore WordPress.PHP.IniSet.Risky -- 3rd party library.
+			ini_set( 'output_buffering', 'off' ); //phpcs:ignore WordPress.PHP.IniSet.Risky, Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- 3rd party library.
+			ini_set( 'zlib.output_compression', false ); //phpcs:ignore WordPress.PHP.IniSet.Risky, Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- 3rd party library.
 			error_reporting( $previous ); //phpcs:ignore WordPress.PHP.DevelopmentFunctions, WordPress.PHP.DiscouragedPHPFunctions -- 3rd party library.
 
 			if ( $GLOBALS['is_nginx'] ) {
@@ -170,12 +231,56 @@ class ST_WXR_Importer {
 			$xml_url = get_attached_file( $xml_id );
 		}
 
+		// Check for existing progress to prevent duplicate content.
+		if ( $this->is_wxr_import_in_progress() ) {
+			return;
+		}
+
+		// Enhanced XML file validation.
 		if ( empty( $xml_url ) ) {
-			exit;
+			$this->wxr_import_transient_cleanup();
+			$this->emit_sse_message(
+				array(
+					'action' => 'complete',
+					'error'  => __( 'Template content file not found or inaccessible. The import process cannot continue without the content file. Please try importing again.', 'astra-sites' ),
+				)
+			);
+			if ( wp_doing_ajax() ) {
+				exit;
+			}
+			return;
+		}
+
+		if ( ! file_exists( $xml_url ) ) {
+			$this->wxr_import_transient_cleanup();
+			$this->emit_sse_message(
+				array(
+					'action' => 'complete',
+					'error'  => __( 'Template content file does not exist on the server. The file may have been deleted or moved. Please try re-importing the template.', 'astra-sites' ),
+				)
+			);
+			if ( wp_doing_ajax() ) {
+				exit;
+			}
+			return;
+		}
+
+		if ( ! is_readable( $xml_url ) ) {
+			$this->wxr_import_transient_cleanup();
+			$this->emit_sse_message(
+				array(
+					'action' => 'complete',
+					'error'  => __( 'Template content file cannot be read due to file permission issues. Please contact your hosting provider to fix file permissions.', 'astra-sites' ),
+				)
+			);
+			if ( wp_doing_ajax() ) {
+				exit;
+			}
+			return;
 		}
 
 		// Time to run the import!
-		set_time_limit( 0 );
+		set_time_limit( 0 ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- Required for long-running import process.
 
 		// Ensure we're not buffered.
 		wp_ob_end_flush_all();
@@ -209,11 +314,55 @@ class ST_WXR_Importer {
 		add_action( 'wxr_importer.processed.post', array( $this, 'track_post' ), 10, 2 );
 		add_action( 'wxr_importer.processed.term', array( $this, 'track_term' ) );
 
+		// Remove content_save_pr filter to avoid unwanted content filtering. Replicating the same from super admin.
+		$has_content_filter = has_filter( 'content_save_pre', 'wp_filter_post_kses' );
+		if (
+			is_multisite() &&
+			current_user_can( 'activate_plugins' ) &&
+			$has_content_filter
+		) {
+			remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
+		}
+
 		// Flush once more.
 		flush();
 
+		/**
+		 * Importer instance.
+		 *
+		 * @var \WXR_Importer $importer Importer instance.
+		 */
 		$importer = $this->get_importer();
-		$response = $importer->import( $xml_url );
+
+		try {
+			$response = $importer->import( $xml_url );
+		} catch ( \Exception $e ) {
+			$this->wxr_import_transient_cleanup();
+			$this->emit_sse_message(
+				array(
+					'action'    => 'complete',
+					'error'     => $this->get_contextual_import_error_message( $e->getMessage() ),
+					'technical' => $e->getMessage(),
+				)
+			);
+			if ( wp_doing_ajax() ) {
+				exit;
+			}
+			return;
+		} catch ( \Error $e ) {
+			$this->wxr_import_transient_cleanup();
+			$this->emit_sse_message(
+				array(
+					'action'    => 'complete',
+					'error'     => __( 'A fatal error occurred during import, likely due to server resource limitations. Try a different template, or contact your hosting provider to increase server resources.', 'astra-sites' ),
+					'technical' => $e->getMessage(),
+				)
+			);
+			if ( wp_doing_ajax() ) {
+				exit;
+			}
+			return;
+		}
 
 		// Let the browser know we're done.
 		$complete = array(
@@ -221,13 +370,76 @@ class ST_WXR_Importer {
 			'error'  => false,
 		);
 		if ( is_wp_error( $response ) ) {
-			$complete['error'] = $response->get_error_message();
+			$complete['error']     = $this->get_contextual_import_error_message( $response->get_error_message() );
+			$complete['technical'] = $response->get_error_message();
+		}
+
+		// Restore the content filter.
+		if ( is_multisite() && $has_content_filter ) {
+			add_filter( 'content_save_pre', 'wp_filter_post_kses' );
 		}
 
 		$this->emit_sse_message( $complete );
 		if ( wp_doing_ajax() ) {
 			exit;
 		}
+	}
+
+	/**
+	 * Get contextual error message for import errors
+	 *
+	 * @since 1.1.21
+	 * @param string $original_error Original error message.
+	 * @return string Enhanced contextual error message.
+	 */
+	private function get_contextual_import_error_message( $original_error ) {
+		$message_lower = strtolower( $original_error );
+
+		// Memory errors.
+		if ( strpos( $message_lower, 'memory' ) !== false ||
+			strpos( $message_lower, 'fatal error' ) !== false ) {
+			return __( 'Import failed due to server memory limitations. This template may be too large for your current server configuration. Try importing a smaller template, or contact your hosting provider to increase memory limits.', 'astra-sites' );
+		}
+
+		// Timeout errors.
+		if ( strpos( $message_lower, 'timeout' ) !== false ||
+			strpos( $message_lower, 'execution time' ) !== false ) {
+			return __( 'Import timed out due to server limitations. The template import process took too long to complete. Try again, or contact your hosting provider to increase execution time limits.', 'astra-sites' );
+		}
+
+		// Database errors.
+		if ( strpos( $message_lower, 'database' ) !== false ||
+			strpos( $message_lower, 'mysql' ) !== false ||
+			strpos( $message_lower, 'sql' ) !== false ) {
+			return __( 'Import failed due to database issues. This could be due to database connection problems or insufficient database permissions. Please contact your hosting provider.', 'astra-sites' );
+		}
+
+		// File/Permission errors.
+		if ( strpos( $message_lower, 'permission' ) !== false ||
+			strpos( $message_lower, 'write' ) !== false ||
+			strpos( $message_lower, 'upload' ) !== false ) {
+			return __( 'Import failed due to file permission issues. The server cannot create or write files needed for the import. Please contact your hosting provider to fix file permissions.', 'astra-sites' );
+		}
+
+		// Image/Media download errors.
+		if ( strpos( $message_lower, 'image' ) !== false ||
+			strpos( $message_lower, 'media' ) !== false ||
+			strpos( $message_lower, 'download' ) !== false ) {
+			return __( 'Import completed but some images or media files could not be downloaded. This could be due to network issues or the original files being unavailable. The template structure has been imported successfully.', 'astra-sites' );
+		}
+
+		// XML parsing errors.
+		if ( strpos( $message_lower, 'xml' ) !== false ||
+			strpos( $message_lower, 'parse' ) !== false ) {
+			return __( 'Import failed due to corrupted template content. The template file appears to be damaged or incomplete. Please try importing again, or select a different template.', 'astra-sites' );
+		}
+
+		// Default enhanced message.
+		return sprintf(
+			// translators: Import encountered error text.
+			__( 'Import process encountered an error: %s. Please try again, or contact support if the issue persists.', 'astra-sites' ),
+			$original_error
+		);
 	}
 
 	/**
@@ -379,19 +591,40 @@ class ST_WXR_Importer {
 	 */
 	public function real_mimes( $defaults, $filename, $file ) {
 
+		// Validate file extension using WordPress core function to prevent double extension attacks.
+		$filetype = wp_check_filetype(
+			$filename,
+			array(
+				'xml'  => 'text/xml',
+				'json' => 'application/json',
+				'svg'  => 'image/svg+xml',
+				'svgz' => 'image/svg+xml',
+			)
+		);
+
+		// Get actual file extension.
+		$file_extension = pathinfo( $filename, PATHINFO_EXTENSION );
+
+		// Reject files with no valid extension or mismatched extensions.
+		if ( false === $filetype['type'] || empty( $file_extension ) ) {
+			return $defaults;
+		}
+
 		// Set EXT and real MIME type only for the file name `wxr.xml`.
-		if ( strpos( $filename, 'wxr' ) !== false ) {
+		// Ensure the actual extension is 'xml' to prevent double extension attacks like 'test.wxr.php'.
+		if ( 'xml' === $file_extension && strpos( $filename, 'wxr' ) !== false ) {
 			$defaults['ext']  = 'xml';
 			$defaults['type'] = 'text/xml';
 		}
 
-		// Set EXT and real MIME type only for the file name `wpforms.json` or `wpforms-{page-id}.json`.
-		if ( ( strpos( $filename, 'wpforms' ) !== false ) || ( strpos( $filename, 'cartflows' ) !== false ) || ( strpos( $filename, 'spectra' ) !== false ) ) {
+		// Set EXT and real MIME type only for the file name `wpforms.json`, `cartflows.json`, or `spectra.json`.
+		// Ensure the actual extension is 'json' to prevent double extension attacks.
+		if ( 'json' === $file_extension && ( strpos( $filename, 'wpforms' ) !== false || strpos( $filename, 'cartflows' ) !== false || strpos( $filename, 'spectra' ) !== false ) ) {
 			$defaults['ext']  = 'json';
 			$defaults['type'] = 'text/plain';
 		}
 
-		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		if ( 'svg' === $file_extension ) {
 			// Perform SVG sanitization using the sanitize_svg function.
 			$svg_content           = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			$sanitized_svg_content = $this->sanitize_svg( $svg_content );
@@ -404,7 +637,7 @@ class ST_WXR_Importer {
 			$defaults['ext']  = 'svg';
 		}
 
-		if ( 'svgz' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		if ( 'svgz' === $file_extension ) {
 			// Perform SVG sanitization using the sanitize_svg function.
 			$svg_content     = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			$decoded_content = gzdecode( $svg_content );
@@ -429,6 +662,7 @@ class ST_WXR_Importer {
 
 		return $defaults;
 	}
+
 	/**
 	 * Different MIME type of different PHP version
 	 *
@@ -610,24 +844,24 @@ class ST_WXR_Importer {
 		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
 
 		// Strip php tags.
-		$content = preg_replace( '/<\?(=|php)(.+?)\?>/i', '', $original_content );
-		$content = preg_replace( '/<\?(.*)\?>/Us', '', $content );
-		$content = preg_replace( '/<\%(.*)\%>/Us', '', $content );
+		$content = preg_replace( '/<\?(=|php)(.+?)\?>/i', '', $original_content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
+		$content = preg_replace( '/<\?(.*)\?>/Us', '', $content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
+		$content = preg_replace( '/<\%(.*)\%>/Us', '', $content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
 
 		if ( ( false !== strpos( $content, '<?' ) ) || ( false !== strpos( $content, '<%' ) ) ) {
 			return '';
 		}
 
 		// Strip comments.
-		$content = preg_replace( '/<!--(.*)-->/Us', '', $content );
-		$content = preg_replace( '/\/\*(.*)\*\//Us', '', $content );
+		$content = preg_replace( '/<!--(.*)-->/Us', '', $content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
+		$content = preg_replace( '/\/\*(.*)\*\//Us', '', $content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
 
 		if ( ( false !== strpos( $content, '<!--' ) ) || ( false !== strpos( $content, '/*' ) ) ) {
 			return '';
 		}
 
 		// Strip line breaks.
-		$content = preg_replace( '/\r|\n/', '', $content );
+		$content = preg_replace( '/\r|\n/', '', $content ); // phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- -- 3rd party library.
 
 		// Find the start and end tags so we can cut out miscellaneous garbage.
 		$start = strpos( $content, '<svg' );
@@ -863,7 +1097,7 @@ class ST_WXR_Importer {
 	 * Get Importer
 	 *
 	 * @since 1.0.0
-	 * @return object   Importer object.
+	 * @return \WXR_Importer WXR_Importer object.
 	 */
 	public static function get_importer() {
 		$options = apply_filters(

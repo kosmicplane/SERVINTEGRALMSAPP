@@ -225,7 +225,7 @@ export const saveGutenbergAsDefaultBuilder = ( pageBuilder = 'gutenberg' ) => {
 	content.append( '_ajax_nonce', astraSitesVars?._ajax_nonce );
 	content.append( 'page_builder', pageBuilder );
 
-	fetch( ajaxurl, {
+	return fetch( ajaxurl, {
 		method: 'post',
 		body: content,
 	} );
@@ -293,4 +293,22 @@ export const debounce = ( func, wait, immediate ) => {
  */
 export const getStepIndex = ( name = '' ) => {
 	return STEPS.findIndex( ( step ) => step.name === name );
+};
+
+/**
+ * Track onboarding step
+ *
+ * @param {string} stepKey The step key to track
+ * @return {Promise} Promise that resolves when tracking is complete
+ */
+export const trackOnboardingStep = ( stepKey ) => {
+	const formData = new FormData();
+	formData.append( 'action', 'astra_sites_track_onboarding_step' );
+	formData.append( '_ajax_nonce', starterTemplates?.restNonce );
+	formData.append( 'step_visited', stepKey );
+
+	return fetch( ajaxurl, {
+		method: 'POST',
+		body: formData,
+	} );
 };

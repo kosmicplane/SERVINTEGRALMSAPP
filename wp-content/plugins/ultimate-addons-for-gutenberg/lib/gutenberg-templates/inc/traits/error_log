@@ -1,1 +1,0 @@
-[25-Jun-2025 23:25:49 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/ultimate-addons-for-gutenberg/lib/gutenberg-templates/inc/traits/instance.php on line 10

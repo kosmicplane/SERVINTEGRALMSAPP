@@ -1,1 +1,0 @@
-[23-Jun-2025 21:14:27 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/izorlnspatmm/public_html/wp-content/plugins/elementor/includes/controls/textarea.php on line 3

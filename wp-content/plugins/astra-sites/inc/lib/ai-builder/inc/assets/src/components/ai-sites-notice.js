@@ -18,7 +18,7 @@ const AISitesNotice = ( { className, ...props } ) => {
 			{ showAISitesNotice() && (
 				<div
 					className={ classNames(
-						'p-2.5 gap-1 border border-alert-error/30 bg-alert-error-bg rounded-md flex',
+						'p-2.5 gap-1 border border-alert-error/30 bg-alert-error-bg rounded-md flex mb-6',
 						className
 					) }
 					{ ...props }
@@ -46,7 +46,7 @@ const AISitesNotice = ( { className, ...props } ) => {
 							className="no-underline"
 						>
 							<div className="p-0 font-semibold  text-sm text-blue-crayola min-w-fit w-max">
-								{ __( 'Buy Add-ons', 'ai-builder' ) }
+								{ __( 'Upgrade Now', 'ai-builder' ) }
 							</div>
 						</a>
 					</div>

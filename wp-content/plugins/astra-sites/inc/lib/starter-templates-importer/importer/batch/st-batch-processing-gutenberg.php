@@ -141,8 +141,12 @@ if ( ! class_exists( 'ST_Batch_Processing_Gutenberg' ) ) :
 			$required_plugins = (array) astra_get_site_data( 'required-plugins' );
 			$plugins_slug     = array_column( $required_plugins, 'slug' );
 
-			// If template is built with Spectra.
-			if ( ! in_array( 'ultimate-addons-for-gutenberg', $plugins_slug, true ) ) {
+			$is_elementor_page      = in_array( 'elementor', $plugins_slug, true ) && get_post_meta( $post_id, '_elementor_version', true );
+			$is_beaver_builder_page = get_post_meta( $post_id, '_fl_builder_enabled', true );
+			$is_brizy_page          = get_post_meta( $post_id, 'brizy_post_uid', true );
+
+			// If page contain Elementor, Brizy or Beaver Builder meta then skip this page.
+			if ( $is_elementor_page || $is_beaver_builder_page || $is_brizy_page ) {
 				return;
 			}
 
@@ -176,7 +180,7 @@ if ( ! class_exists( 'ST_Batch_Processing_Gutenberg' ) ) :
 						foreach ( $catogory_mapping as $key => $value ) {
 
 							$this_site_term = get_term_by( 'slug', $value['slug'], 'category' );
-							if ( ! is_wp_error( $this_site_term ) && $this_site_term ) {
+							if ( $this_site_term ) {
 								$content = str_replace( '"categories":"' . $value['id'], '"categories":"' . $this_site_term->term_id, $content );
 								$content = str_replace( '\"categories\":\"' . $value['id'], '"categories":"' . $this_site_term->term_id, $content );
 								$content = str_replace( '{"categories":[{"id":' . $value['id'], '{"categories":[{"id":' . $this_site_term->term_id, $content );
@@ -233,7 +237,11 @@ if ( ! class_exists( 'ST_Batch_Processing_Gutenberg' ) ) :
 			}
 
 			foreach ( $surecart_id_map as $old_id => $new_id ) {
+				// Replace shortcode format.
 				$content = str_replace( '[sc_form id="' . $old_id . '"]', '[sc_form id="' . $new_id . '"]', $content );
+
+				// Replace Gutenberg checkout form block format (handles both {"id":X} and {"id":X,).
+				$content = str_replace( '<!-- wp:surecart/checkout-form {"id":' . $old_id, '<!-- wp:surecart/checkout-form {"id":' . $new_id, $content );
 			}
 
 			return $content;
@@ -289,16 +297,7 @@ if ( ! class_exists( 'ST_Batch_Processing_Gutenberg' ) ) :
 			// Extract normal and image links.
 			foreach ( $all_links as $key => $link ) {
 				if ( function_exists( 'astra_sites_is_valid_image' ) && astra_sites_is_valid_image( $link ) ) {
-
-					// Get all image links.
-					// Avoid *-150x, *-300x and *-1024x images.
-					if (
-						false === strpos( $link, '-150x' ) &&
-						false === strpos( $link, '-300x' ) &&
-						false === strpos( $link, '-1024x' )
-					) {
-						$image_links[] = $link;
-					}
+					$image_links[] = $link;
 				} else {
 
 					// Collect other links.

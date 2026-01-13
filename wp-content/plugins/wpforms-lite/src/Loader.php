@@ -125,7 +125,7 @@ class Loader {
 	}
 
 	/**
-	 * Populate Frontend related classes.
+	 * Populate Frontend-related classes.
 	 *
 	 * @since 1.8.1
 	 */
@@ -168,7 +168,7 @@ class Loader {
 	}
 
 	/**
-	 * Populate Admin related classes.
+	 * Populate Admin-related classes.
 	 *
 	 * @since 1.6.0
 	 */
@@ -277,6 +277,22 @@ class Loader {
 			],
 			[
 				'name' => 'Admin\Pages\ConstantContact',
+				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Pages\PrivacyCompliance',
+				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Pages\SugarCalendar',
+				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Pages\Duplicator',
+				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Pages\UncannyAutomator',
 				'hook' => 'admin_init',
 			],
 			[
@@ -441,6 +457,10 @@ class Loader {
 
 		$this->classes[] = [
 			'name' => 'Forms\Fields\Repeater\Field',
+		];
+
+		$this->classes[] = [
+			'name' => 'Forms\Fields\Camera\Field',
 			'hook' => 'init',
 		];
 
@@ -586,6 +606,7 @@ class Loader {
 			],
 			[
 				'name' => 'Admin\Entries\Export\Export',
+				'id'   => 'entries_export',
 				'hook' => 'init',
 			],
 			[
@@ -643,6 +664,11 @@ class Loader {
 				'name' => 'Admin\Builder\ContextMenu',
 				'hook' => 'wpforms_builder_init',
 				'id'   => 'context_menu',
+			],
+			[
+				'name' => 'Admin\Builder\ImageUpload',
+				'hook' => 'wpforms_builder_init',
+				'id'   => 'image_upload',
 			],
 			[
 				'name' => 'Admin\Builder\Notifications\Advanced\Settings',
@@ -793,7 +819,7 @@ class Loader {
 	}
 
 	/**
-	 * Populate logger loaded classes.
+	 * Populate logger-loaded classes.
 	 *
 	 * @since 1.6.3
 	 */
@@ -808,7 +834,7 @@ class Loader {
 	}
 
 	/**
-	 * Populate education related classes.
+	 * Populate education-related classes.
 	 *
 	 * @since 1.6.6
 	 */
@@ -880,6 +906,7 @@ class Loader {
 			'Builder\Geolocation',
 			'Builder\Confirmations',
 			'Builder\Notifications',
+			'Builder\PDF',
 			'Admin\DidYouKnow',
 			'Admin\Settings\Integrations',
 			'Admin\Settings\Geolocation',

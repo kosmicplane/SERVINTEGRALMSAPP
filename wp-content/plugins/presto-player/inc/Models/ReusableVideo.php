@@ -33,7 +33,7 @@ class ReusableVideo {
 	 *
 	 * @var string
 	 */
-	public $instant_video_width_setting_key = 'presto_player_instant_video_width';
+	public const INSTANT_VIDEO_WIDTH_SETTING_KEY = 'presto_player_instant_video_width';
 
 	/**
 	 * Constructor
@@ -103,8 +103,8 @@ class ReusableVideo {
 		$args = wp_parse_args(
 			$args,
 			array(
-				'post_type' => $this->post_type,
-				'per_page'  => -1,
+				'post_type'      => $this->post_type,
+				'posts_per_page' => -1,
 			)
 		);
 
@@ -119,7 +119,7 @@ class ReusableVideo {
 	 * @return ReusableVideo|bool
 	 */
 	public function first( $args = array() ) {
-		$fetched = $this->fetch( wp_parse_args( $args, array( 'per_page' => 1 ) ) );
+		$fetched = $this->fetch( wp_parse_args( $args, array( 'posts_per_page' => 1 ) ) );
 		return ! empty( $fetched[0] ) ? new static( $fetched[0] ) : false;
 	}
 
@@ -172,11 +172,13 @@ class ReusableVideo {
 			case 'presto-player/vimeo':
 				return ( new VimeoBlock() )->getAttributes( $block['attrs'] );
 
-			case 'presto-player/bunny':
-				return ( new BunnyCDNBlock() )->getAttributes( $block['attrs'] );
-
 			case 'presto-player/audio':
 				return ( new AudioBlock() )->getAttributes( $block['attrs'] );
+
+			case 'presto-player/bunny':
+				return class_exists( BunnyCDNBlock::class ) ?
+					( new BunnyCDNBlock() )->getAttributes( $block['attrs'] ) :
+					( new SelfHostedBlock() )->getAttributes( $block['attrs'] ); // in case BunnyCDN is not installed.
 		}
 	}
 
@@ -314,7 +316,7 @@ class ReusableVideo {
 		if ( empty( $this->post->ID ) ) {
 			return false;
 		}
-		$config = get_option( $this->instant_video_width_setting_key, '800px' );
+		$config = get_option( self::INSTANT_VIDEO_WIDTH_SETTING_KEY, '800px' );
 		return ! empty( $config ) ? $config : '800px';
 	}
 }

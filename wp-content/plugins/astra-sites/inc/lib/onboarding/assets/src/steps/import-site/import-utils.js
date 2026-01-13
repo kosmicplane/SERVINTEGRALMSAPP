@@ -203,43 +203,62 @@ export const checkRequiredPlugins = async ( storedState ) => {
 	} )
 		.then( ( response ) => response.json() )
 		.then( ( response ) => {
-			if ( response.success ) {
-				const rPlugins = response.data?.required_plugins;
-				const notInstalledPlugin = rPlugins.notinstalled || '';
-				const notActivePlugins = rPlugins.inactive || '';
-				dispatch( {
-					type: 'set',
-					requiredPlugins: response.data,
-					notInstalledList: notInstalledPlugin,
-					notActivatedList: notActivePlugins,
-				} );
-			}
+			const rPlugins = response.data?.required_plugins;
+			const notInstalledPlugin = rPlugins.notinstalled || '';
+			const notActivePlugins = rPlugins.inactive || '';
+			dispatch( {
+				type: 'set',
+				requiredPlugins: response.data,
+				notInstalledList: notInstalledPlugin,
+				notActivatedList: notActivePlugins,
+			} );
 		} );
 };
 
-function getFeaturePluginList( features, selectedEcommercePlugin ) {
+export function getFeaturePluginList(
+	features,
+	selectedEcommercePlugin,
+	templateRequiredPluginsSlugList = []
+) {
 	const requiredPlugins = [];
 
 	features?.forEach( ( feature ) => {
 		switch ( feature ) {
 			case 'ecommerce':
 				if ( selectedEcommercePlugin === 'surecart' ) {
-					requiredPlugins.push( {
-						name: 'SureCart',
-						slug: 'surecart',
-						init: 'surecart/surecart.php',
-					} );
+					if (
+						! templateRequiredPluginsSlugList.includes( 'surecart' )
+					) {
+						requiredPlugins.push( {
+							name: 'SureCart',
+							slug: 'surecart',
+							init: 'surecart/surecart.php',
+						} );
+					}
 				} else if ( selectedEcommercePlugin === 'woocommerce' ) {
-					requiredPlugins.push( {
-						name: 'WooCommerce',
-						slug: 'woocommerce',
-						init: 'woocommerce/woocommerce.php',
-					} );
-					requiredPlugins.push( {
-						name: 'WooPayments',
-						slug: 'woocommerce-payments',
-						init: 'woocommerce-payments/woocommerce-payments.php',
-					} );
+					if (
+						! templateRequiredPluginsSlugList.includes(
+							'woocommerce'
+						)
+					) {
+						requiredPlugins.push( {
+							name: 'WooCommerce',
+							slug: 'woocommerce',
+							init: 'woocommerce/woocommerce.php',
+						} );
+					}
+
+					if (
+						! templateRequiredPluginsSlugList.includes(
+							'woocommerce-payments'
+						)
+					) {
+						requiredPlugins.push( {
+							name: 'WooPayments',
+							slug: 'woocommerce-payments',
+							init: 'woocommerce-payments/woocommerce-payments.php',
+						} );
+					}
 				}
 				break;
 			case 'donations':
@@ -251,7 +270,7 @@ function getFeaturePluginList( features, selectedEcommercePlugin ) {
 				break;
 			case 'automation-integrations':
 				requiredPlugins.push( {
-					name: 'SureTriggers',
+					name: 'OttoKit',
 					slug: 'suretriggers',
 					init: 'suretriggers/suretriggers.php',
 				} );
@@ -261,6 +280,13 @@ function getFeaturePluginList( features, selectedEcommercePlugin ) {
 					name: 'Suremail',
 					slug: 'suremails',
 					init: 'suremails/suremails.php',
+				} );
+				break;
+			case 'seo':
+				requiredPlugins.push( {
+					name: 'SureRank',
+					slug: 'surerank',
+					init: 'surerank/surerank.php',
 				} );
 				break;
 			case 'sales-funnels':
@@ -283,15 +309,20 @@ function getFeaturePluginList( features, selectedEcommercePlugin ) {
 				} );
 				break;
 			case 'appointment-bookings':
-				requiredPlugins.push( {
-					name: 'Latepoint',
-					slug: 'latepoint',
-					init: 'latepoint/latepoint.php',
-				} );
+				if (
+					! templateRequiredPluginsSlugList.includes( 'latepoint' )
+				) {
+					requiredPlugins.push( {
+						name: 'Latepoint',
+						slug: 'latepoint',
+						init: 'latepoint/latepoint.php',
+					} );
+				}
+
 				break;
 			case 'live-chat':
 				requiredPlugins.push( {
-					name: 'WP Live Chat Support',
+					name: '3CX',
 					slug: 'wp-live-chat-support',
 					init: 'wp-live-chat-support/wp-live-chat-support.php',
 				} );
@@ -367,10 +398,44 @@ export const installAstra = ( storedState ) => {
 			importStatus: __( 'Installing Astra Theme…', 'astra-sites' ),
 		} );
 
-		wp.updates.installTheme( {
-			slug: themeSlug,
-			ajax_nonce: astraSitesVars?._ajax_nonce,
-		} );
+		wp.updates
+			.installTheme( {
+				slug: themeSlug,
+				ajax_nonce: astraSitesVars?._ajax_nonce,
+			} )
+			.catch( ( error ) => {
+				console.log( error );
+				// Check if error is due to folder already existing
+				const isFolderExistsError =
+					error?.errorCode === 'folder_exists' ||
+					( error?.errorMessage &&
+						error.errorMessage.toLowerCase().includes( 'folder' ) &&
+						error.errorMessage.toLowerCase().includes( 'exist' ) );
+
+				if ( isFolderExistsError ) {
+					// Theme is already installed, proceed to activate
+					dispatch( {
+						importStatus: __(
+							'Astra Theme Already Installed.',
+							'astra-sites'
+						),
+					} );
+					activateAstra( dispatch );
+				} else {
+					dispatch( {
+						importError: true,
+						importErrorMessages: {
+							primaryText:
+								error?.errorMessage ??
+								__(
+									'Theme installation failed.',
+									'astra-sites'
+								),
+							tryAgain: true,
+						},
+					} );
+				}
+			} );
 
 		// eslint-disable-next-line no-undef
 		jQuery( document ).on( 'wp-theme-install-success', function () {

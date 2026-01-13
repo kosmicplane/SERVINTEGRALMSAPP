@@ -1,1 +1,0 @@
-[24-Jun-2025 21:22:51 UTC] PHP Fatal error:  strict_types declaration must be the very first statement in the script in /home/izorlnspatmm/public_html/wp-content/plugins/one-click-demo-import/vendor/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/CoverageCloverToReport.php on line 2

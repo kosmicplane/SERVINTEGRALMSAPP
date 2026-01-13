@@ -3,8 +3,8 @@ Contributors: 2winfactor, wpcrafter
 Donate link: https://prestoplayer.com
 Tags: video, audio, youtube, vimeo, lms, elementor, learndash, beaver builder, lifterlms
 Requires at least: 6.3
-Tested up to: 6.8
-Stable tag: 3.1.0
+Tested up to: 6.9
+Stable tag: 4.0.7
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -147,8 +147,61 @@ See our [BunnyNet cost calculator](https://prestoplayer.com/docs/how-to-use-bunn
 
 It is also important to point out that BunnyNet has a $1 per month minimum.
 
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/).
+
 
 == Changelog ==
+
+= 4.0.7 =
+* Fix: Missing text domain for strings.
+* Fix: Resolved an issue with improper escaping of dynamic attribute values in markup output.
+
+= 4.0.6 =
+* Fix: Fixed an issue where search results could redirect to a 404 if the search results included a Media Hub item with Instant Video Pages disabled.
+* Fix: Corrected help text for call to action settings under video preset settings.
+
+= 4.0.5 = 
+* Fix: Fixed an issue preventing certain Presto settings pages from loading correctly in the WordPress admin.
+
+= 4.0.4 = 
+* Fix: Update popup assets for WordPress 6.9 compatibility.
+
+= 4.0.3 =
+* New: You can now use the "ratio" parameter in the Presto Player shortcode to control the video’s aspect ratio.
+* Fix: Resolved an issue where muted previews incorrectly played with sound when Lazy Load YouTube was enabled.
+* Fix: The “Remove all data on uninstall” option now correctly clears all Presto Player data, including Media Hub videos, when uninstalling the plugin.
+* Fix: Bunny CDN thumbnails were not automatically reflected in videos.
+* Fix: PHP warnings.
+
+= 4.0.2 =
+* Fix: Fullscreen mode not working on Safari in some instances.
+* Fix: PHP notices related to translations loading before init hook.
+
+= 4.0.1 =
+* Fix: Improved error handling for popup image trigger block transformations
+* Fix: Unnecessary requests when edit post pages.
+
+= 4.0.0 =
+* New: Presto Popups! [Learn More](https://prestoplayer.com/docs/presto-popups)
+* Improvement: Presto player has been rewritten to be more compatible with page builder popups and ajax loaded content.
+
+= 3.1.3 =
+* Change: Streamlined branding settings by removing the unused opacity option for better clarity and consistency.
+* Fix: Disabled autoplay for Vimeo playlists on iOS to prevent videos from starting muted after user interaction.
+* Fix: PHP warnings.
+
+= 3.1.2 =
+* Improvement: Added security vulnerability reporting guidelines to FAQ section.
+
+= 3.1.1 =
+* Change: Change playlist items list to have a max-height of 200px on mobile for long lists.
+* Fix: Issue where video analytics link was incorrectly being shown on profile page, even though they don't have permission to oaccesss the page.
+* Fix: Incorrect text domain for someplugin strings.
+
 = 3.1.0 = 
 - New: Setting to adjust the aspect ratio of the videos (vertical video support) [Learn More](https://www.youtube.com/watch?v=dKL8t9RtdvA).
 - Fix: Issue where action bar was sometimes not appearing for lazy loaded Youtube videos.
