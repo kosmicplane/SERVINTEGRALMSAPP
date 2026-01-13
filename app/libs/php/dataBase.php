@@ -8,10 +8,10 @@ class sql_query
 		try
 		{
 			$host = "localhost";
-			$db = "sherbim2016";
+			$db = "ServintegralDB";
 
-			$user = "sherbimadmin";
-			$pssw = "Harolito2015";
+			$user = "S3rvintegral2025";
+			$pssw = "S3rvintegral2025";
 
 			$this->pg = new PDO('mysql:host='.$host.';dbname='.$db, $user, $pssw, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES  \'UTF8\''));
 			

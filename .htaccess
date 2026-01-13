@@ -1,4 +1,9 @@
 RewriteEngine On
+# NO bloquear recursos estáticos comunes
+RewriteRule ^wp-content/uploads/ - [L]
+RewriteRule ^favicon\.ico$ - [L]
+RewriteRule ^wp-includes/ - [L]
+RewriteRule ^wp-admin/ - [L]
 
 # Si la URL contiene caracteres japoneses u otros no ASCII (común en hack japonés)
 RewriteCond %{REQUEST_URI} [^\x00-\x7F]

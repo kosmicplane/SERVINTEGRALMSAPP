@@ -1489,3 +1489,11 @@ Stack trace:
 [16-Dec-2025 01:07:08 UTC] Entrada fallida en mentry: El archivo no contiene filas reconocibles de inventario
 [16-Dec-2025 01:09:55 UTC] Entrada fallida en mentry: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sherbim2016.quotes' doesn't exist
 [16-Dec-2025 01:09:55 UTC] Entrada fallida en mentry: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sherbim2016.quotes' doesn't exist
+[13-Jan-2026 04:02:01 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:02:10 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:02:21 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:09:04 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:09:21 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:19:08 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:19:20 America/Bogota] Entrada fallida en mentry: Call to a member function prepare() on null
+[13-Jan-2026 04:33:05 America/Bogota] Entrada fallida en mentry: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'Servintegral_WP.users' doesn't exist
